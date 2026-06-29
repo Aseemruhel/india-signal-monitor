@@ -6,316 +6,73 @@
   <title>India Geopolitical Signal Monitor</title>
   <style>
     :root {
-      --bg: #0d1117;
-      --surface: #161b22;
-      --surface2: #21262d;
-      --border: #30363d;
-      --text: #e6edf3;
-      --muted: #8b949e;
-      --accent: #f78166;
-      --green: #3fb950;
-      --yellow: #d29922;
-      --red: #f85149;
-      --blue: #58a6ff;
-      --purple: #bc8cff;
-      --orange: #ffa657;
+      --bg: #0d1117; --surface: #161b22; --surface2: #21262d;
+      --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+      --accent: #f78166; --green: #3fb950; --yellow: #d29922;
+      --red: #f85149; --blue: #58a6ff; --purple: #bc8cff; --orange: #ffa657;
     }
-
     * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    header {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      position: sticky; top: 0; z-index: 100;
-    }
-
-    header h1 {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--text);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .pulse {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
-
-    #last-updated {
-      font-size: 12px;
-      color: var(--muted);
-      margin-left: auto;
-    }
-
-    .layout {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      min-height: calc(100vh - 53px);
-    }
-
-    /* SIDEBAR */
-    .sidebar {
-      background: var(--surface);
-      border-right: 1px solid var(--border);
-      padding: 16px;
-      overflow-y: auto;
-      position: sticky;
-      top: 53px;
-      height: calc(100vh - 53px);
-    }
-
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 16px; font-weight: 600; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    #last-updated { font-size: 12px; color: var(--muted); margin-left: auto; }
+    .layout { display: grid; grid-template-columns: 220px 1fr; min-height: calc(100vh - 53px); }
+    .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; position: sticky; top: 53px; height: calc(100vh - 53px); }
     .sidebar-section { margin-bottom: 24px; }
-    .sidebar-label {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--muted);
-      margin-bottom: 8px;
-      font-weight: 600;
-    }
-
-    .filter-btn {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      width: 100%;
-      padding: 6px 10px;
-      border-radius: 6px;
-      border: none;
-      background: transparent;
-      color: var(--muted);
-      cursor: pointer;
-      font-size: 13px;
-      text-align: left;
-      margin-bottom: 2px;
-      transition: all 0.15s;
-    }
+    .sidebar-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+    .filter-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 10px; border-radius: 6px; border: none; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; text-align: left; margin-bottom: 2px; transition: all 0.15s; }
     .filter-btn:hover { background: var(--surface2); color: var(--text); }
     .filter-btn.active { background: var(--surface2); color: var(--text); }
-    .filter-btn .count {
-      margin-left: auto;
-      font-size: 11px;
-      background: var(--border);
-      padding: 1px 6px;
-      border-radius: 10px;
-      color: var(--muted);
-    }
+    .filter-btn .count { margin-left: auto; font-size: 11px; background: var(--border); padding: 1px 6px; border-radius: 10px; color: var(--muted); }
     .filter-btn.active .count { background: var(--accent); color: white; }
-
-    .dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
-      flex-shrink: 0;
-    }
-
-    /* SIGNAL COLORS */
-    .sig-pakistan_narrative { background: #ff6b6b; }
-    .sig-western_criticism { background: #4dabf7; }
-    .sig-protest_dissent { background: #ffd43b; }
-    .sig-neighbour_hostile { background: #a9e34b; }
-    .sig-strategic_military { background: #cc5de8; }
-    .sig-terrorism_security { background: #ff922b; }
-
-    /* MAIN */
-    main {
-      padding: 20px 24px;
-      overflow-y: auto;
-    }
-
-    /* STATS ROW */
-    .stats-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin-bottom: 24px;
-    }
-
-    .stat-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
-    }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .sig-pakistan_narrative{background:#ff6b6b} .sig-western_criticism{background:#4dabf7}
+    .sig-protest_dissent{background:#ffd43b} .sig-neighbour_hostile{background:#a9e34b}
+    .sig-strategic_military{background:#cc5de8} .sig-terrorism_security{background:#ff922b}
+    main { padding: 20px 24px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
     .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
     .stat-card .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
-
-    /* SEARCH */
-    .search-bar {
-      margin-bottom: 16px;
-      display: flex;
-      gap: 8px;
-    }
-    .search-bar input {
-      flex: 1;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 8px 12px;
-      color: var(--text);
-      font-size: 13px;
-      outline: none;
-    }
+    .search-bar { margin-bottom: 16px; }
+    .search-bar input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 13px; outline: none; }
     .search-bar input:focus { border-color: var(--blue); }
     .search-bar input::placeholder { color: var(--muted); }
-
-    /* FEED ITEMS */
     .items-list { display: flex; flex-direction: column; gap: 10px; }
-
-    .item-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      padding: 14px 16px;
-      cursor: pointer;
-      transition: border-color 0.15s;
-    }
+    .item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s; }
     .item-card:hover { border-color: var(--blue); }
-
-    .item-header {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-bottom: 6px;
-    }
-
-    .importance-badge {
-      flex-shrink: 0;
-      width: 24px; height: 24px;
-      border-radius: 4px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 11px;
-      font-weight: 700;
-    }
-    .imp-high { background: rgba(248,81,73,0.2); color: var(--red); }
-    .imp-mid  { background: rgba(210,153,34,0.2); color: var(--yellow); }
-    .imp-low  { background: rgba(63,185,80,0.15); color: var(--green); }
-
-    .item-title {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--text);
-      line-height: 1.4;
-    }
+    .item-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+    .importance-badge { flex-shrink: 0; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+    .imp-high{background:rgba(248,81,73,0.2);color:var(--red)} .imp-mid{background:rgba(210,153,34,0.2);color:var(--yellow)} .imp-low{background:rgba(63,185,80,0.15);color:var(--green)} .imp-zero{background:rgba(139,148,158,0.15);color:var(--muted)}
+    .item-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
     .item-title a { color: inherit; text-decoration: none; }
     .item-title a:hover { color: var(--blue); }
-
-    .item-meta {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-      margin-top: 6px;
-    }
-
-    .source-tag {
-      font-size: 11px;
-      color: var(--muted);
-      background: var(--surface2);
-      padding: 2px 7px;
-      border-radius: 4px;
-    }
-
-    .signal-tag {
-      font-size: 11px;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-weight: 500;
-    }
-    .st-pakistan_narrative { background: rgba(255,107,107,0.15); color: #ff6b6b; }
-    .st-western_criticism  { background: rgba(77,171,247,0.15); color: #4dabf7; }
-    .st-protest_dissent    { background: rgba(255,212,59,0.15); color: #ffd43b; }
-    .st-neighbour_hostile  { background: rgba(169,227,75,0.15); color: #a9e34b; }
-    .st-strategic_military { background: rgba(204,93,232,0.15); color: #cc5de8; }
-    .st-terrorism_security { background: rgba(255,146,43,0.15); color: #ff922b; }
-
-    .item-summary {
-      font-size: 12px;
-      color: var(--muted);
-      margin-top: 6px;
-      display: none;
-      line-height: 1.6;
-    }
+    .item-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .source-tag { font-size: 11px; color: var(--muted); background: var(--surface2); padding: 2px 7px; border-radius: 4px; }
+    .signal-tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+    .st-pakistan_narrative{background:rgba(255,107,107,0.15);color:#ff6b6b}
+    .st-western_criticism{background:rgba(77,171,247,0.15);color:#4dabf7}
+    .st-protest_dissent{background:rgba(255,212,59,0.15);color:#ffd43b}
+    .st-neighbour_hostile{background:rgba(169,227,75,0.15);color:#a9e34b}
+    .st-strategic_military{background:rgba(204,93,232,0.15);color:#cc5de8}
+    .st-terrorism_security{background:rgba(255,146,43,0.15);color:#ff922b}
+    .item-summary { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.6; display: none; }
     .item-card.expanded .item-summary { display: block; }
-
-    .cat-tag {
-      font-size: 10px;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted);
-    }
-
     .time-tag { font-size: 11px; color: var(--muted); }
-
-    /* LOADING */
-    .loader {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 60px 20px;
-      color: var(--muted);
-      gap: 16px;
-    }
-    .spinner {
-      width: 32px; height: 32px;
-      border: 3px solid var(--border);
-      border-top-color: var(--blue);
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-    }
+    .cat-icon { font-size: 12px; }
+    .loader { display: flex; flex-direction: column; align-items: center; padding: 60px 20px; color: var(--muted); gap: 16px; }
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
-
-    .no-results {
-      text-align: center;
-      padding: 60px 20px;
-      color: var(--muted);
-    }
-
-    /* PAGE NAV */
-    .pagination {
-      display: flex;
-      gap: 8px;
-      margin-top: 20px;
-      justify-content: center;
-    }
-    .page-btn {
-      padding: 6px 14px;
-      border-radius: 6px;
-      border: 1px solid var(--border);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      font-size: 13px;
-    }
+    .no-results { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .pagination { display: flex; gap: 8px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+    .page-btn { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 13px; }
     .page-btn:hover { border-color: var(--blue); }
     .page-btn.active { background: var(--blue); border-color: var(--blue); color: #000; }
     .page-btn:disabled { opacity: 0.4; cursor: default; }
-
-    @media (max-width: 700px) {
-      .layout { grid-template-columns: 1fr; }
-      .sidebar { position: static; height: auto; border-right: none; border-bottom: 1px solid var(--border); }
-    }
+    .result-count { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+    @media(max-width:700px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border)}}
   </style>
 </head>
 <body>
@@ -327,112 +84,50 @@
 </header>
 
 <div class="layout">
-  <!-- SIDEBAR -->
   <aside class="sidebar">
     <div class="sidebar-section">
       <div class="sidebar-label">Category</div>
-      <button class="filter-btn active" data-cat="all" onclick="setFilter('cat','all',this)">
-        All Sources <span class="count" id="cnt-all">—</span>
-      </button>
-      <button class="filter-btn" data-cat="india_geopolitics" onclick="setFilter('cat','india_geopolitics',this)">
-        🇮🇳 India Media <span class="count" id="cnt-india_geopolitics">—</span>
-      </button>
-      <button class="filter-btn" data-cat="pakistan_narratives" onclick="setFilter('cat','pakistan_narratives',this)">
-        🟢 Pakistan Media <span class="count" id="cnt-pakistan_narratives">—</span>
-      </button>
-      <button class="filter-btn" data-cat="western_media" onclick="setFilter('cat','western_media',this)">
-        🌐 Western Media <span class="count" id="cnt-western_media">—</span>
-      </button>
-      <button class="filter-btn" data-cat="neighbours" onclick="setFilter('cat','neighbours',this)">
-        🗺️ Neighbours <span class="count" id="cnt-neighbours">—</span>
-      </button>
-      <button class="filter-btn" data-cat="global_strategic" onclick="setFilter('cat','global_strategic',this)">
-        📡 Global / Reddit <span class="count" id="cnt-global_strategic">—</span>
-      </button>
+      <button class="filter-btn active" onclick="setFilter('cat','all',this)">All Sources <span class="count" id="cnt-all">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','india_geopolitics',this)">🇮🇳 India Media <span class="count" id="cnt-india_geopolitics">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','pakistan_narratives',this)">🟢 Pakistan Media <span class="count" id="cnt-pakistan_narratives">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','western_media',this)">🌐 Western Media <span class="count" id="cnt-western_media">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','neighbours',this)">🗺️ Neighbours <span class="count" id="cnt-neighbours">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','global_strategic',this)">📡 Global/Reddit <span class="count" id="cnt-global_strategic">0</span></button>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-label">Signal Type</div>
-      <button class="filter-btn" data-sig="pakistan_narrative" onclick="setFilter('sig','pakistan_narrative',this)">
-        <span class="dot sig-pakistan_narrative"></span> Pakistan Narrative
-        <span class="count" id="sig-cnt-pakistan_narrative">—</span>
-      </button>
-      <button class="filter-btn" data-sig="western_criticism" onclick="setFilter('sig','western_criticism',this)">
-        <span class="dot sig-western_criticism"></span> Western Criticism
-        <span class="count" id="sig-cnt-western_criticism">—</span>
-      </button>
-      <button class="filter-btn" data-sig="protest_dissent" onclick="setFilter('sig','protest_dissent',this)">
-        <span class="dot sig-protest_dissent"></span> Protest / Dissent
-        <span class="count" id="sig-cnt-protest_dissent">—</span>
-      </button>
-      <button class="filter-btn" data-sig="neighbour_hostile" onclick="setFilter('sig','neighbour_hostile',this)">
-        <span class="dot sig-neighbour_hostile"></span> Neighbour Signals
-        <span class="count" id="sig-cnt-neighbour_hostile">—</span>
-      </button>
-      <button class="filter-btn" data-sig="strategic_military" onclick="setFilter('sig','strategic_military',this)">
-        <span class="dot sig-strategic_military"></span> Strategic / Military
-        <span class="count" id="sig-cnt-strategic_military">—</span>
-      </button>
-      <button class="filter-btn" data-sig="terrorism_security" onclick="setFilter('sig','terrorism_security',this)">
-        <span class="dot sig-terrorism_security"></span> Terror / Security
-        <span class="count" id="sig-cnt-terrorism_security">—</span>
-      </button>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_narrative',this)"><span class="dot sig-pakistan_narrative"></span> Pakistan Narrative <span class="count" id="sig-cnt-pakistan_narrative">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','western_criticism',this)"><span class="dot sig-western_criticism"></span> Western Criticism <span class="count" id="sig-cnt-western_criticism">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','protest_dissent',this)"><span class="dot sig-protest_dissent"></span> Protest / Dissent <span class="count" id="sig-cnt-protest_dissent">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','neighbour_hostile',this)"><span class="dot sig-neighbour_hostile"></span> Neighbour Signals <span class="count" id="sig-cnt-neighbour_hostile">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','strategic_military',this)"><span class="dot sig-strategic_military"></span> Strategic/Military <span class="count" id="sig-cnt-strategic_military">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','terrorism_security',this)"><span class="dot sig-terrorism_security"></span> Terror/Security <span class="count" id="sig-cnt-terrorism_security">0</span></button>
     </div>
-
     <div class="sidebar-section">
       <div class="sidebar-label">Importance</div>
-      <button class="filter-btn" data-imp="high" onclick="setFilter('imp','high',this)">
-        🔴 High (7–10) <span class="count" id="imp-cnt-high">—</span>
-      </button>
-      <button class="filter-btn" data-imp="mid" onclick="setFilter('imp','mid',this)">
-        🟡 Medium (4–6) <span class="count" id="imp-cnt-mid">—</span>
-      </button>
-      <button class="filter-btn" data-imp="low" onclick="setFilter('imp','low',this)">
-        🟢 Low (1–3) <span class="count" id="imp-cnt-low">—</span>
-      </button>
+      <button class="filter-btn" onclick="setFilter('imp','high',this)">🔴 High (7–10) <span class="count" id="imp-cnt-high">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','mid',this)">🟡 Medium (4–6) <span class="count" id="imp-cnt-mid">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','low',this)">🟢 Low (1–3) <span class="count" id="imp-cnt-low">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','zero',this)">⚪ Unscored (0) <span class="count" id="imp-cnt-zero">0</span></button>
     </div>
   </aside>
 
-  <!-- MAIN -->
   <main>
-    <div class="stats-row" id="stats-row">
-      <div class="stat-card">
-        <div class="label">Total Items</div>
-        <div class="value" id="stat-total" style="color:var(--blue)">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">High Priority</div>
-        <div class="value" id="stat-high" style="color:var(--red)">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Pakistan Signals</div>
-        <div class="value" id="stat-pak" style="color:#ff6b6b">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Western Criticism</div>
-        <div class="value" id="stat-west" style="color:#4dabf7">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Neighbour Signals</div>
-        <div class="value" id="stat-neigh" style="color:#a9e34b">—</div>
-      </div>
-      <div class="stat-card">
-        <div class="label">Last Updated</div>
-        <div class="value" id="stat-time" style="color:var(--muted);font-size:14px;margin-top:8px">—</div>
-      </div>
+    <div class="stats-row">
+      <div class="stat-card"><div class="label">Total Items</div><div class="value" id="stat-total" style="color:var(--blue)">—</div></div>
+      <div class="stat-card"><div class="label">High Priority</div><div class="value" id="stat-high" style="color:var(--red)">—</div></div>
+      <div class="stat-card"><div class="label">Pakistan Signals</div><div class="value" id="stat-pak" style="color:#ff6b6b">—</div></div>
+      <div class="stat-card"><div class="label">Western Criticism</div><div class="value" id="stat-west" style="color:#4dabf7">—</div></div>
+      <div class="stat-card"><div class="label">Neighbour Signals</div><div class="value" id="stat-neigh" style="color:#a9e34b">—</div></div>
+      <div class="stat-card"><div class="label">Last Updated</div><div class="value" id="stat-time" style="color:var(--muted);font-size:13px;margin-top:6px">—</div></div>
     </div>
-
     <div class="search-bar">
       <input type="text" id="search-input" placeholder="Search headlines, keywords, sources..." oninput="onSearch()"/>
     </div>
-
+    <div class="result-count" id="result-count"></div>
     <div id="items-container">
-      <div class="loader">
-        <div class="spinner"></div>
-        <div>Loading signals...</div>
-      </div>
+      <div class="loader"><div class="spinner"></div><div>Loading signals...</div></div>
     </div>
-
     <div class="pagination" id="pagination"></div>
   </main>
 </div>
@@ -445,54 +140,58 @@
   let currentPage = 1;
   const PAGE_SIZE = 30;
 
-  // Load data
   async function loadData() {
     try {
       const r = await fetch('data/summary.json?_=' + Date.now());
+      if (!r.ok) throw new Error('HTTP ' + r.status);
       const data = await r.json();
-      allItems = data.items || [];
-      
-      // Update stats
-      document.getElementById('stat-total').textContent = data.total_items || allItems.length;
+
+      // FIX: handle both key names
+      allItems = data.top_items || data.items || [];
+
+      console.log('Loaded items:', allItems.length);
+
+      // Stats
+      document.getElementById('stat-total').textContent = allItems.length;
       document.getElementById('stat-high').textContent = allItems.filter(i => i.importance >= 7).length;
-      document.getElementById('stat-pak').textContent = data.signal_summary?.pakistan_narrative || 0;
-      document.getElementById('stat-west').textContent = data.signal_summary?.western_criticism || 0;
-      document.getElementById('stat-neigh').textContent = data.signal_summary?.neighbour_hostile || 0;
+      document.getElementById('stat-pak').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative')).length;
+      document.getElementById('stat-west').textContent = allItems.filter(i => (i.signals||[]).includes('western_criticism')).length;
+      document.getElementById('stat-neigh').textContent = allItems.filter(i => (i.signals||[]).includes('neighbour_hostile')).length;
 
       const ts = new Date(data.generated_at);
-      const timeStr = ts.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
-      const dateStr = ts.toLocaleDateString([], {month:'short', day:'numeric'});
-      document.getElementById('last-updated').textContent = `Updated: ${dateStr} ${timeStr}`;
-      document.getElementById('stat-time').textContent = `${dateStr} ${timeStr}`;
+      const timeStr = ts.toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('last-updated').textContent = 'Updated: ' + timeStr;
+      document.getElementById('stat-time').textContent = timeStr;
 
-      // Update sidebar counts
       updateCounts();
       applyFilters();
-    } catch (e) {
+    } catch(e) {
+      console.error('Load error:', e);
       document.getElementById('items-container').innerHTML = `
         <div class="no-results">
           <div style="font-size:32px;margin-bottom:12px">📡</div>
-          <div style="color:var(--text);margin-bottom:8px">No data yet</div>
-          <div style="font-size:12px">Run the crawler first: <code>python crawler.py</code><br/>or trigger the GitHub Action manually.</div>
+          <div style="color:var(--text);margin-bottom:8px">Could not load data</div>
+          <div style="font-size:12px;color:var(--muted)">Error: ${e.message}<br/><br/>
+          Make sure the GitHub Action has run and <code>data/summary.json</code> exists in your repo.<br/>
+          Go to Actions tab → Run workflow manually.</div>
         </div>`;
     }
   }
 
   function updateCounts() {
-    const cats = ['india_geopolitics','pakistan_narratives','western_media','neighbours','global_strategic'];
     document.getElementById('cnt-all').textContent = allItems.length;
-    cats.forEach(c => {
+    ['india_geopolitics','pakistan_narratives','western_media','neighbours','global_strategic'].forEach(c => {
       const el = document.getElementById('cnt-'+c);
       if (el) el.textContent = allItems.filter(i => i.category === c).length;
     });
-    const sigs = ['pakistan_narrative','western_criticism','protest_dissent','neighbour_hostile','strategic_military','terrorism_security'];
-    sigs.forEach(s => {
+    ['pakistan_narrative','western_criticism','protest_dissent','neighbour_hostile','strategic_military','terrorism_security'].forEach(s => {
       const el = document.getElementById('sig-cnt-'+s);
-      if (el) el.textContent = allItems.filter(i => i.signals?.includes(s)).length;
+      if (el) el.textContent = allItems.filter(i => (i.signals||[]).includes(s)).length;
     });
     document.getElementById('imp-cnt-high').textContent = allItems.filter(i=>i.importance>=7).length;
     document.getElementById('imp-cnt-mid').textContent = allItems.filter(i=>i.importance>=4&&i.importance<7).length;
-    document.getElementById('imp-cnt-low').textContent = allItems.filter(i=>i.importance>0&&i.importance<4).length;
+    document.getElementById('imp-cnt-low').textContent = allItems.filter(i=>i.importance>=1&&i.importance<4).length;
+    document.getElementById('imp-cnt-zero').textContent = allItems.filter(i=>!i.importance||i.importance===0).length;
   }
 
   function setFilter(type, value, btn) {
@@ -511,106 +210,87 @@
 
   function applyFilters() {
     filtered = allItems.filter(item => {
-      // Category filter
       if (activeFilter.type === 'cat' && activeFilter.value !== 'all') {
         if (item.category !== activeFilter.value) return false;
       }
-      // Signal filter
       if (activeFilter.type === 'sig') {
-        if (!item.signals?.includes(activeFilter.value)) return false;
+        if (!(item.signals||[]).includes(activeFilter.value)) return false;
       }
-      // Importance filter
       if (activeFilter.type === 'imp') {
-        if (activeFilter.value === 'high' && item.importance < 7) return false;
-        if (activeFilter.value === 'mid' && (item.importance < 4 || item.importance >= 7)) return false;
-        if (activeFilter.value === 'low' && (item.importance < 1 || item.importance >= 4)) return false;
+        const imp = item.importance || 0;
+        if (activeFilter.value === 'high' && imp < 7) return false;
+        if (activeFilter.value === 'mid' && (imp < 4 || imp >= 7)) return false;
+        if (activeFilter.value === 'low' && (imp < 1 || imp >= 4)) return false;
+        if (activeFilter.value === 'zero' && imp !== 0) return false;
       }
-      // Search
       if (searchQuery) {
-        const hay = `${item.title} ${item.summary} ${item.source}`.toLowerCase();
+        const hay = `${item.title||''} ${item.summary||''} ${item.source||''}`.toLowerCase();
         if (!hay.includes(searchQuery)) return false;
       }
       return true;
     });
+    document.getElementById('result-count').textContent = `Showing ${filtered.length} of ${allItems.length} items`;
     renderPage();
   }
 
   function renderPage() {
-    const start = (currentPage - 1) * PAGE_SIZE;
-    const pageItems = filtered.slice(start, start + PAGE_SIZE);
+    const start = (currentPage-1)*PAGE_SIZE;
+    const pageItems = filtered.slice(start, start+PAGE_SIZE);
     const container = document.getElementById('items-container');
-
-    if (!pageItems.length) {
+    if (!filtered.length) {
       container.innerHTML = `<div class="no-results"><div style="font-size:28px;margin-bottom:10px">🔍</div><div>No items match this filter</div></div>`;
       document.getElementById('pagination').innerHTML = '';
       return;
     }
-
     container.innerHTML = `<div class="items-list">${pageItems.map(renderItem).join('')}</div>`;
     renderPagination();
   }
 
   function renderItem(item) {
-    const imp = item.importance;
-    const impClass = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : 'imp-low';
-    const signals = (item.signals || []).map(s =>
-      `<span class="signal-tag st-${s}">${s.replace(/_/g,' ')}</span>`
-    ).join('');
-    const catLabel = {
-      india_geopolitics: '🇮🇳',
-      pakistan_narratives: '🟢',
-      western_media: '🌐',
-      neighbours: '🗺️',
-      global_strategic: '📡'
-    }[item.category] || '';
-
+    const imp = item.importance || 0;
+    const impClass = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : imp >= 1 ? 'imp-low' : 'imp-zero';
+    const catIcon = {india_geopolitics:'🇮🇳',pakistan_narratives:'🟢',western_media:'🌐',neighbours:'🗺️',global_strategic:'📡'}[item.category]||'';
+    const signals = (item.signals||[]).map(s=>`<span class="signal-tag st-${s}">${s.replace(/_/g,' ')}</span>`).join('');
     const pub = item.published ? new Date(item.published) : null;
-    const timeStr = pub && !isNaN(pub) ? pub.toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
-
-    return `
-      <div class="item-card" onclick="this.classList.toggle('expanded')">
-        <div class="item-header">
-          <span class="importance-badge ${impClass}">${imp}</span>
-          <span class="item-title">
-            <a href="${item.link}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.title}</a>
-          </span>
-        </div>
-        <div class="item-meta">
-          <span class="cat-tag">${catLabel}</span>
-          <span class="source-tag">${item.source}</span>
-          ${signals}
-          ${timeStr ? `<span class="time-tag">${timeStr}</span>` : ''}
-        </div>
-        ${item.summary ? `<div class="item-summary">${item.summary}</div>` : ''}
-      </div>`;
+    const timeStr = pub && !isNaN(pub) ? pub.toLocaleString([],{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+    const summary = item.summary ? `<div class="item-summary">${item.summary}</div>` : '';
+    return `<div class="item-card" onclick="this.classList.toggle('expanded')">
+      <div class="item-header">
+        <span class="importance-badge ${impClass}">${imp}</span>
+        <span class="item-title"><a href="${item.link||'#'}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.title||'(no title)'}</a></span>
+      </div>
+      <div class="item-meta">
+        <span class="cat-icon">${catIcon}</span>
+        <span class="source-tag">${item.source||''}</span>
+        ${signals}
+        ${timeStr?`<span class="time-tag">${timeStr}</span>`:''}
+      </div>
+      ${summary}
+    </div>`;
   }
 
   function renderPagination() {
-    const total = Math.ceil(filtered.length / PAGE_SIZE);
-    if (total <= 1) { document.getElementById('pagination').innerHTML = ''; return; }
-    let html = `<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
-    for (let i = 1; i <= total; i++) {
-      if (i === 1 || i === total || Math.abs(i-currentPage) <= 2) {
-        html += `<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
-      } else if (Math.abs(i-currentPage) === 3) {
-        html += `<span style="color:var(--muted);padding:6px">…</span>`;
-      }
+    const total = Math.ceil(filtered.length/PAGE_SIZE);
+    if (total<=1){document.getElementById('pagination').innerHTML='';return;}
+    let html=`<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
+    for(let i=1;i<=total;i++){
+      if(i===1||i===total||Math.abs(i-currentPage)<=2) html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+      else if(Math.abs(i-currentPage)===3) html+=`<span style="color:var(--muted);padding:6px 4px">…</span>`;
     }
-    html += `<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>Next →</button>`;
-    document.getElementById('pagination').innerHTML = html;
+    html+=`<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>Next →</button>`;
+    document.getElementById('pagination').innerHTML=html;
   }
 
   function goPage(p) {
-    const total = Math.ceil(filtered.length / PAGE_SIZE);
-    if (p < 1 || p > total) return;
-    currentPage = p;
+    const total=Math.ceil(filtered.length/PAGE_SIZE);
+    if(p<1||p>total)return;
+    currentPage=p;
     renderPage();
-    window.scrollTo({top: 0, behavior: 'smooth'});
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  // Auto-refresh every 10 minutes
   loadData();
-  setInterval(loadData, 10 * 60 * 1000);
+  setInterval(loadData, 10*60*1000);
 </script>
 </body>
 </html>
