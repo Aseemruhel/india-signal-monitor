@@ -291,7 +291,7 @@ def crawl_all():
         "total_items": output["total_items"],
         "signal_summary": output["signal_summary"],
         "top_signals": output["top_signals"],
-        "top_items": deduped[:50],  # top 50 by importance for quick dashboard load
+        "top_items": deduped,  # top 50 by importance for quick dashboard load
     }
     with open("data/summary.json", "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
