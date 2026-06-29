@@ -1,0 +1,610 @@
+{
+  "generated_at": "2026-06-29T09:22:54.979346+00:00",
+  "total_items": 122,
+  "signal_summary": {
+    "pakistan_narrative": 22,
+    "terrorism_security": 4
+  },
+  "top_signals": [
+    [
+      "pakistan_narrative",
+      22
+    ],
+    [
+      "terrorism_security",
+      4
+    ]
+  ],
+  "top_items": [
+    {
+      "title": "Trump bombs Iran after strike on cargo ship in Strait of Hormuz",
+      "summary": "\nUS President&#160;Donald Trump&#160;resumed bombing Iran on Friday, a day after an Iranian attack on a cargo ship in the Strait of Hormuz, elevating concerns about the future of a ceasefire agreement just as Israel and&#160;Lebanon&#160;signed a related deal. The Trump administration – which partne",
+      "link": "https://asiatimes.com/2026/06/trump-bombs-iran-after-strike-on-cargo-ship-in-strait-of-hormuz/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 9,
+      "published": "Sat, 27 Jun 2026 13:29:26 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969870+00:00"
+    },
+    {
+      "title": "Iran and US agree to halt attacks and renew talks, US official says",
+      "summary": "Iran and the United States agreed to halt recent hostilities in the Gulf and renew talks regarding their dispute over the Strait of Hormuz, a US official said on Sunday, raising hopes of saving an interim peace deal that was under pressure from days of tit-for-tat strikes.\nThe exchanges have undersc",
+      "link": "https://www.dawn.com/news/2011596/iran-and-us-agree-to-halt-attacks-and-renew-talks-us-official-says",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 7,
+      "published": "Mon, 29 Jun 2026 13:42:24 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400360+00:00"
+    },
+    {
+      "title": "Pakistan says carried out strikes along Afghanistan border, 29 militants killed",
+      "summary": "The strikes against the hideouts and safe havens of terrorists came in after a paramilitary Rangers headquarters in Karachi on Saturday (June 27, 2026) was attacked by militants, Information Minister Atta Tarar said",
+      "link": "https://www.thehindu.com/news/international/pakistan-says-carried-out-strikes-along-afghanistan-border/article71160127.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 14:30:13 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408141+00:00"
+    },
+    {
+      "title": "West Asia war updates: U.S., Iran agree to halt attacks and hold talks in Doha on June 30, report says",
+      "summary": "The two sides anticipate meeting to work ‌out dispute over Strait of Hormuz; Hezbollah says reserves right to 'defend its homeland' after Israeli strikes on Lebanon",
+      "link": "https://www.thehindu.com/news/international/west-asia-war-iran-us-conflict-israel-lebanon-strikes-tehran-washington-ceasefire-live-updates-june-28-2026/article71156840.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 12:00:18 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408344+00:00"
+    },
+    {
+      "title": "Iran’s Hormuz toll gambit is doomed to fail",
+      "summary": "\nTensions have again escalated in the Middle East, with the United States and Iran trading strikes around the Strait of Hormuz. It follows reports of an Iranian drone attack on a cargo ship trying to transit through the strait. Both the US and Iran have accused each other of breaking the agreed 60-d",
+      "link": "https://asiatimes.com/2026/06/irans-hormuz-toll-gambit-is-doomed-to-fail/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 05:07:11 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969668+00:00"
+    },
+    {
+      "title": "How India’s heatwaves are shutting schools – and pushing women out of the workforce",
+      "summary": "Forced to stay home or switch jobs, working mothers are bearing the brunt of the climate crisis as classes go online for weeks or months at a timeOutside, the temperature has passed 41C (105.8F). Inside Sakshi Katyal’s city apartment, the air conditioner is blasting but it does little to relieve the",
+      "link": "https://www.theguardian.com/global-development/2026/jun/22/how-india-heatwaves-shutting-schools-pushing-women-out-of-the-workforce",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 5,
+      "published": "Mon, 22 Jun 2026 03:00:47 GMT",
+      "fetched_at": "2026-06-29T09:22:22.544105+00:00"
+    },
+    {
+      "title": "U.S., Iran launch new strikes, testing fragile ceasefire as Hormuz tensions flare",
+      "summary": "Tehran said it launched strikes on U.S. interests in the Middle East, and Bahrain and Kuwait said they were targeted, as clashes continue to threaten the ceasefire.",
+      "link": "https://www.washingtonpost.com/world/2026/06/27/clashes-test-us-iran-ceasefire-bahrain-tanker-report-attacks/",
+      "source": "Washington Post - World",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 5,
+      "published": "Sun, 28 Jun 2026 08:05:07 +0000",
+      "fetched_at": "2026-06-29T09:22:35.188019+00:00"
+    },
+    {
+      "title": "Iran deal Trump trashed looks a lot like the one he’s signing",
+      "summary": "At Switzerland&#8217;s Lake Lucerne last week, US Vice President JD Vance announced that Iran had agreed to let United Nations nuclear inspectors back into the country and called it a first step toward permanently ending Tehran&#8217;s nuclear program — a claim Iran&#8217;s foreign ministry promptly",
+      "link": "https://asiatimes.com/2026/06/iran-deal-trump-trashed-looks-a-lot-like-the-one-hes-signing/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 5,
+      "published": "Mon, 29 Jun 2026 07:10:09 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969473+00:00"
+    },
+    {
+      "title": "Alina Poliakova, Managing Editor of Ukrainska Pravda, here to discuss life in Ukraine five years into Russia's full-scale invasion. AMA!",
+      "summary": "Join us for an AMA with Alina Poliakova, Managing Editor of the English edition of Ukrainska Pravda, one of Ukraine's leading independent news outlets. We'll discuss what life in Ukraine – and especially in Kyiv – looks like in the fifth year of Russia's full-scale invasion. From daily life under co",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1u413iz/alina_poliakova_managing_editor_of_ukrainska/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 5,
+      "published": "2026-06-12T17:00:39+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518456+00:00"
+    },
+    {
+      "title": "West Asia war LIVE: Iran, Oman hold first Hormuz Joint Committee meeting, discuss future management of Strait",
+      "summary": "The U.S. and Iran have traded strikes in recent days despite a fragile June 17 MoU aimed at ending the conflict",
+      "link": "https://www.thehindu.com/news/international/west-asia-war-iran-us-conflict-israel-lebanon-strikes-ceasefire-live-updates-june-29-2026/article71159879.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 14:30:25 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408078+00:00"
+    },
+    {
+      "title": "US-Iran War Live Updates: US and Iran halt strikes, agree to ‘stand down’ ahead of Doha talks",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/us-iran-war-live-updates-strikes-hormuz-doha-talks-10762112/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 02:17:15 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796159+00:00"
+    },
+    {
+      "title": "In birthday wish, PM Modi commends Dharmendra Pradhan's NEP push amid CJP's paper leak protest",
+      "summary": "Pradhan's birthday conncided with seventh day of ongoing protest by the Cockroach Janta Party's (CJP) at Jantar Mantar seeking his resignation over alleged irregularities in this year's NEET-UG exam.",
+      "link": "https://www.livemint.com/politics/news/in-birthday-wish-pm-modi-commends-dharmendra-pradhans-nep-push-as-cjps-neet-paper-leak-protest-enters-day-7-11782451512045.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Fri, 26 Jun 2026 11:25:35 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721654+00:00"
+    },
+    {
+      "title": "Security forces kill 29 terrorists in ground ops, air strikes along Pak-Afghan border: info minister",
+      "summary": "Information Minister Attaullah Tarar said on Sunday night that Pakistan’s security forces had carried out a “well planned intelligence-based ground operation” along the Pakistan-Afghan border followed by calibrated strikes against the hideouts and safe havens of terrorists belonging to Jamaatul Ahra",
+      "link": "https://www.dawn.com/news/2011438/security-forces-kill-29-terrorists-in-ground-ops-air-strikes-along-pak-afghan-border-info-minister",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 12:04:22 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400500+00:00"
+    },
+    {
+      "title": "Security forces gun down 30 terrorists in multiple IBOs in KP: ISPR",
+      "summary": "\n                \t\t\t\tFrontier Constabulary and army personnel gather stand guard in Kurram, January 17, 2025. &mdash; AFPSecurity forces killed 30 Indian proxy Fitna al-Khawarij terrorists during multiple intelligence-based operations  carried out by security forces in Khyber Pakhtunkhwa , the milit",
+      "link": "https://www.thenews.com.pk/latest/1381698-security-forces-gun-down-30-terrorists-in-multiple-ibos-in-kp-ispr",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 4,
+      "published": "Thu, 20 Nov 2025 21:38:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084472+00:00"
+    },
+    {
+      "title": "U.S. Strikes Iran Over Attack on Hormuz Ship",
+      "summary": "Washington said Tehran violated the cease-fire.",
+      "link": "https://foreignpolicy.com/2026/06/26/us-strikes-iran-cease-fire-violation-hormuz-ever-lovely-mou-trump/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 4,
+      "published": "Fri, 26 Jun 2026 21:35:17 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789396+00:00"
+    },
+    {
+      "title": "World’s first trillionaire a flashing red light for US democracy",
+      "summary": "\nThe red emergency light is flashing on America’s democracy dashboard, like a damaged aircraft teetering toward a mountain.  Elon Musk becoming the planet’s first trillionaire should make us tremble for the future of self-governing republics. It’s as if we’re bringing back modern pharaohs to dominat",
+      "link": "https://asiatimes.com/2026/06/worlds-first-trillionaire-a-flashing-red-light-for-us-democracy/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 08:39:56 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969352+00:00"
+    },
+    {
+      "title": "FO summons Afghan envoy, issues 'strong' demarche over terrorist attack on Karachi Rangers camp",
+      "summary": "The Afghan chargé d’affaires was summoned to the Ministry of Foreign Affairs (Mofa) last night and a strong demarche was issued regarding the recent terrorist attack on a Rangers facility in Karachi, Foreign Office spokesperson Tahir Andrabi said on Monday.\nOn Saturday night, terrorists attacked a l",
+      "link": "https://www.dawn.com/news/2011624/fo-summons-afghan-envoy-issues-strong-demarche-over-terrorist-attack-on-karachi-rangers-camp",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 14:16:52 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400107+00:00"
+    },
+    {
+      "title": "Azerbaijan slams ally Israel's recognition of Armenian genocide",
+      "summary": "Azerbaijan on Monday denounced a decision by its ally Israel to recognise the World War I massacres of Armenians as a genocide, a move widely seen as a rebuke by Israel to Turkiye.\nAzerbaijan and Israel are allies but Baku’s closest foreign partner is Turkiye and the Caucasus country hinted that the",
+      "link": "https://www.dawn.com/news/2011620/azerbaijan-slams-ally-israels-recognition-of-armenian-genocide",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 13:53:14 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400733+00:00"
+    },
+    {
+      "title": "Banned TTP poses serious threat to Pakistan security: UNSC panel",
+      "summary": "\n                \t\t\t\tDenmark&rsquo;s Deputy Permanent Representative to United Nations and chair of UNSC's ISIL, Al-Qaeda Sanctions Committee Sandra Jensen Landi. &mdash; Screengrab via UN WebTV websiteThe chair of the United Nations Security Council's Daesh and Al-Qaeda Sanctions Committee has caut",
+      "link": "https://www.thenews.com.pk/latest/1359210-banned-ttp-poses-serious-threat-to-pakistan-security-unsc-panel",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Thu, 20 Nov 2025 15:24:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084689+00:00"
+    },
+    {
+      "title": "Video shows Pakistan’s precision strikes on terrorist camps in Afghanistan",
+      "summary": "Video shows Pakistan’s precision strikes on terrorist camps in Afghanistan",
+      "link": "https://arynews.tv/video-pakistan-strikes-terrorist-camps-in-afghanistan",
+      "source": "ARY News",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "2026-06-29T13:18:53+05:00",
+      "fetched_at": "2026-06-29T09:22:20.318363+00:00"
+    },
+    {
+      "title": "Pakistan’s water crisis deepens, ranks 14th globally",
+      "summary": "ISLAMABAD &#8211; Pakistan has been ranked 14th among the world&#8217;s most water-scarce countries, highlighting a growing threat to the country&#8217;s…",
+      "link": "https://pakobserver.net/pakistans-water-crisis-deepens-ranks-14th-globally/",
+      "source": "Pakistan Observer",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 08:20:26 +0000",
+      "fetched_at": "2026-06-29T09:22:21.005108+00:00"
+    },
+    {
+      "title": "Exiled Chefs From Myanmar Give Burmese Food Chance to Shine on International Stage",
+      "summary": "Much of the world is unfamiliar with the cuisine, but an exodus from Myanmar after a coup has made it more visible on the international stage.",
+      "link": "https://www.nytimes.com/2026/06/27/world/asia/burmese-food-myanmar.html",
+      "source": "NYT - Asia Pacific",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Sat, 27 Jun 2026 13:01:52 +0000",
+      "fetched_at": "2026-06-29T09:22:24.380730+00:00"
+    },
+    {
+      "title": "Father and son rescued after four days buried under rubble of Venezuela’s earthquakes",
+      "summary": "Rescue workers carried the pair, visibly weakened and both wearing masks, on improvised fabric stretchers through debris-strewn streets to a waiting ambulance, as a crowd gathered around the emergency vehicles ⁠in La Guaira.",
+      "link": "https://kathmandupost.com/world/2026/06/29/father-and-son-rescued-after-four-days-buried-under-rubble-of-venezuela-s-earthquakes",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157026+00:00"
+    },
+    {
+      "title": "TET paper leak: Opposition legislators protest, walk out of Maharashtra Assembly",
+      "summary": "Senior leaders alleged that those behind the TET and NEET leaks are linked to the BJP, and demanded a comprehensive investigation into the examination process",
+      "link": "https://www.thehindu.com/news/national/maharashtra/tet-paper-leak-opposition-legislators-protest-walk-out-of-maharashtra-assembly/article71160378.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 14:25:31 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839844+00:00"
+    },
+    {
+      "title": "Can neutral ships be lawfully attacked?",
+      "summary": "What protections does international law afford neutral merchant vessels? When can neutral ships lawfully lose that protection? Can oil tankers and blockade runners be treated as military targets? What legal remedies are available to India after the deaths of its seafarers? How does international law",
+      "link": "https://www.thehindu.com/news/international/can-neutral-ships-be-lawfully-attacked/article71157722.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 11:47:56 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408483+00:00"
+    },
+    {
+      "title": "Trump calls ‘communism’ the greatest threat to US since World Wars and 9/11",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/donald-trump-communism-greatest-threat-us-world-wars-9-11-10762280/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 07:33:22 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796083+00:00"
+    },
+    {
+      "title": "US, Iran ‘stand down’ on strikes; talks resume in Doha tomorrow",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/us-and-iran-stand-down-on-strikes-technical-talks-set-to-continue-in-doha-10762194/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 03:55:31 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796119+00:00"
+    },
+    {
+      "title": "BJP president Nitin Nabin on maiden 2-day Jammu and Kashmir visit next week: What's on the agenda",
+      "summary": "Nabin will address party workers, participate in public conventions, and chair a series of organisational meetings to review the party's functioning and strengthen its organisational network in the Union Territory during the visit.",
+      "link": "https://www.livemint.com/politics/news/bjp-president-nitin-nabin-on-maiden-2-day-jammu-and-kashmir-visit-next-week-whats-on-the-agenda-11782697575223.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 07:43:17 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721467+00:00"
+    },
+    {
+      "title": "HistoriCity: Forgotten tales of Indian Football",
+      "summary": "Football strongholds of Kerala, Goa and Bengal are famous for their devotion towards global powers like Argentina, Brazil as well as stars like Messi, Cristiano",
+      "link": "https://www.hindustantimes.com/india-news/historicity-forgotten-tales-of-indian-football-101782719406438.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:20:06 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426704+00:00"
+    },
+    {
+      "title": "Ram Temple donation case: Bar association asks members not to represent accused",
+      "summary": "The Faizabad bar association warned members against defending Ram Temple donation embezzlement suspects, threatening fines and city blockade if they don't leave",
+      "link": "https://www.hindustantimes.com/india-news/ram-temple-donation-case-bar-assoc-warns-members-against-representing-accused-101782718372964.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:02:52 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426800+00:00"
+    },
+    {
+      "title": "Siya Goyal Took 1 Crore From Fiance For Wedding Shopping, Gave It To Lover: Sources",
+      "summary": "Goyal and Chaudhary have been arrested for allegedly conspiring to kill Agarwal",
+      "link": "https://www.ndtv.com/india-news/ketan-agarwal-murder-lohagad-fort-siya-goyal-took-rs-1-crore-from-fiance-for-wedding-shopping-gave-it-to-lover-chetan-chaudhary-to-fund-career-sources-11700985#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:00:11 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269848+00:00"
+    },
+    {
+      "title": "Gavaskar condemns Sunrisers for signing Abrar",
+      "summary": "The Pakistani spinner was signed for the Hundred",
+      "link": "https://tribune.com.pk/story/2598077/gavaskar-condemns-sunrisers-for-signing-abrar",
+      "source": "Express Tribune",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 2,
+      "published": "Tue, 17 Mar 26 10:13:12 +0500",
+      "fetched_at": "2026-06-29T09:22:18.396503+00:00"
+    },
+    {
+      "title": "Mount Everest, a climber known only as ‘Green Boots’, and the mission to solve a 30-year mystery",
+      "summary": "In 1996, a blizzard in Everest’s notorious ‘death zone’ killed ‘Green Boots’. Now, a fresh expedition plans to retrieve his body, and establish his identityThirty years after he perished in a small limestone cave near the top of Mount Everest, the body of the climber known only as “Green Boots” may ",
+      "link": "https://www.theguardian.com/world/2026/jun/22/mt-everest-green-boots-man-cave-climber-identity",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 22 Jun 2026 03:25:08 GMT",
+      "fetched_at": "2026-06-29T09:22:22.544002+00:00"
+    },
+    {
+      "title": "Drones Used to Fight Mosquitoes as Dengue Fever Surges in Sri Lanka",
+      "summary": "The military has joined the battle against the insects, as an outbreak strains hospitals in a country already reeling from energy shortages caused by the Iran War.",
+      "link": "https://www.nytimes.com/2026/06/28/world/asia/sri-lanka-dengue-mosquito-drones-military.html",
+      "source": "NYT - Asia Pacific",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Sun, 28 Jun 2026 04:00:06 +0000",
+      "fetched_at": "2026-06-29T09:22:24.380575+00:00"
+    },
+    {
+      "title": "The Cost of America Abandoning the Military Draft",
+      "summary": "Trump could be confident his war in Iran would not touch the daily lives of most voters.",
+      "link": "https://foreignpolicy.com/2026/06/29/end-military-draft-united-states/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 04:01:54 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789353+00:00"
+    },
+    {
+      "title": "Is Hezbollah Now More an Obligation Than an Asset to Tehran?",
+      "summary": "How the war has shifted Iran’s relationship with its proxies.",
+      "link": "https://foreignpolicy.com/2026/06/26/iran-hezbollah-united-states-war-israel-lebanon-proxies/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Fri, 26 Jun 2026 19:20:07 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789451+00:00"
+    },
+    {
+      "title": "Birgunj sanitation workers end strike after deal on wages, working conditions",
+      "summary": "Sanitation workers return to work after an agreement on wages, overtime pay, safety measures and job security reached through municipal mediation.",
+      "link": "https://kathmandupost.com/national/2026/06/29/birgunj-sanitation-workers-end-strike-after-deal-on-wages-working-conditions",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157088+00:00"
+    },
+    {
+      "title": "They sang on Kathmandu’s streets to survive. The city silenced the music",
+      "summary": "A municipal crackdown on sidewalk performers has left a community of visually impaired people without a livelihood, sparking protests.",
+      "link": "https://kathmandupost.com/valley/2026/06/29/they-sang-on-kathmandu-s-streets-to-survive-the-city-silenced-the-music",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157207+00:00"
+    },
+    {
+      "title": "Venezuela quake death toll nears 1,500 as rescue work goes on",
+      "summary": "Foreign rescue teams continue searching for survivors as nearly 50,000 people remain unaccounted for and authorities warn the window for rescues is rapidly closing.",
+      "link": "https://kathmandupost.com/world/2026/06/29/venezuela-quake-death-toll-nears-1-500-as-rescue-work-goes-on",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157256+00:00"
+    },
+    {
+      "title": "Eustaquio’s stoppage-time strike sends Canada into World Cup last 16",
+      "summary": "Stephen Eustaquio’s 92nd-minute winner secured a 1-0 victory over South Africa, sending the co-hosts into the World Cup last 16 for the first time in their history.",
+      "link": "https://kathmandupost.com/football/2026/06/29/eustaquio-s-stoppage-time-strike-sends-canada-into-world-cup-last-16",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157317+00:00"
+    },
+    {
+      "title": "Subreddit Rules: Must Read Before Posting",
+      "summary": "Geopolitics is intended for in-depth, meaningful discussion. Please abide by the rules or your account may be banned. Thank you! 1. No Trolling Keep all discussion civil.  Any form of trolling will not be tolerated Do not harass other users or mods No novelty accounts No quarantined sub users  The m",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1ua89dn/subreddit_rules_must_read_before_posting/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-19T17:30:54+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518586+00:00"
+    },
+    {
+      "title": "US says it has agreed to 'stand down' after exchange of strikes with Iran",
+      "summary": "      &#32; submitted by &#32;  /u/BadahBingBadahBoom   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uik9sg/us_says_it_has_agreed_to_stand_down_after/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-29T06:13:07+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518739+00:00"
+    },
+    {
+      "title": "India rejects Pak allegations over Karachi blast - The Tribune",
+      "summary": "India rejects Pak allegations over Karachi blast&nbsp;&nbsp;The Tribune",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOdU5oajEyNmk4LTFzVU1hMVJYdDdIdW5hUGNpRHlscWxSVmhQcWczbDZPVnNuVnloYkZDUExLNy1wV0ZGRm12b0dUOHJTRXFZc1k1VnVSZlRhVTF3T0lOZ0stUW5FLUstbmUweEhSNGZsd2Qta3BQVl9yX1Z0MjVaYVp0U3dhbldfODhBTHZocV9vMUXSAZcBQVVfeXFMTm1SNmtaSWJZblB4MnhkeEZfSWtGUjVtTmUwcWNuUXJnT3U4VFdRUnI5Mm1vWm9acnYtRmU1Tl9mVUNydS12S0dqdDV2V3dkZl85SldwS2hpWWRSRUZJSEpLYXNxRWxCVW44OGRoRDN5YzRaLUxYV1B4cnh1Ykt3RDQwWG9laHlPdENJVkdzNjlSNzRLYjNMNA?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "Sun, 28 Jun 2026 20:23:40 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127431+00:00"
+    },
+    {
+      "title": "Nah tribe alleges Chinese PLA occupied ancestral land in Arunachal, seeks urgent government action - Moneycontrol.com",
+      "summary": "Nah tribe alleges Chinese PLA occupied ancestral land in Arunachal, seeks urgent government action&nbsp;&nbsp;Moneycontrol.com",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPX2RJOTNzbC1KeXl3V3NpSzQ1NDhtelBESzh4WGI5Xy1jUVBQZ0NWaXI4YzlxUW9yTFU5MXRqX0JUcnpLbjlpTWFxb2tlc0lYb1NGdjNrZ09SZ0s4SFBCR2V1MHVRUlJtV094M0NBT3hWQ1oxOWloM0Z4S203dFR6eHNhcXl1ai14Tkx2TEU0Y2FHWUR6SXVkZE5NUm85d1UyaEF4eFpwLU83NUlNdGY0aklpLXRPNGg5X1NuV29MbDdNelZGOXlYQWkyZTJTUWdnVDNvLUJ6VjJFMmk4WnlTd0ZEMFZnZ9IB6wFBVV95cUxNWWE3eGM5X1UzcmJlcnRCVk5zSnhQdUY3R3poQk5veXdrNnFoQ1BLR3NpRmdUaXJrMnYtcWZsUFJjdjNtRy1KT3VzbEY3TVB4VWpTN2RUUG9Kd1pWWGdXQmpiMV9PaGxTb1VOZEh6TzhLbFZjZHNTa0NQOGdMUEl2UUR3WFltNHVXOWhXb1FQLXh0Sm5qdmFzN2R1UHAtbmtGaWp1RnVOY3dHU3lLcTVaWDVkLXVxdC1nOExjMHJtLUpNaTBfd2oyN2ZhbGxMd2pKLThqZEZ3eHF0aUVTVG1NSkJQeE9ia2x0cl80?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 03:06:02 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243367+00:00"
+    },
+    {
+      "title": "China imposes export controls on 40 Japanese entities as tensions with Tokyo rise",
+      "summary": "Twenty Japanese entities, including multiple divisions of Mitsubishi Corporation, have been placed on a control list, which prohibits Chinese and foreign exporters from selling to them dual-use items made in China",
+      "link": "https://www.thehindu.com/news/international/china-imposes-export-controls-on-40-japanese-entities-as-tensions-with-tokyo-rise/article71160490.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 14:43:29 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408016+00:00"
+    },
+    {
+      "title": "Ram Mandir donation row: VHP demands FIR into ‘embezzlement,’ AAP's Sanjay Singh to submit documents to SIT",
+      "summary": "VHP international president Alok Kumar told news agency PTI that the investigation should be completed within four months and the accused brought to justice.",
+      "link": "https://www.livemint.com/politics/news/ram-mandir-donation-row-vhp-demands-fir-into-embezzlement-aaps-sanjay-singh-to-submit-documents-to-sit-11782376340853.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 1,
+      "published": "Thu, 25 Jun 2026 14:10:56 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721798+00:00"
+    },
+    {
+      "title": "US report validates Pakistan military edge over India: PM",
+      "summary": "\n                \t\t\t\tPrime Minister Shehbaz Sharif addresses ceremony in Azad Jammu and Kashmir on November 20, 2025. &mdash; X/@GovtofPakistanPrime Minister Shehbaz Sharif on Thursday said a recent US report endorsing Pakistan&rsquo;s downing of Indian aircraft stands as formal validation of the co",
+      "link": "https://www.thenews.com.pk/latest/1381699-us-report-validates-pakistan-military-edge-over-india-pm",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Thu, 20 Nov 2025 20:55:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084615+00:00"
+    },
+    {
+      "title": "Australia visit visa subclass 600 fee and minimum bank statement in Pakistani rupees",
+      "summary": "Australia offers the Visitor Visa (Subclass 600) to foreign nationals, including Pakistanis, who wish to visit the country for tourism,…",
+      "link": "https://pakobserver.net/australia-visit-visa-subclass-600-fee-and-minimum-bank-statement-in-pakistani-rupees/",
+      "source": "Pakistan Observer",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 08:47:21 +0000",
+      "fetched_at": "2026-06-29T09:22:21.005042+00:00"
+    },
+    {
+      "title": "Park strife: Delhi’s historic polo club becomes a battlefield for the city’s fate",
+      "summary": "Opposition is mounting to the government’s requisition of two of the last green spaces in India’s overheated capital For decades, the social highlight of winters in Delhi for the “beautiful people” was the polo season. A sprinkling of royalty and diplomats, impeccably groomed women in pearls and chi",
+      "link": "https://www.theguardian.com/global-development/2026/jun/29/park-strife-delhis-historic-polo-club-becomes-a-battlefield-for-the-citys-fate",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 09:00:40 GMT",
+      "fetched_at": "2026-06-29T09:22:22.543453+00:00"
+    },
+    {
+      "title": "‘I wanted to show children playing under the open sky – and the joy of Sundays’: Monojit Dutta’s best phone picture",
+      "summary": "In a chance encounter, the photographer captured a beautiful moment of freedom and spontaneityOn the early morning train from Kolkata, Monojit Dutta arranged for a large bundle of balloons to be waiting for him when he arrived at the station at Canning, a town in West Bengal on the banks of the Rive",
+      "link": "https://www.theguardian.com/lifeandstyle/2026/jun/27/monojit-dutta-best-phone-picture",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Sat, 27 Jun 2026 10:00:01 GMT",
+      "fetched_at": "2026-06-29T09:22:22.543576+00:00"
+    }
+  ]
+}

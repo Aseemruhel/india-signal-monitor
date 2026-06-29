@@ -1,0 +1,1421 @@
+{
+  "generated_at": "2026-06-29T09:22:54.979346+00:00",
+  "total_items": 122,
+  "category_stats": {
+    "india_geopolitics": 56,
+    "pakistan_narratives": 11,
+    "western_media": 17,
+    "neighbours": 6,
+    "global_strategic": 32
+  },
+  "signal_summary": {
+    "pakistan_narrative": 22,
+    "terrorism_security": 4
+  },
+  "top_signals": [
+    [
+      "pakistan_narrative",
+      22
+    ],
+    [
+      "terrorism_security",
+      4
+    ]
+  ],
+  "items": [
+    {
+      "title": "Trump bombs Iran after strike on cargo ship in Strait of Hormuz",
+      "summary": "\nUS President&#160;Donald Trump&#160;resumed bombing Iran on Friday, a day after an Iranian attack on a cargo ship in the Strait of Hormuz, elevating concerns about the future of a ceasefire agreement just as Israel and&#160;Lebanon&#160;signed a related deal. The Trump administration – which partne",
+      "link": "https://asiatimes.com/2026/06/trump-bombs-iran-after-strike-on-cargo-ship-in-strait-of-hormuz/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 9,
+      "published": "Sat, 27 Jun 2026 13:29:26 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969870+00:00"
+    },
+    {
+      "title": "Iran and US agree to halt attacks and renew talks, US official says",
+      "summary": "Iran and the United States agreed to halt recent hostilities in the Gulf and renew talks regarding their dispute over the Strait of Hormuz, a US official said on Sunday, raising hopes of saving an interim peace deal that was under pressure from days of tit-for-tat strikes.\nThe exchanges have undersc",
+      "link": "https://www.dawn.com/news/2011596/iran-and-us-agree-to-halt-attacks-and-renew-talks-us-official-says",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 7,
+      "published": "Mon, 29 Jun 2026 13:42:24 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400360+00:00"
+    },
+    {
+      "title": "Pakistan says carried out strikes along Afghanistan border, 29 militants killed",
+      "summary": "The strikes against the hideouts and safe havens of terrorists came in after a paramilitary Rangers headquarters in Karachi on Saturday (June 27, 2026) was attacked by militants, Information Minister Atta Tarar said",
+      "link": "https://www.thehindu.com/news/international/pakistan-says-carried-out-strikes-along-afghanistan-border/article71160127.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 14:30:13 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408141+00:00"
+    },
+    {
+      "title": "West Asia war updates: U.S., Iran agree to halt attacks and hold talks in Doha on June 30, report says",
+      "summary": "The two sides anticipate meeting to work ‌out dispute over Strait of Hormuz; Hezbollah says reserves right to 'defend its homeland' after Israeli strikes on Lebanon",
+      "link": "https://www.thehindu.com/news/international/west-asia-war-iran-us-conflict-israel-lebanon-strikes-tehran-washington-ceasefire-live-updates-june-28-2026/article71156840.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 12:00:18 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408344+00:00"
+    },
+    {
+      "title": "Iran’s Hormuz toll gambit is doomed to fail",
+      "summary": "\nTensions have again escalated in the Middle East, with the United States and Iran trading strikes around the Strait of Hormuz. It follows reports of an Iranian drone attack on a cargo ship trying to transit through the strait. Both the US and Iran have accused each other of breaking the agreed 60-d",
+      "link": "https://asiatimes.com/2026/06/irans-hormuz-toll-gambit-is-doomed-to-fail/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [],
+      "importance": 6,
+      "published": "Mon, 29 Jun 2026 05:07:11 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969668+00:00"
+    },
+    {
+      "title": "How India’s heatwaves are shutting schools – and pushing women out of the workforce",
+      "summary": "Forced to stay home or switch jobs, working mothers are bearing the brunt of the climate crisis as classes go online for weeks or months at a timeOutside, the temperature has passed 41C (105.8F). Inside Sakshi Katyal’s city apartment, the air conditioner is blasting but it does little to relieve the",
+      "link": "https://www.theguardian.com/global-development/2026/jun/22/how-india-heatwaves-shutting-schools-pushing-women-out-of-the-workforce",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 5,
+      "published": "Mon, 22 Jun 2026 03:00:47 GMT",
+      "fetched_at": "2026-06-29T09:22:22.544105+00:00"
+    },
+    {
+      "title": "U.S., Iran launch new strikes, testing fragile ceasefire as Hormuz tensions flare",
+      "summary": "Tehran said it launched strikes on U.S. interests in the Middle East, and Bahrain and Kuwait said they were targeted, as clashes continue to threaten the ceasefire.",
+      "link": "https://www.washingtonpost.com/world/2026/06/27/clashes-test-us-iran-ceasefire-bahrain-tanker-report-attacks/",
+      "source": "Washington Post - World",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 5,
+      "published": "Sun, 28 Jun 2026 08:05:07 +0000",
+      "fetched_at": "2026-06-29T09:22:35.188019+00:00"
+    },
+    {
+      "title": "Iran deal Trump trashed looks a lot like the one he’s signing",
+      "summary": "At Switzerland&#8217;s Lake Lucerne last week, US Vice President JD Vance announced that Iran had agreed to let United Nations nuclear inspectors back into the country and called it a first step toward permanently ending Tehran&#8217;s nuclear program — a claim Iran&#8217;s foreign ministry promptly",
+      "link": "https://asiatimes.com/2026/06/iran-deal-trump-trashed-looks-a-lot-like-the-one-hes-signing/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 5,
+      "published": "Mon, 29 Jun 2026 07:10:09 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969473+00:00"
+    },
+    {
+      "title": "Alina Poliakova, Managing Editor of Ukrainska Pravda, here to discuss life in Ukraine five years into Russia's full-scale invasion. AMA!",
+      "summary": "Join us for an AMA with Alina Poliakova, Managing Editor of the English edition of Ukrainska Pravda, one of Ukraine's leading independent news outlets. We'll discuss what life in Ukraine – and especially in Kyiv – looks like in the fifth year of Russia's full-scale invasion. From daily life under co",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1u413iz/alina_poliakova_managing_editor_of_ukrainska/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 5,
+      "published": "2026-06-12T17:00:39+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518456+00:00"
+    },
+    {
+      "title": "West Asia war LIVE: Iran, Oman hold first Hormuz Joint Committee meeting, discuss future management of Strait",
+      "summary": "The U.S. and Iran have traded strikes in recent days despite a fragile June 17 MoU aimed at ending the conflict",
+      "link": "https://www.thehindu.com/news/international/west-asia-war-iran-us-conflict-israel-lebanon-strikes-ceasefire-live-updates-june-29-2026/article71159879.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 14:30:25 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408078+00:00"
+    },
+    {
+      "title": "US-Iran War Live Updates: US and Iran halt strikes, agree to ‘stand down’ ahead of Doha talks",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/us-iran-war-live-updates-strikes-hormuz-doha-talks-10762112/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 02:17:15 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796159+00:00"
+    },
+    {
+      "title": "In birthday wish, PM Modi commends Dharmendra Pradhan's NEP push amid CJP's paper leak protest",
+      "summary": "Pradhan's birthday conncided with seventh day of ongoing protest by the Cockroach Janta Party's (CJP) at Jantar Mantar seeking his resignation over alleged irregularities in this year's NEET-UG exam.",
+      "link": "https://www.livemint.com/politics/news/in-birthday-wish-pm-modi-commends-dharmendra-pradhans-nep-push-as-cjps-neet-paper-leak-protest-enters-day-7-11782451512045.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 4,
+      "published": "Fri, 26 Jun 2026 11:25:35 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721654+00:00"
+    },
+    {
+      "title": "Security forces kill 29 terrorists in ground ops, air strikes along Pak-Afghan border: info minister",
+      "summary": "Information Minister Attaullah Tarar said on Sunday night that Pakistan’s security forces had carried out a “well planned intelligence-based ground operation” along the Pakistan-Afghan border followed by calibrated strikes against the hideouts and safe havens of terrorists belonging to Jamaatul Ahra",
+      "link": "https://www.dawn.com/news/2011438/security-forces-kill-29-terrorists-in-ground-ops-air-strikes-along-pak-afghan-border-info-minister",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 12:04:22 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400500+00:00"
+    },
+    {
+      "title": "Security forces gun down 30 terrorists in multiple IBOs in KP: ISPR",
+      "summary": "\n                \t\t\t\tFrontier Constabulary and army personnel gather stand guard in Kurram, January 17, 2025. &mdash; AFPSecurity forces killed 30 Indian proxy Fitna al-Khawarij terrorists during multiple intelligence-based operations  carried out by security forces in Khyber Pakhtunkhwa , the milit",
+      "link": "https://www.thenews.com.pk/latest/1381698-security-forces-gun-down-30-terrorists-in-multiple-ibos-in-kp-ispr",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 4,
+      "published": "Thu, 20 Nov 2025 21:38:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084472+00:00"
+    },
+    {
+      "title": "U.S. Strikes Iran Over Attack on Hormuz Ship",
+      "summary": "Washington said Tehran violated the cease-fire.",
+      "link": "https://foreignpolicy.com/2026/06/26/us-strikes-iran-cease-fire-violation-hormuz-ever-lovely-mou-trump/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 4,
+      "published": "Fri, 26 Jun 2026 21:35:17 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789396+00:00"
+    },
+    {
+      "title": "World’s first trillionaire a flashing red light for US democracy",
+      "summary": "\nThe red emergency light is flashing on America’s democracy dashboard, like a damaged aircraft teetering toward a mountain.  Elon Musk becoming the planet’s first trillionaire should make us tremble for the future of self-governing republics. It’s as if we’re bringing back modern pharaohs to dominat",
+      "link": "https://asiatimes.com/2026/06/worlds-first-trillionaire-a-flashing-red-light-for-us-democracy/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [],
+      "importance": 4,
+      "published": "Mon, 29 Jun 2026 08:39:56 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969352+00:00"
+    },
+    {
+      "title": "FO summons Afghan envoy, issues 'strong' demarche over terrorist attack on Karachi Rangers camp",
+      "summary": "The Afghan chargé d’affaires was summoned to the Ministry of Foreign Affairs (Mofa) last night and a strong demarche was issued regarding the recent terrorist attack on a Rangers facility in Karachi, Foreign Office spokesperson Tahir Andrabi said on Monday.\nOn Saturday night, terrorists attacked a l",
+      "link": "https://www.dawn.com/news/2011624/fo-summons-afghan-envoy-issues-strong-demarche-over-terrorist-attack-on-karachi-rangers-camp",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 14:16:52 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400107+00:00"
+    },
+    {
+      "title": "Azerbaijan slams ally Israel's recognition of Armenian genocide",
+      "summary": "Azerbaijan on Monday denounced a decision by its ally Israel to recognise the World War I massacres of Armenians as a genocide, a move widely seen as a rebuke by Israel to Turkiye.\nAzerbaijan and Israel are allies but Baku’s closest foreign partner is Turkiye and the Caucasus country hinted that the",
+      "link": "https://www.dawn.com/news/2011620/azerbaijan-slams-ally-israels-recognition-of-armenian-genocide",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 13:53:14 +0500",
+      "fetched_at": "2026-06-29T09:22:16.400733+00:00"
+    },
+    {
+      "title": "Banned TTP poses serious threat to Pakistan security: UNSC panel",
+      "summary": "\n                \t\t\t\tDenmark&rsquo;s Deputy Permanent Representative to United Nations and chair of UNSC's ISIL, Al-Qaeda Sanctions Committee Sandra Jensen Landi. &mdash; Screengrab via UN WebTV websiteThe chair of the United Nations Security Council's Daesh and Al-Qaeda Sanctions Committee has caut",
+      "link": "https://www.thenews.com.pk/latest/1359210-banned-ttp-poses-serious-threat-to-pakistan-security-unsc-panel",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Thu, 20 Nov 2025 15:24:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084689+00:00"
+    },
+    {
+      "title": "Video shows Pakistan’s precision strikes on terrorist camps in Afghanistan",
+      "summary": "Video shows Pakistan’s precision strikes on terrorist camps in Afghanistan",
+      "link": "https://arynews.tv/video-pakistan-strikes-terrorist-camps-in-afghanistan",
+      "source": "ARY News",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "2026-06-29T13:18:53+05:00",
+      "fetched_at": "2026-06-29T09:22:20.318363+00:00"
+    },
+    {
+      "title": "Pakistan’s water crisis deepens, ranks 14th globally",
+      "summary": "ISLAMABAD &#8211; Pakistan has been ranked 14th among the world&#8217;s most water-scarce countries, highlighting a growing threat to the country&#8217;s…",
+      "link": "https://pakobserver.net/pakistans-water-crisis-deepens-ranks-14th-globally/",
+      "source": "Pakistan Observer",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Mon, 29 Jun 2026 08:20:26 +0000",
+      "fetched_at": "2026-06-29T09:22:21.005108+00:00"
+    },
+    {
+      "title": "Exiled Chefs From Myanmar Give Burmese Food Chance to Shine on International Stage",
+      "summary": "Much of the world is unfamiliar with the cuisine, but an exodus from Myanmar after a coup has made it more visible on the international stage.",
+      "link": "https://www.nytimes.com/2026/06/27/world/asia/burmese-food-myanmar.html",
+      "source": "NYT - Asia Pacific",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "Sat, 27 Jun 2026 13:01:52 +0000",
+      "fetched_at": "2026-06-29T09:22:24.380730+00:00"
+    },
+    {
+      "title": "Father and son rescued after four days buried under rubble of Venezuela’s earthquakes",
+      "summary": "Rescue workers carried the pair, visibly weakened and both wearing masks, on improvised fabric stretchers through debris-strewn streets to a waiting ambulance, as a crowd gathered around the emergency vehicles ⁠in La Guaira.",
+      "link": "https://kathmandupost.com/world/2026/06/29/father-and-son-rescued-after-four-days-buried-under-rubble-of-venezuela-s-earthquakes",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157026+00:00"
+    },
+    {
+      "title": "TET paper leak: Opposition legislators protest, walk out of Maharashtra Assembly",
+      "summary": "Senior leaders alleged that those behind the TET and NEET leaks are linked to the BJP, and demanded a comprehensive investigation into the examination process",
+      "link": "https://www.thehindu.com/news/national/maharashtra/tet-paper-leak-opposition-legislators-protest-walk-out-of-maharashtra-assembly/article71160378.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 14:25:31 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839844+00:00"
+    },
+    {
+      "title": "Can neutral ships be lawfully attacked?",
+      "summary": "What protections does international law afford neutral merchant vessels? When can neutral ships lawfully lose that protection? Can oil tankers and blockade runners be treated as military targets? What legal remedies are available to India after the deaths of its seafarers? How does international law",
+      "link": "https://www.thehindu.com/news/international/can-neutral-ships-be-lawfully-attacked/article71157722.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 11:47:56 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408483+00:00"
+    },
+    {
+      "title": "Trump calls ‘communism’ the greatest threat to US since World Wars and 9/11",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/donald-trump-communism-greatest-threat-us-world-wars-9-11-10762280/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 07:33:22 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796083+00:00"
+    },
+    {
+      "title": "US, Iran ‘stand down’ on strikes; talks resume in Doha tomorrow",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/us-and-iran-stand-down-on-strikes-technical-talks-set-to-continue-in-doha-10762194/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 03:55:31 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796119+00:00"
+    },
+    {
+      "title": "BJP president Nitin Nabin on maiden 2-day Jammu and Kashmir visit next week: What's on the agenda",
+      "summary": "Nabin will address party workers, participate in public conventions, and chair a series of organisational meetings to review the party's functioning and strengthen its organisational network in the Union Territory during the visit.",
+      "link": "https://www.livemint.com/politics/news/bjp-president-nitin-nabin-on-maiden-2-day-jammu-and-kashmir-visit-next-week-whats-on-the-agenda-11782697575223.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 07:43:17 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721467+00:00"
+    },
+    {
+      "title": "HistoriCity: Forgotten tales of Indian Football",
+      "summary": "Football strongholds of Kerala, Goa and Bengal are famous for their devotion towards global powers like Argentina, Brazil as well as stars like Messi, Cristiano",
+      "link": "https://www.hindustantimes.com/india-news/historicity-forgotten-tales-of-indian-football-101782719406438.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:20:06 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426704+00:00"
+    },
+    {
+      "title": "Ram Temple donation case: Bar association asks members not to represent accused",
+      "summary": "The Faizabad bar association warned members against defending Ram Temple donation embezzlement suspects, threatening fines and city blockade if they don't leave",
+      "link": "https://www.hindustantimes.com/india-news/ram-temple-donation-case-bar-assoc-warns-members-against-representing-accused-101782718372964.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:02:52 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426800+00:00"
+    },
+    {
+      "title": "Siya Goyal Took 1 Crore From Fiance For Wedding Shopping, Gave It To Lover: Sources",
+      "summary": "Goyal and Chaudhary have been arrested for allegedly conspiring to kill Agarwal",
+      "link": "https://www.ndtv.com/india-news/ketan-agarwal-murder-lohagad-fort-siya-goyal-took-rs-1-crore-from-fiance-for-wedding-shopping-gave-it-to-lover-chetan-chaudhary-to-fund-career-sources-11700985#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 13:00:11 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269848+00:00"
+    },
+    {
+      "title": "Gavaskar condemns Sunrisers for signing Abrar",
+      "summary": "The Pakistani spinner was signed for the Hundred",
+      "link": "https://tribune.com.pk/story/2598077/gavaskar-condemns-sunrisers-for-signing-abrar",
+      "source": "Express Tribune",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 2,
+      "published": "Tue, 17 Mar 26 10:13:12 +0500",
+      "fetched_at": "2026-06-29T09:22:18.396503+00:00"
+    },
+    {
+      "title": "Mount Everest, a climber known only as ‘Green Boots’, and the mission to solve a 30-year mystery",
+      "summary": "In 1996, a blizzard in Everest’s notorious ‘death zone’ killed ‘Green Boots’. Now, a fresh expedition plans to retrieve his body, and establish his identityThirty years after he perished in a small limestone cave near the top of Mount Everest, the body of the climber known only as “Green Boots” may ",
+      "link": "https://www.theguardian.com/world/2026/jun/22/mt-everest-green-boots-man-cave-climber-identity",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 22 Jun 2026 03:25:08 GMT",
+      "fetched_at": "2026-06-29T09:22:22.544002+00:00"
+    },
+    {
+      "title": "Drones Used to Fight Mosquitoes as Dengue Fever Surges in Sri Lanka",
+      "summary": "The military has joined the battle against the insects, as an outbreak strains hospitals in a country already reeling from energy shortages caused by the Iran War.",
+      "link": "https://www.nytimes.com/2026/06/28/world/asia/sri-lanka-dengue-mosquito-drones-military.html",
+      "source": "NYT - Asia Pacific",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Sun, 28 Jun 2026 04:00:06 +0000",
+      "fetched_at": "2026-06-29T09:22:24.380575+00:00"
+    },
+    {
+      "title": "The Cost of America Abandoning the Military Draft",
+      "summary": "Trump could be confident his war in Iran would not touch the daily lives of most voters.",
+      "link": "https://foreignpolicy.com/2026/06/29/end-military-draft-united-states/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 04:01:54 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789353+00:00"
+    },
+    {
+      "title": "Is Hezbollah Now More an Obligation Than an Asset to Tehran?",
+      "summary": "How the war has shifted Iran’s relationship with its proxies.",
+      "link": "https://foreignpolicy.com/2026/06/26/iran-hezbollah-united-states-war-israel-lebanon-proxies/",
+      "source": "Foreign Policy",
+      "category": "western_media",
+      "signals": [],
+      "importance": 2,
+      "published": "Fri, 26 Jun 2026 19:20:07 +0000",
+      "fetched_at": "2026-06-29T09:22:35.789451+00:00"
+    },
+    {
+      "title": "Birgunj sanitation workers end strike after deal on wages, working conditions",
+      "summary": "Sanitation workers return to work after an agreement on wages, overtime pay, safety measures and job security reached through municipal mediation.",
+      "link": "https://kathmandupost.com/national/2026/06/29/birgunj-sanitation-workers-end-strike-after-deal-on-wages-working-conditions",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157088+00:00"
+    },
+    {
+      "title": "They sang on Kathmandu’s streets to survive. The city silenced the music",
+      "summary": "A municipal crackdown on sidewalk performers has left a community of visually impaired people without a livelihood, sparking protests.",
+      "link": "https://kathmandupost.com/valley/2026/06/29/they-sang-on-kathmandu-s-streets-to-survive-the-city-silenced-the-music",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157207+00:00"
+    },
+    {
+      "title": "Venezuela quake death toll nears 1,500 as rescue work goes on",
+      "summary": "Foreign rescue teams continue searching for survivors as nearly 50,000 people remain unaccounted for and authorities warn the window for rescues is rapidly closing.",
+      "link": "https://kathmandupost.com/world/2026/06/29/venezuela-quake-death-toll-nears-1-500-as-rescue-work-goes-on",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157256+00:00"
+    },
+    {
+      "title": "Eustaquio’s stoppage-time strike sends Canada into World Cup last 16",
+      "summary": "Stephen Eustaquio’s 92nd-minute winner secured a 1-0 victory over South Africa, sending the co-hosts into the World Cup last 16 for the first time in their history.",
+      "link": "https://kathmandupost.com/football/2026/06/29/eustaquio-s-stoppage-time-strike-sends-canada-into-world-cup-last-16",
+      "source": "The Kathmandu Post",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "",
+      "fetched_at": "2026-06-29T09:22:39.157317+00:00"
+    },
+    {
+      "title": "Subreddit Rules: Must Read Before Posting",
+      "summary": "Geopolitics is intended for in-depth, meaningful discussion. Please abide by the rules or your account may be banned. Thank you! 1. No Trolling Keep all discussion civil.  Any form of trolling will not be tolerated Do not harass other users or mods No novelty accounts No quarantined sub users  The m",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1ua89dn/subreddit_rules_must_read_before_posting/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-19T17:30:54+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518586+00:00"
+    },
+    {
+      "title": "US says it has agreed to 'stand down' after exchange of strikes with Iran",
+      "summary": "      &#32; submitted by &#32;  /u/BadahBingBadahBoom   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uik9sg/us_says_it_has_agreed_to_stand_down_after/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-29T06:13:07+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518739+00:00"
+    },
+    {
+      "title": "India rejects Pak allegations over Karachi blast - The Tribune",
+      "summary": "India rejects Pak allegations over Karachi blast&nbsp;&nbsp;The Tribune",
+      "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOdU5oajEyNmk4LTFzVU1hMVJYdDdIdW5hUGNpRHlscWxSVmhQcWczbDZPVnNuVnloYkZDUExLNy1wV0ZGRm12b0dUOHJTRXFZc1k1VnVSZlRhVTF3T0lOZ0stUW5FLUstbmUweEhSNGZsd2Qta3BQVl9yX1Z0MjVaYVp0U3dhbldfODhBTHZocV9vMUXSAZcBQVVfeXFMTm1SNmtaSWJZblB4MnhkeEZfSWtGUjVtTmUwcWNuUXJnT3U4VFdRUnI5Mm1vWm9acnYtRmU1Tl9mVUNydS12S0dqdDV2V3dkZl85SldwS2hpWWRSRUZJSEpLYXNxRWxCVW44OGRoRDN5YzRaLUxYV1B4cnh1Ykt3RDQwWG9laHlPdENJVkdzNjlSNzRLYjNMNA?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "Sun, 28 Jun 2026 20:23:40 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127431+00:00"
+    },
+    {
+      "title": "Nah tribe alleges Chinese PLA occupied ancestral land in Arunachal, seeks urgent government action - Moneycontrol.com",
+      "summary": "Nah tribe alleges Chinese PLA occupied ancestral land in Arunachal, seeks urgent government action&nbsp;&nbsp;Moneycontrol.com",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPX2RJOTNzbC1KeXl3V3NpSzQ1NDhtelBESzh4WGI5Xy1jUVBQZ0NWaXI4YzlxUW9yTFU5MXRqX0JUcnpLbjlpTWFxb2tlc0lYb1NGdjNrZ09SZ0s4SFBCR2V1MHVRUlJtV094M0NBT3hWQ1oxOWloM0Z4S203dFR6eHNhcXl1ai14Tkx2TEU0Y2FHWUR6SXVkZE5NUm85d1UyaEF4eFpwLU83NUlNdGY0aklpLXRPNGg5X1NuV29MbDdNelZGOXlYQWkyZTJTUWdnVDNvLUJ6VjJFMmk4WnlTd0ZEMFZnZ9IB6wFBVV95cUxNWWE3eGM5X1UzcmJlcnRCVk5zSnhQdUY3R3poQk5veXdrNnFoQ1BLR3NpRmdUaXJrMnYtcWZsUFJjdjNtRy1KT3VzbEY3TVB4VWpTN2RUUG9Kd1pWWGdXQmpiMV9PaGxTb1VOZEh6TzhLbFZjZHNTa0NQOGdMUEl2UUR3WFltNHVXOWhXb1FQLXh0Sm5qdmFzN2R1UHAtbmtGaWp1RnVOY3dHU3lLcTVaWDVkLXVxdC1nOExjMHJtLUpNaTBfd2oyN2ZhbGxMd2pKLThqZEZ3eHF0aUVTVG1NSkJQeE9ia2x0cl80?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 2,
+      "published": "Mon, 29 Jun 2026 03:06:02 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243367+00:00"
+    },
+    {
+      "title": "China imposes export controls on 40 Japanese entities as tensions with Tokyo rise",
+      "summary": "Twenty Japanese entities, including multiple divisions of Mitsubishi Corporation, have been placed on a control list, which prohibits Chinese and foreign exporters from selling to them dual-use items made in China",
+      "link": "https://www.thehindu.com/news/international/china-imposes-export-controls-on-40-japanese-entities-as-tensions-with-tokyo-rise/article71160490.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 14:43:29 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408016+00:00"
+    },
+    {
+      "title": "Ram Mandir donation row: VHP demands FIR into ‘embezzlement,’ AAP's Sanjay Singh to submit documents to SIT",
+      "summary": "VHP international president Alok Kumar told news agency PTI that the investigation should be completed within four months and the accused brought to justice.",
+      "link": "https://www.livemint.com/politics/news/ram-mandir-donation-row-vhp-demands-fir-into-embezzlement-aaps-sanjay-singh-to-submit-documents-to-sit-11782376340853.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 1,
+      "published": "Thu, 25 Jun 2026 14:10:56 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721798+00:00"
+    },
+    {
+      "title": "US report validates Pakistan military edge over India: PM",
+      "summary": "\n                \t\t\t\tPrime Minister Shehbaz Sharif addresses ceremony in Azad Jammu and Kashmir on November 20, 2025. &mdash; X/@GovtofPakistanPrime Minister Shehbaz Sharif on Thursday said a recent US report endorsing Pakistan&rsquo;s downing of Indian aircraft stands as formal validation of the co",
+      "link": "https://www.thenews.com.pk/latest/1381699-us-report-validates-pakistan-military-edge-over-india-pm",
+      "source": "The News International",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Thu, 20 Nov 2025 20:55:00 +0500",
+      "fetched_at": "2026-06-29T09:22:17.084615+00:00"
+    },
+    {
+      "title": "Australia visit visa subclass 600 fee and minimum bank statement in Pakistani rupees",
+      "summary": "Australia offers the Visitor Visa (Subclass 600) to foreign nationals, including Pakistanis, who wish to visit the country for tourism,…",
+      "link": "https://pakobserver.net/australia-visit-visa-subclass-600-fee-and-minimum-bank-statement-in-pakistani-rupees/",
+      "source": "Pakistan Observer",
+      "category": "pakistan_narratives",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 08:47:21 +0000",
+      "fetched_at": "2026-06-29T09:22:21.005042+00:00"
+    },
+    {
+      "title": "Park strife: Delhi’s historic polo club becomes a battlefield for the city’s fate",
+      "summary": "Opposition is mounting to the government’s requisition of two of the last green spaces in India’s overheated capital For decades, the social highlight of winters in Delhi for the “beautiful people” was the polo season. A sprinkling of royalty and diplomats, impeccably groomed women in pearls and chi",
+      "link": "https://www.theguardian.com/global-development/2026/jun/29/park-strife-delhis-historic-polo-club-becomes-a-battlefield-for-the-citys-fate",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 09:00:40 GMT",
+      "fetched_at": "2026-06-29T09:22:22.543453+00:00"
+    },
+    {
+      "title": "‘I wanted to show children playing under the open sky – and the joy of Sundays’: Monojit Dutta’s best phone picture",
+      "summary": "In a chance encounter, the photographer captured a beautiful moment of freedom and spontaneityOn the early morning train from Kolkata, Monojit Dutta arranged for a large bundle of balloons to be waiting for him when he arrived at the station at Canning, a town in West Bengal on the banks of the Rive",
+      "link": "https://www.theguardian.com/lifeandstyle/2026/jun/27/monojit-dutta-best-phone-picture",
+      "source": "The Guardian - India",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Sat, 27 Jun 2026 10:00:01 GMT",
+      "fetched_at": "2026-06-29T09:22:22.543576+00:00"
+    },
+    {
+      "title": "A Mayor Is Taking Maternity Leave in Japan. Some Men Are Furious.",
+      "summary": "Shoko Kawata is the first mayor to take maternity leave in Japan’s history. Her decision has prompted debate about gender discrimination in the work force.",
+      "link": "https://www.nytimes.com/2026/06/28/world/asia/japan-mayor-maternity-leave.html",
+      "source": "NYT - Asia Pacific",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Sun, 28 Jun 2026 04:01:07 +0000",
+      "fetched_at": "2026-06-29T09:22:24.380513+00:00"
+    },
+    {
+      "title": "Philippines poised to squander a rich nickel future",
+      "summary": "\nThe Philippines is approaching a critical moment in its nickel policy. As one of Southeast Asia&#8217;s largest nickel producers, it has a rare opportunity to transform nickel from a raw mineral export into a foundation for national industrialization. But that opportunity is not guaranteed. If the ",
+      "link": "https://asiatimes.com/2026/06/philippines-poised-to-squander-a-rich-nickel-future/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 1,
+      "published": "Mon, 29 Jun 2026 06:09:15 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969566+00:00"
+    },
+    {
+      "title": "Bangladesh’s Rahman looks to China to squeeze India on the Teesta",
+      "summary": "\nBangladesh Prime Minister Tarique Rahman’s first four-day official visit to China yielded a predictable flurry of agreements spanning trade and green technology. But its true significance lies in the elevation of a single, long-stalled infrastructure initiative: the Teesta River Comprehensive Manag",
+      "link": "https://asiatimes.com/2026/06/bangladeshs-rahman-looks-to-china-to-squeeze-india-on-the-teesta/",
+      "source": "Asia Times",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Sat, 27 Jun 2026 06:36:33 +0000",
+      "fetched_at": "2026-06-29T09:22:36.969987+00:00"
+    },
+    {
+      "title": "<a href=\"https://www.thedailystar.net/news/bangladesh/news/need-1-week-assess-situation-3076976\" hreflang=\"en\">Need 1 week to assess situation</a>",
+      "summary": "Admitting that the Power Division could not impose schedule-wise power cuts across the country, State Minister for Power, Energy and Mineral Resources Nasrul Hamid yesterday sought one week’s time to address the issue.\n",
+      "link": "https://www.thedailystar.net/news/bangladesh/news/need-1-week-assess-situation-3076976",
+      "source": "Daily Star - Bangladesh",
+      "category": "neighbours",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Fri, 22 Jul 22 18:00:00 +0600",
+      "fetched_at": "2026-06-29T09:22:37.559250+00:00"
+    },
+    {
+      "title": "Tarique Rahman’s visit to Malaysia indicates changing geopolitics - ThePrint",
+      "summary": "Tarique Rahman’s visit to Malaysia indicates changing geopolitics&nbsp;&nbsp;ThePrint",
+      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTE5TQkgxS1ZSUV9MbmZHY3pNWnVGR05TUFdSV2oxLVVkLW4xbnRQaFlCR0pXdlNaeU9pN3lWcVFPa0pfNVBlZ1lGbkR3T0x5YjNkbjhReHJfWmV4NXhOLTgtRnhCbXRwZ0pGWVF6MzAyVkJmdFhKajlnRWJvSGjSAYIBQVVfeXFMUDJIUEpJZ1Nib2NHMW5PRzBCQWU2VVZheDlQbklqM0UyN0xwS1hiaWlSZ2UtbFJVUjBtNjJTUklzLTF3U05PQlBUZFpQbklTSG5MN1Q1cFlKOTdLNHpTeGEzNWxPZTNDUUk5SWdlYUoyUWdhejF1SkwydHR4enJZY21vdw?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Wed, 24 Jun 2026 13:45:38 GMT",
+      "fetched_at": "2026-06-29T09:22:51.898218+00:00"
+    },
+    {
+      "title": "Could India Revisit The 1959 Chinese Proposal To Settle The Border Dispute? – Analysis - Eurasia Review",
+      "summary": "Could India Revisit The 1959 Chinese Proposal To Settle The Border Dispute? – Analysis&nbsp;&nbsp;Eurasia Review",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNcDd0d2ROaXFGWlh5bFFySlhCVEJESjlzSlJyckpIbUUtNVRVQTFiVVRlZ29zWFpLbGxyQzRIRGpuTnN4OFZTMVJRVm56TjJud2pjb0h6Nmd0U24wTEZ4alRhSTNUOUlNV1RSUjNXSTF6WmNjM2hJZy1CZ200TEhJMG1ZV09tcFc2TWVSQkg5UWJMOGRfbzcxUThoNVdzUmpyOGZCSVRMOFRBSHJfTkpPV21JMFRta3dSTlNxZTE5LVg?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "Mon, 04 May 2026 07:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243214+00:00"
+    },
+    {
+      "title": "‘Rape’ of Dalit woman: Kerala HC denies bail to Palakkad councillor",
+      "summary": "The former Congress councillor’s anticipatory bail plea was rejected earlier, leading to his dismissal from the party",
+      "link": "https://www.thehindu.com/news/national/kerala/rape-of-dalit-woman-kerala-hc-denies-bail-to-ex-palakkad-councillor/article71160347.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:48:01 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839386+00:00"
+    },
+    {
+      "title": "Nine CISF personnel, driver injured as vehicle overturns in J&K’s Katra",
+      "summary": "Three CISF personnel who suffered serious injuries were shifted to the Government Medical College hospital in Jammu, while seven others sustained minor injuries and were taken to the Katra Community Health Centre",
+      "link": "https://www.thehindu.com/news/national/jammu-and-kashmir/cisf-personnel-driver-injured-as-vehicle-overturns-in-jammu-and-kashmir-katra/article71160721.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:46:25 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839477+00:00"
+    },
+    {
+      "title": "Eight newly-elected MPs take oath as Rajya Sabha members",
+      "summary": "Rajya Sabha Chairman C.P. Radhakrishnan administered the oath of office to the new members",
+      "link": "https://www.thehindu.com/news/national/eight-newly-elected-mps-take-oath-as-rajya-sabha-members/article71160713.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:45:53 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839526+00:00"
+    },
+    {
+      "title": "‘Bhagyaraj’s mourning turned into a circus’: Radikaa Sarathkumar criticises media, calls for action",
+      "summary": "Over the last few years, there have been countless instances where media personnel — eager to shoot visuals of celebrity guests paying their tribute to the departed — mob the premises and invade the privacy of the mourning family",
+      "link": "https://www.thehindu.com/entertainment/movies/bhagyarajs-mourning-turned-into-a-circus-radikaa-sarathkumar-criticises-media-calls-for-action/article71160430.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:39:50 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839607+00:00"
+    },
+    {
+      "title": "CBSE relaxes three language policy for Class 7, 8, 9; allows two foreign language options",
+      "summary": "The current batch of class ten will not have to follow the new language policy, the education board stated",
+      "link": "https://www.thehindu.com/education/cbse-relaxes-three-language-policy-for-class-7-8-9-allows-two-foreign-language-options/article71160650.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:31:06 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839654+00:00"
+    },
+    {
+      "title": "Monsoon tracker LIVE: Three dead in Arunachal floods; IMD says monsoon in north India may arrive in 5-6 days",
+      "summary": "Intense overnight showers lashed Mumbai’s suburbs on June 28, over 100 mm rain recorded in several areas",
+      "link": "https://www.thehindu.com/news/national/monsoon-tracker-live-updates-imd-forecast-weather-alert-northeast-flood-rain-june-29-2026/article71160129.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:30:27 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839716+00:00"
+    },
+    {
+      "title": "Kerala CM seeks West Bengal counterpart’s intervention to restore journalist R. Rajagopal’s passport",
+      "summary": "V.D. Satheesan tells Suvendu Adhikari that an adverse police verification report by Kolkata police had hobbled passport renewal process of the former editor of ‘The Telegraph’",
+      "link": "https://www.thehindu.com/news/national/kerala/kerala-cm-seeks-west-bengal-counterparts-intervention-to-restore-journalist-r-rajagopals-passport/article71160604.ece",
+      "source": "The Hindu - National",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:25:42 +0530",
+      "fetched_at": "2026-06-29T09:22:06.839785+00:00"
+    },
+    {
+      "title": "South Korea announces massive $576 billion AI-chip investment",
+      "summary": "President Lee says projects to secure overwhelming industrial strength; chip investments by Samsung, SK Hynix and local governments top $576 billion",
+      "link": "https://www.thehindu.com/business/Industry/south-korea-announces-massive-576-billion-ai-chip-investment/article71160521.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:18:22 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408189+00:00"
+    },
+    {
+      "title": "German Foreign Minister, U.S. counterpart to discuss new burden-sharing arrangement in NATO",
+      "summary": "Mr. Wadephul and Mr. Rubio will discuss “how ​we ‌can achieve a new burden-sharing arrangement within the alliance ‌and secure stable, long-term ​support for Ukraine at ⁠next week’s NATO summit in Ankara”",
+      "link": "https://www.thehindu.com/news/international/german-foreign-minister-us-counterpart-to-discuss-new-burden-sharing-arrangement-in-nato/article71160324.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:33:04 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408273+00:00"
+    },
+    {
+      "title": "More than 1,300 excess deaths recorded in Europe heatwave: WHO",
+      "summary": "At least 191 million people are forecast to endure temperatures of at least 35℃ on June 28, in Europe, with the heat particularly intense in Germany, the Czech Republic, Hungary and Poland, according to AFP estimates",
+      "link": "https://www.thehindu.com/news/international/more-than-1300-excess-deaths-recorded-in-europe-heatwave-who/article71158768.ece",
+      "source": "The Hindu - International",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 11:53:36 +0530",
+      "fetched_at": "2026-06-29T09:22:07.408413+00:00"
+    },
+    {
+      "title": "Probe ordered as ‘toddler loses eyesight after treatment in MP hospital’",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/mp-toddler-loses-eyesight-hospital-treatment-probe-10762699/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:46:54 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150025+00:00"
+    },
+    {
+      "title": "Indian Railways launches first internal app to monitor train punctuality, delays over 15 minutes: Here’s how it works",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/indian-railways-first-internal-app-punctuality-bza-real-time-train-punctuality-delay-monitoring-how-it-works-10762596/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:26:29 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150084+00:00"
+    },
+    {
+      "title": "PM Modi to review deregulation push, reforms with top bureaucrats tomorrow",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/pm-narendra-modi-central-secretaries-deregulation-reforms-meeting-10762517/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 07:07:52 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150119+00:00"
+    },
+    {
+      "title": "Northeast floods: Railway services hit, 16,000 affected in Assam; red alert in Arunachal Pradesh",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/assam-arunachal-pradesh-northeast-floods-dhemaji-railway-bridge-collapse-train-services-suspended-10762286/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 05:27:39 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150153+00:00"
+    },
+    {
+      "title": "India news LIVE updates, 29 June 2026: Wall collapses in Jaipur, several labourers feared trapped in debris",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/today-india-breaking-news-live-updates-29-june-2026-india-pakistan-karachi-us-iran-doha-talks-10762236/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 03:47:58 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150186+00:00"
+    },
+    {
+      "title": "Lessons from fighting Maoists for 14 years from Bastar’s top cop",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/bastar-igp-sundarraj-pattilingam-14-years-maoists-nia-10762165/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 02:47:57 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150221+00:00"
+    },
+    {
+      "title": "Jahangir Aziz: ‘Investment is casualty when industry concentration rises’",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/jahangir-aziz-investment-is-casualty-when-industry-concentration-rises-10762030/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 01:45:38 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150259+00:00"
+    },
+    {
+      "title": "‘Irrational’, ‘alarming’: Opposition on former editor’s passport row",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/passport-row-the-telegraph-former-editor-rajagopal-sir-10761974/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 00:25:46 +0000",
+      "fetched_at": "2026-06-29T09:22:08.150294+00:00"
+    },
+    {
+      "title": "Winter in June: Rare storm to dump 12 inches of snow in US Rockies",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/winter-june-rare-storm-12-inches-snow-us-rockies-10762564/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:52:13 +0000",
+      "fetched_at": "2026-06-29T09:22:08.795863+00:00"
+    },
+    {
+      "title": "Biden brands Donald Trump a ‘loser’, accuses him of corruption and incompetence",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/joe-biden-donald-trump-loser-remark-accuses-corruption-incompetence-10762428/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:49:26 +0000",
+      "fetched_at": "2026-06-29T09:22:08.795923+00:00"
+    },
+    {
+      "title": "What is America250? US’s 250th anniversary explained: Date, logo, celebrations",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/us-news/america250-freedom-250-us-independence-day-celebrations-explained-10740968/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:46:22 +0000",
+      "fetched_at": "2026-06-29T09:22:08.795978+00:00"
+    },
+    {
+      "title": "France sees 1,000 excess deaths as Europe’s record heatwave turns deadlier",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/france-excess-deaths-europes-record-heatwave-turns-deadlier-10762354/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:38:45 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796016+00:00"
+    },
+    {
+      "title": "Earthquake toll nears 1,500 in Venezuela, 50,000 missing yet hope stays alive",
+      "summary": "",
+      "link": "https://indianexpress.com/article/world/venezuela-earthquake-death-toll-missing-10762521/",
+      "source": "Indian Express - World",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 07:59:34 +0000",
+      "fetched_at": "2026-06-29T09:22:08.796045+00:00"
+    },
+    {
+      "title": "Cabinet reshuffle buzz grows: What we know about PM Modi's likely ministerial shake-up",
+      "summary": "There has been no official word on reshuffle so far. But as per PTI sources the reshuffle, if it happens, may take place sometime in July, ahead of the Monsoon Session of Parliament which normally begins in the third week of the month",
+      "link": "https://www.livemint.com/politics/news/cabinet-reshuffle-buzz-grows-what-we-know-about-pm-modis-likely-ministerial-shake-up-punjab-up-tmc-shinde-sena-11782700243758.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 10:37:15 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721301+00:00"
+    },
+    {
+      "title": "Rashid Alvi likens Ram Mandir donation theft row accused to Mahmud of Ghazni: ‘Tampering with faith of millions’",
+      "summary": "Congress leader Alvi alleged that, much like Ghazni, these perpetrators too ‘looted’ the temple and also demanded a Supreme Court or High Court-led investigation into the Ram Mandir donation embezzlement case.",
+      "link": "https://www.livemint.com/politics/news/rashid-alvi-likens-ram-mandir-donation-row-accused-to-mahmud-of-ghazni-tampering-with-the-faith-of-millions-of-people-11782701168427.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:49:04 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721398+00:00"
+    },
+    {
+      "title": "Uniform Civil Code will be implemented in Bengal, CM Suvendu Adhikari says",
+      "summary": "Speaking to the media, Adhikari said a committee is constituted under the leadership of a sitting inquiry authority, adding that details of the UCC would be shared in the Assembly on Monday.",
+      "link": "https://www.livemint.com/politics/news/uniform-civil-code-will-be-implemented-in-bengal-cm-suvendu-adhikari-says-bjp-11782460504761.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 14:00:26 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721525+00:00"
+    },
+    {
+      "title": "Shashi Tharoor proposes dual passport-Aadhaar document policy to end citizenship proof row",
+      "summary": "While acknowledging that the government's position is rooted in Section 20 of the Passports Act, 1967, which permits passports to be issued to non-citizens in limited public-interest circumstances, Tharoor argued that the distinction holds little meaning for ordinary citizens.",
+      "link": "https://www.livemint.com/politics/news/shashi-tharoor-proposes-dual-passport-aadhaar-policy-to-end-citizenship-proof-row-mea-clarification-nationality-11782458032613.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 13:05:11 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721595+00:00"
+    },
+    {
+      "title": "Who is Neeraj Singh? Rajnath Singh's younger son gets key BJP role ahead of UP Assembly elections next year",
+      "summary": "Neeraj Singh, 44, is the third member of the family in active politics. His elder brother, Pankaj Singh, is the BJP MLA from Noida and also served as a vice-president in the saffron party’s Uttar Pradesh unit.",
+      "link": "https://www.livemint.com/politics/news/who-is-neeraj-singh-rajnath-singhs-younger-son-gets-key-bjp-role-ahead-of-up-assembly-elections-2027-yogi-adityanath-11782440167787.html",
+      "source": "LiveMint - Politics",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 08:14:33 +0530",
+      "fetched_at": "2026-06-29T09:22:09.721731+00:00"
+    },
+    {
+      "title": "3-language policy: CBSE grants one-time exemption to current Class 9 students",
+      "summary": "The CBSE issued a circular on May 15 directing all affiliated schools to make three languages compulsory for Class 9 students from July 1",
+      "link": "https://www.hindustantimes.com/india-news/3language-policy-cbse-grants-one-time-exemption-to-current-class-9-students-101782722214087.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 14:06:53 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426493+00:00"
+    },
+    {
+      "title": "Wanted ‘revenge’ after wife left him, an Iran ‘link’: All about Mumbai Muharram poison plot accused",
+      "summary": "The accused, identified as Fayyaz Premji, admitted that he wanted to \"take revenge on the world\" after his wife separated from him two years ago.",
+      "link": "https://www.hindustantimes.com/india-news/who-is-mumbai-muharram-poison-plot-accused-fayyaz-premji-revenge-after-wife-left-him-iran-link-byculla-painkillers-101782717241366.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:44:53 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426575+00:00"
+    },
+    {
+      "title": "Gold prices fall today: Check new rates in Delhi, Mumbai, Bengaluru, Kolkata",
+      "summary": "Gold and silver prices on June 29: Gold was priced at Rs1,43,558.41 in Mumbai,  ₹1,43,415.00 in Bengaluru and  ₹1,43,401.00 in Delhi.",
+      "link": "https://www.hindustantimes.com/india-news/gold-and-silver-prices-on-june-29-check-todays-rates-in-delhi-mumbai-bengaluru-kolkata-chennai-101782718257278.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:29:21 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426653+00:00"
+    },
+    {
+      "title": "SBI flagged Ram temple donation counting irregularities 3 months ago",
+      "summary": "The SBI had written to the Shri Ram Janmabhoomi Teerth Kshetra Trust recommending that the counting staff be removed from duty.",
+      "link": "https://www.hindustantimes.com/india-news/sbi-flagged-ram-temple-donation-counting-irregularities-3-months-ago-101782717896507.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:09:14 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426748+00:00"
+    },
+    {
+      "title": "Pakistani intruder caught along LoC in J-K’s Poonch, third incident this month",
+      "summary": "Indian Army troops apprehended a 31-year-old man after he crossed the Line of Control (LoC) in the Balakote sector of Poonch.",
+      "link": "https://www.hindustantimes.com/india-news/pakistani-intruder-caught-along-line-of-control-loc-in-jammu-and-kashmir-j-k-poonch-third-this-month-101782715360149.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 12:52:25 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426858+00:00"
+    },
+    {
+      "title": "₹5 lakh fine if Ram temple donation case accused represented: Ayodhya lawyers' body to members",
+      "summary": "During the meeting, lawyers also demanded that Champat Rai, Anil Mishra, and Gopal Rao—figures linked to the controversy—leave Ayodhya within three days.",
+      "link": "https://www.hindustantimes.com/india-news/ram-mandir-donation-theft-allegations-ayodhya-temple-faizabad-bar-association-lawyers-fine-101782716245104.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 12:50:28 +0530",
+      "fetched_at": "2026-06-29T09:22:10.426923+00:00"
+    },
+    {
+      "title": "Andhra Home Minister Hosts Traditional Baby Shower For Pregnant Woman Cop",
+      "summary": "Sahiba Anjum expressed graititude to the Home Minister for making the occasion so special.",
+      "link": "https://www.ndtv.com/india-news/andhra-pradesh-home-minister-vangalapudi-anitha-hosts-traditional-baby-shower-for-pregnant-woman-cop-sahiba-anjum-11701342#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:25:14 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269674+00:00"
+    },
+    {
+      "title": "Watch: Biker Swept Away As Hillside Collapses In Arunachal, Miraculously Survives",
+      "summary": "Arunachal Pradesh has witnessed multiple landslides and flash floods this monsoon season.",
+      "link": "https://www.ndtv.com/india-news/watch-biker-swept-away-as-moutain-collapses-in-arunachal-miraculously-survives-11701333#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:24:39 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269728+00:00"
+    },
+    {
+      "title": "Railway Junior Engineer Admit Card 2026 Out For CBT 2: Direct Link To Download Hall Ticket Here",
+      "summary": "RRB JE CBT 2 admit card 2026 will be released for July 2 exam.",
+      "link": "https://www.ndtv.com/education/rrb-je-admit-card-2026-out-for-cbt-2-direct-link-to-download-hall-ticket-here-11701339#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:24:33 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269769+00:00"
+    },
+    {
+      "title": "IISc Bangalore Opens Admissions For New B.Tech Materials Science Programme",
+      "summary": "New BTech Programme At IISc Focuses On Advanced Materials And Engineering",
+      "link": "https://www.ndtv.com/education/iisc-bangalore-opens-admissions-for-new-b-tech-materials-science-programme-11701315#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:18:30 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269808+00:00"
+    },
+    {
+      "title": "'She Was Forced Into Car': Cab Driver Who Drove Siya Goyal To Mumbai Airport",
+      "summary": "Siya Goyal and Ketan Agrawal were scheduled to get married in a grand wedding ceremony in November",
+      "link": "https://www.ndtv.com/india-news/pune-murder-probe-she-was-forced-into-car-cab-driver-who-drove-siya-goyal-to-mumbai-airport-11701096#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 13:00:05 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269891+00:00"
+    },
+    {
+      "title": "From ITR Filing To Passport Fees, 6 Financial Changes Taking Effect From July 1",
+      "summary": "July 1 marks the start of the final month for filing Income Tax Returns for FY 2025-26.",
+      "link": "https://www.ndtv.com/india-news/from-itr-filing-to-passport-fees-6-financial-changes-taking-effect-from-july-1-11701021#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 12:57:51 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269930+00:00"
+    },
+    {
+      "title": "Rabri Devi Begins Vacating Patna Bungalow As Deadline Ends Today",
+      "summary": "Rabri Devi had been staying at that bungalow for around two decades.",
+      "link": "https://www.ndtv.com/india-news/rabri-devi-begins-vacating-patna-bungalow-as-deadline-ends-today-11701178#publisher=newsstand",
+      "source": "NDTV India",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 12:43:14 +0530",
+      "fetched_at": "2026-06-29T09:22:11.269978+00:00"
+    },
+    {
+      "title": "Taliban order ban on smartphones as officials shown destroying devices | Taliban",
+      "summary": "      The Taliban have ordered a sweeping ban on the use of smartphones by government officials – in what some analysts say could foreshadow broader, population-level restrictions. In a directive issued by the Taliban’s military courts and reviewed by the Guardian, the ban was to take effect this we",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uib5de/taliban_order_ban_on_smartphones_as_officials/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T22:44:42+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518698+00:00"
+    },
+    {
+      "title": "France hunts for new EU taxes to fund €2T budget",
+      "summary": "      Paris is looking for fresh levies on foreign companies (non EC) in order to reduce national contributions to the EC bloc’s budget.  &#32; submitted by &#32;  /u/Any-Original-6113   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uimuo5/france_hunts_for_new_eu_taxes_to_fund_2t_budget/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T08:42:33+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518810+00:00"
+    },
+    {
+      "title": "Australia-Vanuatu deal bars foreign bases in island nation",
+      "summary": "      &#32; submitted by &#32;  /u/DWNews   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uimlyz/australiavanuatu_deal_bars_foreign_bases_in/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T08:28:21+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518847+00:00"
+    },
+    {
+      "title": "Iron Dome and Iron Beam maker Rafael signs $2.3 billion Spyder air defense deal with Romania | The deal with Romania includes multiple air defense batteries, with deliveries expected to begin within three years.",
+      "summary": "      &#32; submitted by &#32;  /u/NotSoSaneExile   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1ui4zag/iron_dome_and_iron_beam_maker_rafael_signs_23/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T18:36:35+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518905+00:00"
+    },
+    {
+      "title": "I've negotiated with Trump's foes. He's taking a huge gamble",
+      "summary": "      &#32; submitted by &#32;  /u/theipaper   [link] &#32; [comments] ",
+      "link": "https://www.reddit.com/r/geopolitics/comments/1uhuwyc/ive_negotiated_with_trumps_foes_hes_taking_a_huge/",
+      "source": "Reddit r/geopolitics",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T11:30:42+00:00",
+      "fetched_at": "2026-06-29T09:22:49.518940+00:00"
+    },
+    {
+      "title": "Tariff-Proof But Not China-Proof: The Geopolitics of India’s Pharma Power - The Diplomat – Asia-Pacific",
+      "summary": "Tariff-Proof But Not China-Proof: The Geopolitics of India’s Pharma Power&nbsp;&nbsp;The Diplomat – Asia-Pacific",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxOWXlzS0wtVnJsOFlnM210TEFMNGxEMHlKdkdmY3lOUHFYLUdJVFVtaHNyOUFtbnppTVNxbzBTeWx5eHBOU201RHlSRFZYc1VBTGl2VXNfUGpLdk5XZkw5RFJZNTVONlJzUWtpLVpSMG1kRTdoamlMQUUtaVZ0SGhVX1hzWnhWZWFzQWJfVmZVLWNkOUdDSEszNUlzRGtNMUt3cmFKMm4wWQ?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 20:55:58 GMT",
+      "fetched_at": "2026-06-29T09:22:51.897838+00:00"
+    },
+    {
+      "title": "Modi Era India displays geopolitical acumen - Foundation for Defense of Democracies",
+      "summary": "Modi Era India displays geopolitical acumen&nbsp;&nbsp;Foundation for Defense of Democracies",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNYm4xUGt5VF9YVEpCLU4tWC1JNlZnVHBjc0lLUS1oN3ZzalpGdkdtYVVTbWcwSzRMTUtvU0oyck1sMFNmV3NzTlNiNGNHVi03NkE1b1JQSk1YREVMMlZ0RGZubEltZ19tLThuVzZBVXZBcmRxZndmb2Q1amdMaERtTmM1b3gxR3dhSHZlcQ?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 14 Jun 2026 07:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:51.897903+00:00"
+    },
+    {
+      "title": "India’s Stock Rally Faces A Geopolitics Gut Check - Finimize",
+      "summary": "India’s Stock Rally Faces A Geopolitics Gut Check&nbsp;&nbsp;Finimize",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxOQThJMElpZFBHNl93UFBIWV85NFJYQTNJeHRxMHNFNzVpQjZ3NEZobnZFY01lcmhMc0lUTjNJTWpRMUxGTjhmdXF2THNsNUM0WFpZcUJxVDIwcVJkckxTX1dzN2pQS1ZtalVoUGUzV2VheldRNkJmWUZPeWx4SFpMd1FZcw?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 04:33:44 GMT",
+      "fetched_at": "2026-06-29T09:22:51.897954+00:00"
+    },
+    {
+      "title": "Indian IT faces FY27 guidance cut risk as AI, geopolitics cloud demand - BusinessLine",
+      "summary": "Indian IT faces FY27 guidance cut risk as AI, geopolitics cloud demand&nbsp;&nbsp;BusinessLine",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxNdDFmMWN5SDVzTVpHOXJUU0VEaFZDUFN2TFA0b3JFa01yazNLV1dLbEpCbUJWT0NvbkJxalJSQ1lPUlYyNnV2ajZBaURCUzd6VndDQ0UyOEFYZlZjbHN5ZVNCNTlZVkFaWVJBeUdmNmh5YU5fNFFNS05NM3BmYTZCc0ExS2hYUWdud0IyM05xQnBPZlFJb1BCbGpXNGd4a0RaZVktcUVWSXB6R01rWGRLNzNRd2dSRmVzZjVpd2x0TFRjbUZsbFNOcldPZ1pKSHB2dkHSAdgBQVVfeXFMTnRZQUxhWjR2SVo0Wko2R0d0WHZJZ2hQWmh5QjNiRF91c21Mb3hPUi1HZ0ljZ1dFZmtxQXgxeXN6MDRTZ1NNMUI3U2tDQTVrNWNUNUxFc2hQRHh2NWJyVFlhajQ3TUtCVFRfb29rMVNONHoyZWRYUG93X1RZeF93UXZUajdEaUpYRktLNmJmZzVmekE1NGFlbnNzX3UyWkhmQ1dqanBqS1VFUk5UQ3FuYnBlTGZHNEZrNnh3TEJIM2dPcy1NVXc2REZTcGN0d0FNTVUyNGdaRkJ0?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 28 Jun 2026 14:42:54 GMT",
+      "fetched_at": "2026-06-29T09:22:51.898016+00:00"
+    },
+    {
+      "title": "GenAI, geopolitics to keep India's IT sector growth under pressure, says JPMorgan - The Times of India",
+      "summary": "GenAI, geopolitics to keep India's IT sector growth under pressure, says JPMorgan&nbsp;&nbsp;The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxNUkFQdG90MTQtN2I3alFmQ3JnTFUxRWIwcHVwam9jN0Y1cU9kQ3VWXzhtUG1TUkdvVXJ1cnplNllSUjgwN2lQbFJpeTl0Wjl0bmRNY3BGR1BkNDgzaVFOS3M2MDV2bjRTVGVocEJPbXI0ZVBKMkRqaEplNF8zVy03RmczTUdMUVhDeVpIeXZ5REN3Z24yZWpYTmxqQmpjbkxaOFFneG16WlpfWXZabUJEb3hVeGt4Qm4xajlKZVlFTXBtSzRRVUhGRkNoOHp4Y3hsdWE4NEdRU00xdU9wdDhyWThGczAtNF94OEpLdlp1NF9ENUNqRlHSAfsBQVVfeXFMTUxveGRhc2NMUTl2MzV3SzEwQmRxVXk3bmllNjVlNDNabU1hX0RKOEFtamo2MzZuMldSRENEYk5NNFNIUDRzNnJDeGVXQ1RHdXlXb0pmdkJqT01vWHdHN00xMHF1QUM0WGpIVW5aRktNTUFDQTh3aXRtdWRqbEFoM0pEZk54Z1RtUmJ0c2wwdF92U1ZYQWVCTFJJTGx6ZU9KUXl0dktnMG5OOWttUGZORlp5elBKR1hWOWxQNkNBUDJDaTY0R3Bnc2Y1VC1aT0FsWVQwTUFYM0dtakVTTnRINWVyT0ZYRnFVVWJ5WjQzVnJVeVNWbGV3Wm44Zlk?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 28 Jun 2026 12:42:00 GMT",
+      "fetched_at": "2026-06-29T09:22:51.898066+00:00"
+    },
+    {
+      "title": "Geopolitics may force rethink of Indian trade & industrial policy: S&P - Fibre2Fashion",
+      "summary": "Geopolitics may force rethink of Indian trade & industrial policy: S&amp;P&nbsp;&nbsp;Fibre2Fashion",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxNUWE2N2p1cHI5c003WGtSMzFkaFJ1Zkp0SXBpV2F6S3NvWW1ndVpWV0hpNWZOUEdHV2FudF9EdFRCOFIxQzNJVFJlUmg0Q2ZGcHFMYTdsMWRIRXJvblJZSE9SRTRVZDVqYURSaDRGRkNtS1dSdmVBZEJVWWJMQnU4T29uSW9wSW1tdnVENVl5N09pU1dlVWFyOS1ZS3hYNEtTdUlTNlVaM2c3cDVDV3NBQjQ5V0dJX3VYak0xLWVGcjQ5OVFGQVlZM1h4SkI4eGtNbGZYXw?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 04:09:26 GMT",
+      "fetched_at": "2026-06-29T09:22:51.898111+00:00"
+    },
+    {
+      "title": "When oil prices fall and geopolitical risks recede: The sectors that truly win in India - Moneycontrol.com",
+      "summary": "When oil prices fall and geopolitical risks recede: The sectors that truly win in India&nbsp;&nbsp;Moneycontrol.com",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxPLTZNWkdPNVlpWEJzOGpsUWpvaFo5TFhKLV80bEZhRUcxd0F4VkVKT1lmcVRuQVpRLXA2OU9UQk4tdW5UTlRPSjdWN1Z0RjBEeVBYVkJkRjhoQkdKZVNHMlRjMW91N2VMbUFkenBKdzh5Y2ZpSTU4bjVyd0VQOFZJZVYyNjlHbHVlZ0RsWlhycEllWktfNHdEYmJ3RWJqX1dISDBJdThHMkRKSUpDWlFfVHA2M1NFWExXa3JNQnlyakdaclZ2SzI4WlRJQXdSaHFKcWFNNVVEdXREbWVPVmxfOEVJZVB4QdIB6wFBVV95cUxQMGJQeUhRam9LZnRrZnF3M1JLWC1qZEpoZWpGNWE1VmM5THFZaF9TblVmanFlV0xDalFJNDhNaHM4SEVHRl9iQi1TOWV3NWtrT0ppTHBiSk1JWnlOb0RsNEV5VmlsZmhoOVNzbnltZkJVNjN3bzFLUk1mZDVLZXg0ZFNUQnY2UnkzU1NXMFZUZVFRR3hrRWNBQnRGUUw2UldoR0NZYW5ud0FMaEd0NmVnSWNvbndnQ0EyZ3V2Y19vbWhqUExudlQwdlQ3NlhMUURkNE1HNDZRUTllNk02ejhLVVRWVjZMQkRHRzl3?oc=5",
+      "source": "Google News - India",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 28 Jun 2026 01:32:53 GMT",
+      "fetched_at": "2026-06-29T09:22:51.898162+00:00"
+    },
+    {
+      "title": "Pakistan rattles India with new Chinese-built stealth submarine - South China Morning Post",
+      "summary": "Pakistan rattles India with new Chinese-built stealth submarine&nbsp;&nbsp;South China Morning Post",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPc284ZmdSMXRwUE5xR0tTNXRYMTF2aU90QXlLMWMybGthMnk4TTU2Z0VXaDFSWGFJcm5vWmxmSU5OZF9RQkt6aTZiUXp2d2hOTUQ4VkRCd0JEdmNSQ1dtLXdVSGEweUtEbUZFQS1mdE54eTF5N3M3Wk04X3FDREVYdWhVNHkzRElJYXQ1MHYzUmJxSTZpZDdoS3BXWFRhYTdvSXRIa3A3WFVBY1EyRVVxYlBBajfSAbQBQVVfeXFMT0JsWms5VGUxSndIOXFXM0lRRlFIX2R0Qk9ZdHR6RW5NQ0hNa20wR2JqcWstUk5kTkZkX1ZZcVh0cFBteHRrb3VBWkliX05GQ0xHd3VaaDZQUl9qcnV1eXdCNFRDNG1jOHBJMFNLRVRwczNjWTlZZ0paQl9LNWtMcWdIWVRIeHRfOHNhNWtucVZHUS1nZGZYZGZITDJBUnR5TWliQTlqQXZ1TzdXRUl4R0NSZE5F?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 28 Jun 2026 04:00:14 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127255+00:00"
+    },
+    {
+      "title": "The Faint Hope for Peace Between India and Pakistan - Time Magazine",
+      "summary": "The Faint Hope for Peace Between India and Pakistan&nbsp;&nbsp;Time Magazine",
+      "link": "https://news.google.com/rss/articles/CBMigwFBVV95cUxNb21NSkc0T1lmTUwzWUt1eGY0SVlvLV9HTklBcDZna0UyNjhlLWpOOEE4eVQwMU9jM2FfZy1GNlJ6bklvWm1ZQTBLM0xiWmFxZ0hoZFBaVVZmaUN3SWtoZjczOE5RRWNyRnpabEVtMmRVV1B2QWloSE5wWExjcTJCMndCVQ?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 10:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127310+00:00"
+    },
+    {
+      "title": "FIH Pro league: India hit seven past Pakistan - ESPN",
+      "summary": "FIH Pro league: India hit seven past Pakistan&nbsp;&nbsp;ESPN",
+      "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxOZl9RcG5oNkw1X0FKcUMweDVycEZkUTJPZGxrd1puY3pxamJwVm1sMUVydFIzb1NrdEFaRkFXYWpXcnVZZGRlRXlRbFJkay00N2FUZEktdEhPLVlrRkw1dVVaRnJIQ3VkNDZUOGVCaXZIQWpIUlNNMTMxODBadzRJNk5EU0QyWmJsVGJKSzRsU1FWY1FXQXRZc0xVRWtUNzNQYi1kSnQwMXEydFhzcjU3TFExU2UyM0E2Z2YtdlFsV00zbVQxNTNYQTJHZXppS3dIbnpwZWhINA?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 26 Jun 2026 19:32:00 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127347+00:00"
+    },
+    {
+      "title": "Pakistani National Caught Near Line Of Control In Poonch, 2nd Case In 2 Days - NDTV",
+      "summary": "Pakistani National Caught Near Line Of Control In Poonch, 2nd Case In 2 Days&nbsp;&nbsp;NDTV",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNS192NGtiOVVaZWI0cjdxVnhXYmhwTlVIWEZxaEVGMGR5XzhFcWowaFNjaFZBX1FvSUllOU9MNDdmN1Vab2Y3VndlMW94SWJ3OTVuM2dzU0xPdGhwUnc3OU9YQ0s0RHhxd1hLLUNDOWYzS1lXSjlzdmRuYXIyM3RZVkMxZng0Mm9KNWhGTFpOWi1yN0pzSXF0OWhBMXhRQ3dCSU54dUN6aFdWRzZHaHNVNG15TWdIWWvSAb8BQVVfeXFMTnVjb0l1NENzTXBGeWFMZ0xFUEZFUVY4VndxTVV6elNYbnAxeElwTklfSnk3cjBveEFlcDRfRVpGQ1g3b2tjczh4LUR3bnlkaXFKZk0zalVXcnpMcUNfaFVzX25YYkdMbDZiWndUd2lWMU5QbnVtcm5XczdUNW5DanRzdjVhbTFhU1VQUkJqSkg3UUJLbWhYdnFsdzBwS2ZzYUtkaVpnU1IzYmtSNU9RblVJaTJMQTAzNlVMQXYtQTA?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 03:58:52 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127393+00:00"
+    },
+    {
+      "title": "After FIH Pro League Loss vs India, Pakistan Hockey Federation Takes This Big Step - NDTV Sports",
+      "summary": "After FIH Pro League Loss vs India, Pakistan Hockey Federation Takes This Big Step&nbsp;&nbsp;NDTV Sports",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNNzBhbDVmWS1wN0ZnakJIalhFQVhuOVk4MjkzeDk4T3FUMWVzTndkQVNwbERPR1VWTlJqSk00d1hsN3B5VWtfVUhWWmNSUnlCNWMtVWttVTZBbmNoZWFTNFo1MXZRbHBTU3VjWFVtVXlpVXJmZzhzUjBGNGFDSjZvdjFsUG50NDBqU1lCdzNRWXRsQnpIekZ5TTlQLTFtSWwyeFNhaVhwOXpRa01FNEVBM1dnaFpTZ3dWWFVNRWx3?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 29 Jun 2026 08:00:23 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127478+00:00"
+    },
+    {
+      "title": "How Indian PM Modi’s efforts to isolate Pakistan ‘backfired’ - Al Jazeera",
+      "summary": "How Indian PM Modi’s efforts to isolate Pakistan ‘backfired’&nbsp;&nbsp;Al Jazeera",
+      "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxNeE9ZMUZHQzRKQkU2Szc5STgxamNkOHkwR1hPX1liSXJkcEhHRWFFN1hVM2s3RGlJNkVSU3pUSlYzMkd2WmpJYzNYbnEwVzl3Z3lUY2llbGhRNFBLNzdhWDN5WWZwR1lDZXZXUjU5MTlicGNyWGtwb1psMlliSWV4UXJLVmdHUVl6Y1ZHdHJBRjdFRDlMTnB4bnJ5eGlkcFXSAaQBQVVfeXFMTUFFNzF4STVvbWdMdzhTTGU1QzM1WmZZbklacFkzY1lyaEVrT3ZHVFVuY05nenhRY0xablFqVVhkdmFZVlJYbDFnY004dmdtSjlrS0p1Z2J2UHdHLVU4blRaeHZUSGdvOEJmWjU2T2YxT2stSE82T0hhZHJ5NG1BUkx2WVJiZWZUR0lNd3JXSzRTX0Nfbm91aEdmS0VnV3pMZ2pfOUs?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Fri, 29 May 2026 07:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127535+00:00"
+    },
+    {
+      "title": "Why a 66-year-old water treaty is becoming the latest India-Pakistan flashpoint - CNBC",
+      "summary": "Why a 66-year-old water treaty is becoming the latest India-Pakistan flashpoint&nbsp;&nbsp;CNBC",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxNb3EtRGJsaTd0cENKOUVGaERKQ09wcXdmT3JuOWFzQzlKNm1pM18xc2RuQ1FCVVNMMGFyQnlBTHY5RTBJVFJZNlA5Z09iSkM2dHNEWEFDcVdGOUh3aDJlU0w1aEhtNjNRclFrdldpLXVnZ09jd0JMd2VNVWNPM3BxeDVPUW1PU0xCalBsa29vRFlSZDlsLVF2a1V30gGfAUFVX3lxTE0zMElsN1ppM19qcjVXVW5NdGlidkVFTnVfMTNSNVBYeHhycFhleTdWa0JYbmxWSktrNmV2Sm5VQkhCMnJiZkxUVjUzaDV1elduQUJ1S1BCU1BfMGdVc19meER5N0V6OHlwSVd3RkgzYUpQQTAwbW9OQms4akY2M1ZkbG56VUpnam5ic3RsRm82ZFVnR3JrYmg3Ri1BY3Q2bw?oc=5",
+      "source": "Google News - India Pakistan",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 22 Jun 2026 06:43:36 GMT",
+      "fetched_at": "2026-06-29T09:22:53.127580+00:00"
+    },
+    {
+      "title": "Can India and China Finally Settle Their Himalayan Border? - Bloomberg",
+      "summary": "Can India and China Finally Settle Their Himalayan Border?&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxOM3UyeXVKMFM2MWsyWmMyZG5tRXJiaU4xYjRtalZ4U044alhPdnRZcEpnMUpMYjB3OEU0bFZwbXVXdkJ4M0NaTEZPMFB0VjVNTWR3VXpRS0NlQi03b3lUN1dGYTdJblZqZGw5NVd4aF9PREc0dV85cHBrMGdjZjZxZndoOG51V3pfNlpmSVZzMThqeUNRMTlzN3dKU1JiTW5WMzNIZHU2QWlvdlQ5RUhLLVJGaXluazh5YzJMX2k4VjFlTFVGMmc?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Wed, 24 Jun 2026 09:34:30 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243009+00:00"
+    },
+    {
+      "title": "Can India and China finally resolve their Himalayan border dispute? - The Straits Times",
+      "summary": "Can India and China finally resolve their Himalayan border dispute?&nbsp;&nbsp;The Straits Times",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQRDE3OERnR29WMWhLdlNOWElQRzdpRXdfcXpFbHJXZ3drS0MzSkE0aG9yRS1JZllHQmdfZFJuREJKVWF4Z2hOeFc5Tl9taUFhdnBFdWtSaE9KdG4xS2cwaDJ0eHl4bXllMEJTeTU1bXpSc3lTYk5oazg5LXR0YzFydURmTzNZcjFIVF8yOU5heHVYcmotYzFkU3I1T1BkZnRWSFE?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Wed, 24 Jun 2026 11:30:00 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243070+00:00"
+    },
+    {
+      "title": "China’s Real Game Vs India: Border, Brahmaputra, CPEC And The String Of Pearls I Deep Dive - The Times of India",
+      "summary": "China’s Real Game Vs India: Border, Brahmaputra, CPEC And The String Of Pearls I Deep Dive&nbsp;&nbsp;The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPUkpQQ3d6MXZyYmUzOXBfWjBPU0xJVFVUUVlmTHdZV2ctR2diNWVoSjFiWTNEeC1NdTBzbzFOWG1EUVdGdHpYa0hOQXJsSEZWelk0VXdIWGRKNDdfbVNxZGxva0dUVjBnS2hwUzJ0cnljWlBNcHhfU29vRTk2YTJyM3B3amVSRTNDQkliRnNhNFpnbzVEakxKREc0RDFZcG1Jczg3VEd4cUREMndWSEROcnNvM1U3ZER5dk9zTmVrenJxSnpUd1NXSGVza3BpSncySTF0RC1RYWJ3bHdyd2I0cUNTUmxOZnFnbVlfMVZ2QzdMei15Uzdj0gH8AUFVX3lxTE11SDR0RDIxamJBQ1M3UkRCWVBDU0w2X28xUnpaeEV1cTNCeW9YTVd1c3BKRE5ZODhqWTR1am1lWmc5OW1DNmd3QzdFZU1qeV9CRjBJbTRKbk1NZEdoX1hENEZIY01RTVFHX2pXZkNMVngzN1JEZjJwYlRGX3lUUzZWYU41cGUyVkkxYm1FS1NseHdJd0JnN0tuOXpkQUJrRXFGeHRlaUhGVjdrOXFBczJyNHk2Sm1RVzZXSEljTDhDMXRzQVRTVlZ0SzZxRU82Y2JtMzdfMXhoOGJlZTFEdnhOX1hkZDB3ZlFIRFkzQmwybUs3Q0NWYVRvLVBoaQ?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 28 Jun 2026 13:52:12 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243149+00:00"
+    },
+    {
+      "title": "\"China and the border dispute with India from 1962 to 2020\" - by CWP alum M. Taylor Fravel | - Columbia-Harvard China and the World Program",
+      "summary": "\"China and the border dispute with India from 1962 to 2020\" - by CWP alum M. Taylor Fravel |&nbsp;&nbsp;Columbia-Harvard China and the World Program",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxNcENmMnhhbTE0RDZoUE1mZ2RGRXdmUzBTR0hfZy1OR3o5blljZjRyZGd0VEVrUXNzaVVNMlR3ZjRkZ2pDQmNSWWFHWklDQ0kxMFByVDFtTUFRcFk3SDhwZUIxeV9nYW51TFZENFg5TVRrMkNQOXVnMXlCdW9NOFVLX0p6UndVLXRCWUNxNXpBaENzNVpuTGhoTFd2TFk1ckIzS1E?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Sun, 26 Apr 2026 07:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243272+00:00"
+    },
+    {
+      "title": "India has long promised 'vibrant' border villages, as China speedily builds up - NPR",
+      "summary": "India has long promised 'vibrant' border villages, as China speedily builds up&nbsp;&nbsp;NPR",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxNSzYyLXJZWXR3V0dRVFcwZk9TZmx5VXJsa2ZKUGhuSHdNbWh5S21rWHV3Tk9uTG9BQVUxUjQ4d0dXTXJhTmhtMkF4RjBpRkw0eGNneGlKUHNEMW5COExjX1V4UmRXTlRLYkpJT1FON0ZRU1hTaTVtWUlDYU5Nc09HYmlNRWNOMHprYnFnZA?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Tue, 17 Feb 2026 08:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243314+00:00"
+    },
+    {
+      "title": "The Impact of India–China Border Conflicts on the Changpa Community of Ladakh - orfonline.org",
+      "summary": "The Impact of India–China Border Conflicts on the Changpa Community of Ladakh&nbsp;&nbsp;orfonline.org",
+      "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQNFVfYlVhcDlIQzVWVDRsdjd4MUY3N3BWVmptWElmLTI1S0lGZnJ2NjFla3BfNHJzSkoyeUNhM3dTZ1B1VlFRWkxmWlAxN05TSk1XaHpxQVR4UHFVYTA3RnBZa0lQV01OZXc1ZjNqV1dVa0ttc2JYTzlUdDItVXdUVUozMXYxY2FtM1hHRWI4RjdYM0VkTEN1ajFBQUc2TmRZczJmRWJJRDZ0eVc3Y1A0N0d3?oc=5",
+      "source": "Google News - India China",
+      "category": "global_strategic",
+      "signals": [],
+      "importance": 0,
+      "published": "Mon, 01 Jun 2026 07:00:00 GMT",
+      "fetched_at": "2026-06-29T09:22:54.243424+00:00"
+    }
+  ]
+}
