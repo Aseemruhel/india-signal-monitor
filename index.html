@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Pulse 360</title>
+  <style>
+    :root {
+      --bg: #0d1117; --surface: #161b22; --surface2: #21262d;
+      --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+      --accent: #f78166; --green: #3fb950; --yellow: #d29922;
+      --red: #f85149; --blue: #58a6ff; --purple: #bc8cff; --orange: #ffa657;
+      --teal: #39c5cf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 16px; font-weight: 600; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    #last-updated { font-size: 12px; color: var(--muted); margin-left: auto; }
+    .concise-pinned { background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 10px; margin-top: -2px; }
+    .concise-pinned .sidebar-label { color: var(--accent); }
+    .layout { display: grid; grid-template-columns: 230px 1fr; min-height: calc(100vh - 53px); }
+    .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; position: sticky; top: 53px; height: calc(100vh - 53px); }
+    .sidebar-section { margin-bottom: 22px; }
+    .sidebar-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+    .filter-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 10px; border-radius: 6px; border: none; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; text-align: left; margin-bottom: 2px; transition: all 0.15s; }
+    .filter-btn:hover { background: var(--surface2); color: var(--text); }
+    .filter-btn.active { background: var(--surface2); color: var(--text); }
+    .filter-btn .count { margin-left: auto; font-size: 11px; background: var(--border); padding: 1px 6px; border-radius: 10px; color: var(--muted); }
+    .filter-btn.active .count { background: var(--accent); color: white; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .sig-pakistan_narrative{background:#ff6b6b} .sig-western_criticism{background:#4dabf7}
+    .sig-protest_dissent{background:#ffd43b} .sig-neighbour_hostile{background:#a9e34b}
+    .sig-strategic_military{background:#cc5de8} .sig-terrorism_security{background:#ff922b}
+    .sig-pok_baloch_rights{background:#39c5cf}
+    .sig-kashmir_pakistan_comment{background:#ff8787}
+    .sig-kashmir_development{background:#74c0fc}
+    .sig-kashmir_foreign_negative{background:#e599f7}
+    .sig-anti_sikh_sentiment{background:#ff6b9d}
+    .sig-khalistan_activity{background:#f59f00}
+    .sig-pakistan_sikh_propaganda{background:#fa5252}
+    .sig-khalistan_canada_usa{background:#22b8cf}
+    .sig-active_flashpoint{background:#ff3b3b}
+    .sig-border_territorial{background:#fab005}
+    .sig-maritime_indian_ocean{background:#1971c2}
+    .sig-cyber_security_threat{background:#7950f2}
+    .sig-economic_security_risk{background:#2f9e44}
+    .sig-disinfo_research_finding{background:#ae3ec9}
+    .sig-communal_flashpoint{background:#e8590c}
+    .sig-northeast_unrest{background:#0ca678}
+    .sig-extremism_banned_org{background:#c92a2a}
+    main { padding: 20px 24px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
+    .stat-card:hover { border-color: var(--blue); transform: translateY(-1px); }
+    .stat-card.active-stat { border-color: var(--accent); background: var(--surface2); }
+    .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat-card .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+    .stat-card.no-click { cursor: default; }
+    .stat-card.no-click:hover { border-color: var(--border); transform: none; }
+    .search-bar { margin-bottom: 16px; }
+    .search-bar input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 13px; outline: none; }
+    .search-bar input:focus { border-color: var(--blue); }
+    .search-bar input::placeholder { color: var(--muted); }
+    .items-list { display: flex; flex-direction: column; gap: 10px; }
+    .item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s; }
+    .item-card:hover { border-color: var(--blue); }
+    .item-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+    .importance-badge { flex-shrink: 0; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+    .imp-high{background:rgba(248,81,73,0.2);color:var(--red)} .imp-mid{background:rgba(210,153,34,0.2);color:var(--yellow)} .imp-low{background:rgba(63,185,80,0.15);color:var(--green)} .imp-zero{background:rgba(139,148,158,0.15);color:var(--muted)}
+    .item-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .item-title a { color: inherit; text-decoration: none; }
+    .item-title a:hover { color: var(--blue); }
+    .item-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .source-tag { font-size: 11px; color: var(--muted); background: var(--surface2); padding: 2px 7px; border-radius: 4px; }
+    .signal-tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+    .st-pakistan_narrative{background:rgba(255,107,107,0.15);color:#ff6b6b}
+    .st-western_criticism{background:rgba(77,171,247,0.15);color:#4dabf7}
+    .st-protest_dissent{background:rgba(255,212,59,0.15);color:#ffd43b}
+    .st-neighbour_hostile{background:rgba(169,227,75,0.15);color:#a9e34b}
+    .st-strategic_military{background:rgba(204,93,232,0.15);color:#cc5de8}
+    .st-terrorism_security{background:rgba(255,146,43,0.15);color:#ff922b}
+    .st-pok_baloch_rights{background:rgba(57,197,207,0.15);color:#39c5cf}
+    .st-kashmir_pakistan_comment{background:rgba(255,135,135,0.15);color:#ff8787}
+    .st-kashmir_development{background:rgba(116,192,252,0.15);color:#74c0fc}
+    .st-kashmir_foreign_negative{background:rgba(229,153,247,0.15);color:#e599f7}
+    .st-anti_sikh_sentiment{background:rgba(255,107,157,0.15);color:#ff6b9d}
+    .st-khalistan_activity{background:rgba(245,159,0,0.15);color:#f59f00}
+    .st-pakistan_sikh_propaganda{background:rgba(250,82,82,0.15);color:#fa5252}
+    .st-khalistan_canada_usa{background:rgba(34,184,207,0.15);color:#22b8cf}
+    .st-active_flashpoint{background:rgba(255,59,59,0.2);color:#ff3b3b;font-weight:700}
+    .st-border_territorial{background:rgba(250,176,5,0.15);color:#fab005}
+    .st-maritime_indian_ocean{background:rgba(25,113,194,0.15);color:#1971c2}
+    .st-cyber_security_threat{background:rgba(121,80,242,0.15);color:#7950f2}
+    .st-economic_security_risk{background:rgba(47,158,68,0.15);color:#2f9e44}
+    .st-disinfo_research_finding{background:rgba(174,62,201,0.15);color:#ae3ec9}
+    .st-communal_flashpoint{background:rgba(232,89,12,0.15);color:#e8590c}
+    .st-northeast_unrest{background:rgba(12,166,120,0.15);color:#0ca678}
+    .st-extremism_banned_org{background:rgba(201,42,42,0.15);color:#c92a2a}
+    .item-summary { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.6; display: none; }
+    .item-card.expanded .item-summary { display: block; }
+    .time-tag { font-size: 11px; color: var(--muted); }
+    .cat-icon { font-size: 12px; }
+    .loader { display: flex; flex-direction: column; align-items: center; padding: 60px 20px; color: var(--muted); gap: 16px; }
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .no-results { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .pagination { display: flex; gap: 8px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+    .page-btn { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 13px; }
+    .page-btn:hover { border-color: var(--blue); }
+    .page-btn.active { background: var(--blue); border-color: var(--blue); color: #000; }
+    .page-btn:disabled { opacity: 0.4; cursor: default; }
+    .result-count { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+    @media(max-width:700px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border)}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="pulse"></div>
+  <h1>🇮🇳 India Pulse 360</h1>
+  <span id="last-updated">Loading...</span>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section concise-pinned">
+      <div class="sidebar-label">⚡ Concise Topics</div>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_narrative',this)">🟢 Pakistan <span class="count" id="cnc-cnt-pakistan">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pok_baloch_rights',this)">🟦 Baloch / Minorities <span class="count" id="cnc-cnt-baloch">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','sikh_punjab_affairs',this)">☬ Sikh / Punjab <span class="count" id="cnc-cnt-sikh">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','kashmir_focus',this)">⛰️ Kashmir Focus <span class="count" id="cnc-cnt-kashmir">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','western_media',this)">🌐 Western Media <span class="count" id="cnc-cnt-western">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','northeast_india',this)">🌄 North East <span class="count" id="cnc-cnt-northeast">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','economic_security',this)">💰 Economy <span class="count" id="cnc-cnt-economy">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','naxal_insurgency',this)">🟥 Naxal <span class="count" id="cnc-cnt-naxal">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','communal_flashpoints',this)">🕌 Communal <span class="count" id="cnc-cnt-communal">0</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Category</div>
+      <button class="filter-btn active" onclick="setFilter('cat','all',this)">All Sources <span class="count" id="cnt-all">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','india_geopolitics',this)">🇮🇳 India Media <span class="count" id="cnt-india_geopolitics">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','pakistan_narratives',this)">🟢 Pakistan Media <span class="count" id="cnt-pakistan_narratives">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','western_media',this)">🌐 Western Media <span class="count" id="cnt-western_media">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','neighbours',this)">🗺️ Neighbours <span class="count" id="cnt-neighbours">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','social_india',this)">📡 Social / Reddit <span class="count" id="cnt-social_india">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','pok_baloch_minorities',this)">🟦 PoK / Baloch / Minorities <span class="count" id="cnt-pok_baloch_minorities">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','kashmir_focus',this)">⛰️ Kashmir Focus <span class="count" id="cnt-kashmir_focus">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','sikh_punjab_affairs',this)">☬ Sikh / Punjab Affairs <span class="count" id="cnt-sikh_punjab_affairs">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','telegram_channels',this)">✈️ Telegram Channels <span class="count" id="cnt-telegram_channels">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','border_territorial',this)">🏔️ Border / Territorial <span class="count" id="cnt-border_territorial">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','maritime_indian_ocean',this)">⚓ Maritime / Indian Ocean <span class="count" id="cnt-maritime_indian_ocean">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','cyber_security',this)">🛡️ Cyber Security <span class="count" id="cnt-cyber_security">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','economic_security',this)">💰 Economic Security <span class="count" id="cnt-economic_security">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','disinfo_research',this)">🔬 Disinfo Research <span class="count" id="cnt-disinfo_research">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','communal_flashpoints',this)">🕌 Communal Flashpoints <span class="count" id="cnt-communal_flashpoints">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','northeast_india',this)">🌄 Northeast India <span class="count" id="cnt-northeast_india">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','extremism_banned_orgs',this)">⚠️ Extremism / Banned Orgs <span class="count" id="cnt-extremism_banned_orgs">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','naxal_insurgency',this)">🟥 Naxal / Maoist <span class="count" id="cnt-naxal_insurgency">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','india_critics',this)">📋 India Critics <span class="count" id="cnt-india_critics">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','osint_channels',this)">🔍 OSINT Channels <span class="count" id="cnt-osint_channels">0</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Signal Type</div>
+      <button class="filter-btn" onclick="setFilter('sig','active_flashpoint',this)"><span class="dot sig-active_flashpoint"></span> 🔥 Active Flashpoint <span class="count" id="sig-cnt-active_flashpoint">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_narrative',this)"><span class="dot sig-pakistan_narrative"></span> Pakistan Narrative <span class="count" id="sig-cnt-pakistan_narrative">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','western_criticism',this)"><span class="dot sig-western_criticism"></span> Western Criticism <span class="count" id="sig-cnt-western_criticism">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','protest_dissent',this)"><span class="dot sig-protest_dissent"></span> Protest / Dissent <span class="count" id="sig-cnt-protest_dissent">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','neighbour_hostile',this)"><span class="dot sig-neighbour_hostile"></span> Neighbour Signals <span class="count" id="sig-cnt-neighbour_hostile">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','strategic_military',this)"><span class="dot sig-strategic_military"></span> Strategic/Military <span class="count" id="sig-cnt-strategic_military">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','terrorism_security',this)"><span class="dot sig-terrorism_security"></span> Terror/Security <span class="count" id="sig-cnt-terrorism_security">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pok_baloch_rights',this)"><span class="dot sig-pok_baloch_rights"></span> PoK/Baloch Rights <span class="count" id="sig-cnt-pok_baloch_rights">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_pakistan_comment',this)"><span class="dot sig-kashmir_pakistan_comment"></span> Pak Comment on Kashmir <span class="count" id="sig-cnt-kashmir_pakistan_comment">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_development',this)"><span class="dot sig-kashmir_development"></span> Kashmir Development <span class="count" id="sig-cnt-kashmir_development">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_foreign_negative',this)"><span class="dot sig-kashmir_foreign_negative"></span> Foreign Negative on Kashmir <span class="count" id="sig-cnt-kashmir_foreign_negative">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','anti_sikh_sentiment',this)"><span class="dot sig-anti_sikh_sentiment"></span> Anti-Sikh Sentiment <span class="count" id="sig-cnt-anti_sikh_sentiment">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','khalistan_activity',this)"><span class="dot sig-khalistan_activity"></span> Khalistan Activity <span class="count" id="sig-cnt-khalistan_activity">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_sikh_propaganda',this)"><span class="dot sig-pakistan_sikh_propaganda"></span> Pakistan Sikh Propaganda <span class="count" id="sig-cnt-pakistan_sikh_propaganda">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','khalistan_canada_usa',this)"><span class="dot sig-khalistan_canada_usa"></span> Khalistan Canada/USA <span class="count" id="sig-cnt-khalistan_canada_usa">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','border_territorial',this)"><span class="dot sig-border_territorial"></span> Border / Territorial <span class="count" id="sig-cnt-border_territorial">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','maritime_indian_ocean',this)"><span class="dot sig-maritime_indian_ocean"></span> Maritime / Indian Ocean <span class="count" id="sig-cnt-maritime_indian_ocean">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','cyber_security_threat',this)"><span class="dot sig-cyber_security_threat"></span> Cyber Security Threat <span class="count" id="sig-cnt-cyber_security_threat">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','economic_security_risk',this)"><span class="dot sig-economic_security_risk"></span> Economic Security Risk <span class="count" id="sig-cnt-economic_security_risk">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','disinfo_research_finding',this)"><span class="dot sig-disinfo_research_finding"></span> Disinfo Research Finding <span class="count" id="sig-cnt-disinfo_research_finding">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','communal_flashpoint',this)"><span class="dot sig-communal_flashpoint"></span> Communal Flashpoint <span class="count" id="sig-cnt-communal_flashpoint">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','northeast_unrest',this)"><span class="dot sig-northeast_unrest"></span> Northeast Unrest <span class="count" id="sig-cnt-northeast_unrest">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','extremism_banned_org',this)"><span class="dot sig-extremism_banned_org"></span> Extremism / Banned Org <span class="count" id="sig-cnt-extremism_banned_org">0</span></button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="stats-row">
+      <div class="stat-card" id="card-flashpoint" onclick="setFilter('sig','active_flashpoint',null,'card-flashpoint')" style="border-color:#ff3b3b"><div class="label">🔥 Active Flashpoints</div><div class="value" id="stat-flashpoint" style="color:#ff3b3b">—</div></div>
+      <div class="stat-card" id="card-total" onclick="setFilter('cat','all',null,'card-total')"><div class="label">Total Items</div><div class="value" id="stat-total" style="color:var(--blue)">—</div></div>
+      <div class="stat-card" id="card-pak" onclick="setFilter('sig','pakistan_narrative',null,'card-pak')"><div class="label">Pakistan Signals</div><div class="value" id="stat-pak" style="color:#ff6b6b">—</div></div>
+      <div class="stat-card" id="card-west" onclick="setFilter('sig','western_criticism',null,'card-west')"><div class="label">Western Criticism</div><div class="value" id="stat-west" style="color:#4dabf7">—</div></div>
+      <div class="stat-card" id="card-pokbal" onclick="setFilter('sig','pok_baloch_rights',null,'card-pokbal')"><div class="label">PoK/Baloch Rights</div><div class="value" id="stat-pokbal" style="color:#39c5cf">—</div></div>
+      <div class="stat-card" id="card-kashmir" onclick="setFilter('cat','kashmir_focus',null,'card-kashmir')"><div class="label">Kashmir Focus</div><div class="value" id="stat-kashmir" style="color:#e599f7">—</div></div>
+      <div class="stat-card" id="card-khalistan" onclick="setFilter('cat','sikh_punjab_affairs',null,'card-khalistan')"><div class="label">Sikh / Khalistan</div><div class="value" id="stat-khalistan" style="color:#f59f00">—</div></div>
+      <div class="stat-card no-click"><div class="label">Last Updated</div><div class="value" id="stat-time" style="color:var(--muted);font-size:13px;margin-top:6px">—</div></div>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search headlines, keywords, sources..." oninput="onSearch()"/>
+    </div>
+    <div class="result-count" id="result-count"></div>
+    <div id="items-container">
+      <div class="loader"><div class="spinner"></div><div>Loading signals...</div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<script>
+  let allItems = [];
+  let filtered = [];
+  let activeFilter = { type: 'cat', value: 'all' };
+  let searchQuery = '';
+  let currentPage = 1;
+  const PAGE_SIZE = 30;
+
+  async function loadData() {
+    try {
+      const r = await fetch('data/summary.json?_=' + Date.now());
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+
+      allItems = data.top_items || data.items || [];
+
+      document.getElementById('stat-total').textContent = allItems.length;
+      document.getElementById('stat-flashpoint').textContent = allItems.filter(i => (i.signals||[]).includes('active_flashpoint')).length;
+      document.getElementById('stat-pak').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative')).length;
+      document.getElementById('stat-west').textContent = allItems.filter(i => (i.signals||[]).includes('western_criticism')).length;
+      document.getElementById('stat-pokbal').textContent = allItems.filter(i => (i.signals||[]).includes('pok_baloch_rights') || i.category === 'pok_baloch_minorities').length;
+      document.getElementById('stat-kashmir').textContent = allItems.filter(i => i.category === 'kashmir_focus').length;
+      document.getElementById('stat-khalistan').textContent = allItems.filter(i => i.category === 'sikh_punjab_affairs').length;
+
+      const ts = new Date(data.generated_at);
+      const timeStr = ts.toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('last-updated').textContent = 'Updated: ' + timeStr;
+      document.getElementById('stat-time').textContent = timeStr;
+
+      updateCounts();
+      applyFilters();
+    } catch(e) {
+      console.error('Load error:', e);
+      document.getElementById('items-container').innerHTML = `
+        <div class="no-results">
+          <div style="font-size:32px;margin-bottom:12px">📡</div>
+          <div style="color:var(--text);margin-bottom:8px">Could not load data</div>
+          <div style="font-size:12px;color:var(--muted)">Error: ${e.message}<br/><br/>
+          Make sure the GitHub Action has run and <code>data/summary.json</code> exists.<br/>
+          Go to Actions tab → Run workflow manually.</div>
+        </div>`;
+    }
+  }
+
+  function updateCounts() {
+    document.getElementById('cnt-all').textContent = allItems.length;
+    ['india_geopolitics','pakistan_narratives','western_media','neighbours','social_india','pok_baloch_minorities','kashmir_focus','sikh_punjab_affairs','telegram_channels','border_territorial','maritime_indian_ocean','cyber_security','economic_security','disinfo_research','communal_flashpoints','northeast_india','extremism_banned_orgs','naxal_insurgency','india_critics','osint_channels'].forEach(c => {
+      const el = document.getElementById('cnt-'+c);
+      if (el) el.textContent = allItems.filter(i => i.category === c).length;
+    });
+    ['active_flashpoint','pakistan_narrative','western_criticism','protest_dissent','neighbour_hostile','strategic_military','terrorism_security','pok_baloch_rights','kashmir_pakistan_comment','kashmir_development','kashmir_foreign_negative','anti_sikh_sentiment','khalistan_activity','pakistan_sikh_propaganda','khalistan_canada_usa','border_territorial','maritime_indian_ocean','cyber_security_threat','economic_security_risk','disinfo_research_finding','communal_flashpoint','northeast_unrest','extremism_banned_org'].forEach(s => {
+      const el = document.getElementById('sig-cnt-'+s);
+      if (el) el.textContent = allItems.filter(i => (i.signals||[]).includes(s)).length;
+    });
+
+    // Pinned Concise Topics counts
+    document.getElementById('cnc-cnt-pakistan').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative') || i.category === 'pakistan_narratives').length;
+    document.getElementById('cnc-cnt-baloch').textContent = allItems.filter(i => (i.signals||[]).includes('pok_baloch_rights') || i.category === 'pok_baloch_minorities').length;
+    document.getElementById('cnc-cnt-sikh').textContent = allItems.filter(i => i.category === 'sikh_punjab_affairs').length;
+    document.getElementById('cnc-cnt-kashmir').textContent = allItems.filter(i => i.category === 'kashmir_focus').length;
+    document.getElementById('cnc-cnt-western').textContent = allItems.filter(i => i.category === 'western_media').length;
+    document.getElementById('cnc-cnt-northeast').textContent = allItems.filter(i => i.category === 'northeast_india' || (i.signals||[]).includes('northeast_unrest')).length;
+    document.getElementById('cnc-cnt-economy').textContent = allItems.filter(i => i.category === 'economic_security' || (i.signals||[]).includes('economic_security_risk')).length;
+    document.getElementById('cnc-cnt-naxal').textContent = allItems.filter(i => i.category === 'naxal_insurgency' || (i.signals||[]).includes('naxal_insurgency')).length;
+    document.getElementById('cnc-cnt-communal').textContent = allItems.filter(i => i.category === 'communal_flashpoints' || (i.signals||[]).includes('communal_flashpoint')).length;
+  }
+
+  function setFilter(type, value, btn, cardId) {
+    activeFilter = { type, value };
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-stat'));
+
+    if (btn) {
+      btn.classList.add('active');
+    } else {
+      // Find matching sidebar button to keep them in sync
+      const matchSelector = type === 'cat' ? `[onclick*="setFilter('cat','${value}'"]`
+                            : `[onclick*="setFilter('sig','${value}'"]`;
+      const match = document.querySelector('.sidebar ' + matchSelector);
+      if (match) match.classList.add('active');
+    }
+    if (cardId) {
+      document.getElementById(cardId).classList.add('active-stat');
+    }
+
+    currentPage = 1;
+    applyFilters();
+    document.getElementById('items-container').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function onSearch() {
+    searchQuery = document.getElementById('search-input').value.toLowerCase();
+    currentPage = 1;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    filtered = allItems.filter(item => {
+      if (activeFilter.type === 'cat' && activeFilter.value !== 'all') {
+        if (item.category !== activeFilter.value) return false;
+      }
+      if (activeFilter.type === 'sig') {
+        if (!(item.signals||[]).includes(activeFilter.value)) return false;
+      }
+      if (searchQuery) {
+        const hay = `${item.title||''} ${item.summary||''} ${item.source||''}`.toLowerCase();
+        if (!hay.includes(searchQuery)) return false;
+      }
+      return true;
+    });
+    document.getElementById('result-count').textContent = `Showing ${filtered.length} of ${allItems.length} items`;
+    renderPage();
+  }
+
+  function renderPage() {
+    const start = (currentPage-1)*PAGE_SIZE;
+    const pageItems = filtered.slice(start, start+PAGE_SIZE);
+    const container = document.getElementById('items-container');
+    if (!filtered.length) {
+      container.innerHTML = `<div class="no-results"><div style="font-size:28px;margin-bottom:10px">🔍</div><div>No items match this filter</div></div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+    container.innerHTML = `<div class="items-list">${pageItems.map(renderItem).join('')}</div>`;
+    renderPagination();
+  }
+
+  function renderItem(item) {
+    const imp = item.importance || 0;
+    const impClass = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : imp >= 1 ? 'imp-low' : 'imp-zero';
+    const catIcon = {india_geopolitics:'🇮🇳',pakistan_narratives:'🟢',western_media:'🌐',neighbours:'🗺️',social_india:'📡',pok_baloch_minorities:'🟦',kashmir_focus:'⛰️',sikh_punjab_affairs:'☬',telegram_channels:'✈️',border_territorial:'🏔️',maritime_indian_ocean:'⚓',cyber_security:'🛡️',economic_security:'💰',disinfo_research:'🔬',communal_flashpoints:'🕌',northeast_india:'🌄',extremism_banned_orgs:'⚠️',naxal_insurgency:'🟥',india_critics:'📋',osint_channels:'🔍'}[item.category]||'';
+    const signals = (item.signals||[]).map(s=>`<span class="signal-tag st-${s}">${s.replace(/_/g,' ')}</span>`).join('');
+    const pub = item.published ? new Date(item.published) : null;
+    const timeStr = pub && !isNaN(pub) ? pub.toLocaleString([],{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+    const summary = item.summary ? `<div class="item-summary">${item.summary}</div>` : '';
+    return `<div class="item-card" onclick="this.classList.toggle('expanded')">
+      <div class="item-header">
+        <span class="importance-badge ${impClass}">${imp}</span>
+        <span class="item-title"><a href="${item.link||'#'}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.title||'(no title)'}</a></span>
+      </div>
+      <div class="item-meta">
+        <span class="cat-icon">${catIcon}</span>
+        <span class="source-tag">${item.source||''}</span>
+        ${signals}
+        ${timeStr?`<span class="time-tag">${timeStr}</span>`:''}
+      </div>
+      ${summary}
+    </div>`;
+  }
+
+  function renderPagination() {
+    const total = Math.ceil(filtered.length/PAGE_SIZE);
+    if (total<=1){document.getElementById('pagination').innerHTML='';return;}
+    let html=`<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
+    for(let i=1;i<=total;i++){
+      if(i===1||i===total||Math.abs(i-currentPage)<=2) html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+      else if(Math.abs(i-currentPage)===3) html+=`<span style="color:var(--muted);padding:6px 4px">…</span>`;
+    }
+    html+=`<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>Next →</button>`;
+    document.getElementById('pagination').innerHTML=html;
+  }
+
+  function goPage(p) {
+    const total=Math.ceil(filtered.length/PAGE_SIZE);
+    if(p<1||p>total)return;
+    currentPage=p;
+    renderPage();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  loadData();
+  setInterval(loadData, 10*60*1000);
+</script>
+</body>
+</html>
