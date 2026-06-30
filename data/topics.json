@@ -1,45 +1,46 @@
 {
-  "generated_at": "2026-06-30T10:55:15.393940+00:00",
-  "total_items": 139,
+  "generated_at": "2026-06-30T14:09:55.512573+00:00",
+  "total_items": 163,
   "category_stats": {
-    "india_geopolitics": 26,
-    "pakistan_narratives": 4,
-    "western_media": 26,
-    "neighbours": 15,
-    "social_india": 2,
+    "india_geopolitics": 21,
+    "pakistan_narratives": 7,
+    "western_media": 38,
+    "neighbours": 24,
+    "social_india": 0,
     "pok_baloch_minorities": 24,
-    "kashmir_focus": 17,
-    "sikh_punjab_affairs": 10,
-    "border_territorial": 7,
+    "kashmir_focus": 19,
+    "sikh_punjab_affairs": 2,
+    "telegram_channels": 0,
+    "border_territorial": 8,
     "maritime_indian_ocean": 4,
     "cyber_security": 0,
-    "economic_security": 1,
+    "economic_security": 12,
     "disinfo_research": 0,
     "communal_flashpoints": 0,
-    "northeast_india": 8,
+    "northeast_india": 7,
     "extremism_banned_orgs": 0,
-    "india_critics": 0,
-    "osint_channels": 2,
-    "naxal_insurgency": 0
+    "india_critics": 1,
+    "osint_channels": 1,
+    "naxal_insurgency": 1
   },
   "signal_summary": {
-    "pok_baloch_rights": 17,
-    "pakistan_narrative": 37,
+    "pakistan_narrative": 43,
+    "pok_baloch_rights": 16,
     "active_flashpoint": 2,
     "khalistan_activity": 2,
     "kashmir_foreign_negative": 1,
+    "terrorism_security": 2,
     "kashmir_development": 1,
-    "terrorism_security": 1,
     "maritime_indian_ocean": 2
   },
   "top_signals": [
     [
       "pakistan_narrative",
-      37
+      43
     ],
     [
       "pok_baloch_rights",
-      17
+      16
     ],
     [
       "active_flashpoint",
@@ -47,6 +48,10 @@
     ],
     [
       "khalistan_activity",
+      2
+    ],
+    [
+      "terrorism_security",
       2
     ],
     [
@@ -60,10 +65,6 @@
     [
       "kashmir_development",
       1
-    ],
-    [
-      "terrorism_security",
-      1
     ]
   ],
   "items": [
@@ -74,12 +75,12 @@
       "source": "Balochistan Post",
       "category": "pok_baloch_minorities",
       "signals": [
-        "pok_baloch_rights",
-        "pakistan_narrative"
+        "pakistan_narrative",
+        "pok_baloch_rights"
       ],
       "importance": 9,
       "published": "2026-06-28T15:30:21+00:00",
-      "fetched_at": "2026-06-30T10:53:40.911418+00:00"
+      "fetched_at": "2026-06-30T14:08:18.794364+00:00"
     },
     {
       "title": "Breaking Point: Analysing the Crisis in Pakistan Occupied Jammu and Kashmir - orfonline.org",
@@ -88,12 +89,23 @@
       "source": "GNews: Kashmir elections politics",
       "category": "kashmir_focus",
       "signals": [
-        "active_flashpoint",
-        "pakistan_narrative"
+        "pakistan_narrative",
+        "active_flashpoint"
       ],
       "importance": 7,
       "published": "2026-06-27T18:57:20+00:00",
-      "fetched_at": "2026-06-30T10:53:54.598964+00:00"
+      "fetched_at": "2026-06-30T14:08:34.505612+00:00"
+    },
+    {
+      "title": "Dozens killed in Pakistani airstrike on Afghanistan; India condemns attack, UN says civilians 'must be protected' - Maktoob",
+      "summary": "Dozens killed in Pakistani airstrike on Afghanistan; India condemns attack, UN says civilians 'must be protected'&nbsp;&nbsp;Maktoob",
+      "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxOLXlZZHBzeEdwaDJIdWlwZDFnS3pFRUZSM2FwS0dlSFV1SlBRb3BmUkdjSVM2Y0xMaTBmQXlFaEJ4VThfdUlNTXZraHpwMkthY0thQmU5WE9FOGFGWWhUTzVzOVBtVHNzZlVWdm1sTUk0T0VEX2Z1dlJIVjJqZ2dlOUVWMFZlaGlLam1TenBfNWJsMjUwRXlQQzRDLU1SRVpER2hGaGNWWEo4UDdid21ObGdQdHBIODVpYUVnRzE4VG5OVXhGLTdBTXplcTdpWjdKd2pZZXlXcDVDcWFjSHJTcGtXMjkyaTJ0UWc?oc=5",
+      "source": "GNews: Afghanistan India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 6,
+      "published": "2026-06-30T07:50:16+00:00",
+      "fetched_at": "2026-06-30T14:08:00.024310+00:00"
     },
     {
       "title": "DW News. . Prominent Balochistan activist Mahrang Baloch is a key figure in the fight against Involuntary Enforced Disappearances in Pakistan. Now, the Nobel Peace nominee has been sentenced to life in prison. #dwcurrentaffairs - facebook.com",
@@ -106,7 +118,7 @@
       ],
       "importance": 5,
       "published": "2026-06-27T03:00:09+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353472+00:00"
+      "fetched_at": "2026-06-30T14:08:17.301764+00:00"
     },
     {
       "title": "Balochistan and the Crisis of Federalism in Pakistan - Countercurrents",
@@ -115,12 +127,12 @@
       "source": "GNews: Balochistan enforced disappearances",
       "category": "pok_baloch_minorities",
       "signals": [
-        "pok_baloch_rights",
-        "pakistan_narrative"
+        "pakistan_narrative",
+        "pok_baloch_rights"
       ],
       "importance": 5,
       "published": "2026-06-30T05:22:42+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353576+00:00"
+      "fetched_at": "2026-06-30T14:08:17.301987+00:00"
     },
     {
       "title": "Pakistan faces scrutiny over reported enforced disappearances of three more men in Balochistan - ANI News",
@@ -133,7 +145,7 @@
       ],
       "importance": 5,
       "published": "2026-06-28T08:09:00+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353837+00:00"
+      "fetched_at": "2026-06-30T14:08:17.302133+00:00"
     },
     {
       "title": "Afghanistan says Pakistan killed 36 ‘civilians’ in airstrikes - Free Press Kashmir",
@@ -146,32 +158,7 @@
       ],
       "importance": 5,
       "published": "2026-06-29T14:20:43+00:00",
-      "fetched_at": "2026-06-30T10:53:53.513304+00:00"
-    },
-    {
-      "title": "SC refuses PIL for CBI probe into Bharat Bhushan Tiwari's alleged 'encounter'",
-      "summary": "The PIL sought registration of an FIR against the police personnel who allegedly killed Tiwari and the constitution of an independent expert committee.",
-      "link": "https://www.hindustantimes.com/india-news/sc-refuses-pil-for-cbi-probe-into-bharat-bhushan-tiwaris-alleged-encounter-101782813016992.html",
-      "source": "Hindustan Times",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 4,
-      "published": "2026-06-30T09:55:14+00:00",
-      "fetched_at": "2026-06-30T10:52:42.577073+00:00"
-    },
-    {
-      "title": "Power Crisis, frequent load shedding continues to trigger protests in Gilgit Baltistan - The News Mill",
-      "summary": "Power Crisis, frequent load shedding continues to trigger protests in Gilgit Baltistan&nbsp;&nbsp;The News Mill",
-      "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNYkNrUFdEUzFILUtmZ0JuZjFzZUdVLVpUTlk5SVZvWUp1ZU04ajV3YzlNaEJXaEx2M3RWa0xhcFNadjNoRzZYR3NWRlBudnNrMWE4eUNHbm9jRmg3YUV5NS1HZFE4dk8yRUJnZ1AxTWppVEgtanoxR1Q4cUNHcktIaFlXNVl6UUt5OXVOVmc3dGtiRnBBNHVhaHJzOV83ZmZTVmZZV0FVa0pmVWdTTWVEWHZsSDNraXhjVnc?oc=5",
-      "source": "GNews: PoK Gilgit Baltistan rights",
-      "category": "pok_baloch_minorities",
-      "signals": [
-        "pok_baloch_rights",
-        "pakistan_narrative"
-      ],
-      "importance": 4,
-      "published": "2026-06-29T19:07:30+00:00",
-      "fetched_at": "2026-06-30T10:53:33.014084+00:00"
+      "fetched_at": "2026-06-30T14:08:33.497380+00:00"
     },
     {
       "title": "Pakistan opposition alliance says police blocked leaders from visiting unrest-hit Azad Kashmir - Arab News PK",
@@ -180,12 +167,12 @@
       "source": "GNews: Azad Kashmir protest",
       "category": "pok_baloch_minorities",
       "signals": [
-        "pok_baloch_rights",
-        "pakistan_narrative"
+        "pakistan_narrative",
+        "pok_baloch_rights"
       ],
       "importance": 4,
       "published": "2026-06-29T09:10:55+00:00",
-      "fetched_at": "2026-06-30T10:53:34.881035+00:00"
+      "fetched_at": "2026-06-30T14:08:13.731184+00:00"
     },
     {
       "title": "Quetta Protest Against BYC Leaders’ Sentences Spreads After Arrests, Use of Force",
@@ -198,7 +185,7 @@
       ],
       "importance": 4,
       "published": "2026-06-29T17:02:00+00:00",
-      "fetched_at": "2026-06-30T10:53:40.910092+00:00"
+      "fetched_at": "2026-06-30T14:08:18.793049+00:00"
     },
     {
       "title": "BLA Releases Video Compilation of 21 Attacks in Balochistan",
@@ -211,7 +198,7 @@
       ],
       "importance": 4,
       "published": "2026-06-29T14:26:53+00:00",
-      "fetched_at": "2026-06-30T10:53:40.910395+00:00"
+      "fetched_at": "2026-06-30T14:08:18.793334+00:00"
     },
     {
       "title": "Six Reportedly Forcibly Disappeared in Balochistan; 10 Others Released",
@@ -224,7 +211,7 @@
       ],
       "importance": 4,
       "published": "2026-06-29T11:17:16+00:00",
-      "fetched_at": "2026-06-30T10:53:40.910891+00:00"
+      "fetched_at": "2026-06-30T14:08:18.793842+00:00"
     },
     {
       "title": "Sammi Deen Baloch Says She Fears Arrest After Alleged Harassment in Karachi",
@@ -237,7 +224,7 @@
       ],
       "importance": 4,
       "published": "2026-06-29T08:38:40+00:00",
-      "fetched_at": "2026-06-30T10:53:40.911126+00:00"
+      "fetched_at": "2026-06-30T14:08:18.794083+00:00"
     },
     {
       "title": "Seven Heavy Vehicles Damaged in Dalbandin, Mastung Firing Incidents",
@@ -250,7 +237,20 @@
       ],
       "importance": 4,
       "published": "2026-06-27T22:32:07+00:00",
-      "fetched_at": "2026-06-30T10:53:40.911723+00:00"
+      "fetched_at": "2026-06-30T14:08:18.794665+00:00"
+    },
+    {
+      "title": "Beyond Borders: Next South Asian Crisis Could Be Water, Not Kashmir Alone - Kashmir Times",
+      "summary": "Beyond Borders: Next South Asian Crisis Could Be Water, Not Kashmir Alone&nbsp;&nbsp;Kashmir Times",
+      "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOSktsVlFBNTJYNFd4OGtFdFhlbnhvOXhtY1oydUFfcXZFSndkOEpvcFA2T3lLMndwVTNMZnF3YW9BWkRIWWN5ZUc0ZWd0RWtrSzFFZDMtQ0IySTNvTmttZzBEZ1BnZ3pISlJTdDYzSmdqalh5WUxRdVVveHl2OXdLWjM4RG1FWEotaDlVUnFzbXRaeElXd1FaM01wcVNMQlF6dUZUSlotVVhkMUhJcnRiSVMya0p3Q1J3UnB6V0lB0gHLAUFVX3lxTE1ZRUtZMzlkVjRYSFlhaV8wZzNwakd0bHRWT2gwYkw3QXhCd1Vhd1VocGFDcUM2QjhBRFFxSG1FbzY5R1NWSUxWWjJkbS1jQ285RzFQMTEyYW9qdkxibzFnQjFqZjZna0JTRDdwRkV1UVByVnBycVd6MDdZc21qbWRZa0VTUHlGOGtnUko2YVlpalNVZWltTS1VT2Q5TVZkdk40NjlLX18ybG5PaUZZRlZSNVJndGpmWXlQbXA0bGVrZ0RUVVFydDd0Si1R?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 4,
+      "published": "2026-06-30T10:44:18+00:00",
+      "fetched_at": "2026-06-30T14:08:34.505258+00:00"
     },
     {
       "title": "'Waris Punjab De' projects Amritpal Singh as 2027 CM face | Tap to know more | Inshorts - Inshorts",
@@ -263,20 +263,33 @@
       ],
       "importance": 4,
       "published": "2026-06-27T21:35:59+00:00",
-      "fetched_at": "2026-06-30T10:54:08.904944+00:00"
+      "fetched_at": "2026-06-30T14:08:48.479709+00:00"
     },
     {
-      "title": "Warming climate, pollution and unplanned growth push Kashmir's lakes toward disappearance - Newsday",
-      "summary": "Warming climate, pollution and unplanned growth push Kashmir's lakes toward disappearance&nbsp;&nbsp;Newsday",
-      "link": "https://news.google.com/rss/articles/CBMikAFBVV95cUxQbmVqbTZ1blFvTVA2SldSYUQ4V2pmdnRCNi13Y3pXeC1Wb19DVUxPUms3V1BOXzNNQ0RzM2duNXBKWGtMVW44Xzh5VEl1MHczMWVjNXc1VFM3Tk0wT0JxU3YxUXdPZm94bEdVT1Y3X18yejk4Qlo3dnI1WkNqcFBxMzZmNTRWUHpDYVlYZkYyenI?oc=5",
+      "title": "\"PoK Not Part Of Pakistan\": Protesters Warn Islamabad Of Reaching Out To India - NDTV",
+      "summary": "\"PoK Not Part Of Pakistan\": Protesters Warn Islamabad Of Reaching Out To India&nbsp;&nbsp;NDTV",
+      "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxQTmVwdGI4cmdBcnJWVTA3MFZwSHVudXhaOU5SNEQtLWp1WXF3MmFqOG9pSVdqSzJQM3BGZFhybTREajJKVVpxV2VyUERVWW0xcXRoZk1WYU5XZlA0dDVzRzNySXk3c2xidXJtSVl4Wjhfdmx5SnZwcmh5Nm1nbjgzdFdfd3pLZS1DWC1QOW5vcHRkTV9BdTVlYmtNVGdFWTh1S1pSZldMbHRCRFIxTEpsSzZJbk13Q2RjT2FObGMzV2JwU3VqMFVtQXpJdU05WHpoM3ZFRNIB3AFBVV95cUxPRVJpSW5NYThGUldGb3o0dVZDQUNxWVJpSVgzODVQdHJaeDhqSWY3N2JSTXBtT3NJV0hJUGFBQURYaGpQankyRmh6N3VqX0VZcU1uTkY1NFlGOFozUUZYdDVGZ0JzdThJSEVUM1VBaHpaRjVaUEg1S005ZS16bWJ0QmFBTHVickNHVDlYRUpzaTBJMlFqbjYxRlFjT0ZvY2x0NWV4cFM2NGlER3NHZXZOUkJCTjdGbVFVUFNMQkk3ckVYWUtqN3lkVU40alEtRnlJek1iNVREVUJ0dXp2?oc=5",
+      "source": "GNews: India Pakistan",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "2026-06-30T12:11:38+00:00",
+      "fetched_at": "2026-06-30T14:07:49.581902+00:00"
+    },
+    {
+      "title": "Warming climate, pollution and unplanned growth push Kashmir’s lakes toward disappearance - AP News",
+      "summary": "Warming climate, pollution and unplanned growth push Kashmir’s lakes toward disappearance&nbsp;&nbsp;AP News",
+      "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQUWhWaGxFaFhabzRpNWZINmU1RjZEbVhITEVUOXlJc3VWMHRFZVZoak80NGhDazBKQ053WGtMdmp4NE1IUkJHZnZEMk1EWmxVLXZzcmhZOWZ5THE3MU1VTkg2bTFmcExONnZWaDU0V0tKeS1tWmd0TU1jaGFlYnh4VkpDX2Jkbi1fekgxZHNNY3dGbjJmOHdOYWVjRHZ3dXdnakpscUNEdw?oc=5",
       "source": "GNews: Kashmir",
       "category": "western_media",
       "signals": [
         "pakistan_narrative"
       ],
       "importance": 3,
-      "published": "2026-06-30T01:08:50+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771083+00:00"
+      "published": "2026-06-30T01:10:00+00:00",
+      "fetched_at": "2026-06-30T14:07:52.693452+00:00"
     },
     {
       "title": "Crisis brewing for Nepali tea exporters with Indian quality checks - Nikkei Asia",
@@ -289,7 +302,7 @@
       ],
       "importance": 3,
       "published": "2026-06-30T02:58:00+00:00",
-      "fetched_at": "2026-06-30T10:53:22.620108+00:00"
+      "fetched_at": "2026-06-30T14:08:01.031361+00:00"
     },
     {
       "title": "Nepal Aligns with China, Sri Lanka, India, Bangladesh, Maldives, Bhutan and More Countries in a Groundbreaking Regional Power Shift Fueling Cross-Border Investment Growth, Tourism Acceleration and Strategic Economic Cooperation Across Asia - Travel And Tour World",
@@ -302,7 +315,7 @@
       ],
       "importance": 3,
       "published": "2026-06-27T03:39:17+00:00",
-      "fetched_at": "2026-06-30T10:53:24.770937+00:00"
+      "fetched_at": "2026-06-30T14:08:03.186018+00:00"
     },
     {
       "title": "Rigging claims and deadly protests deepen Gilgit-Baltistan crisis - MSN",
@@ -315,7 +328,7 @@
       ],
       "importance": 3,
       "published": "2026-06-26T14:15:23+00:00",
-      "fetched_at": "2026-06-30T10:53:33.014188+00:00"
+      "fetched_at": "2026-06-30T14:08:11.813580+00:00"
     },
     {
       "title": "India rejects EU-Pakistan Kashmir reference as 'unwarranted' - MSN",
@@ -328,7 +341,7 @@
       ],
       "importance": 3,
       "published": "2026-06-29T20:27:14+00:00",
-      "fetched_at": "2026-06-30T10:53:49.019382+00:00"
+      "fetched_at": "2026-06-30T14:08:28.744856+00:00"
     },
     {
       "title": "Suppressing Just Dissent: Pakistan’s Authoritarian Face In Occupied Kashmir – Analysis - Eurasia Review",
@@ -337,12 +350,12 @@
       "source": "GNews: Pakistan on Indian Kashmir",
       "category": "kashmir_focus",
       "signals": [
-        "kashmir_foreign_negative",
-        "pakistan_narrative"
+        "pakistan_narrative",
+        "kashmir_foreign_negative"
       ],
       "importance": 3,
       "published": "2026-06-28T16:49:58+00:00",
-      "fetched_at": "2026-06-30T10:53:49.019742+00:00"
+      "fetched_at": "2026-06-30T14:08:28.745204+00:00"
     },
     {
       "title": "Baramulla Police refute fake social media claims of militant attack, Amarnath Yatra cancellation - Greater Kashmir",
@@ -355,7 +368,7 @@
       ],
       "importance": 3,
       "published": "2026-06-29T02:50:43+00:00",
-      "fetched_at": "2026-06-30T10:53:53.513124+00:00"
+      "fetched_at": "2026-06-30T14:08:33.497197+00:00"
     },
     {
       "title": "Punjab police arrest prime accused Amritpal Singh in 2025 Kamal Kaur murder case - The News Mill",
@@ -368,7 +381,33 @@
       ],
       "importance": 3,
       "published": "2026-06-28T03:47:08+00:00",
-      "fetched_at": "2026-06-30T10:54:08.904807+00:00"
+      "fetched_at": "2026-06-30T14:08:48.479573+00:00"
+    },
+    {
+      "title": "Manufacturing growth seen moderating in Q1 as West Asia crisis weighs on sentiment: FICCI",
+      "summary": "India's manufacturing sector anticipates a slowdown in April-June FY27, influenced by West Asia tensions impacting business confidence. Despite this, robust domestic demand offers some resilience. Production and order book expectations have softened, though capacity utilization remains steady. Encou",
+      "link": "https://economictimes.indiatimes.com/news/economy/policy/indias-manufacturing-growth-set-to-slow-amid-west-asia-crisis-ficci-survey-reveals-key-insights-for-q1-fy27/articleshow/132092555.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "2026-06-30T11:52:26+00:00",
+      "fetched_at": "2026-06-30T14:09:20.363439+00:00"
+    },
+    {
+      "title": "Pension savings can help fund infrastructure, support Viksit Bharat: CEA",
+      "summary": "India's burgeoning pension savings hold immense potential to fund infrastructure and propel the 'Viksit Bharat' vision, while ensuring stable returns for subscribers, according to Chief Economic Adviser V. Anantha Nageswaran. He emphasized that pension funds' long-term nature aligns perfectly with d",
+      "link": "https://economictimes.indiatimes.com/news/economy/finance/maximizing-pension-savings-key-to-infrastructure-and-viksit-bharats-success/articleshow/132091825.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 3,
+      "published": "2026-06-30T11:36:18+00:00",
+      "fetched_at": "2026-06-30T14:09:20.363705+00:00"
     },
     {
       "title": "Floods, landslides & loss: Northeast India’s recurring monsoon crisis",
@@ -381,18 +420,31 @@
       ],
       "importance": 3,
       "published": "2026-06-30T07:30:00+00:00",
-      "fetched_at": "2026-06-30T10:54:51.148190+00:00"
+      "fetched_at": "2026-06-30T14:09:30.284707+00:00"
     },
     {
-      "title": "Supreme Court refuses to entertain plea seeking CBI probe into ‘extra-judicial’ killing of Bharat Tiwari",
-      "summary": "A Bench headed by Justice M.M. Sundresh asked the petitioner, advocate Vishal Tiwari, to approach the Patna High Court for appropriate relief",
-      "link": "https://www.thehindu.com/news/national/police-encounter-in-bihar-supreme-court-junks-plea-seeking-cbi-probe-constitution-of-expert-committee/article71164786.ece",
+      "title": "Three Naxals killed and Maharashtra policeman dies after encounter in Gadchiroli - The News Mill",
+      "summary": "Three Naxals killed and Maharashtra policeman dies after encounter in Gadchiroli&nbsp;&nbsp;The News Mill",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPRUJnSzBodTB0X1RqRURwcTRBWklSNmtoOFA2a3JodzFMS3Vma1ZIZjZwWF9aWklPejQ4VWZJaXVvVzlDQ21WZjJVbTI1TDNzUXJNMmxhSFhLWGNTODlrRjNxS0k1R2djUE9hbmxVRF9ObUpwRmU2X2ZkUEpOMEdDYVlIcTFVYzlBUmRRNTc1VmhCUS11M2hsNjlPbE5CQTFMMzVZWk5Kc3lDczhLaV90b2trQQ?oc=5",
+      "source": "GNews: Naxal surrender operation",
+      "category": "naxal_insurgency",
+      "signals": [
+        "terrorism_security"
+      ],
+      "importance": 3,
+      "published": "2026-06-29T06:42:27+00:00",
+      "fetched_at": "2026-06-30T14:09:53.500315+00:00"
+    },
+    {
+      "title": "CPI(M) urges Election Commission of India to extend SIR process by a month",
+      "summary": "Extension of the deadline is essential as voters have no adequate awareness about the process and BLOs are yet to distribute application forms to all households, say party leaders",
+      "link": "https://www.thehindu.com/news/national/andhra-pradesh/cpim-urges-election-commission-of-india-to-extend-sir-process-by-a-month/article71165934.ece",
       "source": "The Hindu - National",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 2,
-      "published": "2026-06-30T10:21:58+00:00",
-      "fetched_at": "2026-06-30T10:52:39.323342+00:00"
+      "published": "2026-06-30T14:03:02+00:00",
+      "fetched_at": "2026-06-30T14:07:10.874248+00:00"
     },
     {
       "title": "BJP president Nitin Nabin on maiden 2-day Jammu and Kashmir visit next week: What's on the agenda",
@@ -405,7 +457,18 @@
       ],
       "importance": 2,
       "published": "2026-06-29T02:13:17+00:00",
-      "fetched_at": "2026-06-30T10:52:41.994395+00:00"
+      "fetched_at": "2026-06-30T14:07:13.139330+00:00"
+    },
+    {
+      "title": "India's Cockroach party seeking education minister's ouster awaits cabinet reshuffle",
+      "summary": "Leaders of India’s youth Cockroach Janta Party neared two weeks of sit-in protests on Tuesday, backed by a well-known activist who has started a hunger strike in support of their demand for the resignation of the education minister.\nThe protests in the capital Delhi, come as sources say the governme",
+      "link": "https://www.dawn.com/news/2011878/indias-cockroach-party-seeking-education-ministers-ouster-awaits-cabinet-reshuffle",
+      "source": "Dawn - Pakistan",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T13:11:22+00:00",
+      "fetched_at": "2026-06-30T14:07:23.388106+00:00"
     },
     {
       "title": "Apple iPhone 18 Pro supplier list, parts and photos exposed in Indian supplier's data leak",
@@ -415,8 +478,30 @@
       "category": "pakistan_narratives",
       "signals": [],
       "importance": 2,
-      "published": "2026-06-30T06:43:25+00:00",
-      "fetched_at": "2026-06-30T10:52:48.769579+00:00"
+      "published": "2026-06-30T12:05:58+00:00",
+      "fetched_at": "2026-06-30T14:07:23.388824+00:00"
+    },
+    {
+      "title": "Indus Waters Treaty seminar: Tarar warns India against any move to block water flow",
+      "summary": "Indus Waters Treaty seminar: Tarar warns India against any move to block water flow",
+      "link": "https://arynews.tv/tarar-warns-india-agianst-any-move-to-block-water-flow",
+      "source": "ARY News",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T12:17:14+00:00",
+      "fetched_at": "2026-06-30T14:07:30.689210+00:00"
+    },
+    {
+      "title": "Pakistan’s Water Rights are Matter of National Security, Dar warns India",
+      "summary": "ISLAMABAD – Deputy Prime Minister and Foreign Minister Ishaq Dar said any attempt to weaken, suspend, or undermine Indus Waters…",
+      "link": "https://pakobserver.net/pakistans-water-rights-are-matter-of-national-security-dar-warns-india/",
+      "source": "Pakistan Observer",
+      "category": "pakistan_narratives",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T12:42:32+00:00",
+      "fetched_at": "2026-06-30T14:07:31.330304+00:00"
     },
     {
       "title": "‘Humanity is a privilege’: Umar Khalid on his six years in an Indian jail without trial",
@@ -427,51 +512,40 @@
       "signals": [],
       "importance": 2,
       "published": "2026-06-30T00:00:32+00:00",
-      "fetched_at": "2026-06-30T10:53:08.716774+00:00"
+      "fetched_at": "2026-06-30T14:07:42.303712+00:00"
     },
     {
-      "title": "\"Blatant Act Of Aggression\": India Slams Pak For Strikes In Afghanistan - NDTV",
-      "summary": "\"Blatant Act Of Aggression\": India Slams Pak For Strikes In Afghanistan&nbsp;&nbsp;NDTV",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOaGJmNjFlLU1WaHptX3NlYmxjMEFMOUd3b2ZMaWEzejR5TWR4ckxaVDNmNHo4b2FFb0NPdEtNNkNjOGdJUENEeGJncS1XeGFnRFRlNGVSUzRvMkY2NGFSRVBzcDRBMHpkeUhGcnNTRWk3d1FpUTlzUjQtUDVfT0t0MERQVjNsZ0dVajd1NXpKSG45bkxTUldoOWRMMTc5N21obVdPd01FaE1fUzdWTnczcm5KbnbSAbwBQVVfeXFMT0VKRTJnZV9tZHJoSGJpZHAtNjlaRGdmWGQ2aVMxR01ZalBOZGpNb2hMTWE2dDljemExYzAxNVU4em5FRml6eFQ3VkF0aGZxazBhRzVfdlM3cjlrejd1UGxYOU5yMTRudldtSl9adEhxS0VKRFVSaEFSY1g5QkREMTAzcnhRQmhZN2thVWxheEFiX2NxVmtiSFJ3V3NaT05uMHNiTW14Y29kOXBiRVRMZHd6Vks2Y3dkb2tlNzQ?oc=5",
-      "source": "GNews: India Pakistan",
+      "title": "Goldman Backs India 30-Year Bonds as Iran War Impact Contained - Bloomberg",
+      "summary": "Goldman Backs India 30-Year Bonds as Iran War Impact Contained&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUEJ6M1lMd1VQdjV3YkFMWF9ZUnBIdkRhc3RZT3VadGNNMTR1M18way1sTG1YWHB4enN0NFBCRURZMFJaUmhubDRXNmJTZHpCYUJlcFhmTHE1Sng2WFZsUTlSejRwbmIyT2JBUTN6NHlfRl8yc3MyWVlwTS1HNDZjaXVtMzVRQkw3dS13TlZCb05XNm15TGNYWWppSHVhYUhfMTZicGQyZ3d6WEpEajdMcm11UQ?oc=5",
+      "source": "GNews: Bloomberg India",
       "category": "western_media",
       "signals": [],
       "importance": 2,
-      "published": "2026-06-30T01:56:11+00:00",
-      "fetched_at": "2026-06-30T10:53:12.666407+00:00"
+      "published": "2026-06-29T08:53:41+00:00",
+      "fetched_at": "2026-06-30T14:07:44.999886+00:00"
     },
     {
       "title": "'Reckless behaviour': India condemns Pakistan's 'act of aggression' after strikes on Afghanistan - Firstpost",
       "summary": "'Reckless behaviour': India condemns Pakistan's 'act of aggression' after strikes on Afghanistan&nbsp;&nbsp;Firstpost",
-      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPTjNON2pmV3poSFVCcXNYR3NoY0FZcHdfSGhLUWVYbTNGdzAtakdjbW9uQ2tWNFRyUExySVVSLVlLQXFNSzM1bGp1SFhBQXJtamVOcUFoRzhPOW9YdE1hYVYxcDJBdmNjelhESnR5MkY5ZERIc0t0U1FrMTRhTkV3RFFYZ0lyRjNwTXBqYmRpUWtraFBXT1p4SVdNdTM5d2hMaWZpbGZKc0Rwb1l4OC1hYW8wdXFBak9NdFJ6OVJfWU9wbk1ERmNrRkpzem11NllHR1E?oc=5",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxPTjNON2pmV3poSFVCcXNYR3NoY0FZcHdfSGhLUWVYbTNGdzAtakdjbW9uQ2tWNFRyUExySVVSLVlLQXFNSzM1bGp1SFhBQXJtamVOcUFoRzhPOW9YdE1hYVYxcDJBdmNjelhESnR5MkY5ZERIc0t0U1FrMTRhTkV3RFFYZ0lyRjNwTXBqYmRpUWtraFBXT1p4SVdNdTM5d2hMaWZpbGZKc0Rwb1l4OC1hYW8wdXFBak9NdFJ6OVJfWU9wbk1ERmNrRkpzem11NllHR1HSAdcBQVVfeXFMUHZZeU5xSFA2WHozNXdSMTBMVjBuUkdxNFJBVzYwWnlZZEpjaEV3MklwSmhsQ1pQak1qMlNDVTFRR2E3YjUyS3JqOV9reDVCc2gtX1RsVTdFd19IOEJNZ2ZFTXB4M0NRQmZsNE9MSlhRZ3AzR2I1VnREWDNmTUVQWTRzY3FfS2dTVzVtMndtQnYwR04zN25SZkttSVdqcGdjeTJ6am5DWGpETDFPQnpyYTMyMS0wLXZISjFuNXZrWmRmblZHRFBwZmpFcy1BZzEzbG5ZcWdXTTQ?oc=5",
       "source": "GNews: India Pakistan",
       "category": "western_media",
       "signals": [],
       "importance": 2,
       "published": "2026-06-29T17:10:21+00:00",
-      "fetched_at": "2026-06-30T10:53:12.666549+00:00"
+      "fetched_at": "2026-06-30T14:07:49.582292+00:00"
     },
     {
-      "title": "'Blatant act of aggression': India strongly condemns Pakistan air strikes on Afghan territory - Deccan Herald",
-      "summary": "'Blatant act of aggression': India strongly condemns Pakistan air strikes on Afghan territory&nbsp;&nbsp;Deccan Herald",
-      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxPdDRFaTNqR3BzWU55YXlLU0kxaDJTTG5Ga1BwSTV1QlZmRUpzV1EyTW56bk13UFB4NDFjYzBDei05bWZlVTNIYm56RkNIS3F3d2xzQURGSlhyQWpRRi1uRi0tZl9zdGJHT1dabGhmU1VYbWxiRjdRV0hxOGxHTGZQTU5kTXZjbEFnWEVHazZDbEpfNWZyTjhXMlZ0cERmbzVzRlFsSVhoWmJMZW85ZnU5dnZSMjYtZnlSaFJhU2dQS0JNenJ2VGpIenlrVjBJQQ?oc=5",
+      "title": "'Will cut off those hands': Pakistan minister's stark warning to India over Indus Waters Treaty - The Times of India",
+      "summary": "'Will cut off those hands': Pakistan minister's stark warning to India over Indus Waters Treaty&nbsp;&nbsp;The Times of India",
+      "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxQWmduUHNMbkVTb3ZUb2d5ODEzRVUwbE5qYVZYX1F2SVJDNjFaQklMbjRRNl8zYWFxZDFqYlp4SkJEVTFQdjVveDU5aXpGdHlWYVIzNEpvejktOGRnektwU0tpTVpZNm9WR01jSGFhQlQzdS1UeF9keWI0eXk3NmViME1YVy1nQXEyQWlZRXhqRHhJWEZUZVhpR0xBZXI4bDRDVTdITFZqNF9tVW9Ia0NXMUJDbURmVURSX0ZWZFJ0MHBzZlFES3pSbVo3ZGF1MzJudG9yU1h2V1g0UFA1LXluNS15bkV2OTJKSG5kd054SGxZZ2FpbnYtcXkyZC3SAYICQVVfeXFMTjNvbTZYRS0xQ0loaFZsOGVFYncxVUtIcjc0NTB4RTRIX0JmN0RwWFFIRDFKdkROZmZsNE1NWGp0OENWMGlBeGU5bHpFZUZIWk5ESTJSVnJPWHZ5ci1sNGxvTkdheXVMTm9kR2JHUmtHbS01VjdDMGJfbnVuWW5PSUo4cFZqUVhwdTg3LUdjTE5IOEYzVmJIbmFZS09IMDNQNFNGRHBTaU9WcUM1Y2RtLUdCQ1l3ZFNIdkpvYlZ0UmNkVUpJUU1aNTY2R3hsNWFhdmlBX1NJQTdfZVUxRHh2YmNOZ3ZNRVlpOUo5Y2N5d1J3eHVUMV8yT2xMRWtDakMzMm5n?oc=5",
       "source": "GNews: India Pakistan",
       "category": "western_media",
       "signals": [],
       "importance": 2,
-      "published": "2026-06-29T19:31:48+00:00",
-      "fetched_at": "2026-06-30T10:53:12.666693+00:00"
-    },
-    {
-      "title": "Pakistan Trapped Over Airstrikes in Afghanistan; India Supports Kabul - Sandesh",
-      "summary": "Pakistan Trapped Over Airstrikes in Afghanistan; India Supports Kabul&nbsp;&nbsp;Sandesh",
-      "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxPRHF6M2FkVEVkeEl6RjI5WDdjb2h6bG85Y1QxWW9tTXhhWFVCNlhpWTVyR3VnUVM3ZTFVOFYzYVFia2ZZNVpDdXNFUmc4X2pLeU1tOWRuYzlyVHRYRFNZTmUteXQxb2htUlZBc1NyOHhVSlZRU2hVcTAzTFBJV0lod0MxMnRUSTAyQWtzRVMtQUNVdmdqT1kxbnd4ZDlYWHI0aUFtd1JIU0lJbXA1a0V1eUNOVXNHYTUzdXVVMDEwWTdZWDFacWhRNEhvZDJpTHpuUU1FQXBRWU1tYTBJVmFDZDFtZklUWmM?oc=5",
-      "source": "GNews: India Pakistan",
-      "category": "western_media",
-      "signals": [],
-      "importance": 2,
-      "published": "2026-06-30T08:06:23+00:00",
-      "fetched_at": "2026-06-30T10:53:12.667459+00:00"
+      "published": "2026-06-30T03:41:00+00:00",
+      "fetched_at": "2026-06-30T14:07:49.583052+00:00"
     },
     {
       "title": "Human Rights Groups Express Concern Over “Undeclared Emergency” and Threats to Democracy in Contemporary India - IndiaTomorrow",
@@ -482,7 +556,40 @@
       "signals": [],
       "importance": 2,
       "published": "2026-06-27T11:27:20+00:00",
-      "fetched_at": "2026-06-30T10:53:14.670655+00:00"
+      "fetched_at": "2026-06-30T14:07:51.625661+00:00"
+    },
+    {
+      "title": "Only India Condemns Pakistan’s Strikes Inside Afghanistan - افغانستان اینترنشنال",
+      "summary": "Only India Condemns Pakistan’s Strikes Inside Afghanistan&nbsp;&nbsp;افغانستان اینترنشنال",
+      "link": "https://news.google.com/rss/articles/CBMiT0FVX3lxTE9mMEx0aDJ3eHNtTWRZenh5VmdUZ0R6dmxoNW5rNklTYnRkOE1qakg1WEx4SUtKZXFfcmpEa0JXWS1XM2FRMVJ3RU5fRkp6Rzg?oc=5",
+      "source": "GNews: Afghanistan India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T10:36:21+00:00",
+      "fetched_at": "2026-06-30T14:08:00.023918+00:00"
+    },
+    {
+      "title": "\"Blatant Act Of Aggression\": India Slams Pak For Strikes In Afghanistan - NDTV",
+      "summary": "\"Blatant Act Of Aggression\": India Slams Pak For Strikes In Afghanistan&nbsp;&nbsp;NDTV",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxOaGJmNjFlLU1WaHptX3NlYmxjMEFMOUd3b2ZMaWEzejR5TWR4ckxaVDNmNHo4b2FFb0NPdEtNNkNjOGdJUENEeGJncS1XeGFnRFRlNGVSUzRvMkY2NGFSRVBzcDRBMHpkeUhGcnNTRWk3d1FpUTlzUjQtUDVfT0t0MERQVjNsZ0dVajd1NXpKSG45bkxTUldoOWRMMTc5N21obVdPd01FaE1fUzdWTnczcm5KbnbSAbwBQVVfeXFMT0VKRTJnZV9tZHJoSGJpZHAtNjlaRGdmWGQ2aVMxR01ZalBOZGpNb2hMTWE2dDljemExYzAxNVU4em5FRml6eFQ3VkF0aGZxazBhRzVfdlM3cjlrejd1UGxYOU5yMTRudldtSl9adEhxS0VKRFVSaEFSY1g5QkREMTAzcnhRQmhZN2thVWxheEFiX2NxVmtiSFJ3V3NaT05uMHNiTW14Y29kOXBiRVRMZHd6Vks2Y3dkb2tlNzQ?oc=5",
+      "source": "GNews: Afghanistan India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T01:56:11+00:00",
+      "fetched_at": "2026-06-30T14:08:00.024038+00:00"
+    },
+    {
+      "title": "India only country to condemn Pakistan’s airstrikes on Afghanistan - Amu TV",
+      "summary": "India only country to condemn Pakistan’s airstrikes on Afghanistan&nbsp;&nbsp;Amu TV",
+      "link": "https://news.google.com/rss/articles/CBMiOkFVX3lxTFAxRDZKTExROGxIbzdVSFgzV3Q5dldPYWlqd016SHkzZTcxTnY2ZXlBUm1SaUtEVkhCSEE?oc=5",
+      "source": "GNews: Afghanistan India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T10:43:33+00:00",
+      "fetched_at": "2026-06-30T14:08:00.024472+00:00"
     },
     {
       "title": "Balochistan activist's life sentence raises fear of unrest - dw.com",
@@ -495,7 +602,7 @@
       ],
       "importance": 2,
       "published": "2026-06-27T15:06:02+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353218+00:00"
+      "fetched_at": "2026-06-30T14:08:17.301512+00:00"
     },
     {
       "title": "Sammi Deen Says Police, Law Enforcement Personnel Raided Her Karachi Home After Weeks of Harassment",
@@ -508,7 +615,7 @@
       ],
       "importance": 2,
       "published": "2026-06-29T14:10:06+00:00",
-      "fetched_at": "2026-06-30T10:53:40.910659+00:00"
+      "fetched_at": "2026-06-30T14:08:18.793594+00:00"
     },
     {
       "title": "Pakistan: Protest over missing persons, target killings on Tuesday, says PTM leader Manzoor Pashteen - The News Mill",
@@ -519,7 +626,32 @@
       "signals": [],
       "importance": 2,
       "published": "2026-06-29T16:03:11+00:00",
-      "fetched_at": "2026-06-30T10:53:44.295918+00:00"
+      "fetched_at": "2026-06-30T14:08:22.251634+00:00"
+    },
+    {
+      "title": "The Jammu and Kashmir government is planning to announce the 2026 summer vacation schedule for schools across the Kashmir Valley from the second week of July, as temperatures witness an alarming rise. - News Arena India",
+      "summary": "The Jammu and Kashmir government is planning to announce the 2026 summer vacation schedule for schools across the Kashmir Valley from the second week of July, as temperatures witness an alarming rise.&nbsp;&nbsp;News Arena India",
+      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWWJCSFhNUjZHUmhsTjI1SXZuX3Q1YVlQVlBnblhhOGNTUTNrdzZJeDE2X0llcXdXMURBYjNWSnFvN2RvVWFfSzNQS1BOT0ZOWElfYmE2dWxORmF2VWJ1eE5ucnFtYUhvWExqQkdidFJvMHl5eDl2OHZVU1l0SmtSVWFkT1pGTm9RZURoWlMtUXZFUmNlVFUtQ2hDWVBDUQ?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative",
+        "kashmir_development"
+      ],
+      "importance": 2,
+      "published": "2026-06-30T08:24:18+00:00",
+      "fetched_at": "2026-06-30T14:08:34.505955+00:00"
+    },
+    {
+      "title": "Mehbooba Mufti claims house arrest over protests against outsourcing of J&K jobs - India Today",
+      "summary": "Mehbooba Mufti claims house arrest over protests against outsourcing of J&amp;K jobs&nbsp;&nbsp;India Today",
+      "link": "https://news.google.com/rss/articles/CBMi0gFBVV95cUxQQl9nSmF5S3owUVBXZkVncndFZkRpRU92MzVvdmJ4RHdTQmJ3SlUtbF9RRjFNaGFtVkxIUDR5UXpVMDdlWjdlVnVwVUo3QUJ3eHJrY0hpcnp3MlVLLWs4MFQ5cmIxUy1XWDlEck9VdERZREo3WV9iV3dsckFuLTdTeUh6MUNCZVhfRGdKbmd3RTZ6NnNib1ZWUUF1QmhIbUxTb2pJaGpZUjhSR3d1VUNpTXhVUGpSNDd1bnlQSkJ3cHEwTDZiMTdFemlOTkl4TzF0YUHSAdcBQVVfeXFMTVlRWU5jekh3c09uOW1mRDJjTl83UUlOX3RCTFRCWVVoV3FOeklkMExZNU1XZTR4ZGl5dDIxQmcxU0VYRl80bzZpc1A0UHpzdlNjUUU1SDRyTkxCVVNLQ2dvNDBiNVRjWnJiT2xZZEQzSWRNSm1QUF9ITEhXLVI2cWpHMTZoaHRua0tlWnhqZHpjcEV6ZE1aTXdkd1ZBWUhSRW9nbWVfQlktd1VmeloxYlp2VUxZeUJ5c215T1E1THk1aUVVZ1RDUWtyX1lpUHZnOGF5Zmo0SEk?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [],
+      "importance": 2,
+      "published": "2026-06-30T13:56:56+00:00",
+      "fetched_at": "2026-06-30T14:08:34.506077+00:00"
     },
     {
       "title": "No Decision Yet on Summer Vacations in Kashmir Schools, Govt Dismisses Rumours - Kashmir Life",
@@ -532,43 +664,7 @@
       ],
       "importance": 2,
       "published": "2026-06-30T08:10:47+00:00",
-      "fetched_at": "2026-06-30T10:53:54.598738+00:00"
-    },
-    {
-      "title": "The Jammu and Kashmir government is planning to announce the 2026 summer vacation schedule for schools across the Kashmir Valley from the second week of July, as temperatures witness an alarming rise. - News Arena India",
-      "summary": "The Jammu and Kashmir government is planning to announce the 2026 summer vacation schedule for schools across the Kashmir Valley from the second week of July, as temperatures witness an alarming rise.&nbsp;&nbsp;News Arena India",
-      "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNWWJCSFhNUjZHUmhsTjI1SXZuX3Q1YVlQVlBnblhhOGNTUTNrdzZJeDE2X0llcXdXMURBYjNWSnFvN2RvVWFfSzNQS1BOT0ZOWElfYmE2dWxORmF2VWJ1eE5ucnFtYUhvWExqQkdidFJvMHl5eDl2OHZVU1l0SmtSVWFkT1pGTm9RZURoWlMtUXZFUmNlVFUtQ2hDWVBDUQ?oc=5",
-      "source": "GNews: Kashmir elections politics",
-      "category": "kashmir_focus",
-      "signals": [
-        "kashmir_development",
-        "pakistan_narrative"
-      ],
-      "importance": 2,
-      "published": "2026-06-30T08:24:18+00:00",
-      "fetched_at": "2026-06-30T10:53:54.599285+00:00"
-    },
-    {
-      "title": "Punjab Police busts cross-border arms smuggling network, arrests four - ThePrint",
-      "summary": "Punjab Police busts cross-border arms smuggling network, arrests four&nbsp;&nbsp;ThePrint",
-      "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxQYU1KNXlHSERFZk5ZLVJVVmdWeUlPbHRFTnhtdks0eWphT2p1VnFYeVBGT0YxaUFrVF9jdmNFTHVTRk5aZzBLbFR3UUx5MVRxMEpjUEhOUkt6aFA1TWdDazZaV3ZDd2tnbmtHaFFNLU9KLUtpLUJ1cVQyVnd2TVM5b1dqZndFODVyc2otWm5PZFpaS1dzZGtGNm1RTjVMd3dUZmt2eTJB0gGrAUFVX3lxTE9HNkZ1Vkd5NnFzSW0zNGJfTlJjR1c3aER3M0RrN25GbzVQZU9adVo5WHBnQS1Ia2RYWl9HYU8zcmdtdEVJVlVmd3RnTDUweUprMDBjRE03czZzcHFCSXItWkk1cmNRYUdFdWduVzBrT2NOTy1LRnE0WUNjY3NhZjdHTC1TMXNYSlJFRFprVHBQMi13NHBQUDdxTlNvZXEtbDhNWEhNVTNQSkkzSQ?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 2,
-      "published": "2026-06-27T16:50:20+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872452+00:00"
-    },
-    {
-      "title": "Arunachal tribal body alleges PLA camps, seeks urgent action - MSN",
-      "summary": "Arunachal tribal body alleges PLA camps, seeks urgent action&nbsp;&nbsp;MSN",
-      "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxObG1DSFNySzFRRElHUHRvaVl6V0Z6cTNnRlNKLXBwSjVCUHcycWlab0hlTlRWUEVGUU9hWV9uR2pSVEZYYmFfWG92UW5GREZHMWhvUFB6UXpjS3JXN0NDWlJfNjRJTXlVRXBQOE9DTEQ2Mmcwd2NHVGJkenA5MWJOWGkyNTd5N2ZyRlg4NmladUx2NUZub2l1bXk0WmQtZEdWeFdtZmU1bk5XLTR0TWRTcUZ1cURWWlRwNF9JZjgxQXk1VkktTFhpV2pBYkU3Rl9hZmhqOXU3VTU0U1lRQ0hiajBlOWt6UjZnY2hLMUpXN3NQWjduZjY3NElQSWptWkczRzBv?oc=5",
-      "source": "GNews: Arunachal China renaming",
-      "category": "border_territorial",
-      "signals": [],
-      "importance": 2,
-      "published": "2026-06-29T10:21:35+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708425+00:00"
+      "fetched_at": "2026-06-30T14:08:34.506199+00:00"
     },
     {
       "title": "Nah tribe alleges Chinese PLA occupied ancestral land in Arunachal, seeks urgent government action - Moneycontrol.com",
@@ -579,18 +675,7 @@
       "signals": [],
       "importance": 2,
       "published": "2026-06-29T03:06:02+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708586+00:00"
-    },
-    {
-      "title": "Five injured in militant attack in Garo Hills - Assam Times",
-      "summary": "Five injured in militant attack in Garo Hills&nbsp;&nbsp;Assam Times",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNZHZZNE93UVVIT0laLVl4OFVkRWxDd08zS1dWUDgxWjFrbmUtTkNWaU5DMWlnYTBmRGxmZ3U0b3cyazZ2VmxxbnFiaWo2cFpLdE51LW9MRHJVcFNHa0NBbWRsQXRuUGtWRWZJQjlvYXcza0VRU0pRMGlIT3NkUDRaQWJxQnVtTjA3OVE?oc=5",
-      "source": "GNews: Northeast insurgency",
-      "category": "northeast_india",
-      "signals": [],
-      "importance": 2,
-      "published": "2026-06-26T12:10:18+00:00",
-      "fetched_at": "2026-06-30T10:54:50.526453+00:00"
+      "fetched_at": "2026-06-30T14:09:05.136296+00:00"
     },
     {
       "title": "Sikkim: 19-yr-old held in alleged Islamic state-linked probe",
@@ -601,20 +686,20 @@
       "signals": [],
       "importance": 2,
       "published": "2026-06-30T06:58:15+00:00",
-      "fetched_at": "2026-06-30T10:54:51.148453+00:00"
+      "fetched_at": "2026-06-30T14:09:30.284969+00:00"
     },
     {
       "title": "U.S.-India relationship at its lowest in 30 years: Indian-American Democrat leader",
       "summary": "Indian-American Congressman Ro Khanna claimed that during his recent visit to China, India’s Ambassador there had told him that a generation of trust was lost due to Mr. Trump’s policies",
       "link": "https://www.thehindu.com/news/national/us-india-relationship-at-its-lowest-in-30-years-indian-american-democrat-leader/article71164727.ece",
-      "source": "The Hindu - National",
+      "source": "The Hindu - International",
       "category": "india_geopolitics",
       "signals": [
         "pakistan_narrative"
       ],
       "importance": 1,
       "published": "2026-06-30T10:46:20+00:00",
-      "fetched_at": "2026-06-30T10:52:39.322884+00:00"
+      "fetched_at": "2026-06-30T14:07:11.358558+00:00"
     },
     {
       "title": "Don't care about name on letterhead: Sergio Gor on Indo-Pacific command row",
@@ -627,7 +712,20 @@
       ],
       "importance": 1,
       "published": "2026-06-30T07:25:56+00:00",
-      "fetched_at": "2026-06-30T10:52:39.808184+00:00"
+      "fetched_at": "2026-06-30T14:07:11.358992+00:00"
+    },
+    {
+      "title": "SIR 2026 revisions reach Delhi, Maharashtra, and more: All you need to know",
+      "summary": "",
+      "link": "https://indianexpress.com/article/india/sir-2026-revision-reaches-delhi-maharashtra-and-more-all-you-need-to-know-10764604/",
+      "source": "Indian Express - India",
+      "category": "india_geopolitics",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T13:24:15+00:00",
+      "fetched_at": "2026-06-30T14:07:12.006495+00:00"
     },
     {
       "title": "Mumbai-Ahmedabad bullet train: How India’s first high-speed rail project could transform the regional economy",
@@ -640,7 +738,7 @@
       ],
       "importance": 1,
       "published": "2026-06-30T10:43:56+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527062+00:00"
+      "fetched_at": "2026-06-30T14:07:12.006660+00:00"
     },
     {
       "title": "Senate opposition leader files privilege motion against Bhara Kahu SHO over 'discourteous' conduct",
@@ -653,7 +751,7 @@
       ],
       "importance": 1,
       "published": "2026-06-30T07:27:46+00:00",
-      "fetched_at": "2026-06-30T10:52:48.769241+00:00"
+      "fetched_at": "2026-06-30T14:07:23.388499+00:00"
     },
     {
       "title": "‘It’s open green space versus construction’: Delhi’s historic polo club and the battle for the city’s future",
@@ -666,7 +764,20 @@
       ],
       "importance": 1,
       "published": "2026-06-29T09:00:40+00:00",
-      "fetched_at": "2026-06-30T10:53:08.717072+00:00"
+      "fetched_at": "2026-06-30T14:07:42.304029+00:00"
+    },
+    {
+      "title": "Satellite captures 1,500-km-long monsoon rain band from Bengal to Kashmir - India Today",
+      "summary": "Satellite captures 1,500-km-long monsoon rain band from Bengal to Kashmir&nbsp;&nbsp;India Today",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxNaU1aYmNXOW1INFROU3hORlBmNFVBdGFIREl6NTIwbnBhWGYyUFFCVEFSakdvUWFQODYtblBZZ3pFVlJZVVNKZnBPZ2t1ZFRiT2VJOS14OVRsZzZ3ZjJ5Mm1PMmdCaF9nNVhmNG1kYjI1RW14b3JQNVJLZU9HMDVJRTJNVzgydGRuMFRTQ2RYS1F1YjlJSXlWVDNnaS1nRUFKeWFtR0kwRXRBM2lJTlZPU09FaHBoOUl2WEQ1eFJvZldFb0J6em5ta2hwMNIB0AFBVV95cUxOLXBDRDNBY28zMFJ1XzhRMV9XVVVqR3dRUFYyMjB3R3dXa0FBTm9IU3FPdWg3M1AwTXBuYlJPY0NlMkJtZVZaS2RZTjBCT3V6Ml92T000WUU4S1Jvbmt2X0xBMEd4NWtEYWVCWDlMeUZZRFJzSGppdWVqSFVqOXZZTE54aGtKdVBnd2owV1gxN2Z6RGJ6UldQQlhSd3dNQjdpRTZhT20yOThsbU5KakVjdzRrR21XT1pldEx6RzQtQ3ppNGJ0OUVvanBCRk1xSHBC?oc=5",
+      "source": "GNews: Kashmir",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T05:26:36+00:00",
+      "fetched_at": "2026-06-30T14:07:52.693585+00:00"
     },
     {
       "title": "Mirwaiz Calls for India-Pakistan Dialogue, Cites US-Iran Talks - Kashmir Life",
@@ -679,20 +790,7 @@
       ],
       "importance": 1,
       "published": "2026-06-30T10:09:36+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771196+00:00"
-    },
-    {
-      "title": "BLOs backbone of India’s electoral democracy: CEC - Greater Kashmir",
-      "summary": "BLOs backbone of India’s electoral democracy: CEC&nbsp;&nbsp;Greater Kashmir",
-      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNTHh4czkyckdEUHd5U01Ec0lPb0xuWnBCLTdfclBWdTRUOS1SSkNMU2FxME5sQjBucVNYekxhcnhLT1dROUpjZ1RFZmtwdUtwSS00bFBTZm9aNWh3amNIZTZoZkZhb0UwSnBXM3I5aWVlR1REZEtJaGhuaHVIcGZTcXJkd014YnVoZWpxNHRKYzVfdjFHVTBSR3l1a9IBoAFBVV95cUxQdml4Z2NLV3dIaXVSUFlxby1kdjJHd3owc25UTVc2LVVMVWxQamlQOGstdW5rb3NodXZ6TmZGQU5lNjI3dlFtMDRjY21mU2t1ZGtVVEo2S0VGUnB0VVRFNmNwS29sSHNhbXJBVHo5ZGJZc2RfU1UzaFRGdEdIUkVkaDhmOElscklQWngtOTJjR1ZBVDRpYzZTeHVJMmVUQTlZ?oc=5",
-      "source": "GNews: Kashmir",
-      "category": "western_media",
-      "signals": [
-        "pakistan_narrative"
-      ],
-      "importance": 1,
-      "published": "2026-06-29T23:26:21+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771353+00:00"
+      "fetched_at": "2026-06-30T14:07:52.693696+00:00"
     },
     {
       "title": "India leads major democracies in electoral transparency: CEC - Greater Kashmir",
@@ -705,7 +803,7 @@
       ],
       "importance": 1,
       "published": "2026-06-29T12:00:27+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771469+00:00"
+      "fetched_at": "2026-06-30T14:07:52.693825+00:00"
     },
     {
       "title": "Raids In 3 Kashmir Districts In Terror Funding Case, Digital Devices Seized - NDTV",
@@ -718,7 +816,20 @@
       ],
       "importance": 1,
       "published": "2026-06-27T10:38:37+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771580+00:00"
+      "fetched_at": "2026-06-30T14:07:52.693939+00:00"
+    },
+    {
+      "title": "BLOs backbone of India’s electoral democracy: CEC - Greater Kashmir",
+      "summary": "BLOs backbone of India’s electoral democracy: CEC&nbsp;&nbsp;Greater Kashmir",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNTHh4czkyckdEUHd5U01Ec0lPb0xuWnBCLTdfclBWdTRUOS1SSkNMU2FxME5sQjBucVNYekxhcnhLT1dROUpjZ1RFZmtwdUtwSS00bFBTZm9aNWh3amNIZTZoZkZhb0UwSnBXM3I5aWVlR1REZEtJaGhuaHVIcGZTcXJkd014YnVoZWpxNHRKYzVfdjFHVTBSR3l1a9IBoAFBVV95cUxQdml4Z2NLV3dIaXVSUFlxby1kdjJHd3owc25UTVc2LVVMVWxQamlQOGstdW5rb3NodXZ6TmZGQU5lNjI3dlFtMDRjY21mU2t1ZGtVVEo2S0VGUnB0VVRFNmNwS29sSHNhbXJBVHo5ZGJZc2RfU1UzaFRGdEdIUkVkaDhmOElscklQWngtOTJjR1ZBVDRpYzZTeHVJMmVUQTlZ?oc=5",
+      "source": "GNews: Kashmir",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-29T23:26:21+00:00",
+      "fetched_at": "2026-06-30T14:07:52.694076+00:00"
     },
     {
       "title": "J&K shouldn’t have to beg for statehood: Karan Singh tells Centre - Greater Kashmir",
@@ -731,20 +842,33 @@
       ],
       "importance": 1,
       "published": "2026-06-27T22:07:42+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771728+00:00"
+      "fetched_at": "2026-06-30T14:07:52.694224+00:00"
     },
     {
-      "title": "India Kashmir Drill - Journal-News.com",
-      "summary": "India Kashmir Drill&nbsp;&nbsp;Journal-News.com",
-      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOTm1WdlVJVG0yQ096V2NGRkFJVGhpOVZnblREWVBEOERmWUVWb08zZVI4cHFCZkFlVzF3NEFHN0psZ1pudTc3ZUZRQ0tEVnRwR1RaeVJ6bUpIWG1Fd3pqd2NwQUJucFVZT0p5Q3k2MWZHa1pwaVl5WFpobTYwZTcyNHJJbUFKYTZ5azV6OE9zdWs1ZlR0UGdyMk9sSUlNQXZIQllIQTI2U0RlVG9mVmc?oc=5",
+      "title": "APTOPIX India Kashmir Drill - Journal-News.com",
+      "summary": "APTOPIX India Kashmir Drill&nbsp;&nbsp;Journal-News.com",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxOclRnZ2xiOVpieHhKNFVGVGxNNUZfaDdtNkFvMkpSUTZ6V0dTTzUyZHlQcTFPX0IxVGlsRjdVRmk3b0l0eUZfQ3ozanRmeTVGNnFPTnhid2ViakVSRnlIenR2djhscHZsT1FJYms3UlRuUVBKdkljSG9rVkhNWGk5X3ZHNVpzcHFidGFsb1BsVFo4VDhpSTd5akR3YU9jMEdYU3VZUThtZVo4QzdUUnVVRHVRZ1FmeHR6?oc=5",
       "source": "GNews: Kashmir",
       "category": "western_media",
       "signals": [
         "pakistan_narrative"
       ],
       "importance": 1,
-      "published": "2026-06-30T08:42:16+00:00",
-      "fetched_at": "2026-06-30T10:53:15.771977+00:00"
+      "published": "2026-06-30T11:00:27+00:00",
+      "fetched_at": "2026-06-30T14:07:52.694312+00:00"
+    },
+    {
+      "title": "India Kashmir Extreme Weather Heat - hjnews.com",
+      "summary": "India Kashmir Extreme Weather Heat&nbsp;&nbsp;hjnews.com",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOdFVmeUVUV3pDQTV6WUR0c20wbDF6ckUtV3RTei1UZDBmX2ZvNVJQTV9MSzVsVFE0ZENnMjMxal9tUWRWOU1HOWZyQ0h5aHJqRHFLR20yYWdIVmpkLW4tU3Y1bUc5elZHU0ltendLbnhOM1Ryd21MVjNibE5saFplSjRQOXVGbFhhdVVGcVlRamhHZG9tellLc3E0Y1ZmWUNVbHoySC1Uc1pUTml5NjQybQ?oc=5",
+      "source": "GNews: Kashmir",
+      "category": "western_media",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T12:47:26+00:00",
+      "fetched_at": "2026-06-30T14:07:52.694389+00:00"
     },
     {
       "title": "HRCP slams Punjab's habitual offenders bill - The Express Tribune",
@@ -757,7 +881,7 @@
       ],
       "importance": 1,
       "published": "2026-06-29T17:03:42+00:00",
-      "fetched_at": "2026-06-30T10:53:36.613399+00:00"
+      "fetched_at": "2026-06-30T14:08:15.631289+00:00"
     },
     {
       "title": "Front Line Defenders stands with Sammi Deen Baloch in the search for her disappeared father, Dr. Deen Mohammed Baloch - Front Line Defenders",
@@ -770,7 +894,7 @@
       ],
       "importance": 1,
       "published": "2026-06-28T16:47:55+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353115+00:00"
+      "fetched_at": "2026-06-30T14:08:17.301410+00:00"
     },
     {
       "title": "'17 Years Of Silence': Baloch Activist's Open Letter Exposes Pak's Forced Disappearances - NDTV",
@@ -783,7 +907,7 @@
       ],
       "importance": 1,
       "published": "2026-06-28T15:21:53+00:00",
-      "fetched_at": "2026-06-30T10:53:38.353691+00:00"
+      "fetched_at": "2026-06-30T14:08:17.301884+00:00"
     },
     {
       "title": "French Newspaper Reports Dr Mahrang Baloch Nominated for Nobel Peace Prize for Second Consecutive Year",
@@ -796,7 +920,7 @@
       ],
       "importance": 1,
       "published": "2026-06-27T04:38:20+00:00",
-      "fetched_at": "2026-06-30T10:53:40.911965+00:00"
+      "fetched_at": "2026-06-30T14:08:18.794919+00:00"
     },
     {
       "title": "Pakistan's Kashmir Narrative Is Collapsing Under Its Own Weight - MEMRI | Middle East Media Research Institute",
@@ -809,7 +933,20 @@
       ],
       "importance": 1,
       "published": "2026-06-26T18:37:58+00:00",
-      "fetched_at": "2026-06-30T10:53:49.019556+00:00"
+      "fetched_at": "2026-06-30T14:08:28.745017+00:00"
+    },
+    {
+      "title": "Escalating unrest and civilian casualties in Pakistan Occupied Jammu and Kashmir: A 15 year overview - organiser.org",
+      "summary": "Escalating unrest and civilian casualties in Pakistan Occupied Jammu and Kashmir: A 15 year overview&nbsp;&nbsp;organiser.org",
+      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNMGNpRnVja1FheGtLbU11V3BuMzZReG95aWxfSnJSNHNVQkxxZmNfMXYtRC1DNEJQX21EWWZCaTdZeExkYnFJZGdpNUdEWnlZQlozbFQ4UURxeUVzY0h3THA1MnJZNkFBUWIwN25ueVJMdTFJLTdQam5STXc4UV9aaG5rSzhfYkVEbUgwdzBCOE1DZ1BkUmRvNk4yTi1jMEsyanJIZXBIck8yTUxEd3BVa095RnN4Uy0wY1ZrZC12dGdaYTVTcHlIcmlwZ2toMVh5bkJ4ODRCTm1HUkgyQW0tctIB5gFBVV95cUxQUDdhaVhON1NYenBqUHhpNTZKX1pCV0V0MUF1ODVoa1BBWFJncmwwUFFWcEh3UzU5cW1Sa1BNeHRIOU1lZ0owb1FlVHlVU1U4Q2JLZkZxSXhGaGFfZHgtdUgtTm1SdXJEeVNsTXRPMHFKSV8tSm04OVozZUFMek1MVW95Z3cyN1pNV2h3dk5OVXQtTldScEpvbC1fVlFCYUhZZ3hpLUlwUUluNzdxX2dyellrck83U0JIVWw3S1ZTOWZ2R2s4MW9WMUVYLVRYYWM4QWNpeERqUDYwU1dtQTYxMmVUSW9Udw?oc=5",
+      "source": "GNews: Pakistan on Indian Kashmir",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T05:03:55+00:00",
+      "fetched_at": "2026-06-30T14:08:28.745345+00:00"
     },
     {
       "title": "OIC for Kashmir dispute resolution in line with UN resolutions - Business Recorder",
@@ -822,11 +959,11 @@
       ],
       "importance": 1,
       "published": "2026-06-28T21:36:35+00:00",
-      "fetched_at": "2026-06-30T10:53:50.954248+00:00"
+      "fetched_at": "2026-06-30T14:08:30.833266+00:00"
     },
     {
-      "title": "Speaker reviews development plan for Yousmarg tourism circuit - Kashmir Images",
-      "summary": "Speaker reviews development plan for Yousmarg tourism circuit&nbsp;&nbsp;Kashmir Images",
+      "title": "Speaker reviews development plan for Yousmarg tourism circuit - thekashmirimages.com",
+      "summary": "Speaker reviews development plan for Yousmarg tourism circuit&nbsp;&nbsp;thekashmirimages.com",
       "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxQMnd5djB2aS1XSE81cTlRSG9wdGV0cF9wZW1NNmlHZWdRT3RQcXYycml5U0pkcWRUMzl5MnhMZWt6cE45WkczU1FSYXJUOFp6N192Zlh2RV9ESmlONko3T3V4YXdiaWxSWEhDLXhHWTRsTllmU0RSUkZwM182cEk3ZlNXYnNjSDFVUWQ0NGxiR21IcWc2TGw1TnZrMEFReEhESmVxWA?oc=5",
       "source": "GNews: Jammu Kashmir developments",
       "category": "kashmir_focus",
@@ -835,7 +972,46 @@
       ],
       "importance": 1,
       "published": "2026-06-29T20:15:17+00:00",
-      "fetched_at": "2026-06-30T10:53:52.557738+00:00"
+      "fetched_at": "2026-06-30T14:08:32.511946+00:00"
+    },
+    {
+      "title": "CM Omar Abdullah Interacts with Filmmakers, Promotes Jammu & Kashmir as Film Destination | Akashvani News - News On AIR",
+      "summary": "CM Omar Abdullah Interacts with Filmmakers, Promotes Jammu & Kashmir as Film Destination | Akashvani News&nbsp;&nbsp;News On AIR",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxOSGdyb0RhTGVqUFRIaUNZYU51a05UMGFDQkVaLTBOQ0VJdkItZmYtZTJLM1p6YkJicGs1N0RRUTh4QUVzVUZNZjVIMjJYUUtmMjBfM2RhTkpuSGNOQmtYSmR4M2R6TnpYRGc1OWVLdUlBSy1KY1FGTmZhUHBxdUFOYlFRSmo0bmViMlo1RXIzM091bFo3Vi16dERnaFJhY2N3Ri13YmdDMjJBNjFCY3BOdw?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T11:21:46+00:00",
+      "fetched_at": "2026-06-30T14:08:34.505004+00:00"
+    },
+    {
+      "title": "Jammu Kashmir Govt Outsources Over 1300 Forest Workers To Private Companies Amid Opposition Backlash - ETV Bharat",
+      "summary": "Jammu Kashmir Govt Outsources Over 1300 Forest Workers To Private Companies Amid Opposition Backlash&nbsp;&nbsp;ETV Bharat",
+      "link": "https://news.google.com/rss/articles/CBMi5gFBVV95cUxQLUtyMlNoSGhtVWFQeTBtY0MxNHdnazdDRzBrWWZ1Zl85MlpOVVJjSjJWcGxzcU4tMWpsVUMxTW91NWt2U1BPWUl0WkNoSE5iZzh3V0FNOGY4YWRhdGdvNVpMQ3ZGYWhzblNxRWdhZkxHRlNnYnBzczZBNVlnOHh4ZElyVHB3S3l1WmRQVTFyWlhGN01DX0hNdF9iUHY0ak5mLTBQVkR4ZEFlZ3BodWlsbUNqaFgxUnBvek9VUmMyQkZnRkZXeGdlcUJCLVRxbk9CaDF4X3hZdlBEWkpHZVNPLWVKYzZkQdIB6wFBVV95cUxOa3BET0duNjU1YWpzS3ZRbWUxMFZ5U2V2U0IxQll1NmcwSHdTd3ZKR1JubVVBQXdqaWJSTHMtdWFsY05tN3J3NUV3U2h1QThEeWptOEpLWHJvWEU2NG82ZzQzeWQ2NHZBYWF2bVYtd1VLek43LUkyN0VOUXJHc01rNnlOWTFsRHJ4T2NvLUZLYkRnTUd6b2xuQ0NFUFJsc05admY1UWNnS0s0OEwtbVpZbElTYmw0Y01qdlFrY2dBX1BmUk9ZZXZzSUdXbDJvbWNCeXVLeDlTWGFyVnlVd2xYdC1pdGFkczJsTVhv?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T13:21:31+00:00",
+      "fetched_at": "2026-06-30T14:08:34.505141+00:00"
+    },
+    {
+      "title": "Jammu Kashmir Govt Restricts Amarnath Yatra Media Briefings to Authorised Officers - Kashmir Life",
+      "summary": "Jammu Kashmir Govt Restricts Amarnath Yatra Media Briefings to Authorised Officers&nbsp;&nbsp;Kashmir Life",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPVndRcnZ6WlJyNXNPVTREbHhNMUF0bDh1UTJGb2pVaFRtZUVpaUZ4Mm1nSHREbXBpVjF6ek5fR09jYlhYSDRfOTg1ZlEwY0NMUWg4aGxrV0FLVi01TTQzem5BbXl3WWhKdkg5S29ETmczTm0teTB3Zk9yejRqQllQbWZBOWdlOTVlcndNdndDUDJiRGJNLUdqQTRkd2taZWVNSDUzZUFxUlR2eUhhd3ZMS2Jjb0M?oc=5",
+      "source": "GNews: Kashmir elections politics",
+      "category": "kashmir_focus",
+      "signals": [
+        "pakistan_narrative"
+      ],
+      "importance": 1,
+      "published": "2026-06-30T11:28:05+00:00",
+      "fetched_at": "2026-06-30T14:08:34.505378+00:00"
     },
     {
       "title": "Jammu and Kashmir intensifies anti-drug drive with large-scale public participation - News On AIR",
@@ -848,7 +1024,7 @@
       ],
       "importance": 1,
       "published": "2026-06-29T23:33:33+00:00",
-      "fetched_at": "2026-06-30T10:53:54.598604+00:00"
+      "fetched_at": "2026-06-30T14:08:34.505501+00:00"
     },
     {
       "title": "Why outsourcing has become biggest political battle over jobs in J&K - Greater Kashmir",
@@ -861,59 +1037,7 @@
       ],
       "importance": 1,
       "published": "2026-06-29T23:28:48+00:00",
-      "fetched_at": "2026-06-30T10:53:54.598850+00:00"
-    },
-    {
-      "title": "Jammu & Kashmir And Ladakh High Court Weekly Round-Up: June 22 - June 28, 2026 - Live Law",
-      "summary": "Jammu & Kashmir And Ladakh High Court Weekly Round-Up: June 22 - June 28, 2026&nbsp;&nbsp;Live Law",
-      "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQTlVaalYwY0VMd2hMczdvaGktU0xRR0FaQW1sWHVjTDlCVi1lUHZSSXpsTDhtRVIzX3VBd1FWR1V0Ty1OV0QtWWx0b0Nkbkc3eEl5T3h3NFV3aU42XzVVU2Y2c0JxMGlMaWI0NnZUVERKaU5nbElVbl9ETWdTVGllVVhOMjNQenpaZTBIcmtYVWFBVkxwSHRKVUJEXzhORVFEOU5PTVR5aGs2eHJEZDhGaTFjUmExRTJhNkhlQjRBdGpqNG9MdVQyT01B0gHPAUFVX3lxTE5pSExZa1lSUnFtTl9XZUp0dHNNRy1kODBnOEQ2S1RrMGJ6aFVoNjJ2VUdCcjYzakx1Z1ZETGxQcVF5MUxkd2lxVngzMDgyMkhLY0dpTmFHVEw0aTVTbWM0YVJXRFlybTl1LWFMeHdYdWJJWFpadFUyelYtVWJlVC1hQWJjcWxPbThxSmpNVmNQRlJMMmRTUS16WmRSSG9QYTh4WDZ5aU16WHllMk5zOTF5UDNQRWx2d0RKQUJLeGJ0RVRTNjlYcm80dHNnZDY5UQ?oc=5",
-      "source": "GNews: Kashmir elections politics",
-      "category": "kashmir_focus",
-      "signals": [
-        "pakistan_narrative"
-      ],
-      "importance": 1,
-      "published": "2026-06-29T14:45:57+00:00",
-      "fetched_at": "2026-06-30T10:53:54.599070+00:00"
-    },
-    {
-      "title": "Jammu And Kashmir Weather Update: Heatwave Persists Across Valley And Jammu; Rain Likely From July 1 - ETV Bharat",
-      "summary": "Jammu And Kashmir Weather Update: Heatwave Persists Across Valley And Jammu; Rain Likely From July 1&nbsp;&nbsp;ETV Bharat",
-      "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPZkhwVUd6NW9WTWRnWXp5ZmxZTFlIWk80c1Q2MS05UUdfVzJZZnhvalVxc2J4UDYwRGR0ZWRkV3o0cE1rd01iNTFnQ3dqekZPSE1CVUZnVzlxcWtwaTBoaDZmYTZnUzNhREJlSXJRYjNSLU9CNm5CSUMxWWpRNXJaQ1FQWlZ6bXlKcnNQZThhQnd4OUdOV3lFb3U0RDB2cDk3bEpxeVhOT1NCME41alM1Mlpua1ZSVzQ2MEtjQ3VreENBSF9Gc2FqRHlORTA1cE1zdWVBSUV4LXVUdnQ5aHRIZTN30gHnAUFVX3lxTE0zTjFtN0Z1a2t2X0Y0YThXSzA3bWJidFpSYjJnRUFWSENiSTdCOW9NTnZSM08tOGk3S0ExTUFDM0xqdzVRNUMtcXFqVjdUb0JQWmN3bDM0SGtJQ3BUT0MxUTBON29UeG12Tmcxc3hZdFlQM29maEF4Z1FEbWJzaEFyX2FqeWdiajdPZmJELUw4Vzh1WnlpV0E2dGxfa3RHVkNYR04ya1NEam95V0p0MGsxSDNxa0ZZVDBmUl9DdmNVLXNUaVZvdXlTQWZvU0YteG04a3lXSDV1MzJRZzlhLXlQV2hmWEEwMA?oc=5",
-      "source": "GNews: Kashmir elections politics",
-      "category": "kashmir_focus",
-      "signals": [
-        "pakistan_narrative"
-      ],
-      "importance": 1,
-      "published": "2026-06-30T09:21:09+00:00",
-      "fetched_at": "2026-06-30T10:53:54.599431+00:00"
-    },
-    {
-      "title": "Over 40,000 Government Posts Vacant Across Jammu & Kashmir, Says GAD Commissioner Secretary - News On AIR",
-      "summary": "Over 40,000 Government Posts Vacant Across Jammu & Kashmir, Says GAD Commissioner Secretary&nbsp;&nbsp;News On AIR",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPemcyWlg4Z1VZa01nTGFVZFZUd0J0M19pclU0UmZwNWk5UUNVWEotT25laG1EczNlbnlZNGthV292RkhoRy1FNnhyNURxcG9VdV9rVTV0UWVRRlRpdG9udlNZXzlMSndkdXJaNWVhRmlucHNabXBTamM2WktPWmNvdC00Zm1yY0Y1ZWRkcGJna2JCMk1vZDVhSkVjQ2RmaF9wY01NSGhVeVlrelRKckZrN190SQ?oc=5",
-      "source": "GNews: Kashmir elections politics",
-      "category": "kashmir_focus",
-      "signals": [
-        "pakistan_narrative"
-      ],
-      "importance": 1,
-      "published": "2026-06-29T23:41:16+00:00",
-      "fetched_at": "2026-06-30T10:53:54.599583+00:00"
-    },
-    {
-      "title": "Amarnath Yatra: Multi-layer security grid in place from Punjab to J&K - Kashmir News Observer",
-      "summary": "Amarnath Yatra: Multi-layer security grid in place from Punjab to J&amp;K&nbsp;&nbsp;Kashmir News Observer",
-      "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxNOENpOWJNeTB0NUlCVS0yUFFkdWZMZnRfMjltREhyZUFJMU1IbHRjQU9wY1ZzUHJoRkNQV1pueURMVnhlallBSTI3S3NVb1ZUWlVRVUpyd3c1T1lyUkJIUWV2X0RWSW9nVnR2and4OTRPMm9LMWdwMnhVb2tDNjlJdFdCaFZld05yMXdJdFN2NzBiSjRocENNNVJGYk16SGp0Wk5yNEZhRkIxZGdRZE85Uml0Z3EtbTBXeUY0LThveWRMVlZnTGYzdg?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [
-        "pakistan_narrative"
-      ],
-      "importance": 1,
-      "published": "2026-06-29T17:40:37+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872681+00:00"
+      "fetched_at": "2026-06-30T14:08:34.505720+00:00"
     },
     {
       "title": "China’s Real Game Vs India: Border, Brahmaputra, CPEC And The String Of Pearls I Deep Dive - The Times of India",
@@ -926,7 +1050,7 @@
       ],
       "importance": 1,
       "published": "2026-06-28T13:52:12+00:00",
-      "fetched_at": "2026-06-30T10:54:29.408509+00:00"
+      "fetched_at": "2026-06-30T14:09:11.050013+00:00"
     },
     {
       "title": "String Of Pearls Tightens: How Bangladesh’s U-Turn On Mongla Port Hits India’s 'Act East' Policy | Exclusiv - News18",
@@ -939,7 +1063,7 @@
       ],
       "importance": 1,
       "published": "2026-06-27T13:55:10+00:00",
-      "fetched_at": "2026-06-30T10:54:29.408720+00:00"
+      "fetched_at": "2026-06-30T14:09:11.050220+00:00"
     },
     {
       "title": "Assam: Flood, riverbank erosion in Dhemaji halts train services",
@@ -952,7 +1076,7 @@
       ],
       "importance": 1,
       "published": "2026-06-29T11:52:52+00:00",
-      "fetched_at": "2026-06-30T10:54:51.148795+00:00"
+      "fetched_at": "2026-06-30T14:09:30.285317+00:00"
     },
     {
       "title": "Arunachal: Nine rescued after raft capsised in Sisiri River",
@@ -965,29 +1089,18 @@
       ],
       "importance": 1,
       "published": "2026-06-29T10:58:58+00:00",
-      "fetched_at": "2026-06-30T10:54:51.149397+00:00"
+      "fetched_at": "2026-06-30T14:09:30.285918+00:00"
     },
     {
-      "title": "Monsoon tracker LIVE: Monsoon intensifies across Maharashtra, Mumbai braces for heavy rain",
-      "summary": "The monsoon, which had shown a pause in its progress along the eastern coast, has gained momentum over the past 24 hours",
-      "link": "https://www.thehindu.com/news/national/monsoon-tracker-live-updates-mumbai-rains-june-30-2026/article71164507.ece",
-      "source": "The Hindu - National",
+      "title": "Attempts to question FATF’s credibility often reflect fear of scrutiny: India at UN",
+      "summary": "India’s Permanent Representative to the UN Parvathaneni Harish said that countries facing adverse assessments should address the identified deficiencies, strengthen domestic enforcement, improve financial transparency, and demonstrate irreversible action against terror-financing networks",
+      "link": "https://www.thehindu.com/news/national/attempts-to-question-fatfs-credibility-often-reflect-fear-of-scrutiny-india-at-un/article71164533.ece",
+      "source": "The Hindu - International",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:46:30+00:00",
-      "fetched_at": "2026-06-30T10:52:39.322649+00:00"
-    },
-    {
-      "title": "How similar are Uttarakhand, Gujarat and Assam’s Uniform Civil Codes?",
-      "summary": "As West Bengal is set to table a UCC bill, here is a comparison on the existing UCCs of Uttarakhand, Gujarat, and Assam",
-      "link": "https://www.thehindu.com/news/national/how-similar-are-uttarakhand-gujarat-and-assams-uniform-civil-codes/article71165031.ece",
-      "source": "The Hindu - National",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T10:22:59+00:00",
-      "fetched_at": "2026-06-30T10:52:39.323142+00:00"
+      "published": "2026-06-30T11:24:14+00:00",
+      "fetched_at": "2026-06-30T14:07:11.358295+00:00"
     },
     {
       "title": "Venezuela appreciates Indian team’s efforts to help earthquake victims",
@@ -998,29 +1111,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T10:09:44+00:00",
-      "fetched_at": "2026-06-30T10:52:39.807725+00:00"
-    },
-    {
-      "title": "U.S., India trade deal in final steps: Sergio Gor",
-      "summary": "The U.S. envoy to India cited the personal equation between U.S. President Donald Trump and Prime Minister Narendra Modi which was driving the ties.",
-      "link": "https://www.thehindu.com/news/national/us-india-trade-deal-in-final-steps-sergio-gor/article71164133.ece",
-      "source": "The Hindu - International",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T07:16:26+00:00",
-      "fetched_at": "2026-06-30T10:52:39.808306+00:00"
-    },
-    {
-      "title": "Why has India-U.S. trade deal been delayed? | Explained",
-      "summary": "From India’s Russian oil purchases to legal battles in Washington, the road to India-U.S. trade deal has become increasingly uncertain, and The Hindu explains why",
-      "link": "https://www.thehindu.com/news/national/why-has-india-us-trade-deal-been-delayed-explained/article71145051.ece",
-      "source": "The Hindu - International",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T06:54:07+00:00",
-      "fetched_at": "2026-06-30T10:52:39.808528+00:00"
+      "fetched_at": "2026-06-30T14:07:11.358709+00:00"
     },
     {
       "title": "If US and Iran can come to dialogue table, so can India and Pak: Mirwaiz",
@@ -1031,7 +1122,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T10:36:06+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527144+00:00"
+      "fetched_at": "2026-06-30T14:07:12.006753+00:00"
     },
     {
       "title": "Heatwave bakes Delhi, North India; relief hope as IMD forecasts rain",
@@ -1042,62 +1133,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T09:07:37+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527229+00:00"
-    },
-    {
-      "title": "23 Opposition parties write to Chief Justice of India over SIR",
-      "summary": "",
-      "link": "https://indianexpress.com/article/india/opposition-letter-cji-sir-eci-election-commission-conduct-10764144/",
-      "source": "Indian Express - India",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T06:49:26+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527314+00:00"
-    },
-    {
-      "title": "747 foreign nationals held in India in drug cases, most from Nepal: Report",
-      "summary": "",
-      "link": "https://indianexpress.com/article/india/ncb-annual-report-2025-foreign-nationals-arrested-india-narcotics-10763945/",
-      "source": "Indian Express - India",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T05:27:28+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527408+00:00"
-    },
-    {
-      "title": "Gold Rate Today, June 30: Check 18, 22 and 24 carat gold prices in Chennai, Mumbai, Delhi, Kolkata and other cities",
-      "summary": "",
-      "link": "https://indianexpress.com/article/india/gold-rate-today-june-30-check-18-22-and-24-carat-gold-prices-in-chennai-mumbai-delhi-kolkata-and-other-cities-10763844/",
-      "source": "Indian Express - India",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T04:41:36+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527501+00:00"
-    },
-    {
-      "title": "Houses wrecked, towns cut off: How Arunachal, Assam fight raging floods",
-      "summary": "",
-      "link": "https://indianexpress.com/article/india/arunachal-floods-assam-northeast-rainfall-imd-10763720/",
-      "source": "Indian Express - India",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T04:35:33+00:00",
-      "fetched_at": "2026-06-30T10:52:40.527573+00:00"
-    },
-    {
-      "title": "India-bound ships go dark in Strait of Hormuz: What is happening and why?",
-      "summary": "",
-      "link": "https://indianexpress.com/article/world/india-bound-ships-go-dark-strait-of-hormuz-crisis-10763699/",
-      "source": "Indian Express - World",
-      "category": "india_geopolitics",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T04:42:02+00:00",
-      "fetched_at": "2026-06-30T10:52:41.303831+00:00"
+      "fetched_at": "2026-06-30T14:07:12.006842+00:00"
     },
     {
       "title": "Cabinet reshuffle buzz grows: What we know about PM Modi's likely ministerial shake-up",
@@ -1108,73 +1144,117 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T05:07:15+00:00",
-      "fetched_at": "2026-06-30T10:52:41.994144+00:00"
+      "fetched_at": "2026-06-30T14:07:13.139100+00:00"
     },
     {
-      "title": "Keeping up with UP: Will there be pol fallout from Ram Temple donation issue",
-      "summary": "Concerns are growing within the BJP about the fallout of the issue ahead of the assembly elections in Uttar Pradesh due next year",
-      "link": "https://www.hindustantimes.com/india-news/keeping-up-with-up-will-there-be-political-fallout-from-ram-temple-donation-issue-101782815965100.html",
+      "title": "Dry heat from Pakistan, humid air from Arabian Sea: Why Delhi feels like 53°C",
+      "summary": "While actual temperatures across the city stayed around 40–41°C at major stations, conditions felt significantly harsher due to a mix of hot and humid air.",
+      "link": "https://www.hindustantimes.com/india-news/dry-heat-from-pakistan-humid-air-from-arabian-sea-why-delhi-feels-like-53c-101782826251614.html",
       "source": "Hindustan Times",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:39:24+00:00",
-      "fetched_at": "2026-06-30T10:52:42.576567+00:00"
+      "published": "2026-06-30T13:49:30+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651100+00:00"
     },
     {
-      "title": "India's first 8-lane expressway tunnel under a tiger reserve to open in Rajasthan's Kota. All about it",
-      "summary": "The tunnel features twin tubes, each carrying four traffic lanes, making it India's first eight-lane tunnel beneath a wildlife sanctuary.",
-      "link": "https://www.hindustantimes.com/india-news/indias-first-8-lane-expressway-tunnel-under-a-tiger-reserve-to-open-in-rajasthan-kota-all-about-it-101782813383780.html",
+      "title": "Delhi Metro's Blue Line hit by technical snag, services resume after significant delay",
+      "summary": "The Delhi Metro Rail Corporation (DMRC) has not yet revealed the exact nature of the technical fault that disrupted the services.",
+      "link": "https://www.hindustantimes.com/india-news/delhi-metros-blue-line-hit-by-technical-snag-services-resume-after-significant-delay-101782825989445.html",
       "source": "Hindustan Times",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:18:21+00:00",
-      "fetched_at": "2026-06-30T10:52:42.576762+00:00"
+      "published": "2026-06-30T13:34:23+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651239+00:00"
     },
     {
-      "title": "Brass tortoise, orchid art: How PM Modi's gifts showcased India's handloom diplomacy in Seychelles | Full list",
-      "summary": "The presents highlighted the deep-rooted cultural ties and shared environmental values between New Delhi and Victoria.",
-      "link": "https://www.hindustantimes.com/india-news/pm-modi-seychelles-visit-president-patrick-herminie-indian-handloom-gifts-full-list-101782809569822.html",
+      "title": "India must prepare workforce for emerging sectors, orthodox fields: Jaishankar",
+      "summary": "The Human Resource Mobility Forum is an important platform as it brings together policy-makers, industry leaders and employers",
+      "link": "https://www.hindustantimes.com/india-news/india-must-prepare-workforce-for-emerging-sectors-orthodox-fields-jaishankar-101782825088133.html",
       "source": "Hindustan Times",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:14:08+00:00",
-      "fetched_at": "2026-06-30T10:52:42.576898+00:00"
+      "published": "2026-06-30T13:11:27+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651360+00:00"
     },
     {
-      "title": "Cong leader's son detained, released over controversial hoardings featuring PM Modi, UP CM",
-      "summary": "The hoardings raised questions over issues such as the alleged theft of offerings at the Ram temple in Ayodhya, inflation, unemployment and paper leaks.",
-      "link": "https://www.hindustantimes.com/india-news/cong-leaders-son-detained-released-over-controversial-hoardings-featuring-pm-modi-up-cm-101782812500854.html",
+      "title": "'More millionaires than ever' but India among nations with highest inequality. What key report reveals",
+      "summary": "The UBS Global Wealth Report 2025 rang alarm bells, saying that while average wealth rose, inequality has deepened since 2020.",
+      "link": "https://www.hindustantimes.com/india-news/india-among-countries-with-the-highest-income-inequality-number-of-millionaires-rise-101782818267547.html",
       "source": "Hindustan Times",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T09:49:05+00:00",
-      "fetched_at": "2026-06-30T10:52:42.577233+00:00"
+      "published": "2026-06-30T13:02:26+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651494+00:00"
     },
     {
-      "title": "Opinion: Opinion | US' Scott Bessent Has A New 'Doctrine', And It Leaves India With Hard Choices",
-      "summary": "Scott Bessent in a recent WSJ opinion piece has explained the so-called American economic 'statecraft'. The doctrine should raise concerns in India.",
-      "link": "https://www.ndtv.com/opinion/why-a-recent-article-by-us-secretary-of-treasury-should-worry-india-11706941#publisher=newsstand",
+      "title": "Man wearing ‘Modi mask’ tries burglary in Rajasthan, his failed attempt caught on camera",
+      "summary": "CCTV footage showed the man trying to break the lock of a mobile shop using an iron rod while wearing a mask commonly seen at political rallies.",
+      "link": "https://www.hindustantimes.com/india-news/man-wearing-modi-mask-tries-burglary-in-rajasthan-his-failed-attempt-caught-on-camera-101782823419782.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T12:59:45+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651668+00:00"
+    },
+    {
+      "title": "Digital India turns 11: UPI becomes world’s largest real-time payment system with 24,000 crore transactions in a year",
+      "summary": "As of March 2026, DigiLocker hosts over 850 crore documents, making document storage and verification easier, particularly for students.",
+      "link": "https://www.hindustantimes.com/india-news/digital-india-turns-11-upi-becomes-world-s-largest-real-time-payment-system-with-24-000-crore-transactions-in-a-year-101782820704168.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T12:13:20+00:00",
+      "fetched_at": "2026-06-30T14:07:13.651912+00:00"
+    },
+    {
+      "title": "Student dies after tree falls on school bus in Mumbai's Chembur, 4 admitted to hospital",
+      "summary": "Four other students are currently undergoing treatment at Zen Hospital.",
+      "link": "https://www.hindustantimes.com/india-news/student-death-toll-injuries-after-tree-falls-on-school-bus-in-mumbai-chembur-101782819788573.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T11:52:26+00:00",
+      "fetched_at": "2026-06-30T14:07:13.652025+00:00"
+    },
+    {
+      "title": "Umar Khalid speaks on 6 years in Tihar Jail without trial: ‘Humanity a privilege, not granted to people like me’",
+      "summary": "In his first interview since being jailed in 2020, Khalid describes the psychological toll of spending nearly six years in Delhi's Tihar Jail without a trial.",
+      "link": "https://www.hindustantimes.com/india-news/people-forget-that-i-am-a-human-being-umar-khalid-breaks-silence-on-nearly-six-years-in-tihar-jail-101782815978452.html",
+      "source": "Hindustan Times",
+      "category": "india_geopolitics",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T11:26:36+00:00",
+      "fetched_at": "2026-06-30T14:07:13.652215+00:00"
+    },
+    {
+      "title": "11-Year-Old Student Dies, 4 Injured After Tree Falls On Mumbai School Bus",
+      "summary": "India Meteorological Department (IMD) has forecast heavy showers and thunderstorms for Mumbai.",
+      "link": "https://www.ndtv.com/india-news/10-children-injured-1-trapped-after-tree-collapses-on-school-bus-in-mumbai-11707307#publisher=newsstand",
       "source": "NDTV India",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:21:36+00:00",
-      "fetched_at": "2026-06-30T10:52:43.188126+00:00"
+      "published": "2026-06-30T12:08:43+00:00",
+      "fetched_at": "2026-06-30T14:07:14.196846+00:00"
     },
     {
-      "title": "Delhi Shopkeeper Chases Foreign Tourist Accused Of Stealing iPhone Case, Video Sparks Debate",
-      "summary": "The shopkeeper claimed he chased the man for a considerable distance but was unable to recover the item.",
-      "link": "https://www.ndtv.com/india-news/delhi-shopkeeper-chases-foreign-tourist-accused-of-stealing-iphone-case-video-sparks-debate-11706620#publisher=newsstand",
+      "title": "PM Modi Chairs High-Level Meet With Top Bureaucrats",
+      "summary": "PM Narendra Modi held a meeting with top bureaucrats (file)",
+      "link": "https://www.ndtv.com/india-news/prime-minister-narendra-modi-chairs-high-level-meet-with-top-bureaucrats-11707513#publisher=newsstand",
       "source": "NDTV India",
       "category": "india_geopolitics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T09:59:03+00:00",
-      "fetched_at": "2026-06-30T10:52:43.188285+00:00"
+      "published": "2026-06-30T11:58:23+00:00",
+      "fetched_at": "2026-06-30T14:07:14.196973+00:00"
     },
     {
       "title": "Indus commissioner says he wrote to Indian counterpart 4 times over Chenab fluctuations, but no reply so far",
@@ -1184,19 +1264,19 @@
       "category": "pakistan_narratives",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:02:02+00:00",
-      "fetched_at": "2026-06-30T10:52:48.768881+00:00"
+      "published": "2026-06-30T13:44:52+00:00",
+      "fetched_at": "2026-06-30T14:07:23.387721+00:00"
     },
     {
-      "title": "Musadik Malik says India’s water actions have caused 6,000 deaths in Pakistan",
-      "summary": "Federal Minister for Climate Change Musadik Malik has alleged that India’s actions regarding shared water resources have resulted in the deaths of around 6,000 people in Pakistan, stressing that water security has become a matter of justice, survival and regional peace. Speaking at an international ",
-      "link": "https://dailytimes.com.pk/1515583/musadik-malik-says-indias-water-actions-have-caused-6000-deaths-in-pakistan/",
+      "title": "Tariff reforms to reduce import revenue by Rs65 billion",
+      "summary": "Pakistan&#8217;s tariff rationalisation policy is expected to reduce government revenue from imports by billions of rupees after lowering customs duties on several imported goods. Official documents show the revised tariff structure will decrease overall import-related revenue by an estimated Rs65.5",
+      "link": "https://dailytimes.com.pk/1515704/tariff-reforms-to-reduce-import-revenue-by-rs65-billion/",
       "source": "Daily Times Pakistan",
       "category": "pakistan_narratives",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T10:29:59+00:00",
-      "fetched_at": "2026-06-30T10:53:01.700073+00:00"
+      "published": "2026-06-30T13:34:38+00:00",
+      "fetched_at": "2026-06-30T14:07:36.429978+00:00"
     },
     {
       "title": "Delhi plans to ban petrol rickshaws and scooters in effort to cut toxic fumes",
@@ -1207,7 +1287,139 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T08:39:39+00:00",
-      "fetched_at": "2026-06-30T10:53:08.716469+00:00"
+      "fetched_at": "2026-06-30T14:07:42.303409+00:00"
+    },
+    {
+      "title": "Apple iPhone 18 Pro secrets leaked in Tata Electronics hack: What we know",
+      "summary": "Documents and photos are stolen from Apple’s Indian supplier. How does this impact the US tech giant?",
+      "link": "https://www.aljazeera.com/news/2026/6/30/apple-iphone-18-pro-secrets-leaked-in-tata-electronics-hack-what-we-know?traffic_source=rss",
+      "source": "Al Jazeera - Asia",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T12:57:31+00:00",
+      "fetched_at": "2026-06-30T14:07:42.797873+00:00"
+    },
+    {
+      "title": "How Mukesh Ambani Built Project Jupiter to Launch India’s Biggest IPO - Bloomberg",
+      "summary": "How Mukesh Ambani Built Project Jupiter to Launch India’s Biggest IPO&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQSnlNbXNTY21GcWFlaWRQNEt6WkJXZkRRSG5zNnFuOXUwV293OHdhVGZwTy02Tkdna1JwZTIyOFh6VV9sSHl4Vm1wNVpONXRwX1hwcFlmMVVYUzQxTzFvcDd3TjJuWHlqOFU5NmpIVTNIaDdLdV8xSjFFd0hEUHpIVjB4WnRoUGNqRjdJbjNJQXlrekEzVEpRVTExakFXX19oNlF6LVFkMGtmYTY0M2JRMTdFSQ?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T01:00:00+00:00",
+      "fetched_at": "2026-06-30T14:07:44.999340+00:00"
+    },
+    {
+      "title": "OpenAI Hires Uber’s Prabhjeet Singh to Lead India Operations - Bloomberg",
+      "summary": "OpenAI Hires Uber’s Prabhjeet Singh to Lead India Operations&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQRmpfTDA1eWpraXlGNVI4SHc1RmlwREZEUXIwT3VRdXc1Rmtrd0ZxQ3VFY3p5ejVCdUNJY0U3T19Fb1FkME1MbzByV3VNSGNJU0Q0M0FyNnhsbnIyRVhCMDJUZmdBMWtZX0d2blRpUkN6X3ZaaUlPbmxNTmtFTHIwQlZZSlk0Q2NyVW1ibnBGUm02ZWJHbERDTkxRMzgtdGdhSUhlYkEzTXExQXNwMmR3dQ?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T07:27:48+00:00",
+      "fetched_at": "2026-06-30T14:07:44.999488+00:00"
+    },
+    {
+      "title": "India’s AI Dream Is Getting Lost in Translation - Bloomberg",
+      "summary": "India’s AI Dream Is Getting Lost in Translation&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxOdXhpS1NqUmNBMlBVUGhkM1RDc2pVU0JqTzRYdXBGOElrVXZmWUJPX3ZKRVc3MF95Y0Fhd2pmUFBSejNVVVZFa2kxdmlRd0E0M0NvMlJGNHI3RUlsbDA5UUFaNGE5SlpSa3lIdEk4V2Q3RVZJSFlha081ckdZc1phb0FZbzktT2JRQVBoWXI0R3o1WHp6aXBnMU9tM21WYjJGbnlr?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T19:00:15+00:00",
+      "fetched_at": "2026-06-30T14:07:44.999616+00:00"
+    },
+    {
+      "title": "History Suggests China Shouldn’t Underestimate India - Bloomberg",
+      "summary": "History Suggests China Shouldn’t Underestimate India&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNeUYydF9QZ3FCVVRyS2xyaFBWeVNzSEYxZjBMSmViQ0lNUjRRYXJnd05SZGpZbDdCcjA3c3ZuZVVEMm1LZUtIRmpQYU9jNVZmX1VuZXFQaTc0cndEblVQTDJQZzViMTFjQ05iVEFvcUNpdXdXWGctZUx1cDlKbk5sRVQ3bGJ4QnFmdHBXYWZYX1Zxd2EwVTRaM2d3cjVPYlhxNUtOb3djS3lMLTNGSWtIczVvX2IxWUJW?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-26T15:24:00+00:00",
+      "fetched_at": "2026-06-30T14:07:44.999768+00:00"
+    },
+    {
+      "title": "RBI Funding Curbs Deal ‘Body Blow’ to Indian Prop Trading Firms - Bloomberg",
+      "summary": "RBI Funding Curbs Deal ‘Body Blow’ to Indian Prop Trading Firms&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPSmxHNDVVZlo3WmlyVFl1MkdXUGpfMEwzdnpWUVJQMzMxd19nb24zWTZ0N1NOMEEwdlVoeDF2ZEZ3YWRMQ3l3NHVJcFNFQnQyMy12SGhYOHlGem04SWE2R2Z4MXVQX01OYklZUWdtMDB4WkJnMUJyZ0ZiNWtyZ0p6WXg0VWFLazhPdXpjaXpabjBrenJ4bG1sMlJBMm9XaTBrMlR5eXNYSU1lVUlBSWtQTnEwdw?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T04:06:00+00:00",
+      "fetched_at": "2026-06-30T14:07:45.000029+00:00"
+    },
+    {
+      "title": "Moody’s Says India Can Handle Modest Fiscal Slippage This Year - Bloomberg",
+      "summary": "Moody’s Says India Can Handle Modest Fiscal Slippage This Year&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOdjZVQXBoUjAzbkM3MHFJeG9pTGlwLXZkLU1CRGk2M0Mxb093YU5VR1R2bTJscUF2MXlZNjNJM3Q4ZGRUallvdEpqWkZNX0lrbkt2YkJUVXN1cDFoaXJtakNWbDNkcGZhRng0UlE0V3hPdFdGWm5ZRVVFeGpaa3JKbEpidG45QndhaDZHMGh6bjdXWFRpUklrbkhMR0lDR0trdlE3MzJrdUZtVkVibVlXNUlXYw?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T08:27:11+00:00",
+      "fetched_at": "2026-06-30T14:07:45.000165+00:00"
+    },
+    {
+      "title": "China, India See Top Firms Lose Market Cap Share in AI Lag - Bloomberg",
+      "summary": "China, India See Top Firms Lose Market Cap Share in AI Lag&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxPSFptTTVTY1VLYkZrYTdHQ2d5UUljc3V3Z3ZNeG9TaVplMnF2TDNYXzZxSU5heXJGREtJbEU0VzNmTEpNMlg0RFg3REJfdUpkeF9sSGlxeER3UVJNRk04X2Q5OTdFTzRwbkNHSXo4Vndlc1VCc296Nl9femF2eS11aGpxMmRaUWFneXJPbTBnaUYyTmg3dFlDM19HaGhodjZSem5lTDBqNk5fWW1y?oc=5",
+      "source": "GNews: Bloomberg India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T23:00:00+00:00",
+      "fetched_at": "2026-06-30T14:07:45.000268+00:00"
+    },
+    {
+      "title": "Why can’t India’s government build a decent website? - The Economist",
+      "summary": "Why can’t India’s government build a decent website?&nbsp;&nbsp;The Economist",
+      "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxONnV3NVlmWFlGc0otdUI3RnYydTdjcjFpY1p5VVFKSXB2TTJyUEVTN1NZRk1UNGktWnpkU1FyXzRtZ215bk5INV83ZXQ5TW03Sml0YXdOR0RBV0c0Y1dNdnl2ajg3N1dDT3BuUU5qcVE1V1ZnMkxweDdYVV92RnpfZV9DcHZXV0hGTUVEZGNDaHdGb0xXd3c?oc=5",
+      "source": "GNews: The Economist India",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T11:35:24+00:00",
+      "fetched_at": "2026-06-30T14:07:45.875270+00:00"
+    },
+    {
+      "title": "India catches pickleball fever - Nikkei Asia",
+      "summary": "India catches pickleball fever&nbsp;&nbsp;Nikkei Asia",
+      "link": "https://news.google.com/rss/articles/CBMieEFVX3lxTE9wdFJNU3BIeW4yRmZQY293Rk91bHN6cGtUTEx3X0xwb1lrNjJOTGdjTlF4Y2V2Q3lxV3A4bE1ya1pQZWV4RS1VVTUyN1V2SF9hUERuTm1LSV9ZWTd0cnJCZG40dUdyZl9FUWpYREJwT0hXZ3U2Vk5qNA?oc=5",
+      "source": "Nikkei Asia - India search",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-26T23:13:00+00:00",
+      "fetched_at": "2026-06-30T14:07:46.837343+00:00"
+    },
+    {
+      "title": "India, Pakistan should return to negotiating table: Mirwaiz - The Hindu",
+      "summary": "India, Pakistan should return to negotiating table: Mirwaiz&nbsp;&nbsp;The Hindu",
+      "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNY1RYSFo0RWxaaEs3U2xWaExlcWVMckNnaThlTkcwNHVQeE5PWVBrYk1EX3EzTkdJZWh1YWxjNTZxa1kzcEVDb1pfdmt3LTU1R3M1WlJBWmFRNTlaOVdyVGxBcFc0a24zQmpqXzBoWEhvY3VxeXdoZUg1enhyMHo1S1NUa0FBMW54LTFqaWpYNEVYdllFaTgxN3lnWWoxTldfUGxhWW9lRkNFdWVLemVvSV9OY0NsSkXSAb4BQVVfeXFMTk1DVEx3QUZoZUxCdjh1ejA3NTdONnFkeXFPMy1pWFBsUS1MMzVGOVozcnR1REJSb25lU2pGQmdtd0tWNHJkS3ByRTF5c2lRWmdQaDhTVmFmRDhrWmFDeWFBc19zMTJxZmJtWXdjU2FFTFJKbi1DdnE0QVYzSnFQQTJHVHhDY3hyVlhtNmZSbVZLZHNfSXFkcUF3dndNMEtLVmlDU0xYSW9LODFvaEZMSmVubmQycnE3NExOOGtiZw?oc=5",
+      "source": "GNews: India Pakistan",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T10:57:00+00:00",
+      "fetched_at": "2026-06-30T14:07:49.582023+00:00"
+    },
+    {
+      "title": "'We'll cut off the hands that...': Pakistan Minister threatens India over Indus waters - Deccan Herald",
+      "summary": "'We'll cut off the hands that...': Pakistan Minister threatens India over Indus waters&nbsp;&nbsp;Deccan Herald",
+      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOSFcyWjhyNTFacGxHV0hwdmFXTzRiSnpXaDJtaWhmUmRlOFRPeHNNZ0JxbmRlbmFaRW44anZjSDZkQS1CbnRGNk9hcEFaOExNeHo1ZzFYQUxxWlIwMVVQWkZsbkdLMTJ2TWxFMDh0RW1EbVJTZG1wazl3VEk2VDctbDQ1bDFhWGREQzZTS2xjSjJRM0RzbHFJa2dOZE51clVNTWVmTUcwaldqNzcza2ZfY1hNTEl1bHpzSGV6NktwOVhVNmlodW1taVJrZw?oc=5",
+      "source": "GNews: India Pakistan",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T10:54:46+00:00",
+      "fetched_at": "2026-06-30T14:07:49.582157+00:00"
     },
     {
       "title": "Pakistan rattles India with new Chinese-built stealth submarine - South China Morning Post",
@@ -1218,7 +1430,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T04:00:14+00:00",
-      "fetched_at": "2026-06-30T10:53:12.666816+00:00"
+      "fetched_at": "2026-06-30T14:07:49.582415+00:00"
     },
     {
       "title": "Air India Pilot Accidentally Flies Into Pakistan, Grounded From Future Flights - Simple Flying",
@@ -1229,18 +1441,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T15:42:37+00:00",
-      "fetched_at": "2026-06-30T10:53:12.666936+00:00"
-    },
-    {
-      "title": "Pakistan selectively claims ancient Indian figures and heritage while erasing their Hindu civilisational roots. - opindia.com",
-      "summary": "Pakistan selectively claims ancient Indian figures and heritage while erasing their Hindu civilisational roots.&nbsp;&nbsp;opindia.com",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOZXowRk14V1RxNUJpaHNUbjNXRm9RWW9HeWpyZngxT1FjcDBvT240NVBvN0x1SlpYT1UwcHRUaU9BS3NXaVItcGNWOHNEeWFkVjh0ZVFsakRpTXptU1dPcGNjU1N3ZUdaXzI2M2JYNHBnTjZJVmJDWXN0UmdIZFZGTFJiYmRYMXJheGNWYWxweTdRbzhUOGJXOWN0d0FQd3FJRHZ4TQ?oc=5",
-      "source": "GNews: India Pakistan",
-      "category": "western_media",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T06:03:46+00:00",
-      "fetched_at": "2026-06-30T10:53:12.667089+00:00"
+      "fetched_at": "2026-06-30T14:07:49.582536+00:00"
     },
     {
       "title": "India opposition accuses Modi government of concealing military deaths in Pakistan conflict - TRT World",
@@ -1251,7 +1452,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T02:42:37+00:00",
-      "fetched_at": "2026-06-30T10:53:12.667218+00:00"
+      "fetched_at": "2026-06-30T14:07:49.582665+00:00"
+    },
+    {
+      "title": "How water is becoming new fault line between India, Pakistan | Daily Sabah - Daily Sabah",
+      "summary": "How water is becoming new fault line between India, Pakistan | Daily Sabah&nbsp;&nbsp;Daily Sabah",
+      "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPRlQ4eEZOOGUwR0xlbXVhazN2MzVvRGhZWVhkZkdUUUk5VG5SZHFFdnRlLWpKQldBU3dmZFFuYlgwbkpmZ2dyajNBSDdYMzljZ2hkbnE4N29OUEh1VjFaRnZBalpOZjFrajhFT1h6cnpRRVB3cVh0UmY4WXU2cmRxMU43R1dsZzZhWDdDZUpmcXJTVTl3OENvSjZtUGU3SkpkSlHSAacBQVVfeXFMT1dYRWFnU2NaTUc0aDRyR3hqSGo1SHBHQlZTMEtNX0V4V3NjbW9XblNtdWxRa2V5bmhRYWx4T050WXhMZzZrOFFQcjRmdUtJQmNCY3ZheFlTbUg4dU5NUU9BVEFZXzlNckVoMjhISE1FTXVCdFd0SWcxN0N4T1laeHh4Y2tnbW05SUNRck9UOFdrWS00bUs4dGpxZG1mal92WXo2Z0dmbUU?oc=5",
+      "source": "GNews: India Pakistan",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T07:00:00+00:00",
+      "fetched_at": "2026-06-30T14:07:49.582796+00:00"
     },
     {
       "title": "Heroin-smuggling drone bound for India crashes in Pakistan's Punjab - Rediff",
@@ -1262,7 +1474,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T16:42:29+00:00",
-      "fetched_at": "2026-06-30T10:53:12.667342+00:00"
+      "fetched_at": "2026-06-30T14:07:49.582908+00:00"
     },
     {
       "title": "Army Chief Highlights 1,100 Annual India-China Military Interactions at Border - Open Magazine",
@@ -1273,18 +1485,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T14:03:02+00:00",
-      "fetched_at": "2026-06-30T10:53:13.663859+00:00"
-    },
-    {
-      "title": "Stability and Sensitivity: Navigating the India-China Border Dynamics - Devdiscourse",
-      "summary": "Stability and Sensitivity: Navigating the India-China Border Dynamics&nbsp;&nbsp;Devdiscourse",
-      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT2lrT2lvdEFMS3RydUZtX1RJaEtKaWRmVC1zcXo5bW4xUnBfMDVpdENRdml5eVVBTVNIc1dGSTVpR19PLTRtVWxZQWxWYzRwbTM3cUF2dV85M2ZubnBuNGZXdlN5UDdQcGo2aC1zQjNEVGhNQkwteVE0ZEFNTnhLVzRjcmVHejRvZ29CSEtFVVFucUlfbVc1UGhQY0piWnBMVlZWM1ZtZEd3NjAydkx5dmctNHYtUk1Hcm1mSnZrZTjSAcYBQVVfeXFMT1ZpTmVKeGNiN0F1bEMxSzE5Z0xHdE9ySEZXajBOUmVqUlJHUlV5X0cwTnNNb2lWLTJrRmhXcktoMENubkxvQUx4MzhzUXlFNEk0Yk5YTnBpb0swZ0FuRnNCQ1FBbkRIekVFNUttYnhCSGpGX05tdHpzN1I4Zk1Ob3pRTm1tVVlTUVBrRFBkX2U2RzNrdU9QUUg2NDIwU3ZFTGwwb1VVdFBkNG9TZkhRVDhUVHNhblpiekJ1Zm9fR2xFdVNBZDhB?oc=5",
-      "source": "GNews: India China border",
-      "category": "western_media",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T13:54:45+00:00",
-      "fetched_at": "2026-06-30T10:53:13.664003+00:00"
+      "fetched_at": "2026-06-30T14:07:50.607221+00:00"
     },
     {
       "title": "Over 1,100 India-China Border Interactions Held Annually: Army Chief - DD India",
@@ -1295,7 +1496,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T16:49:00+00:00",
-      "fetched_at": "2026-06-30T10:53:13.664115+00:00"
+      "fetched_at": "2026-06-30T14:07:50.607335+00:00"
+    },
+    {
+      "title": "Stability and Sensitivity: Navigating the India-China Border Dynamics - Devdiscourse",
+      "summary": "Stability and Sensitivity: Navigating the India-China Border Dynamics&nbsp;&nbsp;Devdiscourse",
+      "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPT2lrT2lvdEFMS3RydUZtX1RJaEtKaWRmVC1zcXo5bW4xUnBfMDVpdENRdml5eVVBTVNIc1dGSTVpR19PLTRtVWxZQWxWYzRwbTM3cUF2dV85M2ZubnBuNGZXdlN5UDdQcGo2aC1zQjNEVGhNQkwteVE0ZEFNTnhLVzRjcmVHejRvZ29CSEtFVVFucUlfbVc1UGhQY0piWnBMVlZWM1ZtZEd3NjAydkx5dmctNHYtUk1Hcm1mSnZrZTjSAcYBQVVfeXFMT1ZpTmVKeGNiN0F1bEMxSzE5Z0xHdE9ySEZXajBOUmVqUlJHUlV5X0cwTnNNb2lWLTJrRmhXcktoMENubkxvQUx4MzhzUXlFNEk0Yk5YTnBpb0swZ0FuRnNCQ1FBbkRIekVFNUttYnhCSGpGX05tdHpzN1I4Zk1Ob3pRTm1tVVlTUVBrRFBkX2U2RzNrdU9QUUg2NDIwU3ZFTGwwb1VVdFBkNG9TZkhRVDhUVHNhblpiekJ1Zm9fR2xFdVNBZDhB?oc=5",
+      "source": "GNews: India China border",
+      "category": "western_media",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T13:54:45+00:00",
+      "fetched_at": "2026-06-30T14:07:50.607452+00:00"
     },
     {
       "title": "India and China express satisfaction over maintaining peace and tranquility in border areas | Akashvani News - News On AIR",
@@ -1306,18 +1518,29 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T23:06:15+00:00",
-      "fetched_at": "2026-06-30T10:53:13.664272+00:00"
+      "fetched_at": "2026-06-30T14:07:50.607611+00:00"
     },
     {
-      "title": "Editorial: Mansarovar push to India-China ties - DT Next",
-      "summary": "Editorial: Mansarovar push to India-China ties&nbsp;&nbsp;DT Next",
-      "link": "https://news.google.com/rss/articles/CBMifEFVX3lxTFAxbThqTFlqRGRSMG9yU1JrakZpQWNRV25DRnlFTVQ0VjZ0TkcxZk10MlNmTkptbUY4MU9yTG55dEYtb0xVRTY3VUhydFN3aHRUQmNBY0dyajlNdnd6V0I4WlU1aU9VY2UyZk1KRm8xczQyQTZzWTJwcDJFemrSAYoBQVVfeXFMTV9jSEo0alVDWkJCbHJaaFp2SzY1aS0tSF8wUmF1ODFJVnh5d1FnN0xlOWRYdzRlMDFyUjVHc08zeU4xbm5MREh0MmR5NzlRS1ZDTFphX25aUXEza3MzeFhZN3prTzlzTXRJR2hFUEZZQklXSVVuVXpBNS1hTEJpMHZPcS1PU0E3WmxB?oc=5",
-      "source": "GNews: India China border",
-      "category": "western_media",
+      "title": "Get Ball by Ball Commentary of India vs Afghanistan 1st ODI 2026 | ESPN.com - ESPN",
+      "summary": "Get Ball by Ball Commentary of India vs Afghanistan 1st ODI 2026 | ESPN.com&nbsp;&nbsp;ESPN",
+      "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPTXNLVmhzVWdhSXc4Y3BjM21xeXhTUF9rVHBGcW9TUEpXTDYyd3lxRzJpak4wNG5SS2xvSVZjaWZtOXdITEVKVUVmNUQ3QlFoZE41NlBMS3pHeVJCSzJ4b1pROEhIS3B0NVNTTzd3X205MHBlZ09YM21oVlFqUnhGV1I5akpPT2wwYlFEUzFxWVRTSER4?oc=5",
+      "source": "GNews: Afghanistan India",
+      "category": "neighbours",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T02:05:33+00:00",
-      "fetched_at": "2026-06-30T10:53:13.664385+00:00"
+      "published": "2026-06-27T09:23:45+00:00",
+      "fetched_at": "2026-06-30T14:08:00.024164+00:00"
+    },
+    {
+      "title": "Nepal’s tea factories resume work after India eases rules - Macau Business",
+      "summary": "Nepal’s tea factories resume work after India eases rules&nbsp;&nbsp;Macau Business",
+      "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxNMTdrNm12c2x4MndORkxaNWtDbDkxTkNRYWNodEJBSENqa2hIZ0hpTml5Uk1CelA0Q3poc3VGd3lXOXZwVmdieWNqWlZPWVZ6ODgydk1XcVVLLUdRVWpFRF9xYXhXcVZrNWoxbjJrRmJsd19fTWlSRjJNay05Mk9TdWZoM0VVOHNKekI4?oc=5",
+      "source": "GNews: Nepal India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T13:09:38+00:00",
+      "fetched_at": "2026-06-30T14:08:01.030946+00:00"
     },
     {
       "title": "Indian pilgrims stranded in Nepal due to China’s tight Tibet control - Tibetan Review",
@@ -1328,7 +1551,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T18:33:22+00:00",
-      "fetched_at": "2026-06-30T10:53:22.619859+00:00"
+      "fetched_at": "2026-06-30T14:08:01.031119+00:00"
     },
     {
       "title": "India’s Mutual Security Arrangements with Nepal - India's World",
@@ -1339,40 +1562,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T03:36:56+00:00",
-      "fetched_at": "2026-06-30T10:53:22.619994+00:00"
-    },
-    {
-      "title": "PM Balendra Shah stirs hornet’s nest in India border remark - Nepali Times",
-      "summary": "PM Balendra Shah stirs hornet’s nest in India border remark&nbsp;&nbsp;Nepali Times",
-      "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQcTNYWkJaWlIyRm1SVV9GN3JmM0g5bEZITlNDM3lSUmVrNEFVOWRGYTFzMEtsVHh5dUdsY2VtdlE0VEdsUjVWVFU4RE5KRlllX2tTRnh6THJ1aTFFbFAtUjZOVzljc1J5TVp4NjBSZTBxaHU4aGNSNnYyMFdNSGlxNmpBbHRBblh2Z2c?oc=5",
-      "source": "GNews: Nepal India",
-      "category": "neighbours",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-26T11:10:02+00:00",
-      "fetched_at": "2026-06-30T10:53:22.620270+00:00"
-    },
-    {
-      "title": "China Responds To India's Concerns Over Teesta Cooperation With Bangladesh - NDTV",
-      "summary": "China Responds To India's Concerns Over Teesta Cooperation With Bangladesh&nbsp;&nbsp;NDTV",
-      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUlLWFNRV2hyZDVpOGpWVHgyLVI1NThNU01CTHN6T1Zycl8yNXNLMTlnOUJ1Xzczd25zMTZSdW9sUXhheUM0Wm9sU0ZvNDE4cDh5TW5RMWM1SlpVUUpISVNYSVl0aDY0M29Tb0RlNmpNZGtJblpTYm5kWWd0eVRLZmZpVWZ4dG9ma3BqVmw2aUdDYXBHdkhXVE9sdV9IVW9ENG94cV9TaXp5R2owVmNIalZPZ0vSAbwBQVVfeXFMTTl3YlFnNGNwclZVUGpHbV9DcC14QlFTd3k0bUNVbk5aN1pRN0kycEhWdXd5eHBtRXZiWjFvZXJJT3lxOXZpOXZzaEtFTTdSTXlDWDEyXzV4SVZiR3p3OExIZTVjdGFxS0pWVDJWMVN5YXdRdjJ2UnpEYmZXWkZma0NzOUhKR1pLT1lRXzA2WXY5QnMzVjVsWjFqZ0kzdUhiaXBTbDgtOWNSd2hhUnh5RGJJWDBscWdIUm5SYlc?oc=5",
-      "source": "GNews: Bangladesh India",
-      "category": "neighbours",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T08:33:34+00:00",
-      "fetched_at": "2026-06-30T10:53:23.745779+00:00"
-    },
-    {
-      "title": "Why China's Bangladesh Push Should Worry India - Rediff",
-      "summary": "Why China's Bangladesh Push Should Worry India&nbsp;&nbsp;Rediff",
-      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOeG9BVG45OWNzd21jNnh4eFlRczJjczhvVXo2X0pzLU5BT2s1QUpEX3RFdEJwZnE4MHZDVEdRUHd0NXpNbDVlQVJlWGtPam9ZWkNtVWFHTm5OVEhxbHBETTRtWXVFN19NYVJxOHY3TlQyQ3dTbjlFcGtYNXE4dWFrZXBTWUFvSmloQ243RE9vYURkY2RWYU1VM2x30gGcAUFVX3lxTE0zMnk4N0RlT0dBTThERFV0cVVfZmNxSFAwV3R1bU45dThFNzhINzJfWTAzYmV6ajNCVTFvMGpGbTF0V2ZwMFRBZEFvQmF4SGxDeTlHN0NUQzdkQjhBRUVXNXpGMjRmMGRCWUc1WkZKQVNsNlh5VnVWS0RYZWJURFFJWjNySFROOGFCUEs0Sk5YNTk0YWI2TTZvRVY1Wg?oc=5",
-      "source": "GNews: Bangladesh India",
-      "category": "neighbours",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T03:39:01+00:00",
-      "fetched_at": "2026-06-30T10:53:23.745873+00:00"
+      "fetched_at": "2026-06-30T14:08:01.031248+00:00"
     },
     {
       "title": "India’s push-ins are not a border problem - The Daily Star",
@@ -1382,8 +1572,8 @@
       "category": "neighbours",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T04:50:28+00:00",
-      "fetched_at": "2026-06-30T10:53:23.746062+00:00"
+      "published": "2026-06-30T10:56:23+00:00",
+      "fetched_at": "2026-06-30T14:08:02.199898+00:00"
     },
     {
       "title": "Australia easily beats India and sends South Africa into the Women's T20 semifinals - SFGATE",
@@ -1394,7 +1584,62 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T18:54:22+00:00",
-      "fetched_at": "2026-06-30T10:53:23.746187+00:00"
+      "fetched_at": "2026-06-30T14:08:02.200059+00:00"
+    },
+    {
+      "title": "China Responds To India's Concerns Over Teesta Cooperation With Bangladesh - NDTV",
+      "summary": "China Responds To India's Concerns Over Teesta Cooperation With Bangladesh&nbsp;&nbsp;NDTV",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxQZUlLWFNRV2hyZDVpOGpWVHgyLVI1NThNU01CTHN6T1Zycl8yNXNLMTlnOUJ1Xzczd25zMTZSdW9sUXhheUM0Wm9sU0ZvNDE4cDh5TW5RMWM1SlpVUUpISVNYSVl0aDY0M29Tb0RlNmpNZGtJblpTYm5kWWd0eVRLZmZpVWZ4dG9ma3BqVmw2aUdDYXBHdkhXVE9sdV9IVW9ENG94cV9TaXp5R2owVmNIalZPZ0vSAbwBQVVfeXFMTTl3YlFnNGNwclZVUGpHbV9DcC14QlFTd3k0bUNVbk5aN1pRN0kycEhWdXd5eHBtRXZiWjFvZXJJT3lxOXZpOXZzaEtFTTdSTXlDWDEyXzV4SVZiR3p3OExIZTVjdGFxS0pWVDJWMVN5YXdRdjJ2UnpEYmZXWkZma0NzOUhKR1pLT1lRXzA2WXY5QnMzVjVsWjFqZ0kzdUhiaXBTbDgtOWNSd2hhUnh5RGJJWDBscWdIUm5SYlc?oc=5",
+      "source": "GNews: Bangladesh India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T08:33:34+00:00",
+      "fetched_at": "2026-06-30T14:08:02.200182+00:00"
+    },
+    {
+      "title": "Why China's Bangladesh Push Should Worry India - Rediff",
+      "summary": "Why China's Bangladesh Push Should Worry India&nbsp;&nbsp;Rediff",
+      "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOeG9BVG45OWNzd21jNnh4eFlRczJjczhvVXo2X0pzLU5BT2s1QUpEX3RFdEJwZnE4MHZDVEdRUHd0NXpNbDVlQVJlWGtPam9ZWkNtVWFHTm5OVEhxbHBETTRtWXVFN19NYVJxOHY3TlQyQ3dTbjlFcGtYNXE4dWFrZXBTWUFvSmloQ243RE9vYURkY2RWYU1VM2x30gGcAUFVX3lxTE0zMnk4N0RlT0dBTThERFV0cVVfZmNxSFAwV3R1bU45dThFNzhINzJfWTAzYmV6ajNCVTFvMGpGbTF0V2ZwMFRBZEFvQmF4SGxDeTlHN0NUQzdkQjhBRUVXNXpGMjRmMGRCWUc1WkZKQVNsNlh5VnVWS0RYZWJURFFJWjNySFROOGFCUEs0Sk5YNTk0YWI2TTZvRVY1Wg?oc=5",
+      "source": "GNews: Bangladesh India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T03:39:01+00:00",
+      "fetched_at": "2026-06-30T14:08:02.200266+00:00"
+    },
+    {
+      "title": "South Africa scrapes past Bangladesh and leaves India needing to upset Australia at Lord's - Idaho Press",
+      "summary": "South Africa scrapes past Bangladesh and leaves India needing to upset Australia at Lord's&nbsp;&nbsp;Idaho Press",
+      "link": "https://news.google.com/rss/articles/CBMijwJBVV95cUxNbXBiZmZtSFp2Q19GQS0yM2EzZFdybFhXOXhwTnQzRGVVd2xmcy1hOTFRY0hOcEZFT0ZTdlc3SlFzQUVPR1RqdTUwa3VmTW1paXdDbFFXci1MMVlHRHpnTk1veTFVWkNXWWxBeG5wNXNhN2lYb19aRmtGU0VmSTQtVEF3ZjNxS2l6Q1R1cGZmYUkxTm44eXEwSmhfeWhfZzNraWh6UndiQUNFbjV3amxKbXVaY1gxZnBXNkdUeTZOX3EzdV9hRUdROFd0cTJQRkFwajdjaE10eUlPUWJWU1d3OVUzQkQtY0FqcllLUU12LVhONDFtNVI3ZV9wU04xdF9RM2wzUXFsVUstaElldU5r?oc=5",
+      "source": "GNews: Bangladesh India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T13:52:35+00:00",
+      "fetched_at": "2026-06-30T14:08:02.200399+00:00"
+    },
+    {
+      "title": "Britain India Bangladesh Women's Cricket - Chronicle-Tribune",
+      "summary": "Britain India Bangladesh Women's Cricket&nbsp;&nbsp;Chronicle-Tribune",
+      "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNaERia0dTYkJETkx1YzBKbV9Kay1iU0x3NVlrS3d3NzdSZXpuNmw1LUxJNnlEQnNqU01SbVAzODlXWUFaazFHQngzbDBLR2xpR1kxMlNqS2N2QmZfQnNNZVBHVERFTFlNLUQwc28wWHRBY3JGNERhQjNES0lPMTFwTmFFTDkwcE5GRkUtdWdiajRMVVphaGh0dDZKbzVLWldQOGtUaWdqQTNLQzkxV3liVTNnTWM2NjN1WlBVTXN1eFZlaFpnQ0lxcnBKZGw4Zw?oc=5",
+      "source": "GNews: Bangladesh India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T14:47:42+00:00",
+      "fetched_at": "2026-06-30T14:08:02.200489+00:00"
+    },
+    {
+      "title": "Bangladesh’s Rahman looks to China to squeeze India on the Teesta - Asia Times",
+      "summary": "Bangladesh’s Rahman looks to China to squeeze India on the Teesta&nbsp;&nbsp;Asia Times",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxQdlRXQVBjcnBzWHZxcGZyOWpVRWMtUU9lb3VPUTU3Rm9LUzdMaEluUEdfQVhiaFBwcTUzVUdiX1FhUGRGVG9XNTY2VXg4a0ZOazFNSVpEbnRoNDdOMDRoTWo5cF9GNVdja0tnLU5jTHl3dnRzXzJpaHgtSnZ6bkxvTTFYYndkc3gtbVZXc2lGSjYxUFIxU2F1VXNqbw?oc=5",
+      "source": "GNews: Bangladesh India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-27T06:36:33+00:00",
+      "fetched_at": "2026-06-30T14:08:02.200638+00:00"
     },
     {
       "title": "Maldives Air Quality Index (AQI) and Air Pollution information | IQAir India - IQAir",
@@ -1405,7 +1650,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-26T19:57:32+00:00",
-      "fetched_at": "2026-06-30T10:53:24.770427+00:00"
+      "fetched_at": "2026-06-30T14:08:03.185491+00:00"
+    },
+    {
+      "title": "India, Maldives begin week-long negotiations for free trade agreement - Firstpost",
+      "summary": "India, Maldives begin week-long negotiations for free trade agreement&nbsp;&nbsp;Firstpost",
+      "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOV0xmb2VtSGx2Ym5abDUwV19Kb3JSTURyWVlfQXY2V25VMmNzaFBoTlB6ZHZhOEMxYVhUdTZ2T2p5OFBObUtMYzdhMFNXMEVnRHJKTWJpcWVVNDh0MV8xeFdpbEJmemlTVkNTRTg5RDBmNC0wa21mcFBPSUdZY0FQZkdpYm5rMjk4YVBmeTd0bFI3SjVkT19aT3hLb0ZFQmtuZTRMTG5TeVpvTXhCRGc?oc=5",
+      "source": "GNews: Maldives India",
+      "category": "neighbours",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T16:44:21+00:00",
+      "fetched_at": "2026-06-30T14:08:03.185612+00:00"
     },
     {
       "title": "India, Maldives Begin Free Trade Agreement Negotiations - Rediff MoneyWiz",
@@ -1416,18 +1672,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T15:26:01+00:00",
-      "fetched_at": "2026-06-30T10:53:24.770542+00:00"
-    },
-    {
-      "title": "India, Maldives begin week-long negotiations for free trade agreement - Firstpost",
-      "summary": "India, Maldives begin week-long negotiations for free trade agreement&nbsp;&nbsp;Firstpost",
-      "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPUjdPano2X29lNldyakZEbEZqcmNNU21qM2lsZXhGeEFCbFd2SDU1WkJvcEN0dHhmdzRIRnUwQU1JM1l1bHFDWWt3aFNIa3NoS19xQkpISE5JbV9ZSXdWNXk3Q1NXYlFMUzcxaHVrNDhpcjBMTlRESlhpVVpfaUY1R0pHektWQlBDc2RXTUtkTFJWMWJPM1lSVGp4UTZXcmxJZEJqdFlNRHhIQTVXeHBZdkRjQdIBswFBVV95cUxPUjdPano2X29lNldyakZEbEZqcmNNU21qM2lsZXhGeEFCbFd2SDU1WkJvcEN0dHhmdzRIRnUwQU1JM1l1bHFDWWt3aFNIa3NoS19xQkpISE5JbV9ZSXdWNXk3Q1NXYlFMUzcxaHVrNDhpcjBMTlRESlhpVVpfaUY1R0pHektWQlBDc2RXTUtkTFJWMWJPM1lSVGp4UTZXcmxJZEJqdFlNRHhIQTVXeHBZdkRjQQ?oc=5",
-      "source": "GNews: Maldives India",
-      "category": "neighbours",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T16:44:21+00:00",
-      "fetched_at": "2026-06-30T10:53:24.770663+00:00"
+      "fetched_at": "2026-06-30T14:08:03.185724+00:00"
     },
     {
       "title": "Cricket World Cup 2011 Final: India V Sri Lanka | Match Highlights 5g (21JFdpMula) - Mshale",
@@ -1438,7 +1683,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T08:59:16+00:00",
-      "fetched_at": "2026-06-30T10:53:25.754978+00:00"
+      "fetched_at": "2026-06-30T14:08:04.183576+00:00"
     },
     {
       "title": "Generals, Envoys, Lanka Hotel: Track-II Meet That India Says 'Holds No Value' - NDTV",
@@ -1449,29 +1694,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T09:24:36+00:00",
-      "fetched_at": "2026-06-30T10:53:25.755141+00:00"
+      "fetched_at": "2026-06-30T14:08:04.183710+00:00"
     },
     {
-      "title": "Apple accuses India of 'copy-pasting' rivals' claims in antitrust investigation",
-      "summary": "Article URL: https://www.reuters.com/business/media-telecom/apple-accuses-india-copy-pasting-rivals-claims-antitrust-investigation-2026-06-29/\nComments URL: https://news.ycombinator.com/item?id=48717323\nPoints: 2\n# Comments: 0",
-      "link": "https://www.reuters.com/business/media-telecom/apple-accuses-india-copy-pasting-rivals-claims-antitrust-investigation-2026-06-29/",
-      "source": "HN: India geopolitics",
-      "category": "social_india",
+      "title": "Why Vaibhav Sooryavanshi should not make his India debut in 1st T20I vs England - The Indian Express",
+      "summary": "Why Vaibhav Sooryavanshi should not make his India debut in 1st T20I vs England&nbsp;&nbsp;The Indian Express",
+      "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUE53STkyc1c1Y3JFb1pzdnRONkxFdGRIY3JHVHlmZnYxUi0ybmh6VWxGTEk0bmlQNFZlRzZMZzNVVVpfazZ4MWRYYV9Uc1NTS2U3QldiWE1OWkd4UkNRU2JXR01kdTJNaGRLb21LR3UzN1piUC14SXM4b3lKZ3lCc3E3Q2xQUVY1X2Y5YXh4ajJqalUzdzluZEItMkc0TUc3LVJpVC11MEJKcGt0eEtPRWV3d2dJbjc5a3pr0gHCAUFVX3lxTFBUcUpZYllsc0xjbXgzUjhnWWxFeHNkcDY5RjA4UVl1cUoxenAzdVkzcjNneU9lRmFxcGNDS0VDZlJPYjdKZ2pCeDdBRHY1MTlYQkp3MVdIbnEtajdnUWhab3dZV01faVR2cTd0bDRtTlB5OTlRMnBRSkpIeTkwUldEQWRKTkUxYTVVM1g3aWZUQnNQbGlVWmJSTFFrNG50ZEJvN1FMejR0OG9Bb2RHbmdmczRoTUZoaURGaEViZWh2LUdB?oc=5",
+      "source": "GNews: Sri Lanka India",
+      "category": "neighbours",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-29T10:24:59+00:00",
-      "fetched_at": "2026-06-30T10:53:31.338222+00:00"
-    },
-    {
-      "title": "Rural India is different at every level",
-      "summary": "Article URL: https://ruralindiaonline.org/\nComments URL: https://news.ycombinator.com/item?id=48715684\nPoints: 2\n# Comments: 0",
-      "link": "https://ruralindiaonline.org/",
-      "source": "HN: India geopolitics",
-      "category": "social_india",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T06:46:13+00:00",
-      "fetched_at": "2026-06-30T10:53:31.338347+00:00"
+      "published": "2026-06-30T12:03:48+00:00",
+      "fetched_at": "2026-06-30T14:08:04.183878+00:00"
     },
     {
       "title": "India protests Gilgit-Baltistan polls as rigging claims grow - MSN",
@@ -1482,7 +1716,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-26T14:15:23+00:00",
-      "fetched_at": "2026-06-30T10:53:33.013775+00:00"
+      "fetched_at": "2026-06-30T14:08:11.813289+00:00"
     },
     {
       "title": "India Protests Pakistan’s Plan to Hold Elections in Gilgit-Baltistan - INDIA New England News",
@@ -1493,7 +1727,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T01:01:23+00:00",
-      "fetched_at": "2026-06-30T10:53:33.013953+00:00"
+      "fetched_at": "2026-06-30T14:08:11.813466+00:00"
     },
     {
       "title": "Rigging claims and unrest deepen India-Pakistan row over Gilgit-Baltistan polls - MSN",
@@ -1504,84 +1738,29 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-26T14:15:23+00:00",
-      "fetched_at": "2026-06-30T10:53:33.014364+00:00"
+      "fetched_at": "2026-06-30T14:08:11.813747+00:00"
     },
     {
-      "title": "Pakistan: People in Gilgit-Baltistan protest in streets, demand wheat flour, pulses, power supply - The News Mill",
-      "summary": "Pakistan: People in Gilgit-Baltistan protest in streets, demand wheat flour, pulses, power supply&nbsp;&nbsp;The News Mill",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNLXhjZHMwM0lYd3RfdDR2bnN0LWRfTXk1b3RDZmlacDBLNjhWZEZ5WktWM2NqXzZjTzNCT1l6Y3JrS0I3Vko0YWJIRHZVcmZxeFdoSUZreEx0THFmaVZrVTYwdkZQdjZmU2ZFOFQtNk5DUnJJckpYQWo2ZnZWNXFRZ0tudnFUOFk5NXluTktfOUR1LU8xVlVfeTc2WVNmb3NRWjN5aFdXWnRZc3pRZkh0Y294Y0JMZW8wNlo3cDVyNi1Xa3Ri?oc=5",
+      "title": "Rigging claims and clashes deepen Gilgit-Baltistan tensions - MSN",
+      "summary": "Rigging claims and clashes deepen Gilgit-Baltistan tensions&nbsp;&nbsp;MSN",
+      "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxOSk9MR191eEN3TzhQMGF3MC1RbHZZa1c2V29WRVl6R3lLUG5SNFdoMGhYVEpTU1VGMkhEUnNRZGJGMmIxdlN5QXhIQjMxdnpEdmoxaXdoWHRDZ2hGZlJBLXk5US1mSlRpTWcxYUFoNHZ5R2F2MExkU3o5bTQ0VDI5XzJNY2M1QWZncTdTcFFYOTZqMmdIa2x5M0RxRWxaanhlQ2xpX1ltZTJOdmM5bGQ3Y1laT18tdzVwVlIxdWwzWXdNdWVva3dGd21PaExXU08xWVVoRnBoU0s5dC1Pbl9ZcGJOS18tVmpFR3RMQlM3VkloNkNo?oc=5",
       "source": "GNews: PoK Gilgit Baltistan rights",
       "category": "pok_baloch_minorities",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-28T06:12:28+00:00",
-      "fetched_at": "2026-06-30T10:53:33.014504+00:00"
+      "published": "2026-06-26T14:15:23+00:00",
+      "fetched_at": "2026-06-30T14:08:11.813850+00:00"
     },
     {
-      "title": "Punjab ramps up security for Amarnath Yatra with Army, BSF and CAPF on key routes - The Statesman",
-      "summary": "Punjab ramps up security for Amarnath Yatra with Army, BSF and CAPF on key routes&nbsp;&nbsp;The Statesman",
-      "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxOUThaendxSG1SMkRNV1VIcG1oeXU5Mk1qZ2VPdGo5MnN5NVdkZEJNUzVGam5PcWstSXdPRHN6QXdPQS1ibFU1azlobUd0ZWo4SHlKeXhvTndSWnFnaVk3VEJyeVZNWEx4ZHozdmFYdnJodVBOeGpZOWd2NFVZX29WQXpWRmhPcUlVcTk3ZUw0UE9zTUhVVEJKdThKeUJuQkRUVGRFWi1kNEdRYkh3NEdsX1lJWnhmRkVmRmp5ZzVlRWR0RUhTOHpsVWV0d9IB0AFBVV95cUxQcFJ1YUVBdmhZaEtVbE1EaHZPWXVLMjhDSEpFeUNRNHFZRW9yeXZnZk1mcF9za1FIQ1ZHUUROMmp4X0t1bGRHWmpNY0VCbHJpd1IyVnZzWWJDTVNHYjd6R2h6ZlNBd2liNGRGV09CVjZyaHdwcEFtSHRzU3FUb3VtM0lBbU0yLVFJRkstMkUtb1VZbnpQdFVkYWFpNWpwZElpSmE1cmtEQ3lDY01nQ3BVNWVFdDhDUm5Hc3Ezc0hYZGcwZy1HbUl2SDRuMkd4NDht?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
+      "title": "Rigging claims and deadly clashes intensify Gilgit-Baltistan tensions - MSN",
+      "summary": "Rigging claims and deadly clashes intensify Gilgit-Baltistan tensions&nbsp;&nbsp;MSN",
+      "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNTFJYdVRaT2xpb1RlaWVScFVUTmtZb3FnYmkxQVk0RGhiTjU3RmNmUU4tNGVHUG8ydkRac3o5VXMyQUhiZ28zd05qRVlHcnN6SjFHNC1KSkk1b09DN2J2ZXYweUU4bVV3VG82aWc2b2JOSkNhUlNBeU5acTBNMVNRXzIwNzNqV2UycWhtald1RlJ3TXR3SUpZUnA3MDhlclNrQjJaQzZVMnJSSl9ob1B3VDQ4UXItTjBuTGdWek52SU1ZNGFZUThySW45OU1RRmpPdGNsVmo4ZVpXR2oxMk1oWjhPcVlTQzVPR1pPb0hyUXRaLTRya1lVM3drMmZ1bEw5RVE?oc=5",
+      "source": "GNews: PoK Gilgit Baltistan rights",
+      "category": "pok_baloch_minorities",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-30T09:29:00+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872010+00:00"
-    },
-    {
-      "title": "FIR filed against Punjab Kings' Shashank Singh and his father for verbally abusing their cook in Bhopal - The New Indian Express",
-      "summary": "FIR filed against Punjab Kings' Shashank Singh and his father for verbally abusing their cook in Bhopal&nbsp;&nbsp;The New Indian Express",
-      "link": "https://news.google.com/rss/articles/CBMi6AFBVV95cUxOUHhPQUh3T0I5WjkxaVRkVGktWlRtZENaTS0yTU9CMG40dkh2NWxSVnZTNEZBSmh6aVpnNjlPTzFUVnM5SXRNMzVFS3JLdHhwbUtiSHlrLXpRd2hnVzM3U1d2Qy1PWDJlQ1FrRWNmV1c4RHlRbU8xamZJVWlQMHlobEdiWnp6aUYzb3NBNW1aOW40Y0tmbUNXM0w4S0RJcmhGUkdoOXpKVjFkRkpRVVVDMThXd0daTVlVZFZPNHNxdDJsUkdZdmU4WkwzRzlialhHNWtPaHp2QlpPd3pVTjBTM09tLTNDNWpn0gH2AUFVX3lxTE9oeGFnUGx6UnFGOGNtczQ5ZlpyQjcybDgwbHA3V3ZYYmlmUVJsTG9scUpLRnJETzh2ZmJydVEwNVBvcHdFWnhWY29iOUNhdkhNczJycC0yOGw4TTdjSVMtU2dPR2t4Vy1CYWh5RUthRGdoVnVuR2JsVnlXR1lfNG41ajR5S3UxbWw1LTJmSGVUS1hiWXdMUU5oSll5WG0tU3IzSl9xV1RhTlMzbldsNEZhYXNsTEp4eFoxNHh2WXhPS3JlczlLamtOYkNQMmNvSVFtbjJfZUIzN3hZM2FNbERIZUhoMTNDVC1WZFo5LXZyaGw1RW84Zw?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T19:07:34+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872180+00:00"
-    },
-    {
-      "title": "India: Insidious Wave In Punjab – Analysis - Eurasia Review",
-      "summary": "India: Insidious Wave In Punjab – Analysis&nbsp;&nbsp;Eurasia Review",
-      "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxNUkQ3TXliTnk0amdIMUxsam9oRjU2cjF5TWJ3N3FNTTc5YUx3bEQ5aUJGWlh4V202Wkl1YlVsZDlLMU42c0Z1bG1td0lnMzRVMDN0OU5mb2ZKVU9WbWN2dFhZTS0wZWt5VlZCN3hsY2U0Rm5HWDFTZ1JOaHk3WkxHTTF2eDVKdw?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T02:34:30+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872318+00:00"
-    },
-    {
-      "title": "Punjab gangster Goru Bacha held in Sirsa with illegal weapon - The Tribune",
-      "summary": "Punjab gangster Goru Bacha held in Sirsa with illegal weapon&nbsp;&nbsp;The Tribune",
-      "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPNEN5NTh0VTNYdkh2bzVLRjItWWVaU01oQzFiMlB2cVlvcklzeWRpQTB2NWNxNmRtVkdLX2hBekh6LWxIZXprclVCeTU3cGFZTWo1T1lDZl9WV0NYOGVxYnRHbjhsTmhsR1FQODdYSlYtLXM1amh0dURQMnFfMzlRc0RwcVNVcFBreGkwY2l6NUgwNTJVTVIzR1ZzX3lTTDVTbUo5REVtQV9aU2lOWmZVU0J1Qm15ajM1LWpQV2hFY9IBwwFBVV95cUxPekttd3dWR1Zxd2RyaDU3TWFxTUJtLW8yUjhpWUtFRzAycFY0c1gxNWZFVW43T3BFcF8xRms2TEF5TlJKMXl5aWhuVC1LVV81Y01ZbHg3UDRpYzNFUFVkdkJrVUF6RFVxWHRuUG1zbktXbm1adGtiQ0pzbkdxbDdZQlJNNG5NTi1NVW5LcVJNRUxEek9lakctRExUbUVhazA2N3BYZ3c1dEZHcV9yd1A4aGx0dmdxb3dBdE95dkhfYWZ4Mk0?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-30T03:37:57+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872565+00:00"
-    },
-    {
-      "title": "Drone loaded with heroin crashes in Pakistan's Punjab en route to India - The Times of India",
-      "summary": "Drone loaded with heroin crashes in Pakistan's Punjab en route to India&nbsp;&nbsp;The Times of India",
-      "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQR0gxLTBqemRPWkRMOHQwWnppOHRObEtnbk9RQ0R4WnR4NzJSWkwwNmt4MlduUE5jNzlBMDBKeWExSFlOY0ZHZU1SY1l4ODZTNlBmdUNDQUNrRi1aTWZqWnR6NHNFYl9aaGpXOVNJTnZJclU4c3ZneW1kaHVEOGhPWm50X0c1RUxPWGpYVE5ublgxRjRxTm5COUgteXQ5b2tqUUFQZWNTakkxQVp6cmxNTXB1bHZOU3ZvdHFJR0thRkNSVGJCTGJfOTlnOHJlQkhTU1pfWWt4TkRzXzdUcmlWS9IB5gFBVV95cUxON3Y2TXBjVmdXelZoN2tOdWJXLVhGS0lOUGRtUkl4Ni1SbXEwdC1OSkd4bXpxM2diVEhlWWxPLVVqR2xWZzJoWHd6Q3R6TGJqZm43MldNejM3aDNIbW9TVFAtRFdNekZRZ0pYRE1ZRjZROHpkcUl1WHVsS1BMNmtzWXZPeUJiWUNRVEpxS1hacHl6ZHM2ZUQ4YXhPUlVCam4wakpycjItVmZBRTdyTmoyem1vbEpQSWdhbVM2cXhrYnhEMUMwWFk2bW96QlhFM2Rhb0xLeGtVNk5pOENOXzJpNUdPcnJ1dw?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T17:22:00+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872810+00:00"
-    },
-    {
-      "title": "Sikh body passes resolution seeking FIR against CM Mann, cops in viral video row - India Today",
-      "summary": "Sikh body passes resolution seeking FIR against CM Mann, cops in viral video row&nbsp;&nbsp;India Today",
-      "link": "https://news.google.com/rss/articles/CBMitgFBVV95cUxObUcyeFd1VEFlUFQ5ZUU2emJCdkNXTVBmdlkxRHNFaWFTSHBjTEdOekVwUFpjTF96b05aQ25IaG9hN2JFdzZHdXFLakcwRVlaRmRpeVR4U3lTR09CRjY3bi1zdzNsZHgyN2FGV05JVVo5eVNKRkVtbF9sN1FFd0R2SkdpM3FsY1JXQk9vLS1DWjZyQmdQd0FOMHc4R253SFV5RzFtOHV1UTNvRHkxV1UxdWU2LU54QdIBuwFBVV95cUxNd2F6NU8xeVVCYTZMSWFXdlF2UDQyazd4V1I1RFJzV3JFUENncGlrTmZKWUE0RWd5MF81U2JwQUQxX3JYUzc1TEQ0LVpFSWxCaE90dEJpSFdmYVNuQXBfaE02dkY2ZFhteHUtX2UyUno5SlY5WXdLcV9Nc2IxclFldkRhdW5aWmJycmxadWFZdUhQZjgwWXFjZV8xTkQ0d3JkcjExOS1DbFRLWGlkOGhMLWgwUTNpaG42Rm5F?oc=5",
-      "source": "GNews: Punjab politics security",
-      "category": "sikh_punjab_affairs",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-27T11:26:05+00:00",
-      "fetched_at": "2026-06-30T10:54:06.872943+00:00"
+      "published": "2026-06-26T14:15:23+00:00",
+      "fetched_at": "2026-06-30T14:08:11.813956+00:00"
     },
     {
       "title": "Chinese Camps In Arunachal: Army Dismisses Reports - StratNews Global",
@@ -1592,7 +1771,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T07:35:28+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708111+00:00"
+      "fetched_at": "2026-06-30T14:09:05.135843+00:00"
+    },
+    {
+      "title": "Arunachal to probe Chinese land grab claims as Army denies - MSN",
+      "summary": "Arunachal to probe Chinese land grab claims as Army denies&nbsp;&nbsp;MSN",
+      "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNeGx3emo5Smt0NTFrSEJFVy1vUVJJa0g2OWlQdVR5eEVqZ3FLaFAyN2d6OVQ2V0VDMWJGN3QwaGdFTGZKckZtOVNyeHpiNjRCY3dvVUp5aWQzLTc1M3RJdjYwNVRhY3hfSWZTOExiRE5VaVV2c3IzaFdmODdyc0dVRWJWV05XY2QxNkwyRGlyeDQwN0hGN3AzaW1HcU1qdkg2dkRMN0lhb2V1cWpNVExTTGdra0Y3c2NqZGRqcmRZVUVwQTN3UW0wdll0WGNuVjk4NFI1Y3ZsclRqNWp0YWRnZjhPdlg0TnF3bUUzMWpxWTE1dw?oc=5",
+      "source": "GNews: Arunachal China renaming",
+      "category": "border_territorial",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T21:14:22+00:00",
+      "fetched_at": "2026-06-30T14:09:05.135953+00:00"
     },
     {
       "title": "‘China encroaching on ancestral land’: Arunachal Pradesh to probe - The Indian Express",
@@ -1603,7 +1793,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T20:09:26+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708281+00:00"
+      "fetched_at": "2026-06-30T14:09:05.136139+00:00"
     },
     {
       "title": "Nah Welfare Society Raises Alarm Over Alleged Chinese Expansion Along Arunachal Frontier - Arunachal24",
@@ -1614,18 +1804,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T08:10:34+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708724+00:00"
-    },
-    {
-      "title": "Chinese encroachment in Arunachal? Indian Army calls reports incorrect - India Today",
-      "summary": "Chinese encroachment in Arunachal? Indian Army calls reports incorrect&nbsp;&nbsp;India Today",
-      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQY3VZRHJud0FrczhWdEFCa3ZEM2tSX052YkpVMi0yUTNXZW41VG8tYzFMRHVuLTRtbDN0MGFEQ29oS2hwa3hldUpoVFY4Ml9RbW1zQWRSSUV3RmtWR0lyWDRLbFBXZlVfUFdkTEhDb29PMHhGaEdTQ2p3cUFOU2dEOXd2dUJOTDQzOFJrTVhGdVMxS2hsa3oyOXpDYk9mOHJFWmhiaUd4N05CR0xCelJIV1k0WE5uNnZTNDVKVzVrMjd2WDFu0gHKAUFVX3lxTE00RmpPeGJwMV9UOVhhc3lWLWZjUVBoelBJRTBTd3VsZ3FiZDJ6ak5sTUJpWHRtLXh5a2tSOHBDSWdKeldta3hRQkN2T0hYNHdPUUdhMUFoU0txdHNpeUFqb0FTOGlORVFHV3loVmN4VDBuTzBiQ0U5MFktSmhvZjRYMFRxdFJ6cUlDc0ZpV1RNaTFZUjVTWGtXV2JwTU5rczFhQWpIYmVOeUd6RndSUVJjZkd6RldYcURLdU1wMHBUVTR0bmlpYXNxOVE?oc=5",
-      "source": "GNews: Arunachal China renaming",
-      "category": "border_territorial",
-      "signals": [],
-      "importance": 0,
-      "published": "2026-06-29T17:09:49+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708848+00:00"
+      "fetched_at": "2026-06-30T14:09:05.136433+00:00"
     },
     {
       "title": "Nah Tribal Body Claims PLA Occupied Ancestral Land, China Built Roads and Camps in Arunachal Pradesh - The Times of India",
@@ -1636,7 +1815,29 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T08:31:17+00:00",
-      "fetched_at": "2026-06-30T10:54:23.708993+00:00"
+      "fetched_at": "2026-06-30T14:09:05.136582+00:00"
+    },
+    {
+      "title": "Chinese encroachment in Arunachal? Indian Army calls reports incorrect - India Today",
+      "summary": "Chinese encroachment in Arunachal? Indian Army calls reports incorrect&nbsp;&nbsp;India Today",
+      "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQY3VZRHJud0FrczhWdEFCa3ZEM2tSX052YkpVMi0yUTNXZW41VG8tYzFMRHVuLTRtbDN0MGFEQ29oS2hwa3hldUpoVFY4Ml9RbW1zQWRSSUV3RmtWR0lyWDRLbFBXZlVfUFdkTEhDb29PMHhGaEdTQ2p3cUFOU2dEOXd2dUJOTDQzOFJrTVhGdVMxS2hsa3oyOXpDYk9mOHJFWmhiaUd4N05CR0xCelJIV1k0WE5uNnZTNDVKVzVrMjd2WDFu0gHKAUFVX3lxTE00RmpPeGJwMV9UOVhhc3lWLWZjUVBoelBJRTBTd3VsZ3FiZDJ6ak5sTUJpWHRtLXh5a2tSOHBDSWdKeldta3hRQkN2T0hYNHdPUUdhMUFoU0txdHNpeUFqb0FTOGlORVFHV3loVmN4VDBuTzBiQ0U5MFktSmhvZjRYMFRxdFJ6cUlDc0ZpV1RNaTFZUjVTWGtXV2JwTU5rczFhQWpIYmVOeUd6RndSUVJjZkd6RldYcURLdU1wMHBUVTR0bmlpYXNxOVE?oc=5",
+      "source": "GNews: Arunachal China renaming",
+      "category": "border_territorial",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-29T17:09:49+00:00",
+      "fetched_at": "2026-06-30T14:09:05.136698+00:00"
+    },
+    {
+      "title": "PLA set up camps allegedly inside Taksing area | Terming ‘encroachment’, NWS seeks GoAP-GoI intervention - Arunachal Observer",
+      "summary": "PLA set up camps allegedly inside Taksing area | Terming ‘encroachment’, NWS seeks GoAP-GoI intervention&nbsp;&nbsp;Arunachal Observer",
+      "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxPSnVyeVpWY0JfMU03aFQtUE1QN19fQ2s4R0pUUnloRTUxdUpyeUpFTXdGSnRfUWFucjJYNzBrMTJYWWlwaEtDX25XSTlJM0tPRkhFeEQ1cmlBcUZxakpBQ2d3TlM3TmhacGRIbDliVDJ2QktZb2xwd2RMQnpZelpRNlQydEtCOTNDLVZDaEo1bUNPNzJ4NlNKdjU0anRSYWktd0luTWJHX1JlZkJkZEhUTllldURXNXRnVXNuNUZDSGRFSnNVNFFuQ0VKYklVbDhndE9OQXJmR3A?oc=5",
+      "source": "GNews: Arunachal China renaming",
+      "category": "border_territorial",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T19:45:42+00:00",
+      "fetched_at": "2026-06-30T14:09:05.136917+00:00"
     },
     {
       "title": "Navy ships dock in Thailand, Seychelles as India steps up Indo-Pacific outreach - The New Indian Express",
@@ -1647,7 +1848,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-27T14:41:05+00:00",
-      "fetched_at": "2026-06-30T10:54:25.739222+00:00"
+      "fetched_at": "2026-06-30T14:09:07.183069+00:00"
     },
     {
       "title": "Bangladesh hands Mongla port project to China, ends India's role: What it means for Bharat's security? - Bhaskar English",
@@ -1658,7 +1859,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T14:34:04+00:00",
-      "fetched_at": "2026-06-30T10:54:27.705557+00:00"
+      "fetched_at": "2026-06-30T14:09:09.132891+00:00"
+    },
+    {
+      "title": "The Industrial Gap in India-Japan Economic Security - The Diplomat – Asia-Pacific",
+      "summary": "The Industrial Gap in India-Japan Economic Security&nbsp;&nbsp;The Diplomat – Asia-Pacific",
+      "link": "https://news.google.com/rss/articles/CBMijAFBVV95cUxQTzdVVHhLQnRIei1QWG5ES2xBSWNsT1piZjdjaFZCNU5sYzNKUXh4TjVvcjRzQWZONnFPNmZtbmlPbFc1a0Y4dHl5Sy15T2l3XzdQY09uQUFyREU5aklXNldQZEl3cmtURERyUWRlbnY4MzRwLWMyNFA3THFQQ3hOYU50dzhDZUZhRTIwNA?oc=5",
+      "source": "GNews: India rare earth semiconductor",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T14:06:37+00:00",
+      "fetched_at": "2026-06-30T14:09:18.054030+00:00"
     },
     {
       "title": "India-US AI and Critical Minerals Partnership Explained 2026 - Discovery Alert",
@@ -1669,7 +1881,73 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T10:02:36+00:00",
-      "fetched_at": "2026-06-30T10:54:41.177867+00:00"
+      "fetched_at": "2026-06-30T14:09:18.054176+00:00"
+    },
+    {
+      "title": "India Urges Kailash Pilgrims to Have All China Travel Documents - Bloomberg",
+      "summary": "India Urges Kailash Pilgrims to Have All China Travel Documents&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPSmFyLUpRckxzT2oxNVhvcktMeHhUTm9HMUFsNkRQTkxqYVlRX1JrNEdNbzB1bkZGUXYxM3BVU1VZeTFfZGdsQjZtZE45VlFRNUNnTUdfaC1ieWIyQ1EwcGNQWk9GeTY3TjVHRVZRQzUtNXBvYXkyWmI3d2JBbGpoNmRFR2loYXZBOFhQemJVcUhIUHF3WXp0Zkc3aDBZM2pNS292LVVqek1rZGo3NUE1SkV2TWQ?oc=5",
+      "source": "GNews: Bloomberg India economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-28T04:25:00+00:00",
+      "fetched_at": "2026-06-30T14:09:18.981252+00:00"
+    },
+    {
+      "title": "India’s ISRO Fires Up Next-Gen Rocket Engine - Bloomberg",
+      "summary": "India’s ISRO Fires Up Next-Gen Rocket Engine&nbsp;&nbsp;Bloomberg",
+      "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxNaVo0Mi0xaWpzZHpPdm5TUW9nN2NmMWVweWhUSG5FeFo2TnRJSnVsTUZMSUJBdTZHUVVOdU5Ja1lzNFZGbU5sam14bTVKQmJUY25pTnI4dFI2VUNfSXRwMGlkNWNsYVNXVTJRMmRZRkE1Znoyc3hmd0hvMF9JbzZMbTB4TkNqaU0tWXJDMDZhbEh5N1VfUXQ3SmhfNA?oc=5",
+      "source": "GNews: Bloomberg India economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-27T05:19:00+00:00",
+      "fetched_at": "2026-06-30T14:09:18.981380+00:00"
+    },
+    {
+      "title": "Credit guarantee of Rs 13 lakh cr to micro, small cos in last few yrs; delayed payments under lens",
+      "summary": "The government has provided substantial credit guarantees, totaling Rs 13 lakh crore, to micro and small enterprises, significantly boosting credit inflow to the sector.  Recognizing delayed payments as a persistent issue, officials are now actively monitoring payments exceeding the 45-day limit to ",
+      "link": "https://economictimes.indiatimes.com/news/economy/finance/credit-guarantee-of-rs-13-lakh-cr-to-micro-small-cos-in-last-few-yrs-delayed-payments-under-lens/articleshow/132094122.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T13:09:35+00:00",
+      "fetched_at": "2026-06-30T14:09:20.362966+00:00"
+    },
+    {
+      "title": "US-Iran thaw to provide tailwinds for growth: RBI",
+      "summary": "India's economic growth could get a boost from the Iran-US peace deal, according to the Reserve Bank's latest report. While the economy shows resilience, elevated commodity prices and a weaker global outlook pose risks. The central bank also flagged potential pressure on the fiscal deficit due to hi",
+      "link": "https://economictimes.indiatimes.com/news/economy/indicators/us-iran-thaw-to-provide-tailwinds-for-growth-rbi/articleshow/132093653.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T12:56:29+00:00",
+      "fetched_at": "2026-06-30T14:09:20.363201+00:00"
+    },
+    {
+      "title": "India's April-May fiscal deficit at ₹1.62 lakh crore, widens on-year to 9.6% of FY27 aim",
+      "summary": "India's fiscal deficit stood at ₹1.62 lakh crore during April-May, accounting for 9.6% of the full-year budget estimate, according to government data released on Tuesday.",
+      "link": "https://economictimes.indiatimes.com/news/economy/indicators/indias-april-may-fiscal-deficit-at-1-62-lakh-crore-at-9-6-of-fy27-target/articleshow/132091507.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T10:54:50+00:00",
+      "fetched_at": "2026-06-30T14:09:20.363914+00:00"
+    },
+    {
+      "title": "Dhubri-Phulbari Bridge over Brahmaputra set to boost Assam-Meghalaya connectivity via NH-127B",
+      "summary": "",
+      "link": "https://economictimes.indiatimes.com/news/economy/infrastructure/dhubri-phulbari-bridge-over-brahmaputra-set-to-boost-assam-meghalaya-connectivity-via-nh-127b/videoshow/132087829.cms",
+      "source": "Economic Times - Economy",
+      "category": "economic_security",
+      "signals": [],
+      "importance": 0,
+      "published": "2026-06-30T07:52:54+00:00",
+      "fetched_at": "2026-06-30T14:09:20.364027+00:00"
     },
     {
       "title": "Two Assam Rifles jawans injured in gunfight in Nagaland’s Mon district - The News Mill",
@@ -1680,7 +1958,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-28T09:52:09+00:00",
-      "fetched_at": "2026-06-30T10:54:50.526310+00:00"
+      "fetched_at": "2026-06-30T14:09:29.559873+00:00"
     },
     {
       "title": "Arunachal’s forgotten soap tree that could change how we clean",
@@ -1691,7 +1969,7 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-30T08:30:00+00:00",
-      "fetched_at": "2026-06-30T10:54:51.147858+00:00"
+      "fetched_at": "2026-06-30T14:09:30.284374+00:00"
     },
     {
       "title": "Weaving tradition into enterprise: Kamini Nath’s handloom enterprise in Assam",
@@ -1702,18 +1980,18 @@
       "signals": [],
       "importance": 0,
       "published": "2026-06-29T11:41:14+00:00",
-      "fetched_at": "2026-06-30T10:54:51.149105+00:00"
+      "fetched_at": "2026-06-30T14:09:30.285629+00:00"
     },
     {
-      "title": "Iran Eyes Stronger Energy Partnership With India - StratNews Global",
-      "summary": "Iran Eyes Stronger Energy Partnership With India&nbsp;&nbsp;StratNews Global",
-      "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxOWFVKaGRxenZaM2x5a0NXa0pXT0dtekVsOFdMT2xzYlNEYlZVNnRGOEdTd1NIOEpKUlUtZTBPRGExRTU4ZE5vUDlxR092b2VnZVo2VTAtOTVOb0c1N1Z0c2c2ZmxTeXQzcXZHdDVRMi0tQlY3ZEJLS3dRZWg4VzEwRlRqTnAydTVULXQwcTlydGRheE5VRFljbWh4MXBMQ09RRmdpTw?oc=5",
-      "source": "GNews: StratNewsGlobal India",
-      "category": "osint_channels",
+      "title": "Amnesty International calls for release of hostages, end to cycle of violence in Manipur - The News Mill",
+      "summary": "Amnesty International calls for release of hostages, end to cycle of violence in Manipur&nbsp;&nbsp;The News Mill",
+      "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxNcHNLUUQ2alZidnNXUkV2bENjemJoMlRVX1JSWXhWUkdMVHBlYjBsVF91ZVFlS1pfZzRSZi14eWp2SGtlNVlUU1RfektkSEZlTDdJWEpKZTQ5TDc2VGN2a2ZtTHJDbEZwc1hpMGpCZmJkR2lBUnhYQjh2algtaVo0U2tpRkFSYVRlcFdGbmxUWTl0eXdYelpqa2dkSi1rMlJoMFBKNzdPS3Y5YkFrVzNvMDVDbHRDM0liTzVZQQ?oc=5",
+      "source": "GNews: Amnesty International India",
+      "category": "india_critics",
       "signals": [],
       "importance": 0,
-      "published": "2026-06-26T11:32:23+00:00",
-      "fetched_at": "2026-06-30T10:55:10.688687+00:00"
+      "published": "2026-06-28T14:47:11+00:00",
+      "fetched_at": "2026-06-30T14:09:44.476657+00:00"
     }
   ]
 }
