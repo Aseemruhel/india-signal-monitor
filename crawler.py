@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
 India Geopolitical Signal Monitor
-Only fetches and stores content relevant to India.
+Tracks India-relevant signals + Pakistan/PoK human rights & minority issues
+(VOPK, HRCP, Paank, Baloch, Sindhi, PoK minorities, etc.)
 """
 
 import json
@@ -45,7 +46,6 @@ FEEDS = {
         {"name": "The Diplomat - India", "url": "https://thediplomat.com/feed/"},
         {"name": "Asia Times", "url": "https://asiatimes.com/feed/"},
         {"name": "Foreign Policy", "url": "https://foreignpolicy.com/feed/"},
-        # Google News targeted searches — India specific
         {"name": "GNews: India Pakistan", "url": "https://news.google.com/rss/search?q=india+pakistan&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India China border", "url": "https://news.google.com/rss/search?q=india+china+border&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India criticism", "url": "https://news.google.com/rss/search?q=india+human+rights+OR+india+press+freedom+OR+india+democracy&hl=en&gl=US&ceid=US:en"},
@@ -64,7 +64,6 @@ FEEDS = {
         {"name": "GNews: Sri Lanka India", "url": "https://news.google.com/rss/search?q=sri+lanka+india&hl=en&gl=US&ceid=US:en"},
     ],
     "social_india": [
-        # Reddit — India-specific only
         {"name": "Reddit r/india Hot", "url": "https://www.reddit.com/r/india/hot.json?limit=25"},
         {"name": "Reddit r/IndiaSpeaks", "url": "https://www.reddit.com/r/IndiaSpeaks/hot.json?limit=20"},
         {"name": "Reddit r/indiadiscussion", "url": "https://www.reddit.com/r/indiadiscussion/hot.json?limit=15"},
@@ -73,9 +72,35 @@ FEEDS = {
         {"name": "Reddit r/kashmirconflict", "url": "https://www.reddit.com/r/kashmirconflict/hot.json?limit=15"},
         {"name": "HN: India geopolitics", "url": "https://hnrss.org/newest?q=india+geopolitics+OR+india+pakistan+OR+india+china"},
     ],
+    # ── NEW: Pakistan minority / human-rights / PoK / Baloch monitoring ──────
+    "pok_baloch_minorities": [
+        # Voice of Karakoram / PoK-focused
+        {"name": "GNews: Voice of Karakoram PoK", "url": "https://news.google.com/rss/search?q=%22voice+of+karakoram%22+OR+VOPK&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: PoK Gilgit Baltistan rights", "url": "https://news.google.com/rss/search?q=gilgit+baltistan+rights+OR+gilgit+protest&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: PoK minorities", "url": "https://news.google.com/rss/search?q=%22pakistan+occupied+kashmir%22+minorities+OR+rights&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Azad Kashmir protest", "url": "https://news.google.com/rss/search?q=azad+kashmir+protest+OR+azad+kashmir+rights&hl=en&gl=US&ceid=US:en"},
+        # Human Rights Commission of Pakistan (HRCP)
+        {"name": "HRCP official RSS", "url": "https://hrcp-web.org/hrcpweb/feed/"},
+        {"name": "GNews: HRCP Pakistan", "url": "https://news.google.com/rss/search?q=%22Human+Rights+Commission+of+Pakistan%22+OR+HRCP&hl=en&gl=US&ceid=US:en"},
+        # Paank (Baloch human rights org) and general Baloch rights
+        {"name": "GNews: Paank Baloch rights", "url": "https://news.google.com/rss/search?q=Paank+Baloch+OR+%22Baloch+human+rights%22&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Balochistan enforced disappearances", "url": "https://news.google.com/rss/search?q=balochistan+%22enforced+disappearance%22+OR+balochistan+missing+persons&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Baloch protest crackdown", "url": "https://news.google.com/rss/search?q=baloch+protest+OR+balochistan+crackdown+OR+BYC+balochistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "Balochistan Post", "url": "https://thebalochistanpost.net/feed/"},
+        {"name": "Balochwarna News", "url": "https://www.balochwarna.com/feed/"},
+        # Sindhi, Pashtun, and general Pakistan minority rights
+        {"name": "GNews: Sindhi rights Pakistan", "url": "https://news.google.com/rss/search?q=sindhi+rights+OR+sindh+nationalist+OR+JSMM&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: PTM Pashtun rights", "url": "https://news.google.com/rss/search?q=%22Pashtun+Tahafuz+Movement%22+OR+PTM+Pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan minorities persecution", "url": "https://news.google.com/rss/search?q=pakistan+minorities+persecution+OR+pakistan+hindu+forced+conversion+OR+pakistan+christian+persecution&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan blasphemy minorities", "url": "https://news.google.com/rss/search?q=pakistan+blasphemy+law+minority&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Ahmadi persecution Pakistan", "url": "https://news.google.com/rss/search?q=ahmadi+persecution+pakistan&hl=en&gl=US&ceid=US:en"},
+        # Reddit communities tracking this
+        {"name": "Reddit r/Balochistan", "url": "https://www.reddit.com/r/Balochistan/hot.json?limit=15"},
+        {"name": "Reddit r/GilgitBaltistan", "url": "https://www.reddit.com/r/GilgitBaltistan/hot.json?limit=10"},
+    ],
 }
 
-# ── INDIA RELEVANCE — must contain at least one of these ──────────────────────
+# ── RELEVANCE FILTERS ─────────────────────────────────────────────────────────
 
 INDIA_MUST_MATCH = [
     "india", "indian", "bharat", "bharatiya", "modi", "delhi", "mumbai",
@@ -90,6 +115,27 @@ INDIA_MUST_MATCH = [
     "khalistan", "naxal", "maoist india", "northeast india", "manipur",
     "assam", "punjab india", "farmers india", "rupee", "rbi india",
 ]
+
+# Separate relevance check for the PoK/Baloch/minorities category —
+# these don't need to mention "India" since they're inherently relevant
+# to India's strategic/counter-narrative interest in Pakistan's internal fault lines
+POK_BALOCH_MUST_MATCH = [
+    "balochistan", "baloch", "gilgit", "baltistan", "pok ", "pok,",
+    "azad kashmir", "pakistan occupied kashmir", "sindhi", "sindh",
+    "pashtun", "ptm", "hrcp", "human rights commission of pakistan",
+    "paank", "vopk", "voice of karakoram", "enforced disappearance",
+    "missing persons pakistan", "ahmadi", "blasphemy law", "byc ",
+    "baloch yakjehti", "minorities pakistan", "forced conversion",
+    "christian persecution pakistan", "hindu pakistan minority",
+]
+
+def is_india_relevant(text):
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in INDIA_MUST_MATCH)
+
+def is_pok_baloch_relevant(text):
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in POK_BALOCH_MUST_MATCH)
 
 # ── SIGNAL KEYWORDS ───────────────────────────────────────────────────────────
 
@@ -142,6 +188,16 @@ SIGNAL_KEYWORDS = {
         "india northeast insurgency", "kashmir militants",
         "india security forces", "encounter kashmir",
     ],
+    # NEW signal category
+    "pok_baloch_rights": [
+        "balochistan", "baloch", "gilgit baltistan", "azad kashmir",
+        "pakistan occupied kashmir", "sindhi nationalist", "pashtun tahafuz",
+        "hrcp", "paank", "voice of karakoram", "enforced disappearance",
+        "missing persons pakistan", "ahmadi persecution", "blasphemy law",
+        "baloch yakjehti committee", "forced conversion", "minorities pakistan",
+        "christian persecution pakistan", "pok protest", "gilgit protest",
+        "baloch genocide", "baloch crackdown", "pakistan army balochistan",
+    ],
 }
 
 HIGH_IMPORTANCE_TRIGGERS = [
@@ -150,15 +206,9 @@ HIGH_IMPORTANCE_TRIGGERS = [
     "expelled", "killed", "attack", "blast", "invasion", "border clash",
     "escalation", "protest india", "bandh", "arrest", "coup",
     "india tension", "india warns", "india responds",
+    "enforced disappearance", "baloch killed", "extrajudicial",
+    "crackdown", "missing persons", "abducted", "custodial death",
 ]
-
-def is_india_relevant(text):
-    """Hard filter — must mention India in some form."""
-    text_lower = text.lower()
-    for kw in INDIA_MUST_MATCH:
-        if kw in text_lower:
-            return True
-    return False
 
 def score_importance(text):
     text_lower = text.lower()
@@ -197,9 +247,13 @@ def fetch_rss(feed_info, category, max_items=10):
             pub = entry.get("published", entry.get("updated", ""))
             combined = f"{title} {summary}"
 
-            # HARD FILTER: must be India relevant
-            if not is_india_relevant(combined):
-                continue
+            # Relevance check depends on category
+            if category == "pok_baloch_minorities":
+                if not is_pok_baloch_relevant(combined):
+                    continue
+            else:
+                if not is_india_relevant(combined):
+                    continue
 
             signals = detect_signals(combined)
             importance = score_importance(combined)
@@ -236,13 +290,16 @@ def fetch_reddit_json(feed_info, category):
             score = p.get("score", 0)
             combined = f"{title} {selftext}"
 
-            # HARD FILTER
-            if not is_india_relevant(combined):
-                continue
+            if category == "pok_baloch_minorities":
+                # r/Balochistan and r/GilgitBaltistan are inherently on-topic,
+                # so we don't hard-filter, just tag signals
+                pass
+            else:
+                if not is_india_relevant(combined):
+                    continue
 
             signals = detect_signals(combined)
             importance = score_importance(combined)
-            # For Reddit, boost importance by engagement
             if score > 1000:
                 importance = min(importance + 2, 10)
             elif score > 500:
@@ -275,18 +332,16 @@ def crawl_all():
     print(f"India Signal Monitor — {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}")
     print(f"{'='*60}")
 
-    REDDIT_URLS = [f["url"] for f in FEEDS.get("social_india", []) if "reddit.com" in f["url"]]
-
     for category, feed_list in FEEDS.items():
         print(f"\n[{category.upper()}]")
         for feed in feed_list:
             print(f"  {feed['name']} ...", end=" ", flush=True)
-            # Route Reddit JSON feeds differently
-            if "reddit.com" in feed["url"] and feed["url"].endswith(".json") or "search.json" in feed["url"]:
+            is_reddit_json = "reddit.com" in feed["url"] and (".json" in feed["url"])
+            if is_reddit_json:
                 items = fetch_reddit_json(feed, category)
             else:
                 items = fetch_rss(feed, category)
-            print(f"{len(items)} India-relevant items")
+            print(f"{len(items)} relevant items")
             all_items.extend(items)
             stats[category] += len(items)
             time.sleep(0.4)
@@ -300,10 +355,8 @@ def crawl_all():
             seen.add(key)
             deduped.append(item)
 
-    # Sort: importance desc, then by date desc
     deduped.sort(key=lambda x: (x["importance"], x.get("reddit_score", 0)), reverse=True)
 
-    # Signal summary
     signal_counts = defaultdict(int)
     for item in deduped:
         for sig in item.get("signals", []):
@@ -323,19 +376,18 @@ def crawl_all():
     with open("data/topics.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    # summary.json — ALL items (frontend reads top_items)
     summary = {
         "generated_at": output["generated_at"],
         "total_items": output["total_items"],
         "signal_summary": output["signal_summary"],
         "top_signals": output["top_signals"],
-        "top_items": deduped,  # ALL items, not just top 50
+        "top_items": deduped,
     }
     with open("data/summary.json", "w", encoding="utf-8") as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
 
     print(f"\n{'='*60}")
-    print(f"✓ Done. {len(deduped)} India-relevant items saved.")
+    print(f"✓ Done. {len(deduped)} relevant items saved.")
     print(f"  Signal breakdown: {dict(signal_counts)}")
     print(f"  Category stats: {dict(stats)}")
     print(f"{'='*60}\n")
