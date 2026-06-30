@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>India Geopolitical Signal Monitor</title>
+  <style>
+    :root {
+      --bg: #0d1117; --surface: #161b22; --surface2: #21262d;
+      --border: #30363d; --text: #e6edf3; --muted: #8b949e;
+      --accent: #f78166; --green: #3fb950; --yellow: #d29922;
+      --red: #f85149; --blue: #58a6ff; --purple: #bc8cff; --orange: #ffa657;
+      --teal: #39c5cf;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.5; }
+    header { background: var(--surface); border-bottom: 1px solid var(--border); padding: 14px 24px; display: flex; align-items: center; gap: 16px; position: sticky; top: 0; z-index: 100; }
+    header h1 { font-size: 16px; font-weight: 600; }
+    .pulse { width: 8px; height: 8px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+    #last-updated { font-size: 12px; color: var(--muted); margin-left: auto; }
+    .layout { display: grid; grid-template-columns: 230px 1fr; min-height: calc(100vh - 53px); }
+    .sidebar { background: var(--surface); border-right: 1px solid var(--border); padding: 16px; overflow-y: auto; position: sticky; top: 53px; height: calc(100vh - 53px); }
+    .sidebar-section { margin-bottom: 22px; }
+    .sidebar-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin-bottom: 8px; font-weight: 600; }
+    .filter-btn { display: flex; align-items: center; gap: 8px; width: 100%; padding: 6px 10px; border-radius: 6px; border: none; background: transparent; color: var(--muted); cursor: pointer; font-size: 13px; text-align: left; margin-bottom: 2px; transition: all 0.15s; }
+    .filter-btn:hover { background: var(--surface2); color: var(--text); }
+    .filter-btn.active { background: var(--surface2); color: var(--text); }
+    .filter-btn .count { margin-left: auto; font-size: 11px; background: var(--border); padding: 1px 6px; border-radius: 10px; color: var(--muted); }
+    .filter-btn.active .count { background: var(--accent); color: white; }
+    .dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .sig-pakistan_narrative{background:#ff6b6b} .sig-western_criticism{background:#4dabf7}
+    .sig-protest_dissent{background:#ffd43b} .sig-neighbour_hostile{background:#a9e34b}
+    .sig-strategic_military{background:#cc5de8} .sig-terrorism_security{background:#ff922b}
+    .sig-pok_baloch_rights{background:#39c5cf}
+    .sig-kashmir_pakistan_comment{background:#ff8787}
+    .sig-kashmir_development{background:#74c0fc}
+    .sig-kashmir_foreign_negative{background:#e599f7}
+    .sig-anti_sikh_sentiment{background:#ff6b9d}
+    .sig-khalistan_activity{background:#f59f00}
+    .sig-pakistan_sikh_propaganda{background:#fa5252}
+    .sig-khalistan_canada_usa{background:#22b8cf}
+    main { padding: 20px 24px; }
+    .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin-bottom: 20px; }
+    .stat-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s, transform 0.1s; }
+    .stat-card:hover { border-color: var(--blue); transform: translateY(-1px); }
+    .stat-card.active-stat { border-color: var(--accent); background: var(--surface2); }
+    .stat-card .label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; }
+    .stat-card .value { font-size: 26px; font-weight: 700; margin-top: 4px; }
+    .stat-card.no-click { cursor: default; }
+    .stat-card.no-click:hover { border-color: var(--border); transform: none; }
+    .search-bar { margin-bottom: 16px; }
+    .search-bar input { width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 8px 12px; color: var(--text); font-size: 13px; outline: none; }
+    .search-bar input:focus { border-color: var(--blue); }
+    .search-bar input::placeholder { color: var(--muted); }
+    .items-list { display: flex; flex-direction: column; gap: 10px; }
+    .item-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; cursor: pointer; transition: border-color 0.15s; }
+    .item-card:hover { border-color: var(--blue); }
+    .item-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 6px; }
+    .importance-badge { flex-shrink: 0; width: 24px; height: 24px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; }
+    .imp-high{background:rgba(248,81,73,0.2);color:var(--red)} .imp-mid{background:rgba(210,153,34,0.2);color:var(--yellow)} .imp-low{background:rgba(63,185,80,0.15);color:var(--green)} .imp-zero{background:rgba(139,148,158,0.15);color:var(--muted)}
+    .item-title { font-size: 14px; font-weight: 500; color: var(--text); line-height: 1.4; }
+    .item-title a { color: inherit; text-decoration: none; }
+    .item-title a:hover { color: var(--blue); }
+    .item-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+    .source-tag { font-size: 11px; color: var(--muted); background: var(--surface2); padding: 2px 7px; border-radius: 4px; }
+    .signal-tag { font-size: 11px; padding: 2px 7px; border-radius: 4px; font-weight: 500; }
+    .st-pakistan_narrative{background:rgba(255,107,107,0.15);color:#ff6b6b}
+    .st-western_criticism{background:rgba(77,171,247,0.15);color:#4dabf7}
+    .st-protest_dissent{background:rgba(255,212,59,0.15);color:#ffd43b}
+    .st-neighbour_hostile{background:rgba(169,227,75,0.15);color:#a9e34b}
+    .st-strategic_military{background:rgba(204,93,232,0.15);color:#cc5de8}
+    .st-terrorism_security{background:rgba(255,146,43,0.15);color:#ff922b}
+    .st-pok_baloch_rights{background:rgba(57,197,207,0.15);color:#39c5cf}
+    .st-kashmir_pakistan_comment{background:rgba(255,135,135,0.15);color:#ff8787}
+    .st-kashmir_development{background:rgba(116,192,252,0.15);color:#74c0fc}
+    .st-kashmir_foreign_negative{background:rgba(229,153,247,0.15);color:#e599f7}
+    .st-anti_sikh_sentiment{background:rgba(255,107,157,0.15);color:#ff6b9d}
+    .st-khalistan_activity{background:rgba(245,159,0,0.15);color:#f59f00}
+    .st-pakistan_sikh_propaganda{background:rgba(250,82,82,0.15);color:#fa5252}
+    .st-khalistan_canada_usa{background:rgba(34,184,207,0.15);color:#22b8cf}
+    .item-summary { font-size: 12px; color: var(--muted); margin-top: 8px; line-height: 1.6; display: none; }
+    .item-card.expanded .item-summary { display: block; }
+    .time-tag { font-size: 11px; color: var(--muted); }
+    .cat-icon { font-size: 12px; }
+    .loader { display: flex; flex-direction: column; align-items: center; padding: 60px 20px; color: var(--muted); gap: 16px; }
+    .spinner { width: 32px; height: 32px; border: 3px solid var(--border); border-top-color: var(--blue); border-radius: 50%; animation: spin 0.8s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .no-results { text-align: center; padding: 60px 20px; color: var(--muted); }
+    .pagination { display: flex; gap: 8px; margin-top: 20px; justify-content: center; flex-wrap: wrap; }
+    .page-btn { padding: 6px 14px; border-radius: 6px; border: 1px solid var(--border); background: var(--surface); color: var(--text); cursor: pointer; font-size: 13px; }
+    .page-btn:hover { border-color: var(--blue); }
+    .page-btn.active { background: var(--blue); border-color: var(--blue); color: #000; }
+    .page-btn:disabled { opacity: 0.4; cursor: default; }
+    .result-count { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+    @media(max-width:700px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto;border-right:none;border-bottom:1px solid var(--border)}}
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="pulse"></div>
+  <h1>🇮🇳 India Geopolitical Signal Monitor</h1>
+  <span id="last-updated">Loading...</span>
+</header>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-label">Category</div>
+      <button class="filter-btn active" onclick="setFilter('cat','all',this)">All Sources <span class="count" id="cnt-all">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','india_geopolitics',this)">🇮🇳 India Media <span class="count" id="cnt-india_geopolitics">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','pakistan_narratives',this)">🟢 Pakistan Media <span class="count" id="cnt-pakistan_narratives">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','western_media',this)">🌐 Western Media <span class="count" id="cnt-western_media">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','neighbours',this)">🗺️ Neighbours <span class="count" id="cnt-neighbours">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','social_india',this)">📡 Social / Reddit <span class="count" id="cnt-social_india">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','pok_baloch_minorities',this)">🟦 PoK / Baloch / Minorities <span class="count" id="cnt-pok_baloch_minorities">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','kashmir_focus',this)">⛰️ Kashmir Focus <span class="count" id="cnt-kashmir_focus">0</span></button>
+      <button class="filter-btn" onclick="setFilter('cat','sikh_punjab_affairs',this)">☬ Sikh / Punjab Affairs <span class="count" id="cnt-sikh_punjab_affairs">0</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Signal Type</div>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_narrative',this)"><span class="dot sig-pakistan_narrative"></span> Pakistan Narrative <span class="count" id="sig-cnt-pakistan_narrative">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','western_criticism',this)"><span class="dot sig-western_criticism"></span> Western Criticism <span class="count" id="sig-cnt-western_criticism">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','protest_dissent',this)"><span class="dot sig-protest_dissent"></span> Protest / Dissent <span class="count" id="sig-cnt-protest_dissent">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','neighbour_hostile',this)"><span class="dot sig-neighbour_hostile"></span> Neighbour Signals <span class="count" id="sig-cnt-neighbour_hostile">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','strategic_military',this)"><span class="dot sig-strategic_military"></span> Strategic/Military <span class="count" id="sig-cnt-strategic_military">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','terrorism_security',this)"><span class="dot sig-terrorism_security"></span> Terror/Security <span class="count" id="sig-cnt-terrorism_security">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pok_baloch_rights',this)"><span class="dot sig-pok_baloch_rights"></span> PoK/Baloch Rights <span class="count" id="sig-cnt-pok_baloch_rights">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_pakistan_comment',this)"><span class="dot sig-kashmir_pakistan_comment"></span> Pak Comment on Kashmir <span class="count" id="sig-cnt-kashmir_pakistan_comment">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_development',this)"><span class="dot sig-kashmir_development"></span> Kashmir Development <span class="count" id="sig-cnt-kashmir_development">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','kashmir_foreign_negative',this)"><span class="dot sig-kashmir_foreign_negative"></span> Foreign Negative on Kashmir <span class="count" id="sig-cnt-kashmir_foreign_negative">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','anti_sikh_sentiment',this)"><span class="dot sig-anti_sikh_sentiment"></span> Anti-Sikh Sentiment <span class="count" id="sig-cnt-anti_sikh_sentiment">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','khalistan_activity',this)"><span class="dot sig-khalistan_activity"></span> Khalistan Activity <span class="count" id="sig-cnt-khalistan_activity">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','pakistan_sikh_propaganda',this)"><span class="dot sig-pakistan_sikh_propaganda"></span> Pakistan Sikh Propaganda <span class="count" id="sig-cnt-pakistan_sikh_propaganda">0</span></button>
+      <button class="filter-btn" onclick="setFilter('sig','khalistan_canada_usa',this)"><span class="dot sig-khalistan_canada_usa"></span> Khalistan Canada/USA <span class="count" id="sig-cnt-khalistan_canada_usa">0</span></button>
+    </div>
+    <div class="sidebar-section">
+      <div class="sidebar-label">Importance</div>
+      <button class="filter-btn" onclick="setFilter('imp','high',this)">🔴 High (7–10) <span class="count" id="imp-cnt-high">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','mid',this)">🟡 Medium (4–6) <span class="count" id="imp-cnt-mid">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','low',this)">🟢 Low (1–3) <span class="count" id="imp-cnt-low">0</span></button>
+      <button class="filter-btn" onclick="setFilter('imp','zero',this)">⚪ Unscored (0) <span class="count" id="imp-cnt-zero">0</span></button>
+    </div>
+  </aside>
+
+  <main>
+    <div class="stats-row">
+      <div class="stat-card" id="card-total" onclick="setFilter('cat','all',null,'card-total')"><div class="label">Total Items</div><div class="value" id="stat-total" style="color:var(--blue)">—</div></div>
+      <div class="stat-card" id="card-high" onclick="setFilter('imp','high',null,'card-high')"><div class="label">High Priority</div><div class="value" id="stat-high" style="color:var(--red)">—</div></div>
+      <div class="stat-card" id="card-pak" onclick="setFilter('sig','pakistan_narrative',null,'card-pak')"><div class="label">Pakistan Signals</div><div class="value" id="stat-pak" style="color:#ff6b6b">—</div></div>
+      <div class="stat-card" id="card-west" onclick="setFilter('sig','western_criticism',null,'card-west')"><div class="label">Western Criticism</div><div class="value" id="stat-west" style="color:#4dabf7">—</div></div>
+      <div class="stat-card" id="card-pokbal" onclick="setFilter('sig','pok_baloch_rights',null,'card-pokbal')"><div class="label">PoK/Baloch Rights</div><div class="value" id="stat-pokbal" style="color:#39c5cf">—</div></div>
+      <div class="stat-card" id="card-kashmir" onclick="setFilter('cat','kashmir_focus',null,'card-kashmir')"><div class="label">Kashmir Focus</div><div class="value" id="stat-kashmir" style="color:#e599f7">—</div></div>
+      <div class="stat-card" id="card-khalistan" onclick="setFilter('cat','sikh_punjab_affairs',null,'card-khalistan')"><div class="label">Sikh / Khalistan</div><div class="value" id="stat-khalistan" style="color:#f59f00">—</div></div>
+      <div class="stat-card no-click"><div class="label">Last Updated</div><div class="value" id="stat-time" style="color:var(--muted);font-size:13px;margin-top:6px">—</div></div>
+    </div>
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search headlines, keywords, sources..." oninput="onSearch()"/>
+    </div>
+    <div class="result-count" id="result-count"></div>
+    <div id="items-container">
+      <div class="loader"><div class="spinner"></div><div>Loading signals...</div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<script>
+  let allItems = [];
+  let filtered = [];
+  let activeFilter = { type: 'cat', value: 'all' };
+  let searchQuery = '';
+  let currentPage = 1;
+  const PAGE_SIZE = 30;
+
+  async function loadData() {
+    try {
+      const r = await fetch('data/summary.json?_=' + Date.now());
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+
+      allItems = data.top_items || data.items || [];
+
+      document.getElementById('stat-total').textContent = allItems.length;
+      document.getElementById('stat-high').textContent = allItems.filter(i => i.importance >= 7).length;
+      document.getElementById('stat-pak').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative')).length;
+      document.getElementById('stat-west').textContent = allItems.filter(i => (i.signals||[]).includes('western_criticism')).length;
+      document.getElementById('stat-pokbal').textContent = allItems.filter(i => (i.signals||[]).includes('pok_baloch_rights') || i.category === 'pok_baloch_minorities').length;
+      document.getElementById('stat-kashmir').textContent = allItems.filter(i => i.category === 'kashmir_focus').length;
+      document.getElementById('stat-khalistan').textContent = allItems.filter(i => i.category === 'sikh_punjab_affairs').length;
+
+      const ts = new Date(data.generated_at);
+      const timeStr = ts.toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('last-updated').textContent = 'Updated: ' + timeStr;
+      document.getElementById('stat-time').textContent = timeStr;
+
+      updateCounts();
+      applyFilters();
+    } catch(e) {
+      console.error('Load error:', e);
+      document.getElementById('items-container').innerHTML = `
+        <div class="no-results">
+          <div style="font-size:32px;margin-bottom:12px">📡</div>
+          <div style="color:var(--text);margin-bottom:8px">Could not load data</div>
+          <div style="font-size:12px;color:var(--muted)">Error: ${e.message}<br/><br/>
+          Make sure the GitHub Action has run and <code>data/summary.json</code> exists.<br/>
+          Go to Actions tab → Run workflow manually.</div>
+        </div>`;
+    }
+  }
+
+  function updateCounts() {
+    document.getElementById('cnt-all').textContent = allItems.length;
+    ['india_geopolitics','pakistan_narratives','western_media','neighbours','social_india','pok_baloch_minorities','kashmir_focus','sikh_punjab_affairs'].forEach(c => {
+      const el = document.getElementById('cnt-'+c);
+      if (el) el.textContent = allItems.filter(i => i.category === c).length;
+    });
+    ['pakistan_narrative','western_criticism','protest_dissent','neighbour_hostile','strategic_military','terrorism_security','pok_baloch_rights','kashmir_pakistan_comment','kashmir_development','kashmir_foreign_negative','anti_sikh_sentiment','khalistan_activity','pakistan_sikh_propaganda','khalistan_canada_usa'].forEach(s => {
+      const el = document.getElementById('sig-cnt-'+s);
+      if (el) el.textContent = allItems.filter(i => (i.signals||[]).includes(s)).length;
+    });
+    document.getElementById('imp-cnt-high').textContent = allItems.filter(i=>i.importance>=7).length;
+    document.getElementById('imp-cnt-mid').textContent = allItems.filter(i=>i.importance>=4&&i.importance<7).length;
+    document.getElementById('imp-cnt-low').textContent = allItems.filter(i=>i.importance>=1&&i.importance<4).length;
+    document.getElementById('imp-cnt-zero').textContent = allItems.filter(i=>!i.importance||i.importance===0).length;
+  }
+
+  function setFilter(type, value, btn, cardId) {
+    activeFilter = { type, value };
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-stat'));
+
+    if (btn) {
+      btn.classList.add('active');
+    } else {
+      // Find matching sidebar button to keep them in sync
+      const matchSelector = type === 'cat' ? `[onclick*="setFilter('cat','${value}'"]`
+                            : type === 'sig' ? `[onclick*="setFilter('sig','${value}'"]`
+                            : `[onclick*="setFilter('imp','${value}'"]`;
+      const match = document.querySelector('.sidebar ' + matchSelector);
+      if (match) match.classList.add('active');
+    }
+    if (cardId) {
+      document.getElementById(cardId).classList.add('active-stat');
+    }
+
+    currentPage = 1;
+    applyFilters();
+    document.getElementById('items-container').scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  function onSearch() {
+    searchQuery = document.getElementById('search-input').value.toLowerCase();
+    currentPage = 1;
+    applyFilters();
+  }
+
+  function applyFilters() {
+    filtered = allItems.filter(item => {
+      if (activeFilter.type === 'cat' && activeFilter.value !== 'all') {
+        if (item.category !== activeFilter.value) return false;
+      }
+      if (activeFilter.type === 'sig') {
+        if (!(item.signals||[]).includes(activeFilter.value)) return false;
+      }
+      if (activeFilter.type === 'imp') {
+        const imp = item.importance || 0;
+        if (activeFilter.value === 'high' && imp < 7) return false;
+        if (activeFilter.value === 'mid' && (imp < 4 || imp >= 7)) return false;
+        if (activeFilter.value === 'low' && (imp < 1 || imp >= 4)) return false;
+        if (activeFilter.value === 'zero' && imp !== 0) return false;
+      }
+      if (searchQuery) {
+        const hay = `${item.title||''} ${item.summary||''} ${item.source||''}`.toLowerCase();
+        if (!hay.includes(searchQuery)) return false;
+      }
+      return true;
+    });
+    document.getElementById('result-count').textContent = `Showing ${filtered.length} of ${allItems.length} items`;
+    renderPage();
+  }
+
+  function renderPage() {
+    const start = (currentPage-1)*PAGE_SIZE;
+    const pageItems = filtered.slice(start, start+PAGE_SIZE);
+    const container = document.getElementById('items-container');
+    if (!filtered.length) {
+      container.innerHTML = `<div class="no-results"><div style="font-size:28px;margin-bottom:10px">🔍</div><div>No items match this filter</div></div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+    container.innerHTML = `<div class="items-list">${pageItems.map(renderItem).join('')}</div>`;
+    renderPagination();
+  }
+
+  function renderItem(item) {
+    const imp = item.importance || 0;
+    const impClass = imp >= 7 ? 'imp-high' : imp >= 4 ? 'imp-mid' : imp >= 1 ? 'imp-low' : 'imp-zero';
+    const catIcon = {india_geopolitics:'🇮🇳',pakistan_narratives:'🟢',western_media:'🌐',neighbours:'🗺️',social_india:'📡',pok_baloch_minorities:'🟦',kashmir_focus:'⛰️',sikh_punjab_affairs:'☬'}[item.category]||'';
+    const signals = (item.signals||[]).map(s=>`<span class="signal-tag st-${s}">${s.replace(/_/g,' ')}</span>`).join('');
+    const pub = item.published ? new Date(item.published) : null;
+    const timeStr = pub && !isNaN(pub) ? pub.toLocaleString([],{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+    const summary = item.summary ? `<div class="item-summary">${item.summary}</div>` : '';
+    return `<div class="item-card" onclick="this.classList.toggle('expanded')">
+      <div class="item-header">
+        <span class="importance-badge ${impClass}">${imp}</span>
+        <span class="item-title"><a href="${item.link||'#'}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.title||'(no title)'}</a></span>
+      </div>
+      <div class="item-meta">
+        <span class="cat-icon">${catIcon}</span>
+        <span class="source-tag">${item.source||''}</span>
+        ${signals}
+        ${timeStr?`<span class="time-tag">${timeStr}</span>`:''}
+      </div>
+      ${summary}
+    </div>`;
+  }
+
+  function renderPagination() {
+    const total = Math.ceil(filtered.length/PAGE_SIZE);
+    if (total<=1){document.getElementById('pagination').innerHTML='';return;}
+    let html=`<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>← Prev</button>`;
+    for(let i=1;i<=total;i++){
+      if(i===1||i===total||Math.abs(i-currentPage)<=2) html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+      else if(Math.abs(i-currentPage)===3) html+=`<span style="color:var(--muted);padding:6px 4px">…</span>`;
+    }
+    html+=`<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>Next →</button>`;
+    document.getElementById('pagination').innerHTML=html;
+  }
+
+  function goPage(p) {
+    const total=Math.ceil(filtered.length/PAGE_SIZE);
+    if(p<1||p>total)return;
+    currentPage=p;
+    renderPage();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  loadData();
+  setInterval(loadData, 10*60*1000);
+</script>
+</body>
+</html>
