@@ -17,7 +17,7 @@ from email.utils import parsedate_to_datetime
 # ── DATE FILTER ────────────────────────────────────────────────────────────
 # Only keep items published within this many days. Anything older (or
 # anything whose date can't be parsed reliably and looks stale) is dropped.
-MAX_AGE_DAYS = 4
+MAX_AGE_DAYS = 3
 CUTOFF = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
 
 def parse_pub_date(entry):
