@@ -78,11 +78,16 @@ FEEDS = {
         {"name": "ARY News", "url": "https://arynews.tv/feed/"},
         {"name": "Pakistan Observer", "url": "https://pakobserver.net/feed/"},
         {"name": "The Nation Pakistan", "url": "https://nation.com.pk/rss/"},
+        {"name": "GNews: DGISPR Pakistan military", "url": "https://news.google.com/rss/search?q=DGISPR+OR+%22Inter+Services+Public+Relations%22+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan Army statement", "url": "https://news.google.com/rss/search?q=pakistan+army+statement+OR+pakistan+military+spokesperson&hl=en&gl=US&ceid=US:en"},
     ],
     "western_media": [
         {"name": "BBC South Asia", "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
+        {"name": "BBC News - World", "url": "http://feeds.bbci.co.uk/news/world/rss.xml"},
+        {"name": "CNN - World", "url": "http://rss.cnn.com/rss/edition_world.rss"},
         {"name": "The Guardian - India", "url": "https://www.theguardian.com/world/india/rss"},
         {"name": "Al Jazeera - Asia", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
+        {"name": "TRT World", "url": "https://www.trtworld.com/rss"},
         {"name": "The Diplomat - India", "url": "https://thediplomat.com/feed/"},
         {"name": "Asia Times", "url": "https://asiatimes.com/feed/"},
         {"name": "Foreign Policy", "url": "https://foreignpolicy.com/feed/"},
@@ -252,6 +257,7 @@ FEEDS = {
         {"name": "GNews: Myanmar Northeast spillover", "url": "https://news.google.com/rss/search?q=myanmar+india+border+refugee+OR+myanmar+northeast+india+arms&hl=en&gl=IN&ceid=IN:en"},
         {"name": "GNews: Northeast insurgency", "url": "https://news.google.com/rss/search?q=northeast+india+insurgency+OR+assam+nagaland+militant&hl=en&gl=IN&ceid=IN:en"},
         {"name": "EastMojo Northeast News", "url": "https://www.eastmojo.com/feed/"},
+        {"name": "India Today NE", "url": "https://www.indiatodayne.in/rss.xml"},
     ],
     # ── NEW: Banned organizations / extremism beyond Khalistan ───────────────
     "extremism_banned_orgs": [
@@ -259,6 +265,13 @@ FEEDS = {
         {"name": "GNews: NIA terror case India", "url": "https://news.google.com/rss/search?q=NIA+terror+case+OR+NIA+chargesheet+OR+NIA+raid&hl=en&gl=IN&ceid=IN:en"},
         {"name": "GNews: ISIS recruitment India", "url": "https://news.google.com/rss/search?q=ISIS+recruitment+india+OR+jihadist+india+arrest&hl=en&gl=IN&ceid=IN:en"},
         {"name": "NIA Press Releases", "url": "https://nia.gov.in/rss-feed.htm"},
+    ],
+    # ── NEW: Naxal / Maoist insurgency dedicated tracking ────────────────────
+    "naxal_insurgency": [
+        {"name": "GNews: Naxal Maoist attack", "url": "https://news.google.com/rss/search?q=naxal+attack+OR+maoist+attack+india+OR+naxalite+encounter&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Naxal surrender operation", "url": "https://news.google.com/rss/search?q=naxal+surrender+OR+anti-naxal+operation+OR+CRPF+naxal&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Chhattisgarh Bastar Maoist", "url": "https://news.google.com/rss/search?q=bastar+maoist+OR+chhattisgarh+naxal+OR+red+corridor+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: CPI Maoist banned", "url": "https://news.google.com/rss/search?q=%22CPI+Maoist%22+OR+naxal+banned+organisation&hl=en&gl=IN&ceid=IN:en"},
     ],
 }
 
@@ -495,6 +508,12 @@ SIGNAL_KEYWORDS = {
         "popular front of india", "pfi banned", "pfi successor",
         "nia terror case", "nia chargesheet", "nia raid",
         "isis recruitment india", "jihadist india arrest", "terror module india",
+    ],
+    # NEW: Naxal / Maoist insurgency
+    "naxal_insurgency": [
+        "naxal attack", "maoist attack", "naxalite encounter", "naxal surrender",
+        "anti-naxal operation", "crpf naxal", "bastar maoist", "chhattisgarh naxal",
+        "red corridor", "cpi maoist", "naxal banned organisation",
     ],
     # NEW: Cross-cutting flashpoint signal — catches acute escalation language
     # anywhere in the dataset regardless of source category
