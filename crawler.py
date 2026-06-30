@@ -17,7 +17,7 @@ from email.utils import parsedate_to_datetime
 # ── DATE FILTER ────────────────────────────────────────────────────────────
 # Only keep items published within this many days. Anything older (or
 # anything whose date can't be parsed reliably and looks stale) is dropped.
-MAX_AGE_DAYS = 3
+MAX_AGE_DAYS = 4
 CUTOFF = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
 
 def parse_pub_date(entry):
@@ -188,6 +188,78 @@ FEEDS = {
         {"name": "Reddit r/punjab", "url": "https://www.reddit.com/r/punjab/hot.json?limit=15"},
         {"name": "Reddit r/khalistan", "url": "https://www.reddit.com/r/khalistan/hot.json?limit=15"},
     ],
+    # ── NEW: Telegram channel monitoring via RSSHub bridge ───────────────────
+    # RSSHub (https://docs.rsshub.app) converts public Telegram channels into
+    # RSS feeds for free, no API key needed. Format:
+    # https://rsshub.app/telegram/channel/<channel_username>
+    # Add channel usernames below (the part after t.me/) one per line.
+    # Each entry is tagged with the category it should be filtered/scored as.
+    "telegram_channels": [
+        # Example structure — replace/add real channel usernames as needed.
+        # category_hint controls which relevance filter + signal set applies:
+        #   "india" -> is_india_relevant, "pok_baloch" -> is_pok_baloch_relevant,
+        #   "kashmir" -> is_kashmir_relevant, "sikh_punjab" -> is_sikh_punjab_relevant,
+        #   "none" -> no relevance filter, everything passes through
+        #
+        # EXAMPLE (uncomment and edit with a real public channel username):
+        # {"name": "Some OSINT Channel", "url": "https://rsshub.app/telegram/channel/some_channel_username", "category_hint": "india"},
+    ],
+    # ── NEW: Border & territorial flashpoints (LAC, Doklam, water disputes) ──
+    "border_territorial": [
+        {"name": "GNews: LAC PLA infrastructure", "url": "https://news.google.com/rss/search?q=LAC+china+infrastructure+OR+PLA+arunachal+OR+china+construction+border&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Doklam Bhutan tri-junction", "url": "https://news.google.com/rss/search?q=doklam+OR+bhutan+china+tri-junction+OR+bhutan+border+dispute&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Teesta water dispute", "url": "https://news.google.com/rss/search?q=teesta+river+OR+india+bangladesh+water+sharing+OR+india+nepal+water+dispute&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Arunachal China renaming", "url": "https://news.google.com/rss/search?q=arunachal+china+renaming+OR+china+arunachal+claim+OR+zangnan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: India China satellite imagery", "url": "https://news.google.com/rss/search?q=india+china+satellite+imagery+border+OR+maxar+china+border&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Maritime / Indian Ocean Chinese presence ────────────────────────
+    "maritime_indian_ocean": [
+        {"name": "GNews: Chinese navy Indian Ocean", "url": "https://news.google.com/rss/search?q=chinese+navy+indian+ocean+OR+PLA+navy+indian+ocean&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Chinese research vessel Sri Lanka", "url": "https://news.google.com/rss/search?q=chinese+research+vessel+sri+lanka+OR+china+spy+ship+indian+ocean&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Hambantota Gwadar Chittagong", "url": "https://news.google.com/rss/search?q=hambantota+port+OR+gwadar+port+china+OR+chittagong+port+china&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: China Maldives military", "url": "https://news.google.com/rss/search?q=china+maldives+military+OR+china+maldives+port&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: String of pearls India", "url": "https://news.google.com/rss/search?q=%22string+of+pearls%22+india+china&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Cyber & critical infrastructure security ────────────────────────
+    "cyber_security": [
+        {"name": "CERT-In Advisories", "url": "https://www.cert-in.org.in/RSS/CIADRSS.xml"},
+        {"name": "GNews: APT group targeting India", "url": "https://news.google.com/rss/search?q=APT+group+india+OR+china+hackers+india+OR+pakistan+hackers+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: India cyberattack critical infra", "url": "https://news.google.com/rss/search?q=india+cyberattack+OR+india+critical+infrastructure+hack&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Talos Mandiant India report", "url": "https://news.google.com/rss/search?q=%22Cisco+Talos%22+india+OR+Mandiant+india+OR+%22Recorded+Future%22+india&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Economic security ────────────────────────────────────────────────
+    "economic_security": [
+        {"name": "GNews: China FDI India scrutiny", "url": "https://news.google.com/rss/search?q=china+fdi+india+scrutiny+OR+india+china+investment+block&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: India Huawei 5G ban", "url": "https://news.google.com/rss/search?q=india+huawei+5g+OR+india+telecom+vendor+ban+china&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: India rare earth semiconductor", "url": "https://news.google.com/rss/search?q=india+rare+earth+OR+india+semiconductor+china+supply+chain&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Disinformation research (DFRLab, EU DisinfoLab, platform takedowns) ─
+    "disinfo_research": [
+        {"name": "GNews: DFRLab India Pakistan", "url": "https://news.google.com/rss/search?q=%22Atlantic+Council%22+DFRLab+india+OR+DFRLab+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: EU DisinfoLab India", "url": "https://news.google.com/rss/search?q=%22EU+DisinfoLab%22+india+OR+%22EU+DisinfoLab%22+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Meta X coordinated inauthentic India", "url": "https://news.google.com/rss/search?q=meta+coordinated+inauthentic+india+OR+twitter+takedown+india+OR+X+takedown+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Fake news network India Pakistan", "url": "https://news.google.com/rss/search?q=fake+news+network+india+pakistan+OR+disinformation+campaign+india&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Religious/communal flashpoints ───────────────────────────────────
+    "communal_flashpoints": [
+        {"name": "GNews: Places of Worship Act", "url": "https://news.google.com/rss/search?q=%22places+of+worship+act%22+OR+gyanvapi+OR+temple+mosque+dispute+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Communal tension India", "url": "https://news.google.com/rss/search?q=communal+tension+india+OR+communal+violence+india+OR+religious+clash+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Mosque temple litigation", "url": "https://news.google.com/rss/search?q=mosque+temple+litigation+india+OR+ASI+survey+mosque&hl=en&gl=IN&ceid=IN:en"},
+    ],
+    # ── NEW: Northeast India specific (Manipur, Myanmar spillover) ───────────
+    "northeast_india": [
+        {"name": "GNews: Manipur ethnic conflict", "url": "https://news.google.com/rss/search?q=manipur+ethnic+conflict+OR+manipur+violence+OR+meitei+kuki&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Myanmar Northeast spillover", "url": "https://news.google.com/rss/search?q=myanmar+india+border+refugee+OR+myanmar+northeast+india+arms&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Northeast insurgency", "url": "https://news.google.com/rss/search?q=northeast+india+insurgency+OR+assam+nagaland+militant&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "EastMojo Northeast News", "url": "https://www.eastmojo.com/feed/"},
+    ],
+    # ── NEW: Banned organizations / extremism beyond Khalistan ───────────────
+    "extremism_banned_orgs": [
+        {"name": "GNews: PFI Popular Front India", "url": "https://news.google.com/rss/search?q=%22Popular+Front+of+India%22+OR+PFI+banned+OR+PFI+successor&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: NIA terror case India", "url": "https://news.google.com/rss/search?q=NIA+terror+case+OR+NIA+chargesheet+OR+NIA+raid&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: ISIS recruitment India", "url": "https://news.google.com/rss/search?q=ISIS+recruitment+india+OR+jihadist+india+arrest&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "NIA Press Releases", "url": "https://nia.gov.in/rss-feed.htm"},
+    ],
 }
 
 # ── RELEVANCE FILTERS ─────────────────────────────────────────────────────────
@@ -252,6 +324,13 @@ def is_kashmir_relevant(text):
 def is_sikh_punjab_relevant(text):
     text_lower = text.lower()
     return any(kw in text_lower for kw in SIKH_PUNJAB_MUST_MATCH)
+
+# Categories that are inherently India-relevant by source (official Indian
+# government feeds) and should bypass the keyword relevance check entirely.
+SOURCE_EXEMPT_RELEVANCE = {
+    "CERT-In Advisories",
+    "NIA Press Releases",
+}
 
 # ── SIGNAL KEYWORDS ───────────────────────────────────────────────────────────
 
@@ -364,6 +443,68 @@ SIGNAL_KEYWORDS = {
         "sikh separatist united states", "gurpatwant singh",
         "us sikh civil rights", "canada india tension sikh",
     ],
+    # NEW: Border & territorial
+    "border_territorial": [
+        "lac infrastructure", "pla construction", "doklam", "bhutan china border",
+        "teesta river dispute", "water sharing dispute", "arunachal china claim",
+        "zangnan", "china renaming arunachal", "border satellite imagery",
+        "china road construction border", "tri-junction dispute",
+    ],
+    # NEW: Maritime / Indian Ocean
+    "maritime_indian_ocean": [
+        "chinese navy indian ocean", "pla navy indian ocean", "chinese research vessel",
+        "china spy ship", "hambantota port", "gwadar port", "chittagong port china",
+        "china maldives military", "china maldives port", "string of pearls",
+        "indian ocean surveillance", "china naval base indian ocean",
+    ],
+    # NEW: Cyber security
+    "cyber_security_threat": [
+        "cert-in advisory", "apt group india", "china hackers india",
+        "pakistan hackers india", "india cyberattack", "critical infrastructure hack",
+        "cisco talos india", "mandiant india", "recorded future india",
+        "india data breach", "state-sponsored hacking india",
+    ],
+    # NEW: Economic security
+    "economic_security_risk": [
+        "china fdi india", "india china investment block", "india huawei",
+        "telecom vendor ban china", "india rare earth", "india semiconductor china",
+        "supply chain china india", "china investment scrutiny india",
+    ],
+    # NEW: Disinformation research
+    "disinfo_research_finding": [
+        "dfrlab india", "dfrlab pakistan", "atlantic council india",
+        "eu disinfolab india", "eu disinfolab pakistan", "coordinated inauthentic india",
+        "meta takedown india", "twitter takedown india", "x takedown pakistan",
+        "fake news network india", "disinformation campaign india",
+    ],
+    # NEW: Communal flashpoints
+    "communal_flashpoint": [
+        "places of worship act", "gyanvapi", "temple mosque dispute",
+        "communal tension india", "communal violence india", "religious clash india",
+        "mosque temple litigation", "asi survey mosque", "communal riot india",
+    ],
+    # NEW: Northeast India
+    "northeast_unrest": [
+        "manipur ethnic conflict", "manipur violence", "meitei kuki",
+        "myanmar india border refugee", "myanmar northeast india arms",
+        "northeast india insurgency", "assam militant", "nagaland militant",
+        "northeast india unrest",
+    ],
+    # NEW: Extremism / banned organizations
+    "extremism_banned_org": [
+        "popular front of india", "pfi banned", "pfi successor",
+        "nia terror case", "nia chargesheet", "nia raid",
+        "isis recruitment india", "jihadist india arrest", "terror module india",
+    ],
+    # NEW: Cross-cutting flashpoint signal — catches acute escalation language
+    # anywhere in the dataset regardless of source category
+    "active_flashpoint": [
+        "breaking", "urgent escalation", "border clash", "military standoff",
+        "troops mobilized", "emergency meeting called", "high alert",
+        "ceasefire violation", "airspace violation", "naval standoff",
+        "diplomatic expulsion", "recalled ambassador", "crisis talks",
+        "security forces deployed", "curfew imposed", "shoot at sight",
+    ],
 }
 
 HIGH_IMPORTANCE_TRIGGERS = [
@@ -378,6 +519,9 @@ HIGH_IMPORTANCE_TRIGGERS = [
     "kashmir un report", "kashmir lockdown", "pulwama",
     "khalistan referendum", "sikh attacked", "gurdwara attack",
     "nijjar killing", "canada india row", "khalistan banned",
+    "military standoff", "troops mobilized", "airspace violation",
+    "naval standoff", "diplomatic expulsion", "recalled ambassador",
+    "curfew imposed", "shoot at sight", "data breach", "manipur violence",
 ]
 
 def score_importance(text):
@@ -425,19 +569,27 @@ def fetch_rss(feed_info, category, max_items=10):
             if recent is False or recent is None:
                 continue
 
-            # Relevance check depends on category
-            if category == "pok_baloch_minorities":
-                if not is_pok_baloch_relevant(combined):
-                    continue
-            elif category == "kashmir_focus":
-                if not is_kashmir_relevant(combined):
-                    continue
-            elif category == "sikh_punjab_affairs":
-                if not is_sikh_punjab_relevant(combined):
-                    continue
+            # Relevance check depends on category (or explicit category_hint
+            # for Telegram channels, which all share the "telegram_channels"
+            # category but may need different filters per-channel)
+            if feed_info["name"] in SOURCE_EXEMPT_RELEVANCE:
+                pass  # official government feed — always relevant, skip keyword check
             else:
-                if not is_india_relevant(combined):
-                    continue
+                relevance_key = feed_info.get("category_hint", category)
+                if relevance_key == "pok_baloch_minorities" or relevance_key == "pok_baloch":
+                    if not is_pok_baloch_relevant(combined):
+                        continue
+                elif relevance_key == "kashmir_focus" or relevance_key == "kashmir":
+                    if not is_kashmir_relevant(combined):
+                        continue
+                elif relevance_key == "sikh_punjab_affairs" or relevance_key == "sikh_punjab":
+                    if not is_sikh_punjab_relevant(combined):
+                        continue
+                elif relevance_key == "none":
+                    pass  # no relevance filter — everything from this source passes
+                else:
+                    if not is_india_relevant(combined):
+                        continue
 
             signals = detect_signals(combined)
             importance = score_importance(combined)
