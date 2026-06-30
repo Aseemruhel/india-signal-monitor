@@ -78,6 +78,11 @@ FEEDS = {
         {"name": "ARY News", "url": "https://arynews.tv/feed/"},
         {"name": "Pakistan Observer", "url": "https://pakobserver.net/feed/"},
         {"name": "The Nation Pakistan", "url": "https://nation.com.pk/rss/"},
+        {"name": "Business Recorder Pakistan", "url": "https://www.brecorder.com/feed"},
+        {"name": "Pakistan Today", "url": "https://www.pakistantoday.com.pk/feed/"},
+        {"name": "Daily Times Pakistan", "url": "https://dailytimes.com.pk/feed/"},
+        {"name": "Samaa English", "url": "https://www.samaa.tv/feed/"},
+        {"name": "92 News HD", "url": "https://92newshd.tv/feed/"},
         {"name": "GNews: DGISPR Pakistan military", "url": "https://news.google.com/rss/search?q=DGISPR+OR+%22Inter+Services+Public+Relations%22+pakistan&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Pakistan Army statement", "url": "https://news.google.com/rss/search?q=pakistan+army+statement+OR+pakistan+military+spokesperson&hl=en&gl=US&ceid=US:en"},
     ],
@@ -265,6 +270,29 @@ FEEDS = {
         {"name": "GNews: NIA terror case India", "url": "https://news.google.com/rss/search?q=NIA+terror+case+OR+NIA+chargesheet+OR+NIA+raid&hl=en&gl=IN&ceid=IN:en"},
         {"name": "GNews: ISIS recruitment India", "url": "https://news.google.com/rss/search?q=ISIS+recruitment+india+OR+jihadist+india+arrest&hl=en&gl=IN&ceid=IN:en"},
         {"name": "NIA Press Releases", "url": "https://nia.gov.in/rss-feed.htm"},
+    ],
+    # ── NEW: Critics of India — academic/think-tank/analyst critical voices ──
+    "india_critics": [
+        {"name": "GNews: India democracy decline", "url": "https://news.google.com/rss/search?q=india+democracy+decline+OR+india+illiberal+OR+india+autocratization&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: V-Dem Freedom House India", "url": "https://news.google.com/rss/search?q=%22V-Dem%22+india+OR+%22Freedom+House%22+india+OR+EIU+india+democracy+index&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: India critics analysts", "url": "https://news.google.com/rss/search?q=india+critics+OR+india+analyst+criticism+OR+modi+critics&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pulitzer Center India", "url": "https://news.google.com/rss/search?q=%22Pulitzer+Center%22+india+OR+ICIJ+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Reporters Without Borders India", "url": "https://news.google.com/rss/search?q=%22Reporters+Without+Borders%22+india+OR+RSF+india+press&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Human Rights Watch India", "url": "https://news.google.com/rss/search?q=%22Human+Rights+Watch%22+india+OR+HRW+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Amnesty International India", "url": "https://news.google.com/rss/search?q=%22Amnesty+International%22+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: UN Special Rapporteur India", "url": "https://news.google.com/rss/search?q=%22UN+Special+Rapporteur%22+india+OR+UN+india+human+rights&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: OSINT / geopolitics analysis channels (RSS/Google News based) ───
+    "osint_channels": [
+        {"name": "GNews: OSINT India Pakistan", "url": "https://news.google.com/rss/search?q=OSINT+india+pakistan+OR+open+source+intelligence+south+asia&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Bellingcat South Asia", "url": "https://news.google.com/rss/search?q=bellingcat+india+OR+bellingcat+pakistan+OR+bellingcat+kashmir&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: ISW South Asia", "url": "https://news.google.com/rss/search?q=%22Institute+for+the+Study+of+War%22+south+asia+OR+ISW+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: ORF analysis India", "url": "https://news.google.com/rss/search?q=%22Observer+Research+Foundation%22+OR+ORF+india+analysis&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: IDSA Manohar Parrikar Institute", "url": "https://news.google.com/rss/search?q=%22Manohar+Parrikar+Institute%22+OR+IDSA+india+defence&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: StratNewsGlobal India", "url": "https://news.google.com/rss/search?q=stratnewsglobal+OR+%22Strat+News+Global%22&hl=en&gl=IN&ceid=IN:en"},
+        # Reddit OSINT-adjacent
+        {"name": "Reddit r/CredibleDefense", "url": "https://www.reddit.com/r/CredibleDefense/search.json?q=india+OR+pakistan&sort=hot&restrict_sr=1&limit=15"},
+        {"name": "Reddit r/LessCredibleDefence India", "url": "https://www.reddit.com/r/LessCredibleDefence/search.json?q=india&sort=hot&restrict_sr=1&limit=10"},
     ],
     # ── NEW: Naxal / Maoist insurgency dedicated tracking ────────────────────
     "naxal_insurgency": [
