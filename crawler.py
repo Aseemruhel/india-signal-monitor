@@ -9,9 +9,49 @@ import json
 import feedparser
 import requests
 import re
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 import time
+from email.utils import parsedate_to_datetime
+
+# ── DATE FILTER ────────────────────────────────────────────────────────────
+# Only keep items published within this many days. Anything older (or
+# anything whose date can't be parsed reliably and looks stale) is dropped.
+MAX_AGE_DAYS = 4
+CUTOFF = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
+
+def parse_pub_date(entry):
+    """
+    Try hard to get a timezone-aware datetime from a feedparser entry.
+    Returns None if no usable date is found.
+    """
+    # feedparser usually gives a parsed struct_time in *_parsed fields
+    for field in ("published_parsed", "updated_parsed"):
+        val = entry.get(field)
+        if val:
+            try:
+                return datetime(*val[:6], tzinfo=timezone.utc)
+            except Exception:
+                pass
+    # Fallback: try parsing the raw string fields
+    for field in ("published", "updated"):
+        raw = entry.get(field)
+        if raw:
+            try:
+                dt = parsedate_to_datetime(raw)
+                if dt.tzinfo is None:
+                    dt = dt.replace(tzinfo=timezone.utc)
+                return dt
+            except Exception:
+                pass
+    return None
+
+def is_recent(pub_dt):
+    """True if pub_dt is within MAX_AGE_DAYS, or unknown (we allow unknown
+    through but the caller can choose to be strict)."""
+    if pub_dt is None:
+        return None  # unknown — let caller decide
+    return pub_dt >= CUTOFF
 
 # ── FEED DEFINITIONS ──────────────────────────────────────────────────────────
 
@@ -374,8 +414,16 @@ def fetch_rss(feed_info, category, max_items=10):
             title = entry.get("title", "").strip()
             summary = re.sub(r'<[^>]+>', '', entry.get("summary", entry.get("description", ""))).strip()[:400]
             link = entry.get("link", "")
-            pub = entry.get("published", entry.get("updated", ""))
+            pub_dt = parse_pub_date(entry)
+            pub = pub_dt.isoformat() if pub_dt else entry.get("published", entry.get("updated", ""))
             combined = f"{title} {summary}"
+
+            # DATE FILTER: drop anything older than MAX_AGE_DAYS.
+            # If we can't determine a date at all, skip it too — better to
+            # miss an undated item than let stale content through.
+            recent = is_recent(pub_dt)
+            if recent is False or recent is None:
+                continue
 
             # Relevance check depends on category
             if category == "pok_baloch_minorities":
@@ -426,6 +474,15 @@ def fetch_reddit_json(feed_info, category):
             score = p.get("score", 0)
             combined = f"{title} {selftext}"
 
+            # DATE FILTER
+            pub_ts = p.get("created_utc", 0)
+            if pub_ts:
+                pub_dt = datetime.fromtimestamp(pub_ts, tz=timezone.utc)
+                if pub_dt < CUTOFF:
+                    continue
+            else:
+                continue  # no timestamp — skip rather than risk stale content
+
             if category in ("pok_baloch_minorities", "sikh_punjab_affairs"):
                 # r/Balochistan, r/GilgitBaltistan, r/Sikh, r/punjab, r/khalistan
                 # are inherently on-topic, so we don't hard-filter, just tag signals
@@ -441,7 +498,6 @@ def fetch_reddit_json(feed_info, category):
             elif score > 500:
                 importance = min(importance + 1, 10)
 
-            pub_ts = p.get("created_utc", 0)
             items.append({
                 "title": title,
                 "summary": selftext or f"👍 {score} upvotes · 💬 {p.get('num_comments',0)} comments",
