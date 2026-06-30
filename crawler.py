@@ -98,6 +98,56 @@ FEEDS = {
         {"name": "Reddit r/Balochistan", "url": "https://www.reddit.com/r/Balochistan/hot.json?limit=15"},
         {"name": "Reddit r/GilgitBaltistan", "url": "https://www.reddit.com/r/GilgitBaltistan/hot.json?limit=10"},
     ],
+    # ── NEW: Dedicated Kashmir monitoring ────────────────────────────────────
+    "kashmir_focus": [
+        # Pakistan commentary specifically on Indian J&K
+        {"name": "GNews: Pakistan on Indian Kashmir", "url": "https://news.google.com/rss/search?q=pakistan+%22indian+kashmir%22+OR+pakistan+%22Jammu+and+Kashmir%22&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan FO Kashmir statement", "url": "https://news.google.com/rss/search?q=pakistan+foreign+office+kashmir+OR+pakistan+condemns+kashmir&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan UN Kashmir", "url": "https://news.google.com/rss/search?q=pakistan+kashmir+united+nations+OR+pakistan+kashmir+OIC&hl=en&gl=US&ceid=US:en"},
+        {"name": "Dawn: Kashmir tag", "url": "https://www.dawn.com/feed/kashmir"},
+        # Key developments inside J&K (India-side reporting)
+        {"name": "GNews: Jammu Kashmir developments", "url": "https://news.google.com/rss/search?q=%22Jammu+and+Kashmir%22+OR+J%26K+government+OR+kashmir+assembly&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Kashmir security situation", "url": "https://news.google.com/rss/search?q=kashmir+security+OR+kashmir+encounter+OR+kashmir+militant&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Kashmir elections politics", "url": "https://news.google.com/rss/search?q=kashmir+elections+OR+kashmir+assembly+OR+jammu+kashmir+politics&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Article 370 Kashmir", "url": "https://news.google.com/rss/search?q=article+370+OR+kashmir+statehood+OR+kashmir+autonomy&hl=en&gl=IN&ceid=IN:en"},
+        # Foreign/Western media negative coverage of Kashmir
+        {"name": "GNews: Kashmir human rights criticism", "url": "https://news.google.com/rss/search?q=kashmir+human+rights+violation+OR+kashmir+crackdown+OR+kashmir+repression&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Kashmir press freedom journalists", "url": "https://news.google.com/rss/search?q=kashmir+press+freedom+OR+kashmir+journalist+OR+kashmir+media+restriction&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Kashmir internet shutdown", "url": "https://news.google.com/rss/search?q=kashmir+internet+shutdown+OR+kashmir+communication+blackout&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Kashmir occupation narrative", "url": "https://news.google.com/rss/search?q=%22kashmir+occupation%22+OR+%22occupied+kashmir%22+OR+kashmir+colonial&hl=en&gl=US&ceid=US:en"},
+        {"name": "BBC: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:bbc.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Al Jazeera: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:aljazeera.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Reuters/Guardian: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:reuters.com+OR+kashmir+site:theguardian.com&hl=en&gl=US&ceid=US:en"},
+    ],
+    # ── NEW: Sikh / Punjab / Khalistan monitoring ────────────────────────────
+    "sikh_punjab_affairs": [
+        # Khalistan movement developments
+        {"name": "GNews: Khalistan movement", "url": "https://news.google.com/rss/search?q=khalistan+movement+OR+khalistani+OR+khalistan+referendum&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Khalistan referendum SFJ", "url": "https://news.google.com/rss/search?q=%22Sikhs+for+Justice%22+OR+SFJ+khalistan+OR+khalistan+referendum+vote&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Khalistan India response", "url": "https://news.google.com/rss/search?q=khalistan+india+government+OR+india+khalistan+designated+terrorist&hl=en&gl=US&ceid=US:en"},
+        # Punjab internal developments
+        {"name": "GNews: Punjab politics security", "url": "https://news.google.com/rss/search?q=punjab+india+politics+OR+punjab+security+OR+punjab+police&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Punjab drugs farmers", "url": "https://news.google.com/rss/search?q=punjab+drugs+OR+punjab+farmers+protest+OR+punjab+border+smuggling&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews: Amritpal Singh Waris Punjab", "url": "https://news.google.com/rss/search?q=Amritpal+Singh+OR+%22Waris+Punjab+De%22&hl=en&gl=IN&ceid=IN:en"},
+        # Anti-Sikh sentiment / hate incidents
+        {"name": "GNews: anti-Sikh hate incidents", "url": "https://news.google.com/rss/search?q=anti-sikh+OR+sikh+hate+crime+OR+sikh+attacked&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Sikh temple vandalism gurdwara", "url": "https://news.google.com/rss/search?q=gurdwara+vandalism+OR+sikh+temple+attack+OR+gurdwara+desecration&hl=en&gl=US&ceid=US:en"},
+        # Pakistani propaganda angle on Sikh/Khalistan
+        {"name": "GNews: Pakistan Sikh Khalistan support", "url": "https://news.google.com/rss/search?q=pakistan+khalistan+OR+pakistan+sikh+separatist+OR+ISI+khalistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pakistan Sikh solidarity narrative", "url": "https://news.google.com/rss/search?q=pakistan+sikh+solidarity+OR+pakistan+kartarpur+khalistan&hl=en&gl=US&ceid=US:en"},
+        # Canada-specific
+        {"name": "GNews: Khalistan Canada", "url": "https://news.google.com/rss/search?q=khalistan+canada+OR+khalistani+canada+OR+canada+sikh+separatist&hl=en&gl=CA&ceid=CA:en"},
+        {"name": "GNews: Nijjar Canada India", "url": "https://news.google.com/rss/search?q=Nijjar+canada+india+OR+canada+india+diplomatic+row+sikh&hl=en&gl=CA&ceid=CA:en"},
+        {"name": "GNews: Canada gurdwara India tension", "url": "https://news.google.com/rss/search?q=canada+gurdwara+OR+canada+india+khalistan+tension+OR+trudeau+sikh&hl=en&gl=CA&ceid=CA:en"},
+        # USA-specific
+        {"name": "GNews: Khalistan USA", "url": "https://news.google.com/rss/search?q=khalistan+usa+OR+khalistani+america+OR+sikh+separatist+united+states&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Pannun US India", "url": "https://news.google.com/rss/search?q=Pannun+OR+%22Gurpatwant+Singh%22+india+us&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: US Sikh community advocacy", "url": "https://news.google.com/rss/search?q=sikh+coalition+OR+american+sikh+advocacy+OR+us+sikh+civil+rights&hl=en&gl=US&ceid=US:en"},
+        # Reddit
+        {"name": "Reddit r/Sikh", "url": "https://www.reddit.com/r/Sikh/hot.json?limit=15"},
+        {"name": "Reddit r/punjab", "url": "https://www.reddit.com/r/punjab/hot.json?limit=15"},
+        {"name": "Reddit r/khalistan", "url": "https://www.reddit.com/r/khalistan/hot.json?limit=15"},
+    ],
 }
 
 # ── RELEVANCE FILTERS ─────────────────────────────────────────────────────────
@@ -129,6 +179,24 @@ POK_BALOCH_MUST_MATCH = [
     "christian persecution pakistan", "hindu pakistan minority",
 ]
 
+# Kashmir-focused relevance check — anything mentioning Kashmir/J&K qualifies
+KASHMIR_MUST_MATCH = [
+    "kashmir", "jammu and kashmir", "j&k", "j & k", "article 370",
+    "azad kashmir", "pok ", "line of control", "loc ",
+    "srinagar", "pulwama", "anantnag", "baramulla", "kupwara",
+    "gilgit baltistan", "kashmir valley", "kashmiri", "kashmir issue",
+    "kashmir dispute", "kashmir conflict", "kashmir occupation",
+]
+
+# Sikh / Punjab / Khalistan relevance check
+SIKH_PUNJAB_MUST_MATCH = [
+    "sikh", "sikhs", "khalistan", "khalistani", "punjab", "gurdwara",
+    "amritsar", "nijjar", "pannun", "sikhs for justice", "sfj",
+    "waris punjab de", "amritpal singh", "golden temple", "akal takht",
+    "kartarpur", "shiromani akali dal", "punjabi diaspora",
+    "1984 anti-sikh", "operation blue star", "anti-sikh riots",
+]
+
 def is_india_relevant(text):
     text_lower = text.lower()
     return any(kw in text_lower for kw in INDIA_MUST_MATCH)
@@ -136,6 +204,14 @@ def is_india_relevant(text):
 def is_pok_baloch_relevant(text):
     text_lower = text.lower()
     return any(kw in text_lower for kw in POK_BALOCH_MUST_MATCH)
+
+def is_kashmir_relevant(text):
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in KASHMIR_MUST_MATCH)
+
+def is_sikh_punjab_relevant(text):
+    text_lower = text.lower()
+    return any(kw in text_lower for kw in SIKH_PUNJAB_MUST_MATCH)
 
 # ── SIGNAL KEYWORDS ───────────────────────────────────────────────────────────
 
@@ -198,6 +274,56 @@ SIGNAL_KEYWORDS = {
         "christian persecution pakistan", "pok protest", "gilgit protest",
         "baloch genocide", "baloch crackdown", "pakistan army balochistan",
     ],
+    # Kashmir sub-signals
+    "kashmir_pakistan_comment": [
+        "pakistan condemns kashmir", "pakistan foreign office kashmir",
+        "pakistan statement kashmir", "pakistan un kashmir", "pakistan oic kashmir",
+        "pakistan kashmir solidarity", "pakistan kashmir day",
+        "indian kashmir pakistan", "pakistan kashmir rhetoric",
+        "islamabad kashmir", "pakistan kashmir reaction",
+    ],
+    "kashmir_development": [
+        "kashmir assembly", "kashmir government", "kashmir elections",
+        "article 370", "kashmir statehood", "kashmir autonomy",
+        "kashmir encounter", "kashmir militant", "kashmir security operation",
+        "kashmir administration", "j&k lieutenant governor", "kashmir budget",
+        "kashmir delimitation", "kashmir panchayat",
+    ],
+    "kashmir_foreign_negative": [
+        "kashmir human rights violation", "kashmir crackdown", "kashmir repression",
+        "kashmir press freedom", "kashmir journalist arrest", "kashmir media restriction",
+        "kashmir internet shutdown", "kashmir communication blackout",
+        "kashmir occupation", "occupied kashmir", "kashmir colonial",
+        "kashmir siege", "kashmir lockdown criticism", "kashmir un report",
+        "kashmir amnesty international", "kashmir hrw",
+    ],
+    # Sikh / Punjab / Khalistan sub-signals
+    "anti_sikh_sentiment": [
+        "anti-sikh", "sikh hate crime", "sikh attacked", "gurdwara vandalism",
+        "sikh temple attack", "gurdwara desecration", "sikh discrimination",
+        "sikh profiling", "turban discrimination", "sikh harassment",
+        "1984 anti-sikh riots", "operation blue star", "sikh genocide",
+    ],
+    "khalistan_activity": [
+        "khalistan movement", "khalistani", "khalistan referendum",
+        "sikhs for justice", "sfj", "khalistan rally", "khalistan protest",
+        "amritpal singh", "waris punjab de", "khalistan flag",
+        "khalistan designated terrorist", "khalistan banned",
+        "nijjar", "pannun", "khalistan extremism",
+    ],
+    "pakistan_sikh_propaganda": [
+        "pakistan khalistan", "pakistan sikh separatist", "isi khalistan",
+        "pakistan sikh solidarity", "pakistan kartarpur khalistan",
+        "pakistan funding khalistan", "pakistan support sikh separatist",
+        "isi sikh", "pakistan punjab destabilize",
+    ],
+    "khalistan_canada_usa": [
+        "khalistan canada", "khalistani canada", "canada sikh separatist",
+        "nijjar canada", "canada india diplomatic row", "trudeau sikh",
+        "canada gurdwara", "khalistan usa", "khalistani america",
+        "sikh separatist united states", "gurpatwant singh",
+        "us sikh civil rights", "canada india tension sikh",
+    ],
 }
 
 HIGH_IMPORTANCE_TRIGGERS = [
@@ -208,6 +334,10 @@ HIGH_IMPORTANCE_TRIGGERS = [
     "india tension", "india warns", "india responds",
     "enforced disappearance", "baloch killed", "extrajudicial",
     "crackdown", "missing persons", "abducted", "custodial death",
+    "kashmir encounter", "kashmir killed", "kashmir crackdown",
+    "kashmir un report", "kashmir lockdown", "pulwama",
+    "khalistan referendum", "sikh attacked", "gurdwara attack",
+    "nijjar killing", "canada india row", "khalistan banned",
 ]
 
 def score_importance(text):
@@ -251,6 +381,12 @@ def fetch_rss(feed_info, category, max_items=10):
             if category == "pok_baloch_minorities":
                 if not is_pok_baloch_relevant(combined):
                     continue
+            elif category == "kashmir_focus":
+                if not is_kashmir_relevant(combined):
+                    continue
+            elif category == "sikh_punjab_affairs":
+                if not is_sikh_punjab_relevant(combined):
+                    continue
             else:
                 if not is_india_relevant(combined):
                     continue
@@ -290,9 +426,9 @@ def fetch_reddit_json(feed_info, category):
             score = p.get("score", 0)
             combined = f"{title} {selftext}"
 
-            if category == "pok_baloch_minorities":
-                # r/Balochistan and r/GilgitBaltistan are inherently on-topic,
-                # so we don't hard-filter, just tag signals
+            if category in ("pok_baloch_minorities", "sikh_punjab_affairs"):
+                # r/Balochistan, r/GilgitBaltistan, r/Sikh, r/punjab, r/khalistan
+                # are inherently on-topic, so we don't hard-filter, just tag signals
                 pass
             else:
                 if not is_india_relevant(combined):
