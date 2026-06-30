@@ -69,6 +69,7 @@ FEEDS = {
         {"name": "Scroll.in", "url": "https://scroll.in/feed"},
         {"name": "FirstPost India", "url": "https://www.firstpost.com/rss/india.xml"},
         {"name": "Tribune India", "url": "https://www.tribuneindia.com/rss/feed?category=nation"},
+        {"name": "Economic Times - India", "url": "https://economictimes.indiatimes.com/news/india/rssfeeds/1014008090.cms"},
     ],
     "pakistan_narratives": [
         {"name": "Dawn - Pakistan", "url": "https://www.dawn.com/feeds/home"},
@@ -94,6 +95,10 @@ FEEDS = {
         {"name": "Al Jazeera - Asia", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
         {"name": "TRT World", "url": "https://www.trtworld.com/rss"},
         {"name": "The Diplomat - India", "url": "https://thediplomat.com/feed/"},
+        {"name": "GNews: Bloomberg India", "url": "https://news.google.com/rss/search?q=india+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: The Economist India", "url": "https://news.google.com/rss/search?q=india+site:economist.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Nikkei Asia - India search", "url": "https://news.google.com/rss/search?q=india+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Gulf News - India", "url": "https://gulfnews.com/rss?section=world"},
         {"name": "Asia Times", "url": "https://asiatimes.com/feed/"},
         {"name": "Foreign Policy", "url": "https://foreignpolicy.com/feed/"},
         {"name": "GNews: India Pakistan", "url": "https://news.google.com/rss/search?q=india+pakistan&hl=en&gl=US&ceid=US:en"},
@@ -108,6 +113,8 @@ FEEDS = {
         {"name": "Daily Mirror - Sri Lanka", "url": "https://www.dailymirror.lk/rss"},
         {"name": "MyRepublica - Nepal", "url": "https://myrepublica.nagariknetwork.com/feed"},
         {"name": "Mizzima - Myanmar", "url": "https://mizzima.com/feed"},
+        {"name": "Tolo News - Afghanistan", "url": "https://tolonews.com/rss.xml"},
+        {"name": "GNews: Afghanistan India", "url": "https://news.google.com/rss/search?q=afghanistan+india+OR+taliban+india&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Nepal India", "url": "https://news.google.com/rss/search?q=nepal+india&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Bangladesh India", "url": "https://news.google.com/rss/search?q=bangladesh+india&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Maldives India", "url": "https://news.google.com/rss/search?q=maldives+india&hl=en&gl=US&ceid=US:en"},
@@ -205,14 +212,13 @@ FEEDS = {
     # Add channel usernames below (the part after t.me/) one per line.
     # Each entry is tagged with the category it should be filtered/scored as.
     "telegram_channels": [
-        # Example structure — replace/add real channel usernames as needed.
         # category_hint controls which relevance filter + signal set applies:
         #   "india" -> is_india_relevant, "pok_baloch" -> is_pok_baloch_relevant,
         #   "kashmir" -> is_kashmir_relevant, "sikh_punjab" -> is_sikh_punjab_relevant,
         #   "none" -> no relevance filter, everything passes through
-        #
-        # EXAMPLE (uncomment and edit with a real public channel username):
-        # {"name": "Some OSINT Channel", "url": "https://rsshub.app/telegram/channel/some_channel_username", "category_hint": "india"},
+        {"name": "Gore Unit (Telegram)", "url": "https://rsshub.app/telegram/channel/goreunit", "category_hint": "india"},
+        {"name": "Conflict Watch HQ (Telegram)", "url": "https://rsshub.app/telegram/channel/conflictwatchHQ", "category_hint": "india"},
+        {"name": "IntelSage (Telegram)", "url": "https://rsshub.app/telegram/channel/IntelSage", "category_hint": "india"},
     ],
     # ── NEW: Border & territorial flashpoints (LAC, Doklam, water disputes) ──
     "border_territorial": [
@@ -242,6 +248,9 @@ FEEDS = {
         {"name": "GNews: China FDI India scrutiny", "url": "https://news.google.com/rss/search?q=china+fdi+india+scrutiny+OR+india+china+investment+block&hl=en&gl=IN&ceid=IN:en"},
         {"name": "GNews: India Huawei 5G ban", "url": "https://news.google.com/rss/search?q=india+huawei+5g+OR+india+telecom+vendor+ban+china&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India rare earth semiconductor", "url": "https://news.google.com/rss/search?q=india+rare+earth+OR+india+semiconductor+china+supply+chain&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Bloomberg India economy", "url": "https://news.google.com/rss/search?q=india+economy+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: Nikkei Asia India economy", "url": "https://news.google.com/rss/search?q=india+economy+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Economic Times - Economy", "url": "https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms"},
     ],
     # ── NEW: Disinformation research (DFRLab, EU DisinfoLab, platform takedowns) ─
     "disinfo_research": [
