@@ -56,6 +56,24 @@ def is_recent(pub_dt):
 # ── FEED DEFINITIONS ──────────────────────────────────────────────────────────
 
 FEEDS = {
+    # ── BREAKING NEWS — crawled first, no India filter, fast-moving wires ──
+    # These are global breaking news wires. Items pass through without the
+    # India relevance filter since breaking events often don't mention "India"
+    # in first paragraph; the signal detector still tags India-relevant ones.
+    "breaking_news": [
+        {"name": "Reuters - Breaking", "url": "https://feeds.reuters.com/reuters/worldNews"},
+        {"name": "Reuters - Top News", "url": "https://feeds.reuters.com/reuters/topNews"},
+        {"name": "AP News - Top Headlines", "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
+        {"name": "BBC Breaking", "url": "http://feeds.bbci.co.uk/news/rss.xml"},
+        {"name": "BBC South Asia Breaking", "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
+        {"name": "Al Jazeera Breaking", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
+        {"name": "NDTV Breaking", "url": "https://feeds.feedburner.com/ndtvnews-top-stories"},
+        {"name": "India Today Breaking", "url": "https://www.indiatoday.in/rss/1206578"},
+        {"name": "ANI News", "url": "https://aninews.in/rss/"},
+        {"name": "PTI News Feed", "url": "https://news.google.com/rss/search?q=PTI+news+india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
+        {"name": "GNews: Breaking India Today", "url": "https://news.google.com/rss/search?q=india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
+        {"name": "GNews: India World Today", "url": "https://news.google.com/rss/search?q=india+world&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
+    ],
     "india_geopolitics": [
         {"name": "The Hindu - National", "url": "https://www.thehindu.com/news/national/feeder/default.rss"},
         {"name": "The Hindu - International", "url": "https://www.thehindu.com/news/international/feeder/default.rss"},
@@ -77,19 +95,21 @@ FEEDS = {
         {"name": "Geo News", "url": "https://www.geo.tv/rss/1"},
         {"name": "Express Tribune", "url": "https://tribune.com.pk/feed/"},
         {"name": "ARY News", "url": "https://arynews.tv/feed/"},
-        {"name": "Pakistan Observer", "url": "https://pakobserver.net/feed/"},
         {"name": "The Nation Pakistan", "url": "https://nation.com.pk/rss/"},
         {"name": "Business Recorder Pakistan", "url": "https://www.brecorder.com/feed"},
         {"name": "Pakistan Today", "url": "https://www.pakistantoday.com.pk/feed/"},
         {"name": "Daily Times Pakistan", "url": "https://dailytimes.com.pk/feed/"},
         {"name": "Samaa English", "url": "https://www.samaa.tv/feed/"},
-        {"name": "92 News HD", "url": "https://92newshd.tv/feed/"},
         {"name": "GNews: DGISPR Pakistan military", "url": "https://news.google.com/rss/search?q=DGISPR+OR+%22Inter+Services+Public+Relations%22+pakistan&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Pakistan Army statement", "url": "https://news.google.com/rss/search?q=pakistan+army+statement+OR+pakistan+military+spokesperson&hl=en&gl=US&ceid=US:en"},
     ],
     "western_media": [
         {"name": "BBC South Asia", "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
         {"name": "BBC News - World", "url": "http://feeds.bbci.co.uk/news/world/rss.xml"},
+        {"name": "Reuters - World News", "url": "https://feeds.reuters.com/reuters/worldNews"},
+        {"name": "Reuters - India", "url": "https://news.google.com/rss/search?q=india+site:reuters.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "AP News - India", "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "AFP - India", "url": "https://news.google.com/rss/search?q=india+site:afp.com&hl=en&gl=US&ceid=US:en"},
         {"name": "CNN - World", "url": "http://rss.cnn.com/rss/edition_world.rss"},
         {"name": "The Guardian - India", "url": "https://www.theguardian.com/world/india/rss"},
         {"name": "Al Jazeera - Asia", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
@@ -97,14 +117,16 @@ FEEDS = {
         {"name": "The Diplomat - India", "url": "https://thediplomat.com/feed/"},
         {"name": "GNews: Bloomberg India", "url": "https://news.google.com/rss/search?q=india+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: The Economist India", "url": "https://news.google.com/rss/search?q=india+site:economist.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Nikkei Asia - India search", "url": "https://news.google.com/rss/search?q=india+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Gulf News - India", "url": "https://gulfnews.com/rss?section=world"},
+        {"name": "GNews: Nikkei Asia India", "url": "https://news.google.com/rss/search?q=india+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Gulf News - World", "url": "https://gulfnews.com/rss?section=world"},
         {"name": "Asia Times", "url": "https://asiatimes.com/feed/"},
         {"name": "Foreign Policy", "url": "https://foreignpolicy.com/feed/"},
+        {"name": "GNews: NYT India", "url": "https://news.google.com/rss/search?q=india+site:nytimes.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: WaPo India", "url": "https://news.google.com/rss/search?q=india+site:washingtonpost.com&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India Pakistan", "url": "https://news.google.com/rss/search?q=india+pakistan&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India China border", "url": "https://news.google.com/rss/search?q=india+china+border&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews: India global news", "url": "https://news.google.com/rss/search?q=india+news+today&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
         {"name": "GNews: India criticism", "url": "https://news.google.com/rss/search?q=india+human+rights+OR+india+press+freedom+OR+india+democracy&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Kashmir", "url": "https://news.google.com/rss/search?q=kashmir+india&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: India protest", "url": "https://news.google.com/rss/search?q=india+protest+OR+india+bandh+OR+india+agitation&hl=en&gl=IN&ceid=IN:en"},
     ],
     "neighbours": [
@@ -143,8 +165,7 @@ FEEDS = {
         {"name": "GNews: Paank Baloch rights", "url": "https://news.google.com/rss/search?q=Paank+Baloch+OR+%22Baloch+human+rights%22&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Balochistan enforced disappearances", "url": "https://news.google.com/rss/search?q=balochistan+%22enforced+disappearance%22+OR+balochistan+missing+persons&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: Baloch protest crackdown", "url": "https://news.google.com/rss/search?q=baloch+protest+OR+balochistan+crackdown+OR+BYC+balochistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "Balochistan Post", "url": "https://thebalochistanpost.net/feed/"},
-        {"name": "Balochwarna News", "url": "https://www.balochwarna.com/feed/"},
+        {"name": "GNews: Balochistan BBC Reuters", "url": "https://news.google.com/rss/search?q=balochistan+site:bbc.com+OR+balochistan+site:reuters.com&hl=en&gl=US&ceid=US:en"},
         # Sindhi, Pashtun, and general Pakistan minority rights
         {"name": "GNews: Sindhi rights Pakistan", "url": "https://news.google.com/rss/search?q=sindhi+rights+OR+sindh+nationalist+OR+JSMM&hl=en&gl=US&ceid=US:en"},
         {"name": "GNews: PTM Pashtun rights", "url": "https://news.google.com/rss/search?q=%22Pashtun+Tahafuz+Movement%22+OR+PTM+Pakistan&hl=en&gl=US&ceid=US:en"},
@@ -326,6 +347,13 @@ INDIA_MUST_MATCH = [
     "brahmos", "drdo", "isro", "quad india", "brics india", "sco india",
     "khalistan", "naxal", "maoist india", "northeast india", "manipur",
     "assam", "punjab india", "farmers india", "rupee", "rbi india",
+    # broader phrasing used by global wire agencies
+    "new delhi", "prime minister narendra", "narendra modi",
+    "amit shah", "jaishankar", "rajnath", "yogi adityanath",
+    "indian government", "government of india", "india's", "india-",
+    "indian economy", "indian military", "indian foreign",
+    "south asia", "south asian", "subcontinental",
+    "hindustan", "desi ", "mumbai attacks", "26/11",
 ]
 
 # Separate relevance check for the PoK/Baloch/minorities category —
@@ -604,7 +632,7 @@ def detect_signals(text):
 
 # ── RSS FEED FETCHER ──────────────────────────────────────────────────────────
 
-def fetch_rss(feed_info, category, max_items=10):
+def fetch_rss(feed_info, category, max_items=15):
     items = []
     try:
         headers = {"User-Agent": "Mozilla/5.0 (compatible; IndiaSignalMonitor/1.0)"}
@@ -619,10 +647,11 @@ def fetch_rss(feed_info, category, max_items=10):
             combined = f"{title} {summary}"
 
             # DATE FILTER: drop anything older than MAX_AGE_DAYS.
-            # If we can't determine a date at all, skip it too — better to
-            # miss an undated item than let stale content through.
+            # Breaking news wires are allowed through even if date can't be parsed.
             recent = is_recent(pub_dt)
-            if recent is False or recent is None:
+            if recent is False:
+                continue
+            if recent is None and category != "breaking_news":
                 continue
 
             # Relevance check depends on category (or explicit category_hint
@@ -643,12 +672,42 @@ def fetch_rss(feed_info, category, max_items=10):
                         continue
                 elif relevance_key == "none":
                     pass  # no relevance filter — everything from this source passes
+                elif relevance_key == "breaking_news":
+                    # Breaking news wires: apply India filter but allow undated items through
+                    if not is_india_relevant(combined):
+                        continue
                 else:
                     if not is_india_relevant(combined):
                         continue
 
             signals = detect_signals(combined)
             importance = score_importance(combined)
+
+            # Auto-tag signal based on category so section counts are never zero
+            # even when keyword detection misses a match
+            CAT_AUTO_SIGNAL = {
+                "breaking_news": "strategic_military",
+                "pok_baloch_minorities": "pok_baloch_rights",
+                "kashmir_focus": "kashmir_development",
+                "sikh_punjab_affairs": "khalistan_activity",
+                "border_territorial": "border_territorial",
+                "maritime_indian_ocean": "maritime_indian_ocean",
+                "cyber_security": "cyber_security_threat",
+                "economic_security": "economic_security_risk",
+                "disinfo_research": "disinfo_research_finding",
+                "communal_flashpoints": "communal_flashpoint",
+                "northeast_india": "northeast_unrest",
+                "naxal_insurgency": "naxal_insurgency",
+                "extremism_banned_orgs": "extremism_banned_org",
+                "india_critics": "western_criticism",
+                "osint_channels": "strategic_military",
+                "pakistan_narratives": "pakistan_narrative",
+                "western_media": "western_criticism",
+                "telegram_channels": "strategic_military",
+            }
+            auto_sig = CAT_AUTO_SIGNAL.get(category)
+            if auto_sig and auto_sig not in signals:
+                signals = signals + [auto_sig]
 
             items.append({
                 "title": title,
@@ -658,7 +717,7 @@ def fetch_rss(feed_info, category, max_items=10):
                 "category": category,
                 "signals": signals,
                 "importance": importance,
-                "published": pub,
+                "published": pub_dt.isoformat() if pub_dt else pub,
                 "fetched_at": datetime.now(timezone.utc).isoformat(),
             })
     except Exception as e:
@@ -705,6 +764,18 @@ def fetch_reddit_json(feed_info, category):
                 importance = min(importance + 2, 10)
             elif score > 500:
                 importance = min(importance + 1, 10)
+
+            # Auto-tag signal based on category (same as RSS fetcher)
+            CAT_AUTO_SIGNAL = {
+                "pok_baloch_minorities": "pok_baloch_rights",
+                "kashmir_focus": "kashmir_development",
+                "sikh_punjab_affairs": "khalistan_activity",
+                "social_india": "pakistan_narrative",
+                "osint_channels": "strategic_military",
+            }
+            auto_sig = CAT_AUTO_SIGNAL.get(category)
+            if auto_sig and auto_sig not in signals:
+                signals = signals + [auto_sig]
 
             items.append({
                 "title": title,
@@ -755,7 +826,16 @@ def crawl_all():
             seen.add(key)
             deduped.append(item)
 
-    deduped.sort(key=lambda x: (x["importance"], x.get("reddit_score", 0)), reverse=True)
+    deduped.sort(
+        key=lambda x: (
+            # Primary: published datetime descending (latest first)
+            x.get("published", ""),
+            # Secondary: importance descending
+            x.get("importance", 0),
+            x.get("reddit_score", 0)
+        ),
+        reverse=True
+    )
 
     signal_counts = defaultdict(int)
     for item in deduped:
