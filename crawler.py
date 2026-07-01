@@ -1,14 +1,11 @@
 #!/usr/bin/env python3
 """
-India Geopolitical Signal Monitor
-Tracks India-relevant signals + Pakistan/PoK human rights & minority issues
-(VOPK, HRCP, Paank, Baloch, Sindhi, PoK minorities, etc.)
+India Pulse 360 — Geopolitical Intelligence Crawler
+Version 3.0 — Clean rebuild with multi-label classification,
+expanded alias matching, rolling date window, and Telegram HTML scraping.
 """
 
-import json
-import feedparser
-import requests
-import re
+import json, feedparser, requests, re, hashlib
 from datetime import datetime, timezone, timedelta
 from collections import defaultdict
 import time
@@ -19,20 +16,609 @@ try:
     BS4_AVAILABLE = True
 except ImportError:
     BS4_AVAILABLE = False
-    print("⚠ beautifulsoup4 not installed — Telegram scraping disabled. Run: pip install beautifulsoup4")
+    print("⚠ pip install beautifulsoup4 — Telegram scraping disabled")
 
-# ── DATE FILTER ────────────────────────────────────────────────────────────
-# Only keep items published within this many days. Anything older (or
-# anything whose date can't be parsed reliably and looks stale) is dropped.
-MAX_AGE_DAYS = 4
+# ══════════════════════════════════════════════════════════════════════════════
+# CONFIGURATION
+# ══════════════════════════════════════════════════════════════════════════════
+
+MAX_AGE_DAYS   = 4      # Rolling window — change to 2 for tighter freshness
+MAX_ITEMS_FEED = 15     # Items fetched per RSS feed
+MAX_ITEMS_TG   = 20     # Items scraped per Telegram channel
+CRAWL_DELAY    = 0.4    # Seconds between feed fetches (polite)
+
 CUTOFF = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
 
+# ══════════════════════════════════════════════════════════════════════════════
+# FEED DEFINITIONS  (199 sources across 21 categories)
+# ══════════════════════════════════════════════════════════════════════════════
+
+FEEDS = {
+
+    # ── BREAKING NEWS ─────────────────────────────────────────────────────────
+    "breaking_news": [
+        {"name": "Reuters Breaking",       "url": "https://feeds.reuters.com/reuters/worldNews"},
+        {"name": "Reuters Top News",       "url": "https://feeds.reuters.com/reuters/topNews"},
+        {"name": "AP News India",          "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
+        {"name": "AFP India",              "url": "https://news.google.com/rss/search?q=india+site:afp.com&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
+        {"name": "BBC Breaking",           "url": "http://feeds.bbci.co.uk/news/rss.xml"},
+        {"name": "BBC South Asia",         "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
+        {"name": "Al Jazeera Breaking",    "url": "https://www.aljazeera.com/xml/rss/all.xml"},
+        {"name": "NDTV Breaking",          "url": "https://feeds.feedburner.com/ndtvnews-top-stories"},
+        {"name": "India Today Breaking",   "url": "https://www.indiatoday.in/rss/1206578"},
+        {"name": "ANI News",               "url": "https://aninews.in/rss/"},
+        {"name": "PTI India Today",        "url": "https://news.google.com/rss/search?q=PTI+news+india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
+        {"name": "GNews India Today",      "url": "https://news.google.com/rss/search?q=india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
+    ],
+
+    # ── INDIA MEDIA ───────────────────────────────────────────────────────────
+    "india_geopolitics": [
+        {"name": "The Hindu National",     "url": "https://www.thehindu.com/news/national/feeder/default.rss"},
+        {"name": "The Hindu International","url": "https://www.thehindu.com/news/international/feeder/default.rss"},
+        {"name": "Indian Express India",   "url": "https://indianexpress.com/section/india/feed/"},
+        {"name": "Indian Express World",   "url": "https://indianexpress.com/section/world/feed/"},
+        {"name": "LiveMint Politics",      "url": "https://www.livemint.com/rss/politics"},
+        {"name": "Hindustan Times",        "url": "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml"},
+        {"name": "NDTV India",             "url": "https://feeds.feedburner.com/ndtvnews-india-news"},
+        {"name": "Deccan Herald",          "url": "https://www.deccanherald.com/rss-feeds/feed-national"},
+        {"name": "The Wire",               "url": "https://thewire.in/feed"},
+        {"name": "Scroll.in",              "url": "https://scroll.in/feed"},
+        {"name": "FirstPost India",        "url": "https://www.firstpost.com/rss/india.xml"},
+        {"name": "Tribune India",          "url": "https://www.tribuneindia.com/rss/feed?category=nation"},
+        {"name": "Economic Times India",   "url": "https://economictimes.indiatimes.com/news/india/rssfeeds/1014008090.cms"},
+    ],
+
+    # ── PAKISTAN MEDIA ────────────────────────────────────────────────────────
+    "pakistan_narratives": [
+        {"name": "Dawn",                   "url": "https://www.dawn.com/feeds/home"},
+        {"name": "The News International", "url": "https://www.thenews.com.pk/rss/1/1"},
+        {"name": "Geo News",               "url": "https://www.geo.tv/rss/1"},
+        {"name": "Express Tribune",        "url": "https://tribune.com.pk/feed/"},
+        {"name": "ARY News",               "url": "https://arynews.tv/feed/"},
+        {"name": "The Nation Pakistan",    "url": "https://nation.com.pk/rss/"},
+        {"name": "Business Recorder",      "url": "https://www.brecorder.com/feed"},
+        {"name": "Pakistan Today",         "url": "https://www.pakistantoday.com.pk/feed/"},
+        {"name": "Daily Times Pakistan",   "url": "https://dailytimes.com.pk/feed/"},
+        {"name": "Samaa English",          "url": "https://www.samaa.tv/feed/"},
+        {"name": "GNews DGISPR",           "url": "https://news.google.com/rss/search?q=DGISPR+OR+%22Inter+Services+Public+Relations%22+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Pak Army",         "url": "https://news.google.com/rss/search?q=pakistan+army+statement+india&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── WESTERN / INTERNATIONAL MEDIA ────────────────────────────────────────
+    "western_media": [
+        {"name": "BBC South Asia",         "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
+        {"name": "BBC World",              "url": "http://feeds.bbci.co.uk/news/world/rss.xml"},
+        {"name": "Reuters World",          "url": "https://feeds.reuters.com/reuters/worldNews"},
+        {"name": "Reuters India",          "url": "https://news.google.com/rss/search?q=india+site:reuters.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "AP News India",          "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "AFP India",              "url": "https://news.google.com/rss/search?q=india+site:afp.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "CNN World",              "url": "http://rss.cnn.com/rss/edition_world.rss"},
+        {"name": "The Guardian India",     "url": "https://www.theguardian.com/world/india/rss"},
+        {"name": "Al Jazeera Asia",        "url": "https://www.aljazeera.com/xml/rss/all.xml"},
+        {"name": "TRT World",              "url": "https://www.trtworld.com/rss"},
+        {"name": "The Diplomat",           "url": "https://thediplomat.com/feed/"},
+        {"name": "Bloomberg India",        "url": "https://news.google.com/rss/search?q=india+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "The Economist India",    "url": "https://news.google.com/rss/search?q=india+site:economist.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Nikkei Asia India",      "url": "https://news.google.com/rss/search?q=india+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Gulf News World",        "url": "https://gulfnews.com/rss?section=world"},
+        {"name": "Asia Times",             "url": "https://asiatimes.com/feed/"},
+        {"name": "Foreign Policy",         "url": "https://foreignpolicy.com/feed/"},
+        {"name": "NYT India",              "url": "https://news.google.com/rss/search?q=india+site:nytimes.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "WaPo India",             "url": "https://news.google.com/rss/search?q=india+site:washingtonpost.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews India Pakistan",   "url": "https://news.google.com/rss/search?q=india+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews India China",      "url": "https://news.google.com/rss/search?q=india+china+border&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews India Global",     "url": "https://news.google.com/rss/search?q=india+news+today&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
+        {"name": "GNews India Criticism",  "url": "https://news.google.com/rss/search?q=india+human+rights+OR+india+press+freedom+OR+india+democracy&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews India Protest",    "url": "https://news.google.com/rss/search?q=india+protest+OR+india+bandh+OR+india+agitation&hl=en&gl=IN&ceid=IN:en"},
+    ],
+
+    # ── NEIGHBOURS ────────────────────────────────────────────────────────────
+    "neighbours": [
+        {"name": "Daily Star Bangladesh",  "url": "https://www.thedailystar.net/frontpage/rss.xml"},
+        {"name": "Kathmandu Post",         "url": "https://kathmandupost.com/rss"},
+        {"name": "Daily Mirror Sri Lanka", "url": "https://www.dailymirror.lk/rss"},
+        {"name": "MyRepublica Nepal",      "url": "https://myrepublica.nagariknetwork.com/feed"},
+        {"name": "Mizzima Myanmar",        "url": "https://mizzima.com/feed"},
+        {"name": "Tolo News Afghanistan",  "url": "https://tolonews.com/rss.xml"},
+        {"name": "GNews Afghanistan India","url": "https://news.google.com/rss/search?q=afghanistan+india+OR+taliban+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Nepal India",      "url": "https://news.google.com/rss/search?q=nepal+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Bangladesh India", "url": "https://news.google.com/rss/search?q=bangladesh+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Maldives India",   "url": "https://news.google.com/rss/search?q=maldives+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Sri Lanka India",  "url": "https://news.google.com/rss/search?q=sri+lanka+india&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── SOCIAL / REDDIT ───────────────────────────────────────────────────────
+    "social_india": [
+        {"name": "r/india",                "url": "https://www.reddit.com/r/india/hot.json?limit=25"},
+        {"name": "r/IndiaSpeaks",          "url": "https://www.reddit.com/r/IndiaSpeaks/hot.json?limit=20"},
+        {"name": "r/indiadiscussion",      "url": "https://www.reddit.com/r/indiadiscussion/hot.json?limit=15"},
+        {"name": "r/geopolitics India",    "url": "https://www.reddit.com/r/geopolitics/search.json?q=india&sort=hot&restrict_sr=1&limit=15"},
+        {"name": "r/worldnews India",      "url": "https://www.reddit.com/r/worldnews/search.json?q=india&sort=hot&restrict_sr=1&t=day&limit=20"},
+        {"name": "r/kashmirconflict",      "url": "https://www.reddit.com/r/kashmirconflict/hot.json?limit=15"},
+        {"name": "HN India geopolitics",   "url": "https://hnrss.org/newest?q=india+geopolitics+OR+india+pakistan+OR+india+china"},
+    ],
+
+    # ── POK / BALOCH / MINORITIES ─────────────────────────────────────────────
+    "pok_baloch_minorities": [
+        {"name": "GNews VOPK",             "url": "https://news.google.com/rss/search?q=%22voice+of+karakoram%22+OR+VOPK&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Gilgit Baltistan", "url": "https://news.google.com/rss/search?q=gilgit+baltistan+rights+OR+gilgit+protest&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews PoK Minorities",   "url": "https://news.google.com/rss/search?q=%22pakistan+occupied+kashmir%22+minorities+OR+rights&hl=en&gl=US&ceid=US:en"},
+        {"name": "HRCP RSS",               "url": "https://hrcp-web.org/hrcpweb/feed/"},
+        {"name": "GNews HRCP",             "url": "https://news.google.com/rss/search?q=%22Human+Rights+Commission+of+Pakistan%22+OR+HRCP&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Paank Baloch",     "url": "https://news.google.com/rss/search?q=Paank+Baloch+OR+%22Baloch+human+rights%22&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Baloch Disappear", "url": "https://news.google.com/rss/search?q=balochistan+%22enforced+disappearance%22+OR+balochistan+missing+persons&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Baloch Crackdown", "url": "https://news.google.com/rss/search?q=baloch+protest+OR+balochistan+crackdown+OR+BYC+balochistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Baloch BBC/Reu",   "url": "https://news.google.com/rss/search?q=balochistan+site:bbc.com+OR+balochistan+site:reuters.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Sindhi Rights",    "url": "https://news.google.com/rss/search?q=sindhi+rights+OR+sindh+nationalist+OR+JSMM&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews PTM Pakistan",     "url": "https://news.google.com/rss/search?q=%22Pashtun+Tahafuz+Movement%22+OR+PTM+Pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Pak Minorities",   "url": "https://news.google.com/rss/search?q=pakistan+minorities+persecution+OR+pakistan+hindu+forced+conversion+OR+pakistan+christian+persecution&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Ahmadi Pakistan",  "url": "https://news.google.com/rss/search?q=ahmadi+persecution+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "r/Balochistan",          "url": "https://www.reddit.com/r/Balochistan/hot.json?limit=15"},
+        {"name": "r/GilgitBaltistan",      "url": "https://www.reddit.com/r/GilgitBaltistan/hot.json?limit=10"},
+    ],
+
+    # ── KASHMIR FOCUS ─────────────────────────────────────────────────────────
+    "kashmir_focus": [
+        {"name": "GNews Pak on Kashmir",   "url": "https://news.google.com/rss/search?q=pakistan+%22indian+kashmir%22+OR+pakistan+%22Jammu+and+Kashmir%22&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Pak FO Kashmir",   "url": "https://news.google.com/rss/search?q=pakistan+foreign+office+kashmir+OR+pakistan+condemns+kashmir&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Pak UN Kashmir",   "url": "https://news.google.com/rss/search?q=pakistan+kashmir+united+nations+OR+pakistan+kashmir+OIC&hl=en&gl=US&ceid=US:en"},
+        {"name": "Dawn Kashmir",           "url": "https://www.dawn.com/feed/kashmir"},
+        {"name": "GNews J&K Developments", "url": "https://news.google.com/rss/search?q=%22Jammu+and+Kashmir%22+OR+J%26K+government+OR+kashmir+assembly&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Kashmir Security", "url": "https://news.google.com/rss/search?q=kashmir+security+OR+kashmir+encounter+OR+kashmir+militant&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Kashmir Elections","url": "https://news.google.com/rss/search?q=kashmir+elections+OR+kashmir+assembly+OR+jammu+kashmir+politics&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Article 370",      "url": "https://news.google.com/rss/search?q=article+370+OR+kashmir+statehood+OR+kashmir+autonomy&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Kashmir HR",       "url": "https://news.google.com/rss/search?q=kashmir+human+rights+violation+OR+kashmir+crackdown&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Kashmir Press",    "url": "https://news.google.com/rss/search?q=kashmir+press+freedom+OR+kashmir+journalist&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Kashmir Shutdown", "url": "https://news.google.com/rss/search?q=kashmir+internet+shutdown+OR+kashmir+communication+blackout&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews BBC Kashmir",      "url": "https://news.google.com/rss/search?q=kashmir+site:bbc.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews AJ Kashmir",       "url": "https://news.google.com/rss/search?q=kashmir+site:aljazeera.com&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── SIKH / PUNJAB AFFAIRS ─────────────────────────────────────────────────
+    "sikh_punjab_affairs": [
+        {"name": "GNews Khalistan",        "url": "https://news.google.com/rss/search?q=khalistan+movement+OR+khalistani+OR+khalistan+referendum&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews SFJ",              "url": "https://news.google.com/rss/search?q=%22Sikhs+for+Justice%22+OR+SFJ+khalistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Punjab Security",  "url": "https://news.google.com/rss/search?q=punjab+india+security+OR+punjab+police+drugs&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Amritpal Singh",   "url": "https://news.google.com/rss/search?q=Amritpal+Singh+OR+%22Waris+Punjab+De%22&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Anti-Sikh",        "url": "https://news.google.com/rss/search?q=anti-sikh+OR+sikh+hate+crime+OR+gurdwara+vandalism&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Pak Khalistan",    "url": "https://news.google.com/rss/search?q=pakistan+khalistan+OR+ISI+khalistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Khalistan Canada", "url": "https://news.google.com/rss/search?q=khalistan+canada+OR+Nijjar+canada+india&hl=en&gl=CA&ceid=CA:en"},
+        {"name": "GNews Pannun USA",       "url": "https://news.google.com/rss/search?q=Pannun+OR+khalistan+usa+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "r/Sikh",                 "url": "https://www.reddit.com/r/Sikh/hot.json?limit=15"},
+        {"name": "r/punjab",               "url": "https://www.reddit.com/r/punjab/hot.json?limit=15"},
+    ],
+
+    # ── TELEGRAM CHANNELS (direct t.me/s/ scraping) ───────────────────────────
+    "telegram_channels": [
+        # category_hint "none" = 100% India-focused, skip relevance filter
+        # category_hint "india" = apply India keyword filter
+        {"name": "Megh Updates",           "url": "https://t.me/s/MeghUpdates",          "category_hint": "none"},
+        {"name": "OSINT Updates India",    "url": "https://t.me/s/OsintUpdates",         "category_hint": "india"},
+        {"name": "OsintTV India",          "url": "https://t.me/s/OsntTV",               "category_hint": "india"},
+        {"name": "Indian Defence Updates", "url": "https://t.me/s/indiandefenceupdates", "category_hint": "none"},
+        {"name": "Conflict Watch HQ",      "url": "https://t.me/s/conflictwatchHQ",      "category_hint": "india"},
+        {"name": "IntelSage",              "url": "https://t.me/s/IntelSage",            "category_hint": "india"},
+        {"name": "Gore Unit Kashmir",      "url": "https://t.me/s/goreunit",             "category_hint": "india"},
+        {"name": "Pakistan Pulse Intel",   "url": "https://t.me/s/PakPulseIntel",        "category_hint": "india"},
+        {"name": "The Pulse Point Pak",    "url": "https://t.me/s/ThePulsePoint",        "category_hint": "india"},
+        {"name": "Intel Slava Z",          "url": "https://t.me/s/intelslava",           "category_hint": "india"},
+        {"name": "OSINT Defender",         "url": "https://t.me/s/OSINT_defender",       "category_hint": "india"},
+        {"name": "Insider Paper",          "url": "https://t.me/s/InsiderPaper",         "category_hint": "india"},
+        {"name": "BRICS News",             "url": "https://t.me/s/bricsnews",            "category_hint": "india"},
+    ],
+
+    # ── CHINA / BORDER / MARITIME ─────────────────────────────────────────────
+    "border_territorial": [
+        {"name": "GNews LAC PLA",          "url": "https://news.google.com/rss/search?q=LAC+china+infrastructure+OR+PLA+arunachal+OR+china+construction+border&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Doklam Bhutan",    "url": "https://news.google.com/rss/search?q=doklam+OR+bhutan+china+tri-junction+OR+bhutan+border+dispute&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Teesta Water",     "url": "https://news.google.com/rss/search?q=teesta+river+OR+india+bangladesh+water+sharing+OR+india+nepal+water+dispute&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Arunachal China",  "url": "https://news.google.com/rss/search?q=arunachal+china+renaming+OR+china+arunachal+claim+OR+zangnan&hl=en&gl=US&ceid=US:en"},
+        {"name": "Global Times India",     "url": "https://news.google.com/rss/search?q=india+site:globaltimes.cn&hl=en&gl=US&ceid=US:en"},
+        {"name": "Xinhua India",           "url": "https://news.google.com/rss/search?q=india+site:xinhuanet.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "SCMP India China",       "url": "https://news.google.com/rss/search?q=india+china+site:scmp.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Chinese Navy IO",  "url": "https://news.google.com/rss/search?q=chinese+navy+indian+ocean+OR+PLA+navy+indian+ocean&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Hambantota",       "url": "https://news.google.com/rss/search?q=hambantota+port+OR+gwadar+port+china+OR+string+of+pearls&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── ECONOMIC SECURITY ─────────────────────────────────────────────────────
+    "economic_security": [
+        {"name": "GNews China FDI India",  "url": "https://news.google.com/rss/search?q=china+fdi+india+OR+india+china+investment+block&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews India 5G Huawei",  "url": "https://news.google.com/rss/search?q=india+huawei+5g+OR+india+telecom+ban+china&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews India Semicond",   "url": "https://news.google.com/rss/search?q=india+semiconductor+OR+india+rare+earth+china&hl=en&gl=US&ceid=US:en"},
+        {"name": "Bloomberg India Econ",   "url": "https://news.google.com/rss/search?q=india+economy+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "Nikkei India Economy",   "url": "https://news.google.com/rss/search?q=india+economy+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
+        {"name": "ET Economy",             "url": "https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms"},
+        {"name": "GNews India Sanctions",  "url": "https://news.google.com/rss/search?q=india+sanctions+OR+india+trade+war+OR+india+tariffs&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── DISINFORMATION RESEARCH ───────────────────────────────────────────────
+    "disinfo_research": [
+        {"name": "GNews DFRLab India",     "url": "https://news.google.com/rss/search?q=%22Atlantic+Council%22+DFRLab+india+OR+DFRLab+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews EU DisinfoLab",    "url": "https://news.google.com/rss/search?q=%22EU+DisinfoLab%22+india+OR+%22EU+DisinfoLab%22+pakistan&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Meta Takedown",    "url": "https://news.google.com/rss/search?q=meta+coordinated+inauthentic+india+OR+twitter+takedown+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Fake News India",  "url": "https://news.google.com/rss/search?q=fake+news+network+india+pakistan+OR+disinformation+campaign+india&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── COMMUNAL FLASHPOINTS ──────────────────────────────────────────────────
+    "communal_flashpoints": [
+        {"name": "GNews Worship Act",      "url": "https://news.google.com/rss/search?q=%22places+of+worship+act%22+OR+gyanvapi+OR+temple+mosque+dispute+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Communal India",   "url": "https://news.google.com/rss/search?q=communal+tension+india+OR+communal+violence+india+OR+religious+clash+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews ASI Mosque",       "url": "https://news.google.com/rss/search?q=mosque+temple+litigation+india+OR+ASI+survey+mosque&hl=en&gl=IN&ceid=IN:en"},
+    ],
+
+    # ── NORTHEAST INDIA ───────────────────────────────────────────────────────
+    "northeast_india": [
+        {"name": "GNews Manipur",          "url": "https://news.google.com/rss/search?q=manipur+ethnic+conflict+OR+manipur+violence+OR+meitei+kuki&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Myanmar NE India", "url": "https://news.google.com/rss/search?q=myanmar+india+border+refugee+OR+myanmar+northeast+india+arms&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews NE Insurgency",    "url": "https://news.google.com/rss/search?q=northeast+india+insurgency+OR+assam+nagaland+militant&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "EastMojo",               "url": "https://www.eastmojo.com/feed/"},
+        {"name": "India Today NE",         "url": "https://www.indiatodayne.in/rss.xml"},
+    ],
+
+    # ── EXTREMISM / BANNED ORGS ───────────────────────────────────────────────
+    "extremism_banned_orgs": [
+        {"name": "GNews PFI India",        "url": "https://news.google.com/rss/search?q=%22Popular+Front+of+India%22+OR+PFI+banned+OR+PFI+successor&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "NIA Press Releases",     "url": "https://nia.gov.in/rss-feed.htm"},
+        {"name": "GNews NIA India",        "url": "https://news.google.com/rss/search?q=NIA+terror+case+OR+NIA+chargesheet+OR+NIA+raid&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews ISIS India",       "url": "https://news.google.com/rss/search?q=ISIS+recruitment+india+OR+jihadist+india+arrest&hl=en&gl=IN&ceid=IN:en"},
+    ],
+
+    # ── NAXAL / MAOIST ────────────────────────────────────────────────────────
+    "naxal_insurgency": [
+        {"name": "GNews Naxal Attack",     "url": "https://news.google.com/rss/search?q=naxal+attack+OR+maoist+attack+india+OR+naxalite+encounter&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Naxal Operation",  "url": "https://news.google.com/rss/search?q=naxal+surrender+OR+anti-naxal+operation+OR+CRPF+naxal&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews Bastar Maoist",    "url": "https://news.google.com/rss/search?q=bastar+maoist+OR+chhattisgarh+naxal+OR+red+corridor+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews CPI Maoist",       "url": "https://news.google.com/rss/search?q=%22CPI+Maoist%22+OR+naxal+banned&hl=en&gl=IN&ceid=IN:en"},
+    ],
+
+    # ── INDIA CRITICS / THINK TANKS ───────────────────────────────────────────
+    "india_critics": [
+        {"name": "GNews V-Dem India",      "url": "https://news.google.com/rss/search?q=%22V-Dem%22+india+OR+%22Freedom+House%22+india+OR+EIU+india+democracy&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews HRW India",        "url": "https://news.google.com/rss/search?q=%22Human+Rights+Watch%22+india+OR+HRW+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Amnesty India",    "url": "https://news.google.com/rss/search?q=%22Amnesty+International%22+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews RSF India",        "url": "https://news.google.com/rss/search?q=%22Reporters+Without+Borders%22+india+OR+RSF+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews UN Rapporteur",    "url": "https://news.google.com/rss/search?q=%22UN+Special+Rapporteur%22+india&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Brookings India",  "url": "https://news.google.com/rss/search?q=india+site:brookings.edu&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews CSIS India",       "url": "https://news.google.com/rss/search?q=india+site:csis.org&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews Carnegie India",   "url": "https://news.google.com/rss/search?q=india+site:carnegieendowment.org&hl=en&gl=US&ceid=US:en"},
+    ],
+
+    # ── OSINT CHANNELS ────────────────────────────────────────────────────────
+    "osint_channels": [
+        {"name": "GNews Bellingcat India", "url": "https://news.google.com/rss/search?q=bellingcat+india+OR+bellingcat+pakistan+OR+bellingcat+kashmir&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews ORF India",        "url": "https://news.google.com/rss/search?q=%22Observer+Research+Foundation%22+OR+ORF+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews IDSA India",       "url": "https://news.google.com/rss/search?q=%22Manohar+Parrikar+Institute%22+OR+IDSA+india&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "GNews StratNews",        "url": "https://news.google.com/rss/search?q=stratnewsglobal+OR+%22Strat+News+Global%22&hl=en&gl=IN&ceid=IN:en"},
+        {"name": "r/CredibleDefense",      "url": "https://www.reddit.com/r/CredibleDefense/search.json?q=india+OR+pakistan&sort=hot&restrict_sr=1&limit=15"},
+        {"name": "GNews Cyber India",      "url": "https://news.google.com/rss/search?q=india+cyberattack+OR+APT+group+india+OR+CERT-In&hl=en&gl=US&ceid=US:en"},
+        {"name": "GNews CERT-In",          "url": "https://www.cert-in.org.in/RSS/CIADRSS.xml"},
+    ],
+}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# RELEVANCE: India keyword matching — expanded aliases for wire-agency phrasing
+# ══════════════════════════════════════════════════════════════════════════════
+
+INDIA_MUST_MATCH = [
+    # Core
+    "india", "indian", "bharat", "bharatiya",
+    # Leadership & officials
+    "modi", "narendra modi", "prime minister narendra", "amit shah",
+    "jaishankar", "rajnath", "doval", "yogi adityanath", "shringla",
+    # Institutions
+    "lok sabha", "rajya sabha", "bjp", "congress party",
+    "indian army", "indian navy", "indian air force", "iaf",
+    "government of india", "indian government", "india's government",
+    "mea india", "ministry of external affairs",
+    # Geography
+    "new delhi", "delhi", "mumbai", "arunachal", "ladakh",
+    "manipur", "assam", "jammu",
+    # Conflicts / strategic
+    "doklam", "galwan", "loc ", "line of control",
+    "brahmos", "drdo", "isro", "rupee", "rbi india",
+    # Relations
+    "india pakistan", "pakistan india", "india china", "india us",
+    "india russia", "india-us", "india-china", "india-pakistan",
+    "quad india", "brics india", "sco india", "india-", "india's",
+    "south asia", "south asian",
+    # Entities often used by wires instead of "India"
+    "new delhi",  "hindustan", "subcontinental",
+    "khalistan", "naxal", "maoist india",
+    "northeast india", "26/11",
+]
+
+# PoK / Baloch / Minorities — no India mention required
+POK_BALOCH_MUST_MATCH = [
+    "balochistan", "baloch", "gilgit", "baltistan", "pok ", "pok,",
+    "azad kashmir", "pakistan occupied kashmir", "sindhi", "sindh",
+    "pashtun", "ptm", "hrcp", "human rights commission of pakistan",
+    "paank", "vopk", "voice of karakoram", "enforced disappearance",
+    "missing persons pakistan", "ahmadi", "blasphemy law", "byc ",
+    "baloch yakjehti", "minorities pakistan", "forced conversion",
+    "christian persecution pakistan", "hindu pakistan minority",
+]
+
+# Kashmir — any mention
+KASHMIR_MUST_MATCH = [
+    "kashmir", "jammu and kashmir", "j&k", "j & k", "article 370",
+    "azad kashmir", "pok ", "line of control", "loc ",
+    "srinagar", "pulwama", "anantnag", "baramulla", "kupwara",
+    "gilgit baltistan", "kashmir valley", "kashmiri",
+]
+
+# Sikh / Punjab
+SIKH_PUNJAB_MUST_MATCH = [
+    "sikh", "sikhs", "khalistan", "khalistani", "punjab", "gurdwara",
+    "amritsar", "nijjar", "pannun", "sikhs for justice", "sfj",
+    "waris punjab de", "amritpal singh", "golden temple", "akal takht",
+    "kartarpur", "shiromani akali dal",
+]
+
+def is_india_relevant(text):
+    t = text.lower()
+    return any(kw in t for kw in INDIA_MUST_MATCH)
+
+def is_pok_baloch_relevant(text):
+    t = text.lower()
+    return any(kw in t for kw in POK_BALOCH_MUST_MATCH)
+
+def is_kashmir_relevant(text):
+    t = text.lower()
+    return any(kw in t for kw in KASHMIR_MUST_MATCH)
+
+def is_sikh_punjab_relevant(text):
+    t = text.lower()
+    return any(kw in t for kw in SIKH_PUNJAB_MUST_MATCH)
+
+# Sources that bypass relevance filter entirely (official Indian govt feeds)
+SOURCE_EXEMPT = {"NIA Press Releases", "GNews CERT-In"}
+
+# ══════════════════════════════════════════════════════════════════════════════
+# MULTI-LABEL SIGNAL CLASSIFICATION
+# Each item gets ALL matching labels — not just the first.
+# Expanded with aliases so wire-agency phrasing doesn't get missed.
+# ══════════════════════════════════════════════════════════════════════════════
+
+# Maps dashboard topic → list of (keyword_phrases)
+# Phrases support multi-word matching for precision
+TOPIC_CLASSIFIERS = {
+    "pakistan": [
+        # Direct country/institution mentions
+        "pakistan", "islamabad", "rawalpindi", "lahore", "fo spokesman", "fo spokesperson",
+        "pakistan foreign office", "foreign office pakistan", "pakistan ministry",
+        "ghq ", "isi ", "ispr", "dgispr", "inter services public relations",
+        "asim munir", "ishaq dar", "bilawal", "imran khan", "nawaz sharif",
+        "shahbaz sharif", "pak army", "pakistan army", "pakistan government",
+        # Narratives
+        "kashmir dispute", "azad kashmir", "pok ", "occupied kashmir",
+        "india pakistan", "pakistan india", "india aggression", "india hostility",
+        "pakistan condemns", "pakistan rejects", "pakistan warns india",
+        "pakistan calls on india", "pakistan demands india",
+        "india water war", "indus waters", "indus water treaty",
+        "pakistan economic crisis", "imf pakistan",
+        # Military / nuclear
+        "pakistan nuclear", "pakistan missile", "pakistan air force", "paf ",
+        "pakistan navy", "pakistan military exercise",
+        # Terrorism export
+        "jaish", "jem ", "lashkar", "let ", "hafiz saeed", "masood azhar",
+        "hizbul mujahideen", "al-badr", "united jihad council",
+        "pakistan based terror", "cross border terror",
+    ],
+
+    "baloch_minorities": [
+        "balochistan", "baloch", "gilgit baltistan", "gilgit", "baltistan",
+        "pok ", "azad kashmir", "pakistan occupied kashmir",
+        "sindhi", "sindh nationalist", "jsmm",
+        "pashtun tahafuz movement", "ptm ", "manzoor pashteen",
+        "hrcp", "human rights commission of pakistan",
+        "paank ", "voice of karakoram", "vopk",
+        "enforced disappearance", "missing persons pakistan", "baloch disappear",
+        "baloch genocide", "baloch crackdown", "pakistan army balochistan",
+        "baloch yakjehti", "byc ", "mahrang baloch",
+        "ahmadi", "blasphemy law", "blasphemy case",
+        "forced conversion pakistan", "christian persecution pakistan",
+        "hindu minority pakistan", "minorities pakistan",
+        "sindhudesh", "sindhu desh", "jiye sindh",
+    ],
+
+    "sikh_punjab": [
+        "sikh", "sikhs", "khalistan", "khalistani",
+        "punjab india", "punjab news", "punjab police", "punjab crime",
+        "amritsar", "gurdwara", "golden temple", "akal takht",
+        "nijjar", "hardeep nijjar", "pannun", "gurpatwant",
+        "sikhs for justice", "sfj ", "waris punjab de", "amritpal singh",
+        "khalistan referendum", "khalistan vote", "sfj referendum",
+        "anti-sikh", "sikh hate crime", "gurdwara vandalism",
+        "canada india sikh", "khalistan canada", "khalistan uk",
+        "isi khalistan", "pakistan khalistan", "pakistan funding khalistan",
+        "operation blue star", "1984 sikh",
+        "shiromani akali dal", "sad ", "parkash badal",
+    ],
+
+    "kashmir": [
+        "kashmir", "kashmiri", "jammu and kashmir", "j&k",
+        "srinagar", "pulwama", "anantnag", "baramulla", "kupwara",
+        "line of control", "loc ", "ceasefire line",
+        "article 370", "article 35a", "kashmir statehood", "j&k statehood",
+        "kashmir assembly", "kashmir elections", "kashmir lieutenant governor",
+        "kashmir encounter", "kashmir militant", "kashmir terrorist",
+        "kashmir human rights", "kashmir crackdown", "kashmir press freedom",
+        "kashmir internet shutdown", "kashmir blackout",
+        "kashmir occupation", "occupied kashmir", "pakistan kashmir",
+        "un kashmir", "oic kashmir", "kashmir un resolution",
+        "azad kashmir", "mirpur", "muzaffarabad",
+        "giligit baltistan",  # intentional alias
+        "indus water treaty kashmir",
+    ],
+
+    "western_media": [
+        # These items come from western_media category — tag everything from it
+        # plus explicit criticism phrases
+        "india democratic backsliding", "india autocratization",
+        "press freedom india", "india authoritarian",
+        "india human rights", "minority rights india",
+        "religious freedom india", "india crackdown",
+        "india internet shutdown", "india surveillance",
+        "india ngo crackdown", "fcra india", "india civil society",
+        "india ranking", "india corruption index",
+        "india modi criticism", "bjp criticism",
+        "india repression", "india journalists jailed",
+        "rsf india", "cpj india", "committee to protect journalists india",
+        "freedom house india", "v-dem india",
+    ],
+
+    "northeast": [
+        "manipur", "meitei", "kuki", "nagaland", "assam",
+        "arunachal", "meghalaya", "tripura", "mizoram", "sikkim",
+        "northeast india", "north east india", "northeastern india",
+        "bodo ", "nscn", "ulfa", "northeast insurgency",
+        "northeast militant", "northeast unrest",
+        "myanmar india border", "myanmar refugee india",
+        "myanmar junta india", "moreh ",
+        "inner line permit", "ilp ", "northeast flood",
+        "northeast election",
+    ],
+
+    "economy": [
+        "india economy", "indian economy", "india gdp",
+        "india growth", "india recession", "india inflation",
+        "india trade deficit", "india export", "india import",
+        "india budget", "india fiscal", "india rbi",
+        "india interest rate", "india rupee",
+        "india investment", "india fdi", "india manufacturing",
+        "make in india", "india semiconductor",
+        "india china trade", "india us trade", "india tariff",
+        "india sanctions", "india supply chain",
+        "india rare earth", "india energy", "india oil",
+        "india stock market", "sensex", "nifty",
+        "india imf", "india world bank",
+        "india economic crisis", "india slowdown",
+    ],
+
+    "naxal": [
+        "naxal", "naxalite", "maoist india", "cpi maoist",
+        "red corridor", "naxal attack", "maoist attack",
+        "naxal encounter", "naxal surrender",
+        "crpf naxal", "crpf maoist", "bsf naxal",
+        "bastar", "chhattisgarh naxal", "jharkhand naxal",
+        "odisha naxal", "andhra naxal", "telangana naxal",
+        "anti-naxal operation", "naxal killed",
+        "plfi", "tpc naxal", "mcc naxal",
+    ],
+
+    "communal": [
+        "communal violence", "communal tension", "religious clash india",
+        "communal riot", "mob lynching", "lynching india",
+        "gyanvapi", "places of worship act", "worship act india",
+        "temple mosque dispute", "mosque survey india", "asi survey mosque",
+        "waqf board", "waqf amendment", "waqf act",
+        "ram mandir", "babri", "demolition india",
+        "cow vigilante", "cow protection india",
+        "inter-religious violence", "minority attack india",
+        "christian attack india", "church attack india",
+        "love jihad", "conversion india", "anti-conversion",
+        "vhp", "bajrang dal", "religious extremism india",
+    ],
+
+    "china": [
+        "china india", "india china", "chinese",
+        "pla ", "people's liberation army",
+        "lac ", "line of actual control", "arunachal",
+        "doklam", "galwan", "pangong", "depsang",
+        "china border india", "india china border",
+        "china threat india", "china aggression india",
+        "global times india", "xinhua india",
+        "china tibetan", "dalai lama china",
+        "south china sea india", "quad china",
+        "chinese navy", "pla navy", "china submarine",
+        "hambantota", "gwadar", "string of pearls",
+        "china maldives", "china nepal", "china sri lanka",
+        "china bangladesh", "china bhutan",
+        "belt and road india", "bri india",
+        "huawei india", "china 5g india",
+        "china rare earth india", "china supply chain india",
+        "china fdi india", "china investment india",
+        "dragon india", "india dragon",
+    ],
+
+    "neighbours": [
+        "nepal india", "india nepal", "kathmandu india",
+        "bangladesh india", "india bangladesh", "dhaka india",
+        "sheikh hasina", "bangladesh interim",
+        "sri lanka india", "india sri lanka", "colombo india",
+        "maldives india", "india maldives", "male india",
+        "india out maldives", "muizzu india",
+        "bhutan india", "india bhutan", "thimphu india",
+        "myanmar india", "india myanmar", "naypyidaw india",
+        "afghanistan india", "india afghanistan", "kabul india",
+        "taliban india",
+        "neighbour india", "india neighbour",
+        "india interference", "india hegemony",
+        "south asia india",
+    ],
+}
+
+# ── Auto-tag: category → topic label if keyword detection gets nothing ────────
+CAT_AUTO_TOPIC = {
+    "pok_baloch_minorities": "baloch_minorities",
+    "kashmir_focus":         "kashmir",
+    "sikh_punjab_affairs":   "sikh_punjab",
+    "pakistan_narratives":   "pakistan",
+    "border_territorial":    "china",
+    "maritime_indian_ocean": "china",
+    "communal_flashpoints":  "communal",
+    "northeast_india":       "northeast",
+    "naxal_insurgency":      "naxal",
+    "economic_security":     "economy",
+    "western_media":         "western_media",
+    "neighbours":            "neighbours",
+    "telegram_channels":     None,   # let keyword detection handle
+}
+
+# ── High-urgency flash triggers ───────────────────────────────────────────────
+FLASH_TRIGGERS = [
+    "breaking", "urgent", "just in", "flash:", "alert:",
+    "border clash", "military standoff", "troops mobilized",
+    "ceasefire violation", "airspace violation", "naval standoff",
+    "diplomatic expulsion", "recalled ambassador", "crisis talks",
+    "curfew imposed", "shoot at sight", "high alert",
+    "emergency session", "national emergency",
+    "india pakistan war", "india china war",
+    "india attack", "india struck", "pakistan struck",
+    "nuclear threat", "nuclear alert",
+    "blast india", "explosion india",
+    "terror attack india", "india terror",
+    "naxal attack kills", "maoist ambush",
+    "kashmir encounter kills", "killed in kashmir",
+    "enforced disappearance", "mass arrest",
+    "india china skirmish", "lac standoff",
+]
+
+def classify_topics(text):
+    """
+    Multi-label classification — returns ALL matching topics.
+    Checks title + summary (already concatenated as `text`).
+    Much broader than old single-label approach.
+    """
+    text_lower = text.lower()
+    matched = set()
+    for topic, phrases in TOPIC_CLASSIFIERS.items():
+        for phrase in phrases:
+            if phrase in text_lower:
+                matched.add(topic)
+                break  # one match per topic is enough; move to next topic
+    return list(matched)
+
+def is_flashpoint(text):
+    text_lower = text.lower()
+    return any(t in text_lower for t in FLASH_TRIGGERS)
+
+# ══════════════════════════════════════════════════════════════════════════════
+# DATE UTILITIES
+# ══════════════════════════════════════════════════════════════════════════════
+
 def parse_pub_date(entry):
-    """
-    Try hard to get a timezone-aware datetime from a feedparser entry.
-    Returns None if no usable date is found.
-    """
-    # feedparser usually gives a parsed struct_time in *_parsed fields
+    """Extract timezone-aware datetime from feedparser entry."""
     for field in ("published_parsed", "updated_parsed"):
         val = entry.get(field)
         if val:
@@ -40,7 +626,6 @@ def parse_pub_date(entry):
                 return datetime(*val[:6], tzinfo=timezone.utc)
             except Exception:
                 pass
-    # Fallback: try parsing the raw string fields
     for field in ("published", "updated"):
         raw = entry.get(field)
         if raw:
@@ -53,627 +638,28 @@ def parse_pub_date(entry):
                 pass
     return None
 
-def is_recent(pub_dt):
-    """True if pub_dt is within MAX_AGE_DAYS, or unknown (we allow unknown
-    through but the caller can choose to be strict)."""
+def is_recent(pub_dt, is_breaking=False):
     if pub_dt is None:
-        return None  # unknown — let caller decide
+        return None
     return pub_dt >= CUTOFF
 
-# ── FEED DEFINITIONS ──────────────────────────────────────────────────────────
+def item_hash(title, summary=""):
+    """Stable hash for deduplication — combines cleaned title + first 80 chars of summary."""
+    raw = re.sub(r'\W+', ' ', (title + " " + summary[:80]).lower()).strip()
+    return hashlib.md5(raw.encode()).hexdigest()[:12]
 
-FEEDS = {
-    # ── BREAKING NEWS — crawled first, no India filter, fast-moving wires ──
-    # These are global breaking news wires. Items pass through without the
-    # India relevance filter since breaking events often don't mention "India"
-    # in first paragraph; the signal detector still tags India-relevant ones.
-    "breaking_news": [
-        {"name": "Reuters - Breaking", "url": "https://feeds.reuters.com/reuters/worldNews"},
-        {"name": "Reuters - Top News", "url": "https://feeds.reuters.com/reuters/topNews"},
-        {"name": "AP News - Top Headlines", "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
-        {"name": "BBC Breaking", "url": "http://feeds.bbci.co.uk/news/rss.xml"},
-        {"name": "BBC South Asia Breaking", "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
-        {"name": "Al Jazeera Breaking", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
-        {"name": "NDTV Breaking", "url": "https://feeds.feedburner.com/ndtvnews-top-stories"},
-        {"name": "India Today Breaking", "url": "https://www.indiatoday.in/rss/1206578"},
-        {"name": "ANI News", "url": "https://aninews.in/rss/"},
-        {"name": "PTI News Feed", "url": "https://news.google.com/rss/search?q=PTI+news+india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
-        {"name": "GNews: Breaking India Today", "url": "https://news.google.com/rss/search?q=india&hl=en&gl=IN&ceid=IN:en&tbs=qdr:d"},
-        {"name": "GNews: India World Today", "url": "https://news.google.com/rss/search?q=india+world&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
-    ],
-    "india_geopolitics": [
-        {"name": "The Hindu - National", "url": "https://www.thehindu.com/news/national/feeder/default.rss"},
-        {"name": "The Hindu - International", "url": "https://www.thehindu.com/news/international/feeder/default.rss"},
-        {"name": "Indian Express - India", "url": "https://indianexpress.com/section/india/feed/"},
-        {"name": "Indian Express - World", "url": "https://indianexpress.com/section/world/feed/"},
-        {"name": "LiveMint - Politics", "url": "https://www.livemint.com/rss/politics"},
-        {"name": "Hindustan Times", "url": "https://www.hindustantimes.com/feeds/rss/india-news/rssfeed.xml"},
-        {"name": "NDTV India", "url": "https://feeds.feedburner.com/ndtvnews-india-news"},
-        {"name": "Deccan Herald", "url": "https://www.deccanherald.com/rss-feeds/feed-national"},
-        {"name": "The Wire", "url": "https://thewire.in/feed"},
-        {"name": "Scroll.in", "url": "https://scroll.in/feed"},
-        {"name": "FirstPost India", "url": "https://www.firstpost.com/rss/india.xml"},
-        {"name": "Tribune India", "url": "https://www.tribuneindia.com/rss/feed?category=nation"},
-        {"name": "Economic Times - India", "url": "https://economictimes.indiatimes.com/news/india/rssfeeds/1014008090.cms"},
-    ],
-    "pakistan_narratives": [
-        {"name": "Dawn - Pakistan", "url": "https://www.dawn.com/feeds/home"},
-        {"name": "The News International", "url": "https://www.thenews.com.pk/rss/1/1"},
-        {"name": "Geo News", "url": "https://www.geo.tv/rss/1"},
-        {"name": "Express Tribune", "url": "https://tribune.com.pk/feed/"},
-        {"name": "ARY News", "url": "https://arynews.tv/feed/"},
-        {"name": "The Nation Pakistan", "url": "https://nation.com.pk/rss/"},
-        {"name": "Business Recorder Pakistan", "url": "https://www.brecorder.com/feed"},
-        {"name": "Pakistan Today", "url": "https://www.pakistantoday.com.pk/feed/"},
-        {"name": "Daily Times Pakistan", "url": "https://dailytimes.com.pk/feed/"},
-        {"name": "Samaa English", "url": "https://www.samaa.tv/feed/"},
-        {"name": "GNews: DGISPR Pakistan military", "url": "https://news.google.com/rss/search?q=DGISPR+OR+%22Inter+Services+Public+Relations%22+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan Army statement", "url": "https://news.google.com/rss/search?q=pakistan+army+statement+OR+pakistan+military+spokesperson&hl=en&gl=US&ceid=US:en"},
-    ],
-    "western_media": [
-        {"name": "BBC South Asia", "url": "http://feeds.bbci.co.uk/news/world/south_asia/rss.xml"},
-        {"name": "BBC News - World", "url": "http://feeds.bbci.co.uk/news/world/rss.xml"},
-        {"name": "Reuters - World News", "url": "https://feeds.reuters.com/reuters/worldNews"},
-        {"name": "Reuters - India", "url": "https://news.google.com/rss/search?q=india+site:reuters.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "AP News - India", "url": "https://news.google.com/rss/search?q=india+site:apnews.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "AFP - India", "url": "https://news.google.com/rss/search?q=india+site:afp.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "CNN - World", "url": "http://rss.cnn.com/rss/edition_world.rss"},
-        {"name": "The Guardian - India", "url": "https://www.theguardian.com/world/india/rss"},
-        {"name": "Al Jazeera - Asia", "url": "https://www.aljazeera.com/xml/rss/all.xml"},
-        {"name": "TRT World", "url": "https://www.trtworld.com/rss"},
-        {"name": "The Diplomat - India", "url": "https://thediplomat.com/feed/"},
-        {"name": "GNews: Bloomberg India", "url": "https://news.google.com/rss/search?q=india+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: The Economist India", "url": "https://news.google.com/rss/search?q=india+site:economist.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Nikkei Asia India", "url": "https://news.google.com/rss/search?q=india+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Gulf News - World", "url": "https://gulfnews.com/rss?section=world"},
-        {"name": "Asia Times", "url": "https://asiatimes.com/feed/"},
-        {"name": "Foreign Policy", "url": "https://foreignpolicy.com/feed/"},
-        {"name": "GNews: NYT India", "url": "https://news.google.com/rss/search?q=india+site:nytimes.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: WaPo India", "url": "https://news.google.com/rss/search?q=india+site:washingtonpost.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India Pakistan", "url": "https://news.google.com/rss/search?q=india+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India China border", "url": "https://news.google.com/rss/search?q=india+china+border&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India global news", "url": "https://news.google.com/rss/search?q=india+news+today&hl=en&gl=US&ceid=US:en&tbs=qdr:d"},
-        {"name": "GNews: India criticism", "url": "https://news.google.com/rss/search?q=india+human+rights+OR+india+press+freedom+OR+india+democracy&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India protest", "url": "https://news.google.com/rss/search?q=india+protest+OR+india+bandh+OR+india+agitation&hl=en&gl=IN&ceid=IN:en"},
-    ],
-    "neighbours": [
-        {"name": "Daily Star - Bangladesh", "url": "https://www.thedailystar.net/frontpage/rss.xml"},
-        {"name": "The Kathmandu Post", "url": "https://kathmandupost.com/rss"},
-        {"name": "Daily Mirror - Sri Lanka", "url": "https://www.dailymirror.lk/rss"},
-        {"name": "MyRepublica - Nepal", "url": "https://myrepublica.nagariknetwork.com/feed"},
-        {"name": "Mizzima - Myanmar", "url": "https://mizzima.com/feed"},
-        {"name": "Tolo News - Afghanistan", "url": "https://tolonews.com/rss.xml"},
-        {"name": "GNews: Afghanistan India", "url": "https://news.google.com/rss/search?q=afghanistan+india+OR+taliban+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Nepal India", "url": "https://news.google.com/rss/search?q=nepal+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Bangladesh India", "url": "https://news.google.com/rss/search?q=bangladesh+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Maldives India", "url": "https://news.google.com/rss/search?q=maldives+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Sri Lanka India", "url": "https://news.google.com/rss/search?q=sri+lanka+india&hl=en&gl=US&ceid=US:en"},
-    ],
-    "social_india": [
-        {"name": "Reddit r/india Hot", "url": "https://www.reddit.com/r/india/hot.json?limit=25"},
-        {"name": "Reddit r/IndiaSpeaks", "url": "https://www.reddit.com/r/IndiaSpeaks/hot.json?limit=20"},
-        {"name": "Reddit r/indiadiscussion", "url": "https://www.reddit.com/r/indiadiscussion/hot.json?limit=15"},
-        {"name": "Reddit r/geopolitics India", "url": "https://www.reddit.com/r/geopolitics/search.json?q=india&sort=hot&restrict_sr=1&limit=15"},
-        {"name": "Reddit r/worldnews India", "url": "https://www.reddit.com/r/worldnews/search.json?q=india&sort=hot&restrict_sr=1&t=day&limit=20"},
-        {"name": "Reddit r/kashmirconflict", "url": "https://www.reddit.com/r/kashmirconflict/hot.json?limit=15"},
-        {"name": "HN: India geopolitics", "url": "https://hnrss.org/newest?q=india+geopolitics+OR+india+pakistan+OR+india+china"},
-    ],
-    # ── NEW: Pakistan minority / human-rights / PoK / Baloch monitoring ──────
-    "pok_baloch_minorities": [
-        # Voice of Karakoram / PoK-focused
-        {"name": "GNews: Voice of Karakoram PoK", "url": "https://news.google.com/rss/search?q=%22voice+of+karakoram%22+OR+VOPK&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: PoK Gilgit Baltistan rights", "url": "https://news.google.com/rss/search?q=gilgit+baltistan+rights+OR+gilgit+protest&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: PoK minorities", "url": "https://news.google.com/rss/search?q=%22pakistan+occupied+kashmir%22+minorities+OR+rights&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Azad Kashmir protest", "url": "https://news.google.com/rss/search?q=azad+kashmir+protest+OR+azad+kashmir+rights&hl=en&gl=US&ceid=US:en"},
-        # Human Rights Commission of Pakistan (HRCP)
-        {"name": "HRCP official RSS", "url": "https://hrcp-web.org/hrcpweb/feed/"},
-        {"name": "GNews: HRCP Pakistan", "url": "https://news.google.com/rss/search?q=%22Human+Rights+Commission+of+Pakistan%22+OR+HRCP&hl=en&gl=US&ceid=US:en"},
-        # Paank (Baloch human rights org) and general Baloch rights
-        {"name": "GNews: Paank Baloch rights", "url": "https://news.google.com/rss/search?q=Paank+Baloch+OR+%22Baloch+human+rights%22&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Balochistan enforced disappearances", "url": "https://news.google.com/rss/search?q=balochistan+%22enforced+disappearance%22+OR+balochistan+missing+persons&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Baloch protest crackdown", "url": "https://news.google.com/rss/search?q=baloch+protest+OR+balochistan+crackdown+OR+BYC+balochistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Balochistan BBC Reuters", "url": "https://news.google.com/rss/search?q=balochistan+site:bbc.com+OR+balochistan+site:reuters.com&hl=en&gl=US&ceid=US:en"},
-        # Sindhi, Pashtun, and general Pakistan minority rights
-        {"name": "GNews: Sindhi rights Pakistan", "url": "https://news.google.com/rss/search?q=sindhi+rights+OR+sindh+nationalist+OR+JSMM&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: PTM Pashtun rights", "url": "https://news.google.com/rss/search?q=%22Pashtun+Tahafuz+Movement%22+OR+PTM+Pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan minorities persecution", "url": "https://news.google.com/rss/search?q=pakistan+minorities+persecution+OR+pakistan+hindu+forced+conversion+OR+pakistan+christian+persecution&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan blasphemy minorities", "url": "https://news.google.com/rss/search?q=pakistan+blasphemy+law+minority&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Ahmadi persecution Pakistan", "url": "https://news.google.com/rss/search?q=ahmadi+persecution+pakistan&hl=en&gl=US&ceid=US:en"},
-        # Reddit communities tracking this
-        {"name": "Reddit r/Balochistan", "url": "https://www.reddit.com/r/Balochistan/hot.json?limit=15"},
-        {"name": "Reddit r/GilgitBaltistan", "url": "https://www.reddit.com/r/GilgitBaltistan/hot.json?limit=10"},
-    ],
-    # ── NEW: Dedicated Kashmir monitoring ────────────────────────────────────
-    "kashmir_focus": [
-        # Pakistan commentary specifically on Indian J&K
-        {"name": "GNews: Pakistan on Indian Kashmir", "url": "https://news.google.com/rss/search?q=pakistan+%22indian+kashmir%22+OR+pakistan+%22Jammu+and+Kashmir%22&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan FO Kashmir statement", "url": "https://news.google.com/rss/search?q=pakistan+foreign+office+kashmir+OR+pakistan+condemns+kashmir&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan UN Kashmir", "url": "https://news.google.com/rss/search?q=pakistan+kashmir+united+nations+OR+pakistan+kashmir+OIC&hl=en&gl=US&ceid=US:en"},
-        {"name": "Dawn: Kashmir tag", "url": "https://www.dawn.com/feed/kashmir"},
-        # Key developments inside J&K (India-side reporting)
-        {"name": "GNews: Jammu Kashmir developments", "url": "https://news.google.com/rss/search?q=%22Jammu+and+Kashmir%22+OR+J%26K+government+OR+kashmir+assembly&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Kashmir security situation", "url": "https://news.google.com/rss/search?q=kashmir+security+OR+kashmir+encounter+OR+kashmir+militant&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Kashmir elections politics", "url": "https://news.google.com/rss/search?q=kashmir+elections+OR+kashmir+assembly+OR+jammu+kashmir+politics&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Article 370 Kashmir", "url": "https://news.google.com/rss/search?q=article+370+OR+kashmir+statehood+OR+kashmir+autonomy&hl=en&gl=IN&ceid=IN:en"},
-        # Foreign/Western media negative coverage of Kashmir
-        {"name": "GNews: Kashmir human rights criticism", "url": "https://news.google.com/rss/search?q=kashmir+human+rights+violation+OR+kashmir+crackdown+OR+kashmir+repression&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Kashmir press freedom journalists", "url": "https://news.google.com/rss/search?q=kashmir+press+freedom+OR+kashmir+journalist+OR+kashmir+media+restriction&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Kashmir internet shutdown", "url": "https://news.google.com/rss/search?q=kashmir+internet+shutdown+OR+kashmir+communication+blackout&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Kashmir occupation narrative", "url": "https://news.google.com/rss/search?q=%22kashmir+occupation%22+OR+%22occupied+kashmir%22+OR+kashmir+colonial&hl=en&gl=US&ceid=US:en"},
-        {"name": "BBC: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:bbc.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Al Jazeera: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:aljazeera.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Reuters/Guardian: Kashmir search", "url": "https://news.google.com/rss/search?q=kashmir+site:reuters.com+OR+kashmir+site:theguardian.com&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: Sikh / Punjab / Khalistan monitoring ────────────────────────────
-    "sikh_punjab_affairs": [
-        # Khalistan movement developments
-        {"name": "GNews: Khalistan movement", "url": "https://news.google.com/rss/search?q=khalistan+movement+OR+khalistani+OR+khalistan+referendum&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Khalistan referendum SFJ", "url": "https://news.google.com/rss/search?q=%22Sikhs+for+Justice%22+OR+SFJ+khalistan+OR+khalistan+referendum+vote&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Khalistan India response", "url": "https://news.google.com/rss/search?q=khalistan+india+government+OR+india+khalistan+designated+terrorist&hl=en&gl=US&ceid=US:en"},
-        # Punjab internal developments
-        {"name": "GNews: Punjab politics security", "url": "https://news.google.com/rss/search?q=punjab+india+politics+OR+punjab+security+OR+punjab+police&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Punjab drugs farmers", "url": "https://news.google.com/rss/search?q=punjab+drugs+OR+punjab+farmers+protest+OR+punjab+border+smuggling&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Amritpal Singh Waris Punjab", "url": "https://news.google.com/rss/search?q=Amritpal+Singh+OR+%22Waris+Punjab+De%22&hl=en&gl=IN&ceid=IN:en"},
-        # Anti-Sikh sentiment / hate incidents
-        {"name": "GNews: anti-Sikh hate incidents", "url": "https://news.google.com/rss/search?q=anti-sikh+OR+sikh+hate+crime+OR+sikh+attacked&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Sikh temple vandalism gurdwara", "url": "https://news.google.com/rss/search?q=gurdwara+vandalism+OR+sikh+temple+attack+OR+gurdwara+desecration&hl=en&gl=US&ceid=US:en"},
-        # Pakistani propaganda angle on Sikh/Khalistan
-        {"name": "GNews: Pakistan Sikh Khalistan support", "url": "https://news.google.com/rss/search?q=pakistan+khalistan+OR+pakistan+sikh+separatist+OR+ISI+khalistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pakistan Sikh solidarity narrative", "url": "https://news.google.com/rss/search?q=pakistan+sikh+solidarity+OR+pakistan+kartarpur+khalistan&hl=en&gl=US&ceid=US:en"},
-        # Canada-specific
-        {"name": "GNews: Khalistan Canada", "url": "https://news.google.com/rss/search?q=khalistan+canada+OR+khalistani+canada+OR+canada+sikh+separatist&hl=en&gl=CA&ceid=CA:en"},
-        {"name": "GNews: Nijjar Canada India", "url": "https://news.google.com/rss/search?q=Nijjar+canada+india+OR+canada+india+diplomatic+row+sikh&hl=en&gl=CA&ceid=CA:en"},
-        {"name": "GNews: Canada gurdwara India tension", "url": "https://news.google.com/rss/search?q=canada+gurdwara+OR+canada+india+khalistan+tension+OR+trudeau+sikh&hl=en&gl=CA&ceid=CA:en"},
-        # USA-specific
-        {"name": "GNews: Khalistan USA", "url": "https://news.google.com/rss/search?q=khalistan+usa+OR+khalistani+america+OR+sikh+separatist+united+states&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pannun US India", "url": "https://news.google.com/rss/search?q=Pannun+OR+%22Gurpatwant+Singh%22+india+us&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: US Sikh community advocacy", "url": "https://news.google.com/rss/search?q=sikh+coalition+OR+american+sikh+advocacy+OR+us+sikh+civil+rights&hl=en&gl=US&ceid=US:en"},
-        # Reddit
-        {"name": "Reddit r/Sikh", "url": "https://www.reddit.com/r/Sikh/hot.json?limit=15"},
-        {"name": "Reddit r/punjab", "url": "https://www.reddit.com/r/punjab/hot.json?limit=15"},
-        {"name": "Reddit r/khalistan", "url": "https://www.reddit.com/r/khalistan/hot.json?limit=15"},
-    ],
-    # ── NEW: Telegram channel monitoring via RSSHub bridge ───────────────────
-    # RSSHub (https://docs.rsshub.app) converts public Telegram channels into
-    # RSS feeds for free, no API key needed. Format:
-    # https://rsshub.app/telegram/channel/<channel_username>
-    # Add channel usernames below (the part after t.me/) one per line.
-    # Each entry is tagged with the category it should be filtered/scored as.
-    "telegram_channels": [
-        # ── HOW THIS WORKS ────────────────────────────────────────────────────
-        # Uses Telegram's own public web preview (t.me/s/<username>) — no API
-        # key, no RSSHub, no external service. GitHub Actions can reach t.me
-        # freely. The crawler parses the HTML directly.
-        #
-        # category_hint: "none"  = no relevance filter (100% India-focused channel)
-        #                "india" = India relevance keyword filter applied
-        #
-        # ── INDIA BREAKING NEWS & GENERAL ────────────────────────────────────
-        {"name": "Megh Updates", "url": "https://t.me/s/MeghUpdates", "category_hint": "none"},
-        {"name": "OSINT Updates India", "url": "https://t.me/s/OsintUpdates", "category_hint": "india"},
-        {"name": "OsintTV India", "url": "https://t.me/s/OsntTV", "category_hint": "india"},
+# ══════════════════════════════════════════════════════════════════════════════
+# TELEGRAM CHANNEL FETCHER (direct t.me/s/ HTML scraping — no RSSHub needed)
+# ══════════════════════════════════════════════════════════════════════════════
 
-        # ── INDIA DEFENCE & SECURITY ──────────────────────────────────────────
-        {"name": "Indian Defence Updates", "url": "https://t.me/s/indiandefenceupdates", "category_hint": "none"},
-        {"name": "Conflict Watch HQ", "url": "https://t.me/s/conflictwatchHQ", "category_hint": "india"},
-        {"name": "IntelSage", "url": "https://t.me/s/IntelSage", "category_hint": "india"},
-
-        # ── KASHMIR & SOUTH ASIA OSINT ────────────────────────────────────────
-        {"name": "Gore Unit Kashmir OSINT", "url": "https://t.me/s/goreunit", "category_hint": "india"},
-
-        # ── PAKISTAN MONITORING ───────────────────────────────────────────────
-        {"name": "Pakistan Pulse Intel", "url": "https://t.me/s/PakPulseIntel", "category_hint": "india"},
-        {"name": "The Pulse Point Pakistan", "url": "https://t.me/s/ThePulsePoint", "category_hint": "india"},
-
-        # ── GLOBAL GEOPOLITICS WITH INDIA ANGLE ──────────────────────────────
-        {"name": "Intel Slava Z", "url": "https://t.me/s/intelslava", "category_hint": "india"},
-        {"name": "OSINT Defender", "url": "https://t.me/s/OSINT_defender", "category_hint": "india"},
-        {"name": "Insider Paper", "url": "https://t.me/s/InsiderPaper", "category_hint": "india"},
-        {"name": "BRICS News", "url": "https://t.me/s/bricsnews", "category_hint": "india"},
-    ],
-    # ── NEW: Border & territorial flashpoints (LAC, Doklam, water disputes) ──
-    "border_territorial": [
-        {"name": "GNews: LAC PLA infrastructure", "url": "https://news.google.com/rss/search?q=LAC+china+infrastructure+OR+PLA+arunachal+OR+china+construction+border&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Doklam Bhutan tri-junction", "url": "https://news.google.com/rss/search?q=doklam+OR+bhutan+china+tri-junction+OR+bhutan+border+dispute&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Teesta water dispute", "url": "https://news.google.com/rss/search?q=teesta+river+OR+india+bangladesh+water+sharing+OR+india+nepal+water+dispute&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Arunachal China renaming", "url": "https://news.google.com/rss/search?q=arunachal+china+renaming+OR+china+arunachal+claim+OR+zangnan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India China satellite imagery", "url": "https://news.google.com/rss/search?q=india+china+satellite+imagery+border+OR+maxar+china+border&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: Maritime / Indian Ocean Chinese presence ────────────────────────
-    "maritime_indian_ocean": [
-        {"name": "GNews: Chinese navy Indian Ocean", "url": "https://news.google.com/rss/search?q=chinese+navy+indian+ocean+OR+PLA+navy+indian+ocean&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Chinese research vessel Sri Lanka", "url": "https://news.google.com/rss/search?q=chinese+research+vessel+sri+lanka+OR+china+spy+ship+indian+ocean&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Hambantota Gwadar Chittagong", "url": "https://news.google.com/rss/search?q=hambantota+port+OR+gwadar+port+china+OR+chittagong+port+china&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: China Maldives military", "url": "https://news.google.com/rss/search?q=china+maldives+military+OR+china+maldives+port&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: String of pearls India", "url": "https://news.google.com/rss/search?q=%22string+of+pearls%22+india+china&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: Cyber & critical infrastructure security ────────────────────────
-    "cyber_security": [
-        {"name": "CERT-In Advisories", "url": "https://www.cert-in.org.in/RSS/CIADRSS.xml"},
-        {"name": "GNews: APT group targeting India", "url": "https://news.google.com/rss/search?q=APT+group+india+OR+china+hackers+india+OR+pakistan+hackers+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India cyberattack critical infra", "url": "https://news.google.com/rss/search?q=india+cyberattack+OR+india+critical+infrastructure+hack&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Talos Mandiant India report", "url": "https://news.google.com/rss/search?q=%22Cisco+Talos%22+india+OR+Mandiant+india+OR+%22Recorded+Future%22+india&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: Economic security ────────────────────────────────────────────────
-    "economic_security": [
-        {"name": "GNews: China FDI India scrutiny", "url": "https://news.google.com/rss/search?q=china+fdi+india+scrutiny+OR+india+china+investment+block&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: India Huawei 5G ban", "url": "https://news.google.com/rss/search?q=india+huawei+5g+OR+india+telecom+vendor+ban+china&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India rare earth semiconductor", "url": "https://news.google.com/rss/search?q=india+rare+earth+OR+india+semiconductor+china+supply+chain&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Bloomberg India economy", "url": "https://news.google.com/rss/search?q=india+economy+site:bloomberg.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Nikkei Asia India economy", "url": "https://news.google.com/rss/search?q=india+economy+site:asia.nikkei.com&hl=en&gl=US&ceid=US:en"},
-        {"name": "Economic Times - Economy", "url": "https://economictimes.indiatimes.com/news/economy/rssfeeds/1373380680.cms"},
-    ],
-    # ── NEW: Disinformation research (DFRLab, EU DisinfoLab, platform takedowns) ─
-    "disinfo_research": [
-        {"name": "GNews: DFRLab India Pakistan", "url": "https://news.google.com/rss/search?q=%22Atlantic+Council%22+DFRLab+india+OR+DFRLab+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: EU DisinfoLab India", "url": "https://news.google.com/rss/search?q=%22EU+DisinfoLab%22+india+OR+%22EU+DisinfoLab%22+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Meta X coordinated inauthentic India", "url": "https://news.google.com/rss/search?q=meta+coordinated+inauthentic+india+OR+twitter+takedown+india+OR+X+takedown+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Fake news network India Pakistan", "url": "https://news.google.com/rss/search?q=fake+news+network+india+pakistan+OR+disinformation+campaign+india&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: Religious/communal flashpoints ───────────────────────────────────
-    "communal_flashpoints": [
-        {"name": "GNews: Places of Worship Act", "url": "https://news.google.com/rss/search?q=%22places+of+worship+act%22+OR+gyanvapi+OR+temple+mosque+dispute+india&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Communal tension India", "url": "https://news.google.com/rss/search?q=communal+tension+india+OR+communal+violence+india+OR+religious+clash+india&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Mosque temple litigation", "url": "https://news.google.com/rss/search?q=mosque+temple+litigation+india+OR+ASI+survey+mosque&hl=en&gl=IN&ceid=IN:en"},
-    ],
-    # ── NEW: Northeast India specific (Manipur, Myanmar spillover) ───────────
-    "northeast_india": [
-        {"name": "GNews: Manipur ethnic conflict", "url": "https://news.google.com/rss/search?q=manipur+ethnic+conflict+OR+manipur+violence+OR+meitei+kuki&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Myanmar Northeast spillover", "url": "https://news.google.com/rss/search?q=myanmar+india+border+refugee+OR+myanmar+northeast+india+arms&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Northeast insurgency", "url": "https://news.google.com/rss/search?q=northeast+india+insurgency+OR+assam+nagaland+militant&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "EastMojo Northeast News", "url": "https://www.eastmojo.com/feed/"},
-        {"name": "India Today NE", "url": "https://www.indiatodayne.in/rss.xml"},
-    ],
-    # ── NEW: Banned organizations / extremism beyond Khalistan ───────────────
-    "extremism_banned_orgs": [
-        {"name": "GNews: PFI Popular Front India", "url": "https://news.google.com/rss/search?q=%22Popular+Front+of+India%22+OR+PFI+banned+OR+PFI+successor&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: NIA terror case India", "url": "https://news.google.com/rss/search?q=NIA+terror+case+OR+NIA+chargesheet+OR+NIA+raid&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: ISIS recruitment India", "url": "https://news.google.com/rss/search?q=ISIS+recruitment+india+OR+jihadist+india+arrest&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "NIA Press Releases", "url": "https://nia.gov.in/rss-feed.htm"},
-    ],
-    # ── NEW: Critics of India — academic/think-tank/analyst critical voices ──
-    "india_critics": [
-        {"name": "GNews: India democracy decline", "url": "https://news.google.com/rss/search?q=india+democracy+decline+OR+india+illiberal+OR+india+autocratization&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: V-Dem Freedom House India", "url": "https://news.google.com/rss/search?q=%22V-Dem%22+india+OR+%22Freedom+House%22+india+OR+EIU+india+democracy+index&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: India critics analysts", "url": "https://news.google.com/rss/search?q=india+critics+OR+india+analyst+criticism+OR+modi+critics&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Pulitzer Center India", "url": "https://news.google.com/rss/search?q=%22Pulitzer+Center%22+india+OR+ICIJ+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Reporters Without Borders India", "url": "https://news.google.com/rss/search?q=%22Reporters+Without+Borders%22+india+OR+RSF+india+press&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Human Rights Watch India", "url": "https://news.google.com/rss/search?q=%22Human+Rights+Watch%22+india+OR+HRW+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Amnesty International India", "url": "https://news.google.com/rss/search?q=%22Amnesty+International%22+india&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: UN Special Rapporteur India", "url": "https://news.google.com/rss/search?q=%22UN+Special+Rapporteur%22+india+OR+UN+india+human+rights&hl=en&gl=US&ceid=US:en"},
-    ],
-    # ── NEW: OSINT / geopolitics analysis channels (RSS/Google News based) ───
-    "osint_channels": [
-        {"name": "GNews: OSINT India Pakistan", "url": "https://news.google.com/rss/search?q=OSINT+india+pakistan+OR+open+source+intelligence+south+asia&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: Bellingcat South Asia", "url": "https://news.google.com/rss/search?q=bellingcat+india+OR+bellingcat+pakistan+OR+bellingcat+kashmir&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: ISW South Asia", "url": "https://news.google.com/rss/search?q=%22Institute+for+the+Study+of+War%22+south+asia+OR+ISW+pakistan&hl=en&gl=US&ceid=US:en"},
-        {"name": "GNews: ORF analysis India", "url": "https://news.google.com/rss/search?q=%22Observer+Research+Foundation%22+OR+ORF+india+analysis&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: IDSA Manohar Parrikar Institute", "url": "https://news.google.com/rss/search?q=%22Manohar+Parrikar+Institute%22+OR+IDSA+india+defence&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: StratNewsGlobal India", "url": "https://news.google.com/rss/search?q=stratnewsglobal+OR+%22Strat+News+Global%22&hl=en&gl=IN&ceid=IN:en"},
-        # Reddit OSINT-adjacent
-        {"name": "Reddit r/CredibleDefense", "url": "https://www.reddit.com/r/CredibleDefense/search.json?q=india+OR+pakistan&sort=hot&restrict_sr=1&limit=15"},
-        {"name": "Reddit r/LessCredibleDefence India", "url": "https://www.reddit.com/r/LessCredibleDefence/search.json?q=india&sort=hot&restrict_sr=1&limit=10"},
-    ],
-    # ── NEW: Naxal / Maoist insurgency dedicated tracking ────────────────────
-    "naxal_insurgency": [
-        {"name": "GNews: Naxal Maoist attack", "url": "https://news.google.com/rss/search?q=naxal+attack+OR+maoist+attack+india+OR+naxalite+encounter&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Naxal surrender operation", "url": "https://news.google.com/rss/search?q=naxal+surrender+OR+anti-naxal+operation+OR+CRPF+naxal&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: Chhattisgarh Bastar Maoist", "url": "https://news.google.com/rss/search?q=bastar+maoist+OR+chhattisgarh+naxal+OR+red+corridor+india&hl=en&gl=IN&ceid=IN:en"},
-        {"name": "GNews: CPI Maoist banned", "url": "https://news.google.com/rss/search?q=%22CPI+Maoist%22+OR+naxal+banned+organisation&hl=en&gl=IN&ceid=IN:en"},
-    ],
-}
-
-# ── RELEVANCE FILTERS ─────────────────────────────────────────────────────────
-
-INDIA_MUST_MATCH = [
-    "india", "indian", "bharat", "bharatiya", "modi", "delhi", "mumbai",
-    "kashmir", "hindutva", "rss ", "bjp", "congress party", "lok sabha",
-    "rajya sabha", "indian army", "indian navy", "indian air force",
-    "pakistan india", "india pakistan", "india china", "india us",
-    "india russia", "india israel", "india nepal", "india bangladesh",
-    "india sri lanka", "india maldives", "india myanmar", "india bhutan",
-    "india afghanistan", "new delhi", "hindu nationalist", "hindus",
-    "arunachal", "ladakh", "doklam", "galwan", "loc ", "line of control",
-    "brahmos", "drdo", "isro", "quad india", "brics india", "sco india",
-    "khalistan", "naxal", "maoist india", "northeast india", "manipur",
-    "assam", "punjab india", "farmers india", "rupee", "rbi india",
-    # broader phrasing used by global wire agencies
-    "new delhi", "prime minister narendra", "narendra modi",
-    "amit shah", "jaishankar", "rajnath", "yogi adityanath",
-    "indian government", "government of india", "india's", "india-",
-    "indian economy", "indian military", "indian foreign",
-    "south asia", "south asian", "subcontinental",
-    "hindustan", "desi ", "mumbai attacks", "26/11",
-]
-
-# Separate relevance check for the PoK/Baloch/minorities category —
-# these don't need to mention "India" since they're inherently relevant
-# to India's strategic/counter-narrative interest in Pakistan's internal fault lines
-POK_BALOCH_MUST_MATCH = [
-    "balochistan", "baloch", "gilgit", "baltistan", "pok ", "pok,",
-    "azad kashmir", "pakistan occupied kashmir", "sindhi", "sindh",
-    "pashtun", "ptm", "hrcp", "human rights commission of pakistan",
-    "paank", "vopk", "voice of karakoram", "enforced disappearance",
-    "missing persons pakistan", "ahmadi", "blasphemy law", "byc ",
-    "baloch yakjehti", "minorities pakistan", "forced conversion",
-    "christian persecution pakistan", "hindu pakistan minority",
-]
-
-# Kashmir-focused relevance check — anything mentioning Kashmir/J&K qualifies
-KASHMIR_MUST_MATCH = [
-    "kashmir", "jammu and kashmir", "j&k", "j & k", "article 370",
-    "azad kashmir", "pok ", "line of control", "loc ",
-    "srinagar", "pulwama", "anantnag", "baramulla", "kupwara",
-    "gilgit baltistan", "kashmir valley", "kashmiri", "kashmir issue",
-    "kashmir dispute", "kashmir conflict", "kashmir occupation",
-]
-
-# Sikh / Punjab / Khalistan relevance check
-SIKH_PUNJAB_MUST_MATCH = [
-    "sikh", "sikhs", "khalistan", "khalistani", "punjab", "gurdwara",
-    "amritsar", "nijjar", "pannun", "sikhs for justice", "sfj",
-    "waris punjab de", "amritpal singh", "golden temple", "akal takht",
-    "kartarpur", "shiromani akali dal", "punjabi diaspora",
-    "1984 anti-sikh", "operation blue star", "anti-sikh riots",
-]
-
-def is_india_relevant(text):
-    text_lower = text.lower()
-    return any(kw in text_lower for kw in INDIA_MUST_MATCH)
-
-def is_pok_baloch_relevant(text):
-    text_lower = text.lower()
-    return any(kw in text_lower for kw in POK_BALOCH_MUST_MATCH)
-
-def is_kashmir_relevant(text):
-    text_lower = text.lower()
-    return any(kw in text_lower for kw in KASHMIR_MUST_MATCH)
-
-def is_sikh_punjab_relevant(text):
-    text_lower = text.lower()
-    return any(kw in text_lower for kw in SIKH_PUNJAB_MUST_MATCH)
-
-# Categories that are inherently India-relevant by source (official Indian
-# government feeds) and should bypass the keyword relevance check entirely.
-SOURCE_EXEMPT_RELEVANCE = {
-    "CERT-In Advisories",
-    "NIA Press Releases",
-}
-
-# ── SIGNAL KEYWORDS ───────────────────────────────────────────────────────────
-
-SIGNAL_KEYWORDS = {
-    "pakistan_narrative": [
-        "kashmir", "azad kashmir", "pok", "isi", "ceasefire india",
-        "loc violation", "surgical strike", "india pakistan", "hafiz saeed",
-        "masood azhar", "pakistan condemns india", "india aggression",
-        "hindutva", "rss", "bjp communal", "islamophobia india",
-        "minority persecution india", "modi fascism", "hindu nationalist",
-        "india cruelty", "india atrocities", "occupied kashmir",
-        "indian forces", "kashmir human rights",
-    ],
-    "western_criticism": [
-        "india democratic backsliding", "press freedom india", "india authoritarian",
-        "india human rights", "minority rights india", "religious freedom india",
-        "india crackdown", "india internet shutdown", "india surveillance",
-        "india dissent", "india ngo", "fcra india", "india ranking",
-        "india corruption", "india inequality", "india caste",
-        "india modi criticism", "india freedom", "india repression",
-        "india journalists", "rsf india", "cpj india",
-    ],
-    "protest_dissent": [
-        "protest india", "bandh", "demonstration india", "strike india",
-        "farmers protest", "student protest india", "opposition india",
-        "rally india", "march india", "india unrest", "lathi charge",
-        "india sedition", "uapa", "india agitation", "india shutdown",
-        "india demands", "india blockade", "india workers strike",
-    ],
-    "neighbour_hostile": [
-        "nepal india border", "nepal china india", "nepal treaty india",
-        "bangladesh india", "bangladesh protest india", "india out maldives",
-        "china maldives", "bhutan china india", "myanmar india border",
-        "afghanistan india", "taliban india", "india hegemony",
-        "india interference", "india influence neighbour",
-        "anti india", "india imperialism",
-    ],
-    "strategic_military": [
-        "arunachal pradesh china", "doklam", "galwan", "lac india",
-        "india china border", "india nuclear", "india missile",
-        "india defence", "india navy", "indian ocean", "quad india",
-        "india us relations", "india russia sanctions", "india arms",
-        "drdo", "agni", "brahmos", "india military exercise",
-        "india deployment", "india troops", "india airforce",
-    ],
-    "terrorism_security": [
-        "india terror", "naxal", "maoist india", "jem", "let ",
-        "india blast", "india attack", "india intelligence",
-        "india separatist", "khalistan", "khalistani",
-        "india northeast insurgency", "kashmir militants",
-        "india security forces", "encounter kashmir",
-    ],
-    # NEW signal category
-    "pok_baloch_rights": [
-        "balochistan", "baloch", "gilgit baltistan", "azad kashmir",
-        "pakistan occupied kashmir", "sindhi nationalist", "pashtun tahafuz",
-        "hrcp", "paank", "voice of karakoram", "enforced disappearance",
-        "missing persons pakistan", "ahmadi persecution", "blasphemy law",
-        "baloch yakjehti committee", "forced conversion", "minorities pakistan",
-        "christian persecution pakistan", "pok protest", "gilgit protest",
-        "baloch genocide", "baloch crackdown", "pakistan army balochistan",
-    ],
-    # Kashmir sub-signals
-    "kashmir_pakistan_comment": [
-        "pakistan condemns kashmir", "pakistan foreign office kashmir",
-        "pakistan statement kashmir", "pakistan un kashmir", "pakistan oic kashmir",
-        "pakistan kashmir solidarity", "pakistan kashmir day",
-        "indian kashmir pakistan", "pakistan kashmir rhetoric",
-        "islamabad kashmir", "pakistan kashmir reaction",
-    ],
-    "kashmir_development": [
-        "kashmir assembly", "kashmir government", "kashmir elections",
-        "article 370", "kashmir statehood", "kashmir autonomy",
-        "kashmir encounter", "kashmir militant", "kashmir security operation",
-        "kashmir administration", "j&k lieutenant governor", "kashmir budget",
-        "kashmir delimitation", "kashmir panchayat",
-    ],
-    "kashmir_foreign_negative": [
-        "kashmir human rights violation", "kashmir crackdown", "kashmir repression",
-        "kashmir press freedom", "kashmir journalist arrest", "kashmir media restriction",
-        "kashmir internet shutdown", "kashmir communication blackout",
-        "kashmir occupation", "occupied kashmir", "kashmir colonial",
-        "kashmir siege", "kashmir lockdown criticism", "kashmir un report",
-        "kashmir amnesty international", "kashmir hrw",
-    ],
-    # Sikh / Punjab / Khalistan sub-signals
-    "anti_sikh_sentiment": [
-        "anti-sikh", "sikh hate crime", "sikh attacked", "gurdwara vandalism",
-        "sikh temple attack", "gurdwara desecration", "sikh discrimination",
-        "sikh profiling", "turban discrimination", "sikh harassment",
-        "1984 anti-sikh riots", "operation blue star", "sikh genocide",
-    ],
-    "khalistan_activity": [
-        "khalistan movement", "khalistani", "khalistan referendum",
-        "sikhs for justice", "sfj", "khalistan rally", "khalistan protest",
-        "amritpal singh", "waris punjab de", "khalistan flag",
-        "khalistan designated terrorist", "khalistan banned",
-        "nijjar", "pannun", "khalistan extremism",
-    ],
-    "pakistan_sikh_propaganda": [
-        "pakistan khalistan", "pakistan sikh separatist", "isi khalistan",
-        "pakistan sikh solidarity", "pakistan kartarpur khalistan",
-        "pakistan funding khalistan", "pakistan support sikh separatist",
-        "isi sikh", "pakistan punjab destabilize",
-    ],
-    "khalistan_canada_usa": [
-        "khalistan canada", "khalistani canada", "canada sikh separatist",
-        "nijjar canada", "canada india diplomatic row", "trudeau sikh",
-        "canada gurdwara", "khalistan usa", "khalistani america",
-        "sikh separatist united states", "gurpatwant singh",
-        "us sikh civil rights", "canada india tension sikh",
-    ],
-    # NEW: Border & territorial
-    "border_territorial": [
-        "lac infrastructure", "pla construction", "doklam", "bhutan china border",
-        "teesta river dispute", "water sharing dispute", "arunachal china claim",
-        "zangnan", "china renaming arunachal", "border satellite imagery",
-        "china road construction border", "tri-junction dispute",
-    ],
-    # NEW: Maritime / Indian Ocean
-    "maritime_indian_ocean": [
-        "chinese navy indian ocean", "pla navy indian ocean", "chinese research vessel",
-        "china spy ship", "hambantota port", "gwadar port", "chittagong port china",
-        "china maldives military", "china maldives port", "string of pearls",
-        "indian ocean surveillance", "china naval base indian ocean",
-    ],
-    # NEW: Cyber security
-    "cyber_security_threat": [
-        "cert-in advisory", "apt group india", "china hackers india",
-        "pakistan hackers india", "india cyberattack", "critical infrastructure hack",
-        "cisco talos india", "mandiant india", "recorded future india",
-        "india data breach", "state-sponsored hacking india",
-    ],
-    # NEW: Economic security
-    "economic_security_risk": [
-        "china fdi india", "india china investment block", "india huawei",
-        "telecom vendor ban china", "india rare earth", "india semiconductor china",
-        "supply chain china india", "china investment scrutiny india",
-    ],
-    # NEW: Disinformation research
-    "disinfo_research_finding": [
-        "dfrlab india", "dfrlab pakistan", "atlantic council india",
-        "eu disinfolab india", "eu disinfolab pakistan", "coordinated inauthentic india",
-        "meta takedown india", "twitter takedown india", "x takedown pakistan",
-        "fake news network india", "disinformation campaign india",
-    ],
-    # NEW: Communal flashpoints
-    "communal_flashpoint": [
-        "places of worship act", "gyanvapi", "temple mosque dispute",
-        "communal tension india", "communal violence india", "religious clash india",
-        "mosque temple litigation", "asi survey mosque", "communal riot india",
-    ],
-    # NEW: Northeast India
-    "northeast_unrest": [
-        "manipur ethnic conflict", "manipur violence", "meitei kuki",
-        "myanmar india border refugee", "myanmar northeast india arms",
-        "northeast india insurgency", "assam militant", "nagaland militant",
-        "northeast india unrest",
-    ],
-    # NEW: Extremism / banned organizations
-    "extremism_banned_org": [
-        "popular front of india", "pfi banned", "pfi successor",
-        "nia terror case", "nia chargesheet", "nia raid",
-        "isis recruitment india", "jihadist india arrest", "terror module india",
-    ],
-    # NEW: Naxal / Maoist insurgency
-    "naxal_insurgency": [
-        "naxal attack", "maoist attack", "naxalite encounter", "naxal surrender",
-        "anti-naxal operation", "crpf naxal", "bastar maoist", "chhattisgarh naxal",
-        "red corridor", "cpi maoist", "naxal banned organisation",
-    ],
-    # NEW: Cross-cutting flashpoint signal — catches acute escalation language
-    # anywhere in the dataset regardless of source category
-    "active_flashpoint": [
-        "breaking", "urgent escalation", "border clash", "military standoff",
-        "troops mobilized", "emergency meeting called", "high alert",
-        "ceasefire violation", "airspace violation", "naval standoff",
-        "diplomatic expulsion", "recalled ambassador", "crisis talks",
-        "security forces deployed", "curfew imposed", "shoot at sight",
-    ],
-}
-
-HIGH_IMPORTANCE_TRIGGERS = [
-    "breaking", "urgent", "exclusive", "ceasefire", "war", "strike",
-    "nuclear", "crisis", "emergency", "condemns india", "sanctions india",
-    "expelled", "killed", "attack", "blast", "invasion", "border clash",
-    "escalation", "protest india", "bandh", "arrest", "coup",
-    "india tension", "india warns", "india responds",
-    "enforced disappearance", "baloch killed", "extrajudicial",
-    "crackdown", "missing persons", "abducted", "custodial death",
-    "kashmir encounter", "kashmir killed", "kashmir crackdown",
-    "kashmir un report", "kashmir lockdown", "pulwama",
-    "khalistan referendum", "sikh attacked", "gurdwara attack",
-    "nijjar killing", "canada india row", "khalistan banned",
-    "military standoff", "troops mobilized", "airspace violation",
-    "naval standoff", "diplomatic expulsion", "recalled ambassador",
-    "curfew imposed", "shoot at sight", "data breach", "manipur violence",
-]
-
-def score_importance(text):
-    text_lower = text.lower()
-    score = 0
-    for trigger in HIGH_IMPORTANCE_TRIGGERS:
-        if trigger in text_lower:
-            score += 2
-    for category, keywords in SIGNAL_KEYWORDS.items():
-        for kw in keywords:
-            if kw in text_lower:
-                score += 1
-    return min(score, 10)
-
-def detect_signals(text):
-    text_lower = text.lower()
-    detected = []
-    for category, keywords in SIGNAL_KEYWORDS.items():
-        for kw in keywords:
-            if kw in text_lower:
-                detected.append(category)
-                break
-    return list(set(detected))
-
-# ── TELEGRAM CHANNEL FETCHER (direct t.me/s/ HTML scraping) ─────────────────
-# Uses Telegram's own public web preview — no API key, no RSSHub, no external
-# service required. Each public Telegram channel at t.me/s/<username> renders
-# up to ~20 recent messages as HTML that we can parse directly.
-
-def fetch_telegram_channel(feed_info, category, max_items=20):
-    """Scrape public Telegram channel preview at t.me/s/<username>."""
+def fetch_telegram_channel(feed_info, category):
     items = []
     if not BS4_AVAILABLE:
-        print(f"  ✗ BeautifulSoup4 not available — skipping {feed_info['name']}")
+        print(f"  ✗ bs4 not available — skipping {feed_info['name']}")
         return items
     try:
         headers = {
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
         }
@@ -683,33 +669,24 @@ def fetch_telegram_channel(feed_info, category, max_items=20):
             return items
 
         soup = BeautifulSoup(resp.text, "html.parser")
+        wraps = soup.find_all("div", class_="tgme_widget_message_wrap")
 
-        # Each message is a .tgme_widget_message_wrap div
-        message_wraps = soup.find_all("div", class_="tgme_widget_message_wrap")
-
-        for wrap in message_wraps[:max_items]:
-            # Get message text
+        for wrap in wraps[:MAX_ITEMS_TG]:
             text_el = wrap.find("div", class_="tgme_widget_message_text")
             if not text_el:
-                # Some messages are media-only (photos/videos) with no text — skip
+                continue
+            raw_text = text_el.get_text(" ", strip=True)
+            if not raw_text or len(raw_text) < 15:
                 continue
 
-            # Get clean text (strip HTML tags, emojis are fine)
-            title_raw = text_el.get_text(" ", strip=True)
-            if not title_raw or len(title_raw) < 15:
-                continue
+            title = raw_text[:140].strip()
+            if len(raw_text) > 140 and " " in raw_text[:137]:
+                title = raw_text[:raw_text.rfind(" ", 0, 137)] + "…"
+            summary = raw_text[:400]
 
-            # Use first 120 chars as title, rest as summary
-            title = title_raw[:120].strip()
-            if len(title_raw) > 120:
-                title = title[:title.rfind(" ", 0, 117)] + "…" if " " in title[:117] else title
-            summary = title_raw[:400]
-
-            # Get message URL (permalink)
             link_el = wrap.find("a", class_="tgme_widget_message_date")
             link = link_el.get("href", "") if link_el else ""
 
-            # Get timestamp from <time datetime="...">
             time_el = wrap.find("time")
             pub_dt = None
             pub = ""
@@ -722,38 +699,24 @@ def fetch_telegram_channel(feed_info, category, max_items=20):
                     except Exception:
                         pass
 
-            # DATE FILTER
             recent = is_recent(pub_dt)
             if recent is False:
                 continue
-            if recent is None and category != "breaking_news":
-                continue
+            if recent is None:
+                continue  # Telegram items without date skipped
 
             combined = f"{title} {summary}"
-
-            # RELEVANCE FILTER
             hint = feed_info.get("category_hint", "india")
+
             if hint == "none":
-                pass  # 100% India-focused channel — no filter needed
-            elif hint == "pok_baloch":
-                if not is_pok_baloch_relevant(combined):
-                    continue
-            elif hint == "kashmir":
-                if not is_kashmir_relevant(combined):
-                    continue
-            elif hint == "sikh_punjab":
-                if not is_sikh_punjab_relevant(combined):
-                    continue
-            else:  # "india" — default
-                if not is_india_relevant(combined):
-                    continue
+                pass
+            elif not is_india_relevant(combined):
+                continue
 
-            signals = detect_signals(combined)
-            importance = score_importance(combined)
-
-            # Auto-tag all Telegram items as strategic_military baseline
-            if "strategic_military" not in signals:
-                signals = signals + ["strategic_military"]
+            topics = classify_topics(combined)
+            auto = CAT_AUTO_TOPIC.get(category)
+            if auto and auto not in topics:
+                topics.append(auto)
 
             items.append({
                 "title": title,
@@ -761,261 +724,220 @@ def fetch_telegram_channel(feed_info, category, max_items=20):
                 "link": link,
                 "source": feed_info["name"],
                 "category": category,
-                "signals": signals,
-                "importance": importance,
+                "topics": topics,
+                "flashpoint": is_flashpoint(combined),
                 "published": pub,
                 "fetched_at": datetime.now(timezone.utc).isoformat(),
             })
-
     except Exception as e:
         print(f"  ✗ {feed_info['name']} — {e}")
     return items
 
+# ══════════════════════════════════════════════════════════════════════════════
+# RSS FEED FETCHER
+# ══════════════════════════════════════════════════════════════════════════════
 
-# ── RSS FEED FETCHER ──────────────────────────────────────────────────────────
-
-def fetch_rss(feed_info, category, max_items=15):
+def fetch_rss(feed_info, category):
     items = []
     try:
-        headers = {"User-Agent": "Mozilla/5.0 (compatible; IndiaSignalMonitor/1.0)"}
+        headers = {"User-Agent": "Mozilla/5.0 (compatible; IndiaPulse360/3.0)"}
         resp = requests.get(feed_info["url"], headers=headers, timeout=12)
         parsed = feedparser.parse(resp.content)
-        for entry in parsed.entries[:max_items]:
-            title = entry.get("title", "").strip()
-            summary = re.sub(r'<[^>]+>', '', entry.get("summary", entry.get("description", ""))).strip()[:400]
-            link = entry.get("link", "")
-            pub_dt = parse_pub_date(entry)
-            pub = pub_dt.isoformat() if pub_dt else entry.get("published", entry.get("updated", ""))
+
+        for entry in parsed.entries[:MAX_ITEMS_FEED]:
+            title   = entry.get("title", "").strip()
+            summary = re.sub(r'<[^>]+>', '', entry.get("summary",
+                             entry.get("description", ""))).strip()[:500]
+            link    = entry.get("link", "")
+            pub_dt  = parse_pub_date(entry)
+            pub     = pub_dt.isoformat() if pub_dt else ""
+
+            # Use BOTH title + summary for classification (fixes title-only bug)
             combined = f"{title} {summary}"
 
-            # DATE FILTER: drop anything older than MAX_AGE_DAYS.
-            # Breaking news wires are allowed through even if date can't be parsed.
+            # ── DATE FILTER ──────────────────────────────────────────────────
             recent = is_recent(pub_dt)
             if recent is False:
                 continue
+            # Breaking news: allow undated items through (wire feeds sometimes
+            # omit timestamps on very fresh stories)
             if recent is None and category != "breaking_news":
                 continue
 
-            # Relevance check depends on category (or explicit category_hint
-            # for Telegram channels, which all share the "telegram_channels"
-            # category but may need different filters per-channel)
-            if feed_info["name"] in SOURCE_EXEMPT_RELEVANCE:
-                pass  # official government feed — always relevant, skip keyword check
+            # ── RELEVANCE FILTER ─────────────────────────────────────────────
+            if feed_info["name"] in SOURCE_EXEMPT:
+                pass  # official govt feed — always relevant
             else:
-                relevance_key = feed_info.get("category_hint", category)
-                if relevance_key == "pok_baloch_minorities" or relevance_key == "pok_baloch":
-                    if not is_pok_baloch_relevant(combined):
-                        continue
-                elif relevance_key == "kashmir_focus" or relevance_key == "kashmir":
-                    if not is_kashmir_relevant(combined):
-                        continue
-                elif relevance_key == "sikh_punjab_affairs" or relevance_key == "sikh_punjab":
-                    if not is_sikh_punjab_relevant(combined):
-                        continue
-                elif relevance_key == "none":
-                    pass  # no relevance filter — everything from this source passes
-                elif relevance_key == "breaking_news":
-                    # Breaking news wires: apply India filter but allow undated items through
-                    if not is_india_relevant(combined):
-                        continue
+                hint = feed_info.get("category_hint", category)
+                if hint == "pok_baloch_minorities" or hint == "pok_baloch":
+                    if not is_pok_baloch_relevant(combined): continue
+                elif hint == "kashmir_focus" or hint == "kashmir":
+                    if not is_kashmir_relevant(combined): continue
+                elif hint == "sikh_punjab_affairs" or hint == "sikh_punjab":
+                    if not is_sikh_punjab_relevant(combined): continue
+                elif hint == "none":
+                    pass  # 100% India-focused source
                 else:
-                    if not is_india_relevant(combined):
+                    # Default: India relevance — but also accept PoK/Baloch/Kashmir
+                    # items that don't contain "India" explicitly (fixes missed items)
+                    if not (is_india_relevant(combined)
+                            or is_pok_baloch_relevant(combined)
+                            or is_kashmir_relevant(combined)):
                         continue
 
-            signals = detect_signals(combined)
-            importance = score_importance(combined)
+            # ── MULTI-LABEL TOPIC CLASSIFICATION ────────────────────────────
+            topics = classify_topics(combined)
 
-            # Auto-tag signal based on category so section counts are never zero
-            # even when keyword detection misses a match
-            CAT_AUTO_SIGNAL = {
-                "breaking_news": "strategic_military",
-                "pok_baloch_minorities": "pok_baloch_rights",
-                "kashmir_focus": "kashmir_development",
-                "sikh_punjab_affairs": "khalistan_activity",
-                "border_territorial": "border_territorial",
-                "maritime_indian_ocean": "maritime_indian_ocean",
-                "cyber_security": "cyber_security_threat",
-                "economic_security": "economic_security_risk",
-                "disinfo_research": "disinfo_research_finding",
-                "communal_flashpoints": "communal_flashpoint",
-                "northeast_india": "northeast_unrest",
-                "naxal_insurgency": "naxal_insurgency",
-                "extremism_banned_orgs": "extremism_banned_org",
-                "india_critics": "western_criticism",
-                "osint_channels": "strategic_military",
-                "pakistan_narratives": "pakistan_narrative",
-                "western_media": "western_criticism",
-                "telegram_channels": "strategic_military",
-            }
-            auto_sig = CAT_AUTO_SIGNAL.get(category)
-            if auto_sig and auto_sig not in signals:
-                signals = signals + [auto_sig]
+            # Auto-tag from category if no topic matched
+            auto = CAT_AUTO_TOPIC.get(category)
+            if auto and auto not in topics:
+                topics.append(auto)
 
             items.append({
-                "title": title,
-                "summary": summary[:300],
-                "link": link,
-                "source": feed_info["name"],
-                "category": category,
-                "signals": signals,
-                "importance": importance,
-                "published": pub_dt.isoformat() if pub_dt else pub,
+                "title":      title,
+                "summary":    summary[:300],
+                "link":       link,
+                "source":     feed_info["name"],
+                "category":   category,
+                "topics":     topics,
+                "flashpoint": is_flashpoint(combined),
+                "published":  pub,
                 "fetched_at": datetime.now(timezone.utc).isoformat(),
             })
+
     except Exception as e:
         print(f"  ✗ {feed_info['name']} — {e}")
     return items
 
-# ── REDDIT JSON FETCHER ───────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# REDDIT JSON FETCHER
+# ══════════════════════════════════════════════════════════════════════════════
 
 def fetch_reddit_json(feed_info, category):
     items = []
     try:
-        headers = {"User-Agent": "IndiaSignalMonitor/1.0"}
+        headers = {"User-Agent": "IndiaPulse360/3.0"}
         resp = requests.get(feed_info["url"], headers=headers, timeout=12)
         data = resp.json()
         posts = data.get("data", {}).get("children", [])
+
         for post in posts:
             p = post["data"]
-            title = p.get("title", "")
-            selftext = p.get("selftext", "")[:300]
-            link = f"https://reddit.com{p.get('permalink', '')}"
-            score = p.get("score", 0)
+            title    = p.get("title", "")
+            selftext = p.get("selftext", "")[:400]
+            link     = f"https://reddit.com{p.get('permalink', '')}"
+            score    = p.get("score", 0)
             combined = f"{title} {selftext}"
 
-            # DATE FILTER
             pub_ts = p.get("created_utc", 0)
             if pub_ts:
                 pub_dt = datetime.fromtimestamp(pub_ts, tz=timezone.utc)
                 if pub_dt < CUTOFF:
                     continue
+                pub = pub_dt.isoformat()
             else:
-                continue  # no timestamp — skip rather than risk stale content
+                continue
 
-            if category in ("pok_baloch_minorities", "sikh_punjab_affairs"):
-                # r/Balochistan, r/GilgitBaltistan, r/Sikh, r/punjab, r/khalistan
-                # are inherently on-topic, so we don't hard-filter, just tag signals
-                pass
-            else:
+            # Baloch/PoK subreddits are inherently relevant
+            if category not in ("pok_baloch_minorities", "sikh_punjab_affairs"):
                 if not is_india_relevant(combined):
                     continue
 
-            signals = detect_signals(combined)
-            importance = score_importance(combined)
-            if score > 1000:
-                importance = min(importance + 2, 10)
-            elif score > 500:
-                importance = min(importance + 1, 10)
-
-            # Auto-tag signal based on category (same as RSS fetcher)
-            CAT_AUTO_SIGNAL = {
-                "pok_baloch_minorities": "pok_baloch_rights",
-                "kashmir_focus": "kashmir_development",
-                "sikh_punjab_affairs": "khalistan_activity",
-                "social_india": "pakistan_narrative",
-                "osint_channels": "strategic_military",
-            }
-            auto_sig = CAT_AUTO_SIGNAL.get(category)
-            if auto_sig and auto_sig not in signals:
-                signals = signals + [auto_sig]
+            topics = classify_topics(combined)
+            auto = CAT_AUTO_TOPIC.get(category)
+            if auto and auto not in topics:
+                topics.append(auto)
 
             items.append({
-                "title": title,
-                "summary": selftext or f"👍 {score} upvotes · 💬 {p.get('num_comments',0)} comments",
-                "link": link,
-                "source": feed_info["name"],
-                "category": category,
-                "signals": signals,
-                "importance": importance,
+                "title":       title,
+                "summary":     selftext or f"👍 {score} upvotes · 💬 {p.get('num_comments',0)} comments",
+                "link":        link,
+                "source":      feed_info["name"],
+                "category":    category,
+                "topics":      topics,
+                "flashpoint":  is_flashpoint(combined),
                 "reddit_score": score,
-                "published": datetime.fromtimestamp(pub_ts, tz=timezone.utc).isoformat() if pub_ts else "",
-                "fetched_at": datetime.now(timezone.utc).isoformat(),
+                "published":   pub,
+                "fetched_at":  datetime.now(timezone.utc).isoformat(),
             })
+
     except Exception as e:
         print(f"  ✗ {feed_info['name']} — {e}")
     return items
 
-# ── MAIN ──────────────────────────────────────────────────────────────────────
+# ══════════════════════════════════════════════════════════════════════════════
+# MAIN CRAWLER
+# ══════════════════════════════════════════════════════════════════════════════
 
 def crawl_all():
     all_items = []
     stats = defaultdict(int)
 
-    print(f"\n{'='*60}")
-    print(f"India Signal Monitor — {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}")
-    print(f"{'='*60}")
+    print(f"\n{'='*62}")
+    print(f"  India Pulse 360 — Crawl {datetime.now().strftime('%Y-%m-%d %H:%M UTC')}")
+    print(f"{'='*62}")
 
     for category, feed_list in FEEDS.items():
         print(f"\n[{category.upper()}]")
         for feed in feed_list:
-            print(f"  {feed['name']} ...", end=" ", flush=True)
-            is_reddit_json = "reddit.com" in feed["url"] and (".json" in feed["url"])
-            is_telegram = feed["url"].startswith("https://t.me/s/")
-            if is_telegram:
+            print(f"  {feed['name']:<35}", end=" ", flush=True)
+            is_tg     = feed["url"].startswith("https://t.me/s/")
+            is_reddit = "reddit.com" in feed["url"] and ".json" in feed["url"]
+
+            if is_tg:
                 items = fetch_telegram_channel(feed, category)
-            elif is_reddit_json:
+            elif is_reddit:
                 items = fetch_reddit_json(feed, category)
             else:
                 items = fetch_rss(feed, category)
-            print(f"{len(items)} relevant items")
+
+            print(f"{len(items)} items")
             all_items.extend(items)
             stats[category] += len(items)
-            time.sleep(0.4)
+            time.sleep(CRAWL_DELAY)
 
-    # Deduplicate by title
+    # ── DEDUPLICATE using content-hash ────────────────────────────────────────
     seen = set()
     deduped = []
     for item in all_items:
-        key = re.sub(r'\W+', '', item["title"].lower())[:60]
-        if key and key not in seen:
-            seen.add(key)
+        h = item_hash(item["title"], item.get("summary", ""))
+        if h not in seen:
+            seen.add(h)
             deduped.append(item)
 
-    deduped.sort(
-        key=lambda x: (
-            # Primary: published datetime descending (latest first)
-            x.get("published", ""),
-            # Secondary: importance descending
-            x.get("importance", 0),
-            x.get("reddit_score", 0)
-        ),
-        reverse=True
-    )
+    # ── SORT: latest first ────────────────────────────────────────────────────
+    deduped.sort(key=lambda x: x.get("published", ""), reverse=True)
 
-    signal_counts = defaultdict(int)
+    # ── TOPIC SUMMARY ─────────────────────────────────────────────────────────
+    topic_counts = defaultdict(int)
+    flash_count = 0
     for item in deduped:
-        for sig in item.get("signals", []):
-            signal_counts[sig] += 1
+        for t in item.get("topics", []):
+            topic_counts[t] += 1
+        if item.get("flashpoint"):
+            flash_count += 1
 
     output = {
-        "generated_at": datetime.now(timezone.utc).isoformat(),
-        "total_items": len(deduped),
+        "generated_at":   datetime.now(timezone.utc).isoformat(),
+        "total_items":    len(deduped),
+        "flashpoints":    flash_count,
         "category_stats": dict(stats),
-        "signal_summary": dict(signal_counts),
-        "top_signals": sorted(signal_counts.items(), key=lambda x: x[1], reverse=True)[:10],
-        "items": deduped,
+        "topic_counts":   dict(topic_counts),
+        "top_items":      deduped,        # ALL items — dashboard reads this key
+        "items":          deduped,        # backward-compatible alias
     }
 
     import os
     os.makedirs("data", exist_ok=True)
+    with open("data/summary.json", "w", encoding="utf-8") as f:
+        json.dump(output, f, ensure_ascii=False, indent=2)
     with open("data/topics.json", "w", encoding="utf-8") as f:
         json.dump(output, f, ensure_ascii=False, indent=2)
 
-    summary = {
-        "generated_at": output["generated_at"],
-        "total_items": output["total_items"],
-        "signal_summary": output["signal_summary"],
-        "top_signals": output["top_signals"],
-        "top_items": deduped,
-    }
-    with open("data/summary.json", "w", encoding="utf-8") as f:
-        json.dump(summary, f, ensure_ascii=False, indent=2)
-
-    print(f"\n{'='*60}")
-    print(f"✓ Done. {len(deduped)} relevant items saved.")
-    print(f"  Signal breakdown: {dict(signal_counts)}")
-    print(f"  Category stats: {dict(stats)}")
-    print(f"{'='*60}\n")
+    print(f"\n{'='*62}")
+    print(f"  ✓ {len(deduped)} unique items  |  🔥 {flash_count} flashpoints")
+    print(f"  Topic breakdown: {dict(topic_counts)}")
+    print(f"{'='*62}\n")
 
 if __name__ == "__main__":
     crawl_all()
