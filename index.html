@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<title>India Pulse 360</title>
+<style>
+  :root {
+    --bg: #0a0d12;
+    --surface: #11151c;
+    --surface2: #1a2029;
+    --surface3: #232a35;
+    --border: #2a323d;
+    --text: #e8ecf1;
+    --muted: #7c8794;
+    --muted-dim: #545d68;
+    --accent: #ff7a45;
+    --accent-dim: #4a2e1f;
+    --green: #3fd68f;
+    --yellow: #f0b429;
+    --red: #ff4757;
+    --blue: #4fa8ff;
+    --mono: 'JetBrains Mono', 'SF Mono', Consolas, monospace;
+    --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --radius: 10px;
+    --safe-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--text);
+    font-size: 14px;
+    line-height: 1.5;
+    overscroll-behavior-y: none;
+  }
+
+  /* ── TOP BAR ─────────────────────────────────────────────────────────── */
+  .topbar {
+    background: linear-gradient(180deg, var(--surface) 0%, var(--bg) 100%);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+    position: sticky; top: 0; z-index: 200;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .brand { display: flex; align-items: center; gap: 9px; flex: 1; min-width: 0; }
+  .brand-mark {
+    width: 30px; height: 30px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--accent), #ff5757);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+    box-shadow: 0 2px 8px rgba(255,122,69,0.3);
+  }
+  .brand-text { display: flex; flex-direction: column; min-width: 0; }
+  .brand-text .name { font-size: 15px; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+  .brand-text .sub { font-size: 10.5px; color: var(--muted); font-family: var(--mono); letter-spacing: 0.02em; }
+  .live-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; margin-right: 4px; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%,100%{opacity:1; box-shadow:0 0 0 0 rgba(63,214,143,0.5)} 50%{opacity:0.6; box-shadow:0 0 0 4px rgba(63,214,143,0)} }
+  .topbar-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
+  .icon-btn {
+    width: 36px; height: 36px; border-radius: 9px; border: 1px solid var(--border);
+    background: var(--surface2); color: var(--text); display: flex; align-items: center;
+    justify-content: center; cursor: pointer; font-size: 16px; transition: all .15s;
+  }
+  .icon-btn:active { transform: scale(0.92); background: var(--surface3); }
+
+  /* ── LAYOUT ──────────────────────────────────────────────────────────── */
+  .layout { display: grid; grid-template-columns: 252px 1fr; }
+  .sidebar {
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    padding: 14px 12px 90px;
+    overflow-y: auto;
+    position: sticky; top: 57px;
+    height: calc(100vh - 57px);
+    scrollbar-width: thin;
+  }
+  .sidebar::-webkit-scrollbar { width: 5px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  /* Pinned concise topics */
+  .concise-pinned {
+    background: linear-gradient(155deg, var(--accent-dim) 0%, var(--surface2) 60%);
+    border: 1px solid #5a3826;
+    border-radius: 12px;
+    padding: 12px 10px;
+    margin-bottom: 16px;
+  }
+  .concise-pinned .sec-label { color: var(--accent); display: flex; align-items: center; gap: 5px; }
+  .concise-pinned .filter-row { background: rgba(255,255,255,0.03); }
+  .concise-pinned .filter-row:hover { background: rgba(255,255,255,0.07); }
+  .concise-pinned .filter-row.active { background: var(--accent); color: #1a0f08; }
+  .concise-pinned .filter-row.active .count { background: rgba(0,0,0,0.25); color: #1a0f08; }
+
+  .sidebar-section { margin-bottom: 18px; }
+  .sec-label {
+    font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.09em;
+    color: var(--muted-dim); margin-bottom: 7px; font-weight: 700;
+    padding: 0 4px;
+  }
+  .filter-row {
+    display: flex; align-items: center; gap: 9px; width: 100%;
+    padding: 8px 9px; border-radius: 8px; border: none; background: transparent;
+    color: var(--muted); cursor: pointer; font-size: 13px; text-align: left;
+    margin-bottom: 1px; transition: background .12s, color .12s; font-weight: 500;
+  }
+  .filter-row:hover { background: var(--surface2); color: var(--text); }
+  .filter-row.active { background: var(--surface3); color: var(--text); }
+  .filter-row .count {
+    margin-left: auto; font-size: 10.5px; font-family: var(--mono); background: var(--border);
+    padding: 1px 7px; border-radius: 20px; color: var(--muted); min-width: 22px; text-align: center;
+  }
+  .filter-row.active .count { background: var(--accent); color: #1a0f08; }
+  .row-icon { width: 18px; text-align: center; flex-shrink: 0; font-size: 13px; }
+  .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+  .sig-pakistan_narrative{background:#ff6b6b} .sig-western_criticism{background:#4dabf7}
+  .sig-protest_dissent{background:#ffd43b} .sig-neighbour_hostile{background:#a9e34b}
+  .sig-strategic_military{background:#cc5de8} .sig-terrorism_security{background:#ff922b}
+  .sig-pok_baloch_rights{background:#39c5cf}
+  .sig-kashmir_pakistan_comment{background:#ff8787}
+  .sig-kashmir_development{background:#74c0fc}
+  .sig-kashmir_foreign_negative{background:#e599f7}
+  .sig-anti_sikh_sentiment{background:#ff6b9d}
+  .sig-khalistan_activity{background:#f59f00}
+  .sig-pakistan_sikh_propaganda{background:#fa5252}
+  .sig-khalistan_canada_usa{background:#22b8cf}
+  .sig-active_flashpoint{background:#ff3b3b}
+  .sig-border_territorial{background:#fab005}
+  .sig-maritime_indian_ocean{background:#1971c2}
+  .sig-cyber_security_threat{background:#7950f2}
+  .sig-economic_security_risk{background:#2f9e44}
+  .sig-disinfo_research_finding{background:#ae3ec9}
+  .sig-communal_flashpoint{background:#e8590c}
+  .sig-northeast_unrest{background:#0ca678}
+  .sig-extremism_banned_org{background:#c92a2a}
+
+  /* Collapsible section header */
+  .collapse-header {
+    display: flex; align-items: center; cursor: pointer; padding: 0 4px;
+    margin-bottom: 7px; user-select: none;
+  }
+  .collapse-header .chev { margin-left: auto; font-size: 10px; color: var(--muted-dim); transition: transform .2s; }
+  .collapse-header.collapsed .chev { transform: rotate(-90deg); }
+  .collapse-body { overflow: hidden; max-height: 2000px; transition: max-height .25s ease; }
+  .collapse-body.collapsed { max-height: 0; }
+
+  /* ── MAIN ────────────────────────────────────────────────────────────── */
+  main { padding: 18px 20px 40px; min-height: calc(100vh - 57px); }
+
+  .stats-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
+    gap: 10px; margin-bottom: 18px;
+  }
+  .stat-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 13px 14px; cursor: pointer; transition: border-color .15s, transform .1s, background .15s;
+    position: relative; overflow: hidden;
+  }
+  .stat-card::before {
+    content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px;
+    background: var(--card-accent, transparent); opacity: 0; transition: opacity .15s;
+  }
+  .stat-card:hover { border-color: var(--card-accent, var(--blue)); transform: translateY(-1px); }
+  .stat-card:hover::before { opacity: 1; }
+  .stat-card:active { transform: translateY(0) scale(0.98); }
+  .stat-card.active-stat { background: var(--surface2); border-color: var(--card-accent, var(--accent)); }
+  .stat-card.active-stat::before { opacity: 1; }
+  .stat-card .label { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 700; }
+  .stat-card .value { font-size: 25px; font-weight: 800; margin-top: 3px; font-family: var(--mono); letter-spacing: -0.02em; }
+  .stat-card.no-click { cursor: default; }
+  .stat-card.no-click:hover { border-color: var(--border); transform: none; }
+  .stat-card.flashpoint-card { background: linear-gradient(135deg, #2a0f0f, var(--surface)); }
+
+  .toolbar { display: flex; gap: 10px; margin-bottom: 14px; align-items: center; }
+  .search-bar { flex: 1; position: relative; }
+  .search-bar input {
+    width: 100%; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 10px 14px 10px 38px; color: var(--text); font-size: 14px; outline: none; transition: border-color .15s;
+  }
+  .search-bar input:focus { border-color: var(--blue); }
+  .search-bar input::placeholder { color: var(--muted-dim); }
+  .search-icon { position: absolute; left: 13px; top: 50%; transform: translateY(-50%); color: var(--muted-dim); font-size: 14px; pointer-events: none; }
+  .mobile-filter-btn {
+    display: none; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    color: var(--text); padding: 10px 14px; font-size: 13px; font-weight: 600; cursor: pointer; gap: 6px; align-items: center;
+    flex-shrink: 0;
+  }
+  .mobile-filter-btn .badge { background: var(--accent); color: #1a0f08; font-size: 10px; padding: 1px 6px; border-radius: 10px; font-weight: 700; }
+
+  .result-count { font-size: 12px; color: var(--muted); margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+  .active-pill {
+    background: var(--surface2); border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px 3px 12px;
+    font-size: 11.5px; color: var(--text); display: inline-flex; align-items: center; gap: 6px; font-weight: 600;
+  }
+  .active-pill .clear-x { cursor: pointer; color: var(--muted); font-size: 13px; line-height: 1; padding: 2px; }
+  .active-pill .clear-x:hover { color: var(--red); }
+
+  .items-list { display: flex; flex-direction: column; gap: 8px; }
+  .item-card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 13px 14px; cursor: pointer; transition: border-color .15s, background .15s;
+  }
+  .item-card:hover { border-color: #3a4452; background: var(--surface2); }
+  .item-card:active { background: var(--surface3); }
+  .item-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 7px; }
+  .importance-badge {
+    flex-shrink: 0; width: 26px; height: 26px; border-radius: 7px; display: flex;
+    align-items: center; justify-content: center; font-size: 11px; font-weight: 800; font-family: var(--mono);
+  }
+  .imp-high{background:rgba(255,71,87,0.18);color:var(--red)}
+  .imp-mid{background:rgba(240,180,41,0.18);color:var(--yellow)}
+  .imp-low{background:rgba(63,214,143,0.15);color:var(--green)}
+  .imp-zero{background:rgba(124,135,148,0.12);color:var(--muted)}
+  .item-title { font-size: 14.5px; font-weight: 600; color: var(--text); line-height: 1.4; flex: 1; }
+  .item-title a { color: inherit; text-decoration: none; }
+  .item-title a:hover { color: var(--blue); }
+  .item-title a:visited { color: var(--muted); }
+  .item-meta { display: flex; align-items: center; gap: 7px; flex-wrap: wrap; margin-top: 5px; }
+  .source-tag { font-size: 10.5px; color: var(--muted); background: var(--surface3); padding: 2px 8px; border-radius: 5px; font-weight: 600; }
+  .signal-tag { font-size: 10.5px; padding: 2px 8px; border-radius: 5px; font-weight: 700; }
+  .st-pakistan_narrative{background:rgba(255,107,107,0.15);color:#ff6b6b}
+  .st-western_criticism{background:rgba(77,171,247,0.15);color:#4dabf7}
+  .st-protest_dissent{background:rgba(255,212,59,0.15);color:#ffd43b}
+  .st-neighbour_hostile{background:rgba(169,227,75,0.15);color:#a9e34b}
+  .st-strategic_military{background:rgba(204,93,232,0.15);color:#cc5de8}
+  .st-terrorism_security{background:rgba(255,146,43,0.15);color:#ff922b}
+  .st-pok_baloch_rights{background:rgba(57,197,207,0.15);color:#39c5cf}
+  .st-kashmir_pakistan_comment{background:rgba(255,135,135,0.15);color:#ff8787}
+  .st-kashmir_development{background:rgba(116,192,252,0.15);color:#74c0fc}
+  .st-kashmir_foreign_negative{background:rgba(229,153,247,0.15);color:#e599f7}
+  .st-anti_sikh_sentiment{background:rgba(255,107,157,0.15);color:#ff6b9d}
+  .st-khalistan_activity{background:rgba(245,159,0,0.15);color:#f59f00}
+  .st-pakistan_sikh_propaganda{background:rgba(250,82,82,0.15);color:#fa5252}
+  .st-khalistan_canada_usa{background:rgba(34,184,207,0.15);color:#22b8cf}
+  .st-active_flashpoint{background:rgba(255,59,59,0.22);color:#ff3b3b;font-weight:800}
+  .st-border_territorial{background:rgba(250,176,5,0.15);color:#fab005}
+  .st-maritime_indian_ocean{background:rgba(25,113,194,0.15);color:#1971c2}
+  .st-cyber_security_threat{background:rgba(121,80,242,0.15);color:#7950f2}
+  .st-economic_security_risk{background:rgba(47,158,68,0.15);color:#2f9e44}
+  .st-disinfo_research_finding{background:rgba(174,62,201,0.15);color:#ae3ec9}
+  .st-communal_flashpoint{background:rgba(232,89,12,0.15);color:#e8590c}
+  .st-northeast_unrest{background:rgba(12,166,120,0.15);color:#0ca678}
+  .st-extremism_banned_org{background:rgba(201,42,42,0.15);color:#c92a2a}
+  .item-summary {
+    font-size: 12.5px; color: var(--muted); margin-top: 9px; line-height: 1.65;
+    max-height: 0; overflow: hidden; transition: max-height .2s ease;
+  }
+  .item-card.expanded .item-summary { max-height: 300px; }
+  .item-card.expanded { border-color: var(--blue); }
+  .time-tag { font-size: 10.5px; color: var(--muted-dim); font-family: var(--mono); margin-left: auto; }
+  .cat-icon { font-size: 12px; }
+
+  .loader { display: flex; flex-direction: column; align-items: center; padding: 70px 20px; color: var(--muted); gap: 16px; }
+  .spinner { width: 34px; height: 34px; border: 3px solid var(--border); border-top-color: var(--accent); border-radius: 50%; animation: spin .7s linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .no-results { text-align: center; padding: 60px 20px; color: var(--muted); }
+  .no-results .icon { font-size: 34px; margin-bottom: 12px; opacity: .6; }
+
+  .pagination { display: flex; gap: 6px; margin-top: 22px; justify-content: center; flex-wrap: wrap; }
+  .page-btn {
+    padding: 7px 13px; border-radius: 8px; border: 1px solid var(--border); background: var(--surface);
+    color: var(--text); cursor: pointer; font-size: 13px; font-weight: 600; min-width: 36px;
+  }
+  .page-btn:hover { border-color: var(--blue); }
+  .page-btn.active { background: var(--blue); border-color: var(--blue); color: #06121f; }
+  .page-btn:disabled { opacity: .35; cursor: default; }
+
+  /* ── MOBILE BOTTOM SHEET ─────────────────────────────────────────────── */
+  .sheet-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.55); z-index: 500;
+    opacity: 0; pointer-events: none; transition: opacity .2s; backdrop-filter: blur(2px);
+  }
+  .sheet-overlay.open { opacity: 1; pointer-events: all; }
+  .bottom-sheet {
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 501;
+    background: var(--surface); border-radius: 18px 18px 0 0; border-top: 1px solid var(--border);
+    max-height: 82vh; transform: translateY(100%); transition: transform .25s cubic-bezier(.32,.72,0,1);
+    display: flex; flex-direction: column;
+    padding-bottom: var(--safe-bottom);
+  }
+  .bottom-sheet.open { transform: translateY(0); }
+  .sheet-handle { width: 36px; height: 4px; background: var(--border); border-radius: 4px; margin: 10px auto 4px; flex-shrink: 0; }
+  .sheet-header { display: flex; align-items: center; padding: 8px 18px 12px; border-bottom: 1px solid var(--border); flex-shrink: 0; }
+  .sheet-header h3 { font-size: 15px; font-weight: 700; }
+  .sheet-header .sheet-close { margin-left: auto; color: var(--muted); font-size: 20px; cursor: pointer; padding: 4px; }
+  .sheet-body { overflow-y: auto; padding: 14px 14px 24px; flex: 1; }
+
+  /* ── BOTTOM NAV (mobile only) ─────────────────────────────────────────── */
+  .bottom-nav {
+    display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+    background: var(--surface); border-top: 1px solid var(--border);
+    padding: 6px 4px calc(6px + var(--safe-bottom));
+    justify-content: space-around; align-items: center;
+  }
+  .nav-item {
+    display: flex; flex-direction: column; align-items: center; gap: 2px; color: var(--muted);
+    font-size: 10px; font-weight: 600; padding: 4px 10px; cursor: pointer; border: none; background: none;
+    position: relative;
+  }
+  .nav-item.active { color: var(--accent); }
+  .nav-item .nav-icon { font-size: 18px; }
+  .nav-item .nav-badge {
+    position: absolute; top: 0; right: 2px; background: var(--red); color: #fff; font-size: 9px;
+    font-weight: 800; padding: 1px 4px; border-radius: 8px; min-width: 14px; text-align: center;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+  @media (max-width: 880px) {
+    .layout { grid-template-columns: 1fr; }
+    .sidebar { display: none; }
+    main { padding: 14px 14px calc(80px + var(--safe-bottom)); }
+    .mobile-filter-btn { display: flex; }
+    .stats-row { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+    .stat-card { padding: 11px 12px; }
+    .stat-card .value { font-size: 21px; }
+    .stat-card .label { font-size: 9.5px; }
+    .brand-text .name { font-size: 14px; }
+    .bottom-nav { display: flex; }
+    .topbar { padding: 10px 14px; }
+  }
+  @media (min-width: 881px) {
+    .sheet-overlay, .bottom-sheet { display: none; }
+  }
+  @media (max-width: 480px) {
+    .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .item-title { font-size: 14px; }
+    body { font-size: 13.5px; }
+  }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-mark">🇮🇳</div>
+    <div class="brand-text">
+      <span class="name">India Pulse 360</span>
+      <span class="sub"><span class="live-dot"></span><span id="last-updated">loading…</span></span>
+    </div>
+  </div>
+  <div class="topbar-actions">
+    <button class="icon-btn" onclick="refreshNow()" title="Refresh now">↻</button>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="desktop-sidebar"></aside>
+
+  <main>
+    <div class="stats-row" id="stats-row-container"></div>
+
+    <div class="toolbar">
+      <div class="search-bar">
+        <span class="search-icon">⌕</span>
+        <input type="text" id="search-input" placeholder="Search headlines, sources, keywords…" oninput="onSearch()"/>
+      </div>
+      <button class="mobile-filter-btn" onclick="openSheet()">
+        ☰ Filters <span class="badge" id="mobile-filter-badge" style="display:none">1</span>
+      </button>
+    </div>
+
+    <div class="result-count" id="result-count"></div>
+    <div id="items-container">
+      <div class="loader"><div class="spinner"></div><div>Loading signals…</div></div>
+    </div>
+    <div class="pagination" id="pagination"></div>
+  </main>
+</div>
+
+<nav class="bottom-nav" id="bottom-nav"></nav>
+
+<div class="sheet-overlay" id="sheet-overlay" onclick="closeSheet()"></div>
+<div class="bottom-sheet" id="bottom-sheet">
+  <div class="sheet-handle"></div>
+  <div class="sheet-header">
+    <h3>Filters</h3>
+    <span class="sheet-close" onclick="closeSheet()">✕</span>
+  </div>
+  <div class="sheet-body" id="sheet-body"></div>
+</div>
+
+<script>
+  let allItems = [];
+  let filtered = [];
+  let activeFilter = { type: 'cat', value: 'all' };
+  let searchQuery = '';
+  let currentPage = 1;
+  const PAGE_SIZE = 25;
+
+  const CONCISE_TOPICS = [
+    { label: 'Pakistan', icon: '🟢', type: 'sig', value: 'pakistan_narrative', countId: 'cnc-pakistan' },
+    { label: 'Baloch / Minorities', icon: '🟦', type: 'sig', value: 'pok_baloch_rights', countId: 'cnc-baloch' },
+    { label: 'Sikh / Punjab', icon: '☬', type: 'cat', value: 'sikh_punjab_affairs', countId: 'cnc-sikh' },
+    { label: 'Kashmir Focus', icon: '⛰️', type: 'cat', value: 'kashmir_focus', countId: 'cnc-kashmir' },
+    { label: 'Western Media', icon: '🌐', type: 'cat', value: 'western_media', countId: 'cnc-western' },
+    { label: 'North East', icon: '🌄', type: 'cat', value: 'northeast_india', countId: 'cnc-northeast' },
+    { label: 'Economy', icon: '💰', type: 'cat', value: 'economic_security', countId: 'cnc-economy' },
+    { label: 'Naxal', icon: '🟥', type: 'cat', value: 'naxal_insurgency', countId: 'cnc-naxal' },
+    { label: 'Communal', icon: '🕌', type: 'cat', value: 'communal_flashpoints', countId: 'cnc-communal' },
+  ];
+
+  const CATEGORIES = [
+    { label: 'All Sources', icon: '◉', value: 'all', countId: 'cnt-all', isAll: true },
+    { label: '🔴 Breaking News', icon: '🔴', value: 'breaking_news', countId: 'cnt-breaking_news' },
+    { label: 'India Media', icon: '🇮🇳', value: 'india_geopolitics', countId: 'cnt-india_geopolitics' },
+    { label: 'Pakistan Media', icon: '🟢', value: 'pakistan_narratives', countId: 'cnt-pakistan_narratives' },
+    { label: 'Western Media', icon: '🌐', value: 'western_media', countId: 'cnt-western_media' },
+    { label: 'Neighbours', icon: '🗺️', value: 'neighbours', countId: 'cnt-neighbours' },
+    { label: 'Social / Reddit', icon: '📡', value: 'social_india', countId: 'cnt-social_india' },
+    { label: 'PoK / Baloch / Minorities', icon: '🟦', value: 'pok_baloch_minorities', countId: 'cnt-pok_baloch_minorities' },
+    { label: 'Kashmir Focus', icon: '⛰️', value: 'kashmir_focus', countId: 'cnt-kashmir_focus' },
+    { label: 'Sikh / Punjab Affairs', icon: '☬', value: 'sikh_punjab_affairs', countId: 'cnt-sikh_punjab_affairs' },
+    { label: 'Telegram Channels', icon: '✈️', value: 'telegram_channels', countId: 'cnt-telegram_channels' },
+    { label: 'Border / Territorial', icon: '🏔️', value: 'border_territorial', countId: 'cnt-border_territorial' },
+    { label: 'Maritime / Indian Ocean', icon: '⚓', value: 'maritime_indian_ocean', countId: 'cnt-maritime_indian_ocean' },
+    { label: 'Cyber Security', icon: '🛡️', value: 'cyber_security', countId: 'cnt-cyber_security' },
+    { label: 'Economic Security', icon: '💰', value: 'economic_security', countId: 'cnt-economic_security' },
+    { label: 'Disinfo Research', icon: '🔬', value: 'disinfo_research', countId: 'cnt-disinfo_research' },
+    { label: 'Communal Flashpoints', icon: '🕌', value: 'communal_flashpoints', countId: 'cnt-communal_flashpoints' },
+    { label: 'Northeast India', icon: '🌄', value: 'northeast_india', countId: 'cnt-northeast_india' },
+    { label: 'Extremism / Banned Orgs', icon: '⚠️', value: 'extremism_banned_orgs', countId: 'cnt-extremism_banned_orgs' },
+    { label: 'Naxal / Maoist', icon: '🟥', value: 'naxal_insurgency', countId: 'cnt-naxal_insurgency' },
+    { label: 'India Critics', icon: '📋', value: 'india_critics', countId: 'cnt-india_critics' },
+    { label: 'OSINT Channels', icon: '🔍', value: 'osint_channels', countId: 'cnt-osint_channels' },
+  ];
+
+  const SIGNALS = [
+    { label: 'Active Flashpoint', dot: 'active_flashpoint', value: 'active_flashpoint', countId: 'sig-active_flashpoint' },
+    { label: 'Pakistan Narrative', dot: 'pakistan_narrative', value: 'pakistan_narrative', countId: 'sig-pakistan_narrative' },
+    { label: 'Western Criticism', dot: 'western_criticism', value: 'western_criticism', countId: 'sig-western_criticism' },
+    { label: 'Protest / Dissent', dot: 'protest_dissent', value: 'protest_dissent', countId: 'sig-protest_dissent' },
+    { label: 'Neighbour Signals', dot: 'neighbour_hostile', value: 'neighbour_hostile', countId: 'sig-neighbour_hostile' },
+    { label: 'Strategic / Military', dot: 'strategic_military', value: 'strategic_military', countId: 'sig-strategic_military' },
+    { label: 'Terror / Security', dot: 'terrorism_security', value: 'terrorism_security', countId: 'sig-terrorism_security' },
+    { label: 'PoK / Baloch Rights', dot: 'pok_baloch_rights', value: 'pok_baloch_rights', countId: 'sig-pok_baloch_rights' },
+    { label: 'Pak Comment on Kashmir', dot: 'kashmir_pakistan_comment', value: 'kashmir_pakistan_comment', countId: 'sig-kashmir_pakistan_comment' },
+    { label: 'Kashmir Development', dot: 'kashmir_development', value: 'kashmir_development', countId: 'sig-kashmir_development' },
+    { label: 'Foreign Negative / Kashmir', dot: 'kashmir_foreign_negative', value: 'kashmir_foreign_negative', countId: 'sig-kashmir_foreign_negative' },
+    { label: 'Anti-Sikh Sentiment', dot: 'anti_sikh_sentiment', value: 'anti_sikh_sentiment', countId: 'sig-anti_sikh_sentiment' },
+    { label: 'Khalistan Activity', dot: 'khalistan_activity', value: 'khalistan_activity', countId: 'sig-khalistan_activity' },
+    { label: 'Pakistan Sikh Propaganda', dot: 'pakistan_sikh_propaganda', value: 'pakistan_sikh_propaganda', countId: 'sig-pakistan_sikh_propaganda' },
+    { label: 'Khalistan Canada/USA', dot: 'khalistan_canada_usa', value: 'khalistan_canada_usa', countId: 'sig-khalistan_canada_usa' },
+    { label: 'Border / Territorial', dot: 'border_territorial', value: 'border_territorial', countId: 'sig-border_territorial' },
+    { label: 'Maritime / Indian Ocean', dot: 'maritime_indian_ocean', value: 'maritime_indian_ocean', countId: 'sig-maritime_indian_ocean' },
+    { label: 'Cyber Security Threat', dot: 'cyber_security_threat', value: 'cyber_security_threat', countId: 'sig-cyber_security_threat' },
+    { label: 'Economic Security Risk', dot: 'economic_security_risk', value: 'economic_security_risk', countId: 'sig-economic_security_risk' },
+    { label: 'Disinfo Research Finding', dot: 'disinfo_research_finding', value: 'disinfo_research_finding', countId: 'sig-disinfo_research_finding' },
+    { label: 'Communal Flashpoint', dot: 'communal_flashpoint', value: 'communal_flashpoint', countId: 'sig-communal_flashpoint' },
+    { label: 'Northeast Unrest', dot: 'northeast_unrest', value: 'northeast_unrest', countId: 'sig-northeast_unrest' },
+    { label: 'Extremism / Banned Org', dot: 'extremism_banned_org', value: 'extremism_banned_org', countId: 'sig-extremism_banned_org' },
+  ];
+
+  const STAT_CARDS = [
+    { label: '🔴 Breaking News', countId: 'stat-breaking', accent: '#ff3b3b', cls: 'flashpoint-card', filter: {type:'cat', value:'breaking_news'} },
+    { label: '🔥 Active Flashpoints', countId: 'stat-flashpoint', accent: '#ff7a45', filter: {type:'sig', value:'active_flashpoint'} },
+    { label: 'Total Items', countId: 'stat-total', accent: '#4fa8ff', filter: {type:'cat', value:'all'} },
+    { label: 'Pakistan Signals', countId: 'stat-pak', accent: '#ff6b6b', filter: {type:'sig', value:'pakistan_narrative'} },
+    { label: 'Western Criticism', countId: 'stat-west', accent: '#4dabf7', filter: {type:'sig', value:'western_criticism'} },
+    { label: 'PoK / Baloch Rights', countId: 'stat-pokbal', accent: '#39c5cf', filter: {type:'sig', value:'pok_baloch_rights'} },
+    { label: 'Kashmir Focus', countId: 'stat-kashmir', accent: '#e599f7', filter: {type:'cat', value:'kashmir_focus'} },
+  ];
+
+  function buildFilterMarkup() {
+    let html = `<div class="sidebar-section concise-pinned">
+      <div class="sec-label">⚡ Concise Topics</div>`;
+    CONCISE_TOPICS.forEach(t => {
+      html += `<button class="filter-row" data-ftype="${t.type}" data-fvalue="${t.value}" onclick="handleFilterClick(this,'${t.type}','${t.value}')">
+        <span class="row-icon">${t.icon}</span>${t.label}<span class="count" id="${t.countId}">0</span>
+      </button>`;
+    });
+    html += `</div>`;
+
+    html += `<div class="sidebar-section">
+      <div class="collapse-header" onclick="toggleCollapse(this)"><div class="sec-label" style="margin-bottom:0">Category</div><span class="chev">▾</span></div>
+      <div class="collapse-body">`;
+    CATEGORIES.forEach(c => {
+      html += `<button class="filter-row ${c.isAll?'active':''}" data-ftype="cat" data-fvalue="${c.value}" onclick="handleFilterClick(this,'cat','${c.value}')">
+        <span class="row-icon">${c.icon}</span>${c.label}<span class="count" id="${c.countId}">0</span>
+      </button>`;
+    });
+    html += `</div></div>`;
+
+    html += `<div class="sidebar-section">
+      <div class="collapse-header collapsed" onclick="toggleCollapse(this)"><div class="sec-label" style="margin-bottom:0">Signal Type</div><span class="chev">▾</span></div>
+      <div class="collapse-body collapsed">`;
+    SIGNALS.forEach(s => {
+      html += `<button class="filter-row" data-ftype="sig" data-fvalue="${s.value}" onclick="handleFilterClick(this,'sig','${s.value}')">
+        <span class="dot sig-${s.dot}"></span>${s.label}<span class="count" id="${s.countId}">0</span>
+      </button>`;
+    });
+    html += `</div></div>`;
+    return html;
+  }
+
+  function toggleCollapse(headerEl) {
+    headerEl.classList.toggle('collapsed');
+    headerEl.nextElementSibling.classList.toggle('collapsed');
+  }
+
+  function buildStatsMarkup() {
+    return STAT_CARDS.map(s => `
+      <div class="stat-card ${s.cls||''}" id="card-${s.countId}" style="--card-accent:${s.accent}"
+           onclick="handleStatClick('${s.filter.type}','${s.filter.value}','card-${s.countId}')">
+        <div class="label">${s.label}</div>
+        <div class="value" id="${s.countId}" style="color:${s.accent}">—</div>
+      </div>`).join('') + `
+      <div class="stat-card no-click"><div class="label">Last Synced</div><div class="value" id="stat-time" style="color:var(--muted);font-size:12.5px;margin-top:6px;font-family:var(--sans);font-weight:600">—</div></div>`;
+  }
+
+  function buildBottomNavMarkup() {
+    return `
+      <button class="nav-item active" data-nav="all" onclick="navTap('all')"><span class="nav-icon">◉</span>All</button>
+      <button class="nav-item" data-nav="breaking_news" onclick="navTap('breaking_news')"><span class="nav-icon">🔴</span>Breaking<span class="nav-badge" id="nav-badge-breaking" style="display:none">0</span></button>
+      <button class="nav-item" data-nav="flashpoint" onclick="navTap('flashpoint')"><span class="nav-icon">🔥</span>Hot</button>
+      <button class="nav-item" data-nav="kashmir_focus" onclick="navTap('kashmir_focus')"><span class="nav-icon">⛰️</span>Kashmir</button>
+      <button class="nav-item" onclick="openSheet()"><span class="nav-icon">☰</span>More</button>
+    `;
+  }
+
+  function navTap(key) {
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    const btn = document.querySelector(`.nav-item[data-nav="${key}"]`);
+    if (btn) btn.classList.add('active');
+    if (key === 'all') setFilter('cat', 'all');
+    else if (key === 'flashpoint') setFilter('sig', 'active_flashpoint');
+    else setFilter('cat', key);
+  }
+
+  document.getElementById('desktop-sidebar').innerHTML = buildFilterMarkup();
+  document.getElementById('sheet-body').innerHTML = buildFilterMarkup();
+  document.getElementById('stats-row-container').innerHTML = buildStatsMarkup();
+  document.getElementById('bottom-nav').innerHTML = buildBottomNavMarkup();
+
+  function openSheet() {
+    document.getElementById('sheet-overlay').classList.add('open');
+    document.getElementById('bottom-sheet').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeSheet() {
+    document.getElementById('sheet-overlay').classList.remove('open');
+    document.getElementById('bottom-sheet').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function handleFilterClick(btn, type, value) {
+    setFilter(type, value);
+    closeSheet();
+  }
+  function handleStatClick(type, value, cardId) {
+    setFilter(type, value, cardId);
+  }
+
+  function setFilter(type, value, cardId) {
+    activeFilter = { type, value };
+
+    document.querySelectorAll('.filter-row').forEach(b => {
+      const match = b.dataset.ftype === type && b.dataset.fvalue === value;
+      b.classList.toggle('active', match);
+    });
+    document.querySelectorAll('.stat-card').forEach(c => c.classList.remove('active-stat'));
+    if (cardId) {
+      const el = document.getElementById(cardId);
+      if (el) el.classList.add('active-stat');
+    } else {
+      STAT_CARDS.forEach(s => {
+        if (s.filter.type === type && s.filter.value === value) {
+          document.getElementById('card-'+s.countId).classList.add('active-stat');
+        }
+      });
+    }
+    const badge = document.getElementById('mobile-filter-badge');
+    if (type === 'cat' && value === 'all') {
+      badge.style.display = 'none';
+    } else {
+      badge.style.display = 'inline-block';
+      badge.textContent = '1';
+    }
+
+    currentPage = 1;
+    applyFilters();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function onSearch() {
+    searchQuery = document.getElementById('search-input').value.toLowerCase();
+    currentPage = 1;
+    applyFilters();
+  }
+
+  function clearFilter() {
+    setFilter('cat', 'all');
+  }
+
+  async function loadData(silent) {
+    try {
+      const r = await fetch('data/summary.json?_=' + Date.now());
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const data = await r.json();
+      allItems = data.top_items || data.items || [];
+
+      document.getElementById('stat-total').textContent = allItems.length;
+      document.getElementById('stat-breaking').textContent = allItems.filter(i => i.category === 'breaking_news').length;
+      document.getElementById('stat-flashpoint').textContent = allItems.filter(i => (i.signals||[]).includes('active_flashpoint')).length;
+      document.getElementById('stat-pak').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative')).length;
+      document.getElementById('stat-west').textContent = allItems.filter(i => (i.signals||[]).includes('western_criticism')).length;
+      document.getElementById('stat-pokbal').textContent = allItems.filter(i => (i.signals||[]).includes('pok_baloch_rights') || i.category==='pok_baloch_minorities').length;
+      document.getElementById('stat-kashmir').textContent = allItems.filter(i => i.category === 'kashmir_focus').length;
+
+      const flashCount = allItems.filter(i => (i.signals||[]).includes('active_flashpoint')).length;
+      const breakingCount = allItems.filter(i => i.category === 'breaking_news').length;
+      const navBadge = document.getElementById('nav-badge-breaking');
+      if (navBadge) { navBadge.style.display = breakingCount ? 'block' : 'none'; navBadge.textContent = breakingCount; }
+
+      const ts = new Date(data.generated_at);
+      const timeStr = ts.toLocaleString([], {month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'});
+      document.getElementById('last-updated').textContent = timeStr;
+      document.getElementById('stat-time').textContent = timeStr;
+
+      updateCounts();
+      applyFilters();
+    } catch(e) {
+      console.error('Load error:', e);
+      if (!silent) {
+        document.getElementById('items-container').innerHTML = `
+          <div class="no-results">
+            <div class="icon">📡</div>
+            <div style="color:var(--text);margin-bottom:8px;font-weight:600">Couldn't load data</div>
+            <div style="font-size:12px;color:var(--muted)">${e.message}<br/><br/>
+            Make sure the GitHub Action has run and <code>data/summary.json</code> exists.<br/>
+            Go to the Actions tab → Run workflow manually.</div>
+          </div>`;
+      }
+    }
+  }
+
+  function refreshNow() {
+    const btn = document.querySelector('.icon-btn');
+    btn.style.transform = 'rotate(360deg)';
+    btn.style.transition = 'transform .5s';
+    setTimeout(() => { btn.style.transform = ''; }, 500);
+    loadData();
+  }
+
+  function updateCounts() {
+    document.getElementById('cnt-all').textContent = allItems.length;
+    CATEGORIES.filter(c => !c.isAll).forEach(c => {
+      const el = document.getElementById(c.countId);
+      if (el) el.textContent = allItems.filter(i => i.category === c.value).length;
+    });
+    SIGNALS.forEach(s => {
+      const el = document.getElementById(s.countId);
+      if (el) el.textContent = allItems.filter(i => (i.signals||[]).includes(s.value)).length;
+    });
+    document.getElementById('cnc-pakistan').textContent = allItems.filter(i => (i.signals||[]).includes('pakistan_narrative') || i.category==='pakistan_narratives').length;
+    document.getElementById('cnc-baloch').textContent = allItems.filter(i => (i.signals||[]).includes('pok_baloch_rights') || i.category==='pok_baloch_minorities').length;
+    document.getElementById('cnc-sikh').textContent = allItems.filter(i => i.category==='sikh_punjab_affairs').length;
+    document.getElementById('cnc-kashmir').textContent = allItems.filter(i => i.category==='kashmir_focus').length;
+    document.getElementById('cnc-western').textContent = allItems.filter(i => i.category==='western_media').length;
+    document.getElementById('cnc-northeast').textContent = allItems.filter(i => i.category==='northeast_india' || (i.signals||[]).includes('northeast_unrest')).length;
+    document.getElementById('cnc-economy').textContent = allItems.filter(i => i.category==='economic_security' || (i.signals||[]).includes('economic_security_risk')).length;
+    document.getElementById('cnc-naxal').textContent = allItems.filter(i => i.category==='naxal_insurgency' || (i.signals||[]).includes('naxal_insurgency')).length;
+    document.getElementById('cnc-communal').textContent = allItems.filter(i => i.category==='communal_flashpoints' || (i.signals||[]).includes('communal_flashpoint')).length;
+  }
+
+  function applyFilters() {
+    filtered = allItems.filter(item => {
+      if (activeFilter.type === 'cat' && activeFilter.value !== 'all') {
+        if (item.category !== activeFilter.value) return false;
+      }
+      if (activeFilter.type === 'sig') {
+        if (!(item.signals||[]).includes(activeFilter.value)) return false;
+      }
+      if (searchQuery) {
+        const hay = `${item.title||''} ${item.summary||''} ${item.source||''}`.toLowerCase();
+        if (!hay.includes(searchQuery)) return false;
+      }
+      return true;
+    });
+    // Always display latest first
+    filtered.sort((a, b) => {
+      const da = a.published ? new Date(a.published).getTime() : 0;
+      const db = b.published ? new Date(b.published).getTime() : 0;
+      return db - da;
+    });
+
+    let countHtml = `Showing <strong style="color:var(--text)">${filtered.length}</strong> of ${allItems.length} items`;
+    if (!(activeFilter.type === 'cat' && activeFilter.value === 'all')) {
+      const label = CATEGORIES.find(c => c.value === activeFilter.value)?.label
+                 || SIGNALS.find(s => s.value === activeFilter.value)?.label
+                 || activeFilter.value;
+      countHtml += ` <span class="active-pill">${label}<span class="clear-x" onclick="clearFilter()">✕</span></span>`;
+    }
+    document.getElementById('result-count').innerHTML = countHtml;
+    renderPage();
+  }
+
+  function renderPage() {
+    const start = (currentPage-1)*PAGE_SIZE;
+    const pageItems = filtered.slice(start, start+PAGE_SIZE);
+    const container = document.getElementById('items-container');
+    if (!filtered.length) {
+      container.innerHTML = `<div class="no-results"><div class="icon">🔍</div><div>No items match this filter</div></div>`;
+      document.getElementById('pagination').innerHTML = '';
+      return;
+    }
+    container.innerHTML = `<div class="items-list">${pageItems.map(renderItem).join('')}</div>`;
+    renderPagination();
+  }
+
+  const CAT_ICON = {breaking_news:'🔴',india_geopolitics:'🇮🇳',pakistan_narratives:'🟢',western_media:'🌐',neighbours:'🗺️',social_india:'📡',pok_baloch_minorities:'🟦',kashmir_focus:'⛰️',sikh_punjab_affairs:'☬',telegram_channels:'✈️',border_territorial:'🏔️',maritime_indian_ocean:'⚓',cyber_security:'🛡️',economic_security:'💰',disinfo_research:'🔬',communal_flashpoints:'🕌',northeast_india:'🌄',extremism_banned_orgs:'⚠️',naxal_insurgency:'🟥',india_critics:'📋',osint_channels:'🔍'};
+
+  function renderItem(item) {
+    const imp = item.importance || 0;
+    const urgency = imp >= 7 ? 'border-color:#ff4757' : imp >= 4 ? 'border-color:#f0b429' : '';
+    const catIcon = CAT_ICON[item.category] || '';
+    const signals = (item.signals||[]).slice(0,3).map(s=>`<span class="signal-tag st-${s}">${s.replace(/_/g,' ')}</span>`).join('');
+    const pub = item.published ? new Date(item.published) : null;
+    const timeStr = pub && !isNaN(pub) ? pub.toLocaleString([],{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}) : '';
+    const summary = item.summary ? `<div class="item-summary">${item.summary}</div>` : '';
+    return `<div class="item-card" style="${urgency}" onclick="this.classList.toggle('expanded')">
+      <div class="item-header">
+        <span class="item-title"><a href="${item.link||'#'}" target="_blank" rel="noopener" onclick="event.stopPropagation()">${item.title||'(no title)'}</a></span>
+      </div>
+      <div class="item-meta">
+        <span class="cat-icon">${catIcon}</span>
+        <span class="source-tag">${item.source||''}</span>
+        ${signals}
+        ${timeStr?`<span class="time-tag">${timeStr}</span>`:''}
+      </div>
+      ${summary}
+    </div>`;
+  }
+
+  function renderPagination() {
+    const total = Math.ceil(filtered.length/PAGE_SIZE);
+    if (total<=1){document.getElementById('pagination').innerHTML='';return;}
+    let html=`<button class="page-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
+    for(let i=1;i<=total;i++){
+      if(i===1||i===total||Math.abs(i-currentPage)<=1) html+=`<button class="page-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
+      else if(Math.abs(i-currentPage)===2) html+=`<span style="color:var(--muted);padding:7px 2px">…</span>`;
+    }
+    html+=`<button class="page-btn" onclick="goPage(${currentPage+1})" ${currentPage===total?'disabled':''}>›</button>`;
+    document.getElementById('pagination').innerHTML=html;
+  }
+
+  function goPage(p) {
+    const total=Math.ceil(filtered.length/PAGE_SIZE);
+    if(p<1||p>total)return;
+    currentPage=p;
+    renderPage();
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  (function() {
+    let startY = 0, currentY = 0, dragging = false;
+    const sheet = document.getElementById('bottom-sheet');
+    const handle = sheet.querySelector('.sheet-handle');
+    handle.addEventListener('touchstart', e => { startY = e.touches[0].clientY; dragging = true; sheet.style.transition = 'none'; });
+    handle.addEventListener('touchmove', e => {
+      if (!dragging) return;
+      currentY = e.touches[0].clientY - startY;
+      if (currentY > 0) sheet.style.transform = `translateY(${currentY}px)`;
+    });
+    handle.addEventListener('touchend', () => {
+      dragging = false;
+      sheet.style.transition = '';
+      if (currentY > 80) closeSheet();
+      sheet.style.transform = '';
+      currentY = 0;
+    });
+  })();
+
+  loadData();
+  setInterval(() => loadData(true), 10*60*1000);
+</script>
+</body>
+</html>
