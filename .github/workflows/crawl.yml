@@ -1,4 +1,4 @@
-name: India Pulse 360 — Crawl
+name: India Signal Monitor — Crawl
 
 on:
   schedule:
@@ -43,4 +43,3 @@ jobs:
           git push
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
