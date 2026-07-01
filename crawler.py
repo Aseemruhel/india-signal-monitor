@@ -233,13 +233,47 @@ FEEDS = {
     # Add channel usernames below (the part after t.me/) one per line.
     # Each entry is tagged with the category it should be filtered/scored as.
     "telegram_channels": [
-        # category_hint controls which relevance filter + signal set applies:
-        #   "india" -> is_india_relevant, "pok_baloch" -> is_pok_baloch_relevant,
-        #   "kashmir" -> is_kashmir_relevant, "sikh_punjab" -> is_sikh_punjab_relevant,
-        #   "none" -> no relevance filter, everything passes through
-        {"name": "Gore Unit (Telegram)", "url": "https://rsshub.app/telegram/channel/goreunit", "category_hint": "india"},
+        # ── HOW THIS WORKS ────────────────────────────────────────────────────
+        # RSSHub (rsshub.app) converts public Telegram channels into RSS feeds.
+        # URL format: https://rsshub.app/telegram/channel/<username>
+        # category_hint: "india" = India relevance filter applied
+        #                "none"  = no filter (channel is 100% India-focused)
+        #
+        # ── INDIA BREAKING NEWS & GENERAL ────────────────────────────────────
+        {"name": "Megh Updates (Telegram)", "url": "https://rsshub.app/telegram/channel/MeghUpdates", "category_hint": "none"},
+        # India breaking news, diplomacy, defence, economy — very active, India-first
+        {"name": "OSINT Updates India (Telegram)", "url": "https://rsshub.app/telegram/channel/OsintUpdates", "category_hint": "india"},
+        # Breaking OSINT — India, Pakistan, geopolitics, Naxal, Northeast
+        {"name": "OsintTV India (Telegram)", "url": "https://rsshub.app/telegram/channel/OsntTV", "category_hint": "india"},
+        # India defence, counter-terrorism, geopolitics, 140K+ subscribers
+
+        # ── INDIA DEFENCE & SECURITY ──────────────────────────────────────────
+        {"name": "Indian Defence Updates (Telegram)", "url": "https://rsshub.app/telegram/channel/indiandefenceupdates", "category_hint": "none"},
+        # Indian military, Kashmir security, LAC, IAF, Navy — India-only channel
         {"name": "Conflict Watch HQ (Telegram)", "url": "https://rsshub.app/telegram/channel/conflictwatchHQ", "category_hint": "india"},
+        # Conflict monitoring with India/Pakistan/South Asia focus
         {"name": "IntelSage (Telegram)", "url": "https://rsshub.app/telegram/channel/IntelSage", "category_hint": "india"},
+        # Intelligence and geopolitics analysis
+
+        # ── KASHMIR & SOUTH ASIA OSINT ────────────────────────────────────────
+        {"name": "Gore Unit Kashmir OSINT (Telegram)", "url": "https://rsshub.app/telegram/channel/goreunit", "category_hint": "india"},
+        # Kashmir & South Asian subcontinent OSINT — note: sometimes graphic content
+
+        # ── PAKISTAN MONITORING ───────────────────────────────────────────────
+        {"name": "Pakistan Pulse Intel (Telegram)", "url": "https://rsshub.app/telegram/channel/PakPulseIntel", "category_hint": "india"},
+        # Pakistan internal affairs, CT, geopolitics tracking
+        {"name": "The Pulse Point Pakistan (Telegram)", "url": "https://rsshub.app/telegram/channel/ThePulsePoint", "category_hint": "india"},
+        # Pakistan news and geopolitics
+
+        # ── GLOBAL GEOPOLITICS WITH INDIA ANGLE ──────────────────────────────
+        {"name": "Intel Slava Z (Telegram)", "url": "https://rsshub.app/telegram/channel/intelslava", "category_hint": "india"},
+        # Global conflict/geopolitics aggregator — filter keeps only India-relevant items
+        {"name": "OSINT Defender (Telegram)", "url": "https://rsshub.app/telegram/channel/OSINT_defender", "category_hint": "india"},
+        # Global OSINT breaking alerts — India-filtered
+        {"name": "Insider Paper (Telegram)", "url": "https://rsshub.app/telegram/channel/InsiderPaper", "category_hint": "india"},
+        # Breaking world news — India-filtered
+        {"name": "BRICS News (Telegram)", "url": "https://rsshub.app/telegram/channel/bricsnews", "category_hint": "india"},
+        # BRICS updates relevant to India's multilateral positioning
     ],
     # ── NEW: Border & territorial flashpoints (LAC, Doklam, water disputes) ──
     "border_territorial": [
