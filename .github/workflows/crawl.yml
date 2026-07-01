@@ -2,7 +2,7 @@ name: India Signal Monitor — Crawl
 
 on:
   schedule:
-    - cron: '0 */2 * * *'   # Every 2 hours (GitHub Actions free tier: 2000 min/month)
+    - cron: '*/30 * * * *'   # Every 2 hours (GitHub Actions free tier: 2000 min/month)
   workflow_dispatch:          # Manual trigger from GitHub UI
 
 permissions:
