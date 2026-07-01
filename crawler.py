@@ -14,6 +14,13 @@ from collections import defaultdict
 import time
 from email.utils import parsedate_to_datetime
 
+try:
+    from bs4 import BeautifulSoup
+    BS4_AVAILABLE = True
+except ImportError:
+    BS4_AVAILABLE = False
+    print("⚠ beautifulsoup4 not installed — Telegram scraping disabled. Run: pip install beautifulsoup4")
+
 # ── DATE FILTER ────────────────────────────────────────────────────────────
 # Only keep items published within this many days. Anything older (or
 # anything whose date can't be parsed reliably and looks stale) is dropped.
@@ -234,46 +241,35 @@ FEEDS = {
     # Each entry is tagged with the category it should be filtered/scored as.
     "telegram_channels": [
         # ── HOW THIS WORKS ────────────────────────────────────────────────────
-        # RSSHub (rsshub.app) converts public Telegram channels into RSS feeds.
-        # URL format: https://rsshub.app/telegram/channel/<username>
-        # category_hint: "india" = India relevance filter applied
-        #                "none"  = no filter (channel is 100% India-focused)
+        # Uses Telegram's own public web preview (t.me/s/<username>) — no API
+        # key, no RSSHub, no external service. GitHub Actions can reach t.me
+        # freely. The crawler parses the HTML directly.
+        #
+        # category_hint: "none"  = no relevance filter (100% India-focused channel)
+        #                "india" = India relevance keyword filter applied
         #
         # ── INDIA BREAKING NEWS & GENERAL ────────────────────────────────────
-        {"name": "Megh Updates (Telegram)", "url": "https://rsshub.app/telegram/channel/MeghUpdates", "category_hint": "none"},
-        # India breaking news, diplomacy, defence, economy — very active, India-first
-        {"name": "OSINT Updates India (Telegram)", "url": "https://rsshub.app/telegram/channel/OsintUpdates", "category_hint": "india"},
-        # Breaking OSINT — India, Pakistan, geopolitics, Naxal, Northeast
-        {"name": "OsintTV India (Telegram)", "url": "https://rsshub.app/telegram/channel/OsntTV", "category_hint": "india"},
-        # India defence, counter-terrorism, geopolitics, 140K+ subscribers
+        {"name": "Megh Updates", "url": "https://t.me/s/MeghUpdates", "category_hint": "none"},
+        {"name": "OSINT Updates India", "url": "https://t.me/s/OsintUpdates", "category_hint": "india"},
+        {"name": "OsintTV India", "url": "https://t.me/s/OsntTV", "category_hint": "india"},
 
         # ── INDIA DEFENCE & SECURITY ──────────────────────────────────────────
-        {"name": "Indian Defence Updates (Telegram)", "url": "https://rsshub.app/telegram/channel/indiandefenceupdates", "category_hint": "none"},
-        # Indian military, Kashmir security, LAC, IAF, Navy — India-only channel
-        {"name": "Conflict Watch HQ (Telegram)", "url": "https://rsshub.app/telegram/channel/conflictwatchHQ", "category_hint": "india"},
-        # Conflict monitoring with India/Pakistan/South Asia focus
-        {"name": "IntelSage (Telegram)", "url": "https://rsshub.app/telegram/channel/IntelSage", "category_hint": "india"},
-        # Intelligence and geopolitics analysis
+        {"name": "Indian Defence Updates", "url": "https://t.me/s/indiandefenceupdates", "category_hint": "none"},
+        {"name": "Conflict Watch HQ", "url": "https://t.me/s/conflictwatchHQ", "category_hint": "india"},
+        {"name": "IntelSage", "url": "https://t.me/s/IntelSage", "category_hint": "india"},
 
         # ── KASHMIR & SOUTH ASIA OSINT ────────────────────────────────────────
-        {"name": "Gore Unit Kashmir OSINT (Telegram)", "url": "https://rsshub.app/telegram/channel/goreunit", "category_hint": "india"},
-        # Kashmir & South Asian subcontinent OSINT — note: sometimes graphic content
+        {"name": "Gore Unit Kashmir OSINT", "url": "https://t.me/s/goreunit", "category_hint": "india"},
 
         # ── PAKISTAN MONITORING ───────────────────────────────────────────────
-        {"name": "Pakistan Pulse Intel (Telegram)", "url": "https://rsshub.app/telegram/channel/PakPulseIntel", "category_hint": "india"},
-        # Pakistan internal affairs, CT, geopolitics tracking
-        {"name": "The Pulse Point Pakistan (Telegram)", "url": "https://rsshub.app/telegram/channel/ThePulsePoint", "category_hint": "india"},
-        # Pakistan news and geopolitics
+        {"name": "Pakistan Pulse Intel", "url": "https://t.me/s/PakPulseIntel", "category_hint": "india"},
+        {"name": "The Pulse Point Pakistan", "url": "https://t.me/s/ThePulsePoint", "category_hint": "india"},
 
         # ── GLOBAL GEOPOLITICS WITH INDIA ANGLE ──────────────────────────────
-        {"name": "Intel Slava Z (Telegram)", "url": "https://rsshub.app/telegram/channel/intelslava", "category_hint": "india"},
-        # Global conflict/geopolitics aggregator — filter keeps only India-relevant items
-        {"name": "OSINT Defender (Telegram)", "url": "https://rsshub.app/telegram/channel/OSINT_defender", "category_hint": "india"},
-        # Global OSINT breaking alerts — India-filtered
-        {"name": "Insider Paper (Telegram)", "url": "https://rsshub.app/telegram/channel/InsiderPaper", "category_hint": "india"},
-        # Breaking world news — India-filtered
-        {"name": "BRICS News (Telegram)", "url": "https://rsshub.app/telegram/channel/bricsnews", "category_hint": "india"},
-        # BRICS updates relevant to India's multilateral positioning
+        {"name": "Intel Slava Z", "url": "https://t.me/s/intelslava", "category_hint": "india"},
+        {"name": "OSINT Defender", "url": "https://t.me/s/OSINT_defender", "category_hint": "india"},
+        {"name": "Insider Paper", "url": "https://t.me/s/InsiderPaper", "category_hint": "india"},
+        {"name": "BRICS News", "url": "https://t.me/s/bricsnews", "category_hint": "india"},
     ],
     # ── NEW: Border & territorial flashpoints (LAC, Doklam, water disputes) ──
     "border_territorial": [
@@ -664,6 +660,118 @@ def detect_signals(text):
                 break
     return list(set(detected))
 
+# ── TELEGRAM CHANNEL FETCHER (direct t.me/s/ HTML scraping) ─────────────────
+# Uses Telegram's own public web preview — no API key, no RSSHub, no external
+# service required. Each public Telegram channel at t.me/s/<username> renders
+# up to ~20 recent messages as HTML that we can parse directly.
+
+def fetch_telegram_channel(feed_info, category, max_items=20):
+    """Scrape public Telegram channel preview at t.me/s/<username>."""
+    items = []
+    if not BS4_AVAILABLE:
+        print(f"  ✗ BeautifulSoup4 not available — skipping {feed_info['name']}")
+        return items
+    try:
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+        }
+        resp = requests.get(feed_info["url"], headers=headers, timeout=15)
+        if resp.status_code != 200:
+            print(f"  ✗ {feed_info['name']} — HTTP {resp.status_code}")
+            return items
+
+        soup = BeautifulSoup(resp.text, "html.parser")
+
+        # Each message is a .tgme_widget_message_wrap div
+        message_wraps = soup.find_all("div", class_="tgme_widget_message_wrap")
+
+        for wrap in message_wraps[:max_items]:
+            # Get message text
+            text_el = wrap.find("div", class_="tgme_widget_message_text")
+            if not text_el:
+                # Some messages are media-only (photos/videos) with no text — skip
+                continue
+
+            # Get clean text (strip HTML tags, emojis are fine)
+            title_raw = text_el.get_text(" ", strip=True)
+            if not title_raw or len(title_raw) < 15:
+                continue
+
+            # Use first 120 chars as title, rest as summary
+            title = title_raw[:120].strip()
+            if len(title_raw) > 120:
+                title = title[:title.rfind(" ", 0, 117)] + "…" if " " in title[:117] else title
+            summary = title_raw[:400]
+
+            # Get message URL (permalink)
+            link_el = wrap.find("a", class_="tgme_widget_message_date")
+            link = link_el.get("href", "") if link_el else ""
+
+            # Get timestamp from <time datetime="...">
+            time_el = wrap.find("time")
+            pub_dt = None
+            pub = ""
+            if time_el:
+                dt_str = time_el.get("datetime", "")
+                if dt_str:
+                    try:
+                        pub_dt = datetime.fromisoformat(dt_str.replace("Z", "+00:00"))
+                        pub = pub_dt.isoformat()
+                    except Exception:
+                        pass
+
+            # DATE FILTER
+            recent = is_recent(pub_dt)
+            if recent is False:
+                continue
+            if recent is None and category != "breaking_news":
+                continue
+
+            combined = f"{title} {summary}"
+
+            # RELEVANCE FILTER
+            hint = feed_info.get("category_hint", "india")
+            if hint == "none":
+                pass  # 100% India-focused channel — no filter needed
+            elif hint == "pok_baloch":
+                if not is_pok_baloch_relevant(combined):
+                    continue
+            elif hint == "kashmir":
+                if not is_kashmir_relevant(combined):
+                    continue
+            elif hint == "sikh_punjab":
+                if not is_sikh_punjab_relevant(combined):
+                    continue
+            else:  # "india" — default
+                if not is_india_relevant(combined):
+                    continue
+
+            signals = detect_signals(combined)
+            importance = score_importance(combined)
+
+            # Auto-tag all Telegram items as strategic_military baseline
+            if "strategic_military" not in signals:
+                signals = signals + ["strategic_military"]
+
+            items.append({
+                "title": title,
+                "summary": summary[:300],
+                "link": link,
+                "source": feed_info["name"],
+                "category": category,
+                "signals": signals,
+                "importance": importance,
+                "published": pub,
+                "fetched_at": datetime.now(timezone.utc).isoformat(),
+            })
+
+    except Exception as e:
+        print(f"  ✗ {feed_info['name']} — {e}")
+    return items
+
+
 # ── RSS FEED FETCHER ──────────────────────────────────────────────────────────
 
 def fetch_rss(feed_info, category, max_items=15):
@@ -842,7 +950,10 @@ def crawl_all():
         for feed in feed_list:
             print(f"  {feed['name']} ...", end=" ", flush=True)
             is_reddit_json = "reddit.com" in feed["url"] and (".json" in feed["url"])
-            if is_reddit_json:
+            is_telegram = feed["url"].startswith("https://t.me/s/")
+            if is_telegram:
+                items = fetch_telegram_channel(feed, category)
+            elif is_reddit_json:
                 items = fetch_reddit_json(feed, category)
             else:
                 items = fetch_rss(feed, category)
